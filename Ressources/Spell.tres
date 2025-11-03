@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://clocdn8evlsoc"]
+
+[ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://classes/Spell.gd" id="1_u8q2f"]
+
+[resource]
+script = ExtResource("1_u8q2f")
+required_keys = Dictionary[String, int]({
+"C4": 0,
+"E4": 0,
+"G4": 0
+})

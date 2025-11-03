@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://ceiv5syq5aaws"]
+
+[ext_resource type="Script" uid="uid://xybohmy21dgo" path="res://classes/Piano.gd" id="1_v6hsj"]
+[ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://classes/Spell.gd" id="2_1esdx"]
+[ext_resource type="Script" uid="uid://dt3nc4our1mgp" path="res://node_2d.gd" id="2_1krru"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_1krru"]
+[ext_resource type="Resource" uid="uid://clocdn8evlsoc" path="res://Ressources/Spell.tres" id="3_7y472"]
+
+[node name="Piano" type="Node2D"]
+script = ExtResource("1_v6hsj")
+spells = Array[ExtResource("2_1esdx")]([ExtResource("3_7y472")])
+metadata/_custom_type_script = "uid://xybohmy21dgo"
+
+[node name="KeyController" type="Node2D" parent="."]
+script = ExtResource("2_1krru")
+metadata/_custom_type_script = "uid://dt3nc4our1mgp"
+
+[node name="PressedKeys" type="VBoxContainer" parent="."]
+offset_right = 120.0
+offset_bottom = 234.0
+
+[node name="title" type="Label" parent="PressedKeys"]
+layout_mode = 2
+text = "Pressed keys"
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(368, 42)
+texture = ExtResource("3_1krru")
+
+[connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
+[connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]
+[connection signal="key_released" from="KeyController" to="." method="_on_key_controller_key_released"]
