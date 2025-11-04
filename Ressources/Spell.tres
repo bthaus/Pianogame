@@ -9,3 +9,4 @@ required_keys = Dictionary[String, int]({
 "E4": 0,
 "G4": 0
 })
+tolerance = 0.05

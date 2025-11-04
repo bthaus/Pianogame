@@ -4,6 +4,7 @@ class_name Spell
 @export var required_keys:Dictionary[String,int]={}
 @export var simultaneos=true
 @export var tolerance=0.2
+@export var spell_name=""
 
 func check_activation(pressed_keys:Dictionary[String,PianoEvent])-> bool:
 	if pressed_keys.size()>required_keys.size(): return false	
