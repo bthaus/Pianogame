@@ -10,6 +10,8 @@ func _ready():
 	OS.open_midi_inputs()
 	print(OS.get_connected_midi_inputs())
 func _process(delta: float) -> void:
+	
+			
 	if debug_active:
 		check_keyboard()
 func _input(input_event):
@@ -76,7 +78,7 @@ func check_keyboard():
 func _on_key_pressed(piano_event: PianoEvent) -> void:
 	if active_keys.has(piano_event.get_key()):
 		print("stray press event caught")
-		return
+		return	
 	active_keys[piano_event.get_key()]=piano_event
 	key_pressed.emit(piano_event)
 	pass # Replace with function body.

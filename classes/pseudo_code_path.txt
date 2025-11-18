@@ -1,0 +1,27 @@
+wrap input events into an input queue: 
+	collect inputs for 2-3 frames before passing to eventhandler
+
+Input event
+add to last inputs, mark as unprogressed
+create new active starting sequence for each edge
+progress all active sequences and mark respective input events as progressed
+if nothing has been progressed -> miss
+
+
+Tact-event
+for all last inputs: 
+	if not progressed, miss
+clear last inputs	
+for all active sequences: 
+	check temporal edges, if thresholds are passed, abandon. 
+
+tact/time matching: 
+	keep it variable, not "hardcoded" with fixed times. 
+	check for a variable interval or smth like that
+
+
+argumentation for missdelaydetection: 
+	I cant know if a miss has occured or if a new correct sequence has started if there is a spell with the "missed" note for active sequences
+	why not disallow notes from not active sequences? flow
+	
+	

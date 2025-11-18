@@ -1,12 +1,24 @@
-[gd_resource type="Resource" script_class="Spell" load_steps=2 format=3 uid="uid://clocdn8evlsoc"]
+[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://clocdn8evlsoc"]
 
+[ext_resource type="Script" uid="uid://bsnb8mx840cyl" path="res://Ressources/Key.gd" id="1_mrfsy"]
 [ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://classes/Spell.gd" id="1_u8q2f"]
+
+[sub_resource type="Resource" id="Resource_qmucn"]
+script = ExtResource("1_mrfsy")
+key = "C4"
+metadata/_custom_type_script = "uid://bsnb8mx840cyl"
+
+[sub_resource type="Resource" id="Resource_n43so"]
+script = ExtResource("1_mrfsy")
+key = "E4"
+metadata/_custom_type_script = "uid://bsnb8mx840cyl"
+
+[sub_resource type="Resource" id="Resource_v1dlu"]
+script = ExtResource("1_mrfsy")
+key = "G4"
+metadata/_custom_type_script = "uid://bsnb8mx840cyl"
 
 [resource]
 script = ExtResource("1_u8q2f")
-required_keys = Dictionary[String, int]({
-"C4": 0,
-"E4": 0,
-"G4": 0
-})
+required_keys = Array[ExtResource("1_mrfsy")]([SubResource("Resource_qmucn"), SubResource("Resource_n43so"), SubResource("Resource_v1dlu")])
 tolerance = 0.05

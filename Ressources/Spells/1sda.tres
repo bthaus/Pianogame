@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Spell" load_steps=6 format=3 uid="uid://cxr08rhdrb2tj"]
+
+[ext_resource type="Script" uid="uid://bsnb8mx840cyl" path="res://Ressources/Key.gd" id="1_llf8e"]
+[ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://classes/Spell.gd" id="2_a6f57"]
+
+[sub_resource type="Resource" id="Resource_saejn"]
+script = ExtResource("1_llf8e")
+key = "C4"
+
+[sub_resource type="Resource" id="Resource_fx331"]
+script = ExtResource("1_llf8e")
+key = "E4"
+
+[sub_resource type="Resource" id="Resource_hocxn"]
+script = ExtResource("1_llf8e")
+key = "G4"
+
+[resource]
+script = ExtResource("2_a6f57")
+required_keys = Array[ExtResource("1_llf8e")]([SubResource("Resource_saejn"), SubResource("Resource_fx331"), SubResource("Resource_hocxn")])
+spell_name = "1sda"

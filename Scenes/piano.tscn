@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceiv5syq5aaws"]
+[gd_scene load_steps=9 format=3 uid="uid://ceiv5syq5aaws"]
 
 [ext_resource type="Script" uid="uid://xybohmy21dgo" path="res://classes/Piano.gd" id="1_v6hsj"]
 [ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://classes/Spell.gd" id="2_1esdx"]
 [ext_resource type="Script" uid="uid://dt3nc4our1mgp" path="res://node_2d.gd" id="2_1krru"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_1krru"]
-[ext_resource type="Resource" uid="uid://clocdn8evlsoc" path="res://Ressources/Spell.tres" id="3_7y472"]
+[ext_resource type="Resource" uid="uid://cxr08rhdrb2tj" path="res://Ressources/Spells/1sda.tres" id="3_7y472"]
+[ext_resource type="Resource" uid="uid://dnf4a3y44l0yd" path="res://Ressources/Spells/2asd.tres" id="4_iepga"]
+[ext_resource type="Script" uid="uid://b81ws3xd1o06j" path="res://classes/SequenceNode.gd" id="7_iepga"]
+[ext_resource type="PackedScene" uid="uid://dsv17eihnnnud" path="res://Scenes/Sequence_Tree.tscn" id="8_jxafu"]
 
 [node name="Piano" type="Node2D"]
 script = ExtResource("1_v6hsj")
-spells = Array[ExtResource("2_1esdx")]([ExtResource("3_7y472")])
+spells = Array[ExtResource("2_1esdx")]([ExtResource("3_7y472"), ExtResource("4_iepga")])
 metadata/_custom_type_script = "uid://xybohmy21dgo"
 
 [node name="KeyController" type="Node2D" parent="."]
@@ -26,6 +29,13 @@ text = "Pressed keys"
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(368, 42)
 texture = ExtResource("3_1krru")
+
+[node name="SequenceNode" type="Node" parent="." node_paths=PackedStringArray("next")]
+script = ExtResource("7_iepga")
+next = [null]
+metadata/_custom_type_script = "uid://b81ws3xd1o06j"
+
+[node name="SequenceTree" parent="." instance=ExtResource("8_jxafu")]
 
 [connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
 [connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="MelodySpell" load_steps=6 format=3 uid="uid://dnf4a3y44l0yd"]
+
+[ext_resource type="Script" uid="uid://bsnb8mx840cyl" path="res://Ressources/Key.gd" id="1_1i66x"]
+[ext_resource type="Script" uid="uid://d3pjia2j5u3vs" path="res://classes/MelodySpell.gd" id="2_3ntic"]
+
+[sub_resource type="Resource" id="Resource_rlbrk"]
+script = ExtResource("1_1i66x")
+key = "C4"
+
+[sub_resource type="Resource" id="Resource_lwdsv"]
+script = ExtResource("1_1i66x")
+key = "E4"
+delay = 167
+
+[sub_resource type="Resource" id="Resource_msmga"]
+script = ExtResource("1_1i66x")
+key = "G4"
+delay = 233
+
+[resource]
+script = ExtResource("2_3ntic")
+required_keys = Array[ExtResource("1_1i66x")]([SubResource("Resource_rlbrk"), SubResource("Resource_lwdsv"), SubResource("Resource_msmga")])
+spell_name = "2asd"
