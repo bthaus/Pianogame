@@ -10,7 +10,7 @@ if nothing has been progressed -> miss
 
 Tact-event
 for all last inputs: 
-	if not progressed, miss
+	if not progressed, miss #just dont add 1 tact pauses
 clear last inputs	
 for all active sequences: 
 	check temporal edges, if thresholds are passed, abandon. 

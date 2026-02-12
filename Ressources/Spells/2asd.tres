@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="MelodySpell" load_steps=6 format=3 uid="uid://dnf4a3y44l0yd"]
+[gd_resource type="Resource" script_class="MelodySpell" format=3 uid="uid://dnf4a3y44l0yd"]
 
 [ext_resource type="Script" uid="uid://bsnb8mx840cyl" path="res://Ressources/Key.gd" id="1_1i66x"]
-[ext_resource type="Script" uid="uid://d3pjia2j5u3vs" path="res://classes/MelodySpell.gd" id="2_3ntic"]
+[ext_resource type="Script" uid="uid://d3pjia2j5u3vs" path="res://scripts/MelodySpell.gd" id="2_3ntic"]
 
 [sub_resource type="Resource" id="Resource_rlbrk"]
 script = ExtResource("1_1i66x")
