@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsv17eihnnnud"]
 
-[ext_resource type="Script" uid="uid://dy1p2cb2wpswj" path="res://scripts/Sequence_Tree.gd" id="1_hccth"]
+[ext_resource type="Script" uid="uid://cfo5biseb4nct" path="res://scripts/spell_parser.gd" id="1_hccth"]
 
 [node name="SequenceTree" type="Node2D" unique_id=1013035980]
 script = ExtResource("1_hccth")

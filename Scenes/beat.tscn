@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://iijm1wxh5e31"]
+
+[ext_resource type="Script" uid="uid://c4t4rv0bfpbj3" path="res://beat.gd" id="1_xfmun"]
+[ext_resource type="AudioStream" uid="uid://cqcrfgsed62ci" path="res://Assets/sounds/beat.wav" id="2_6hu35"]
+[ext_resource type="AudioStream" uid="uid://d4om708s5rjd" path="res://Assets/sounds/bar.wav" id="3_lxvgy"]
+
+[node name="Beat" type="Node2D" unique_id=1000817660]
+script = ExtResource("1_xfmun")
+
+[node name="beat" type="Timer" parent="." unique_id=638661330]
+
+[node name="bar" type="Timer" parent="." unique_id=513607463]
+
+[node name="beatsound" type="AudioStreamPlayer2D" parent="." unique_id=1625254436]
+stream = ExtResource("2_6hu35")
+
+[node name="barsound" type="AudioStreamPlayer2D" parent="." unique_id=1745666158]
+stream = ExtResource("3_lxvgy")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=79618295]
+
+[node name="open_window" type="Timer" parent="." unique_id=2121833302]
+
+[node name="close_window" type="Timer" parent="." unique_id=546568277]
+
+[connection signal="timeout" from="beat" to="." method="beat_timeout"]
+[connection signal="timeout" from="bar" to="." method="bar_timeout"]
+[connection signal="timeout" from="open_window" to="." method="_on_open_window_timeout"]
+[connection signal="timeout" from="close_window" to="." method="_on_close_window_timeout"]

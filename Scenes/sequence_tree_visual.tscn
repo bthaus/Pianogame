@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dot0bbjq8cre4"]
+
+[ext_resource type="Script" uid="uid://c86gfel41g4k2" path="res://Scenes/sequence_tree_visual.gd" id="1_w64ui"]
+
+[node name="SequenceTreeVisual" type="Node2D" unique_id=1627917585]
+script = ExtResource("1_w64ui")

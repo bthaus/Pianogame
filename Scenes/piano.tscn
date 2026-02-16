@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://ceiv5syq5aaws"]
 
 [ext_resource type="Script" uid="uid://xybohmy21dgo" path="res://scripts/Piano.gd" id="1_v6hsj"]
-[ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://scripts/Spell.gd" id="2_1esdx"]
 [ext_resource type="Script" uid="uid://7wmdwssytper" path="res://scripts/KeyController.gd" id="2_1krru"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_1krru"]
-[ext_resource type="Resource" uid="uid://cxr08rhdrb2tj" path="res://Ressources/Spells/1sda.tres" id="3_7y472"]
-[ext_resource type="Resource" uid="uid://dnf4a3y44l0yd" path="res://Ressources/Spells/2asd.tres" id="4_iepga"]
+[ext_resource type="PackedScene" uid="uid://iijm1wxh5e31" path="res://Scenes/beat.tscn" id="6_7y472"]
 [ext_resource type="Script" uid="uid://b81ws3xd1o06j" path="res://scripts/SequenceNode.gd" id="7_iepga"]
 [ext_resource type="PackedScene" uid="uid://dsv17eihnnnud" path="res://Scenes/Sequence_Tree.tscn" id="8_jxafu"]
 
 [node name="Piano" type="Node2D" unique_id=430235116]
 script = ExtResource("1_v6hsj")
-spells = Array[ExtResource("2_1esdx")]([ExtResource("3_7y472"), ExtResource("4_iepga")])
 metadata/_custom_type_script = "uid://xybohmy21dgo"
 
 [node name="KeyController" type="Node2D" parent="." unique_id=1576125217]
@@ -36,6 +33,19 @@ metadata/_custom_type_script = "uid://b81ws3xd1o06j"
 
 [node name="SequenceTree" parent="." unique_id=2049264964 instance=ExtResource("8_jxafu")]
 
+[node name="Beat" parent="." unique_id=1000817660 instance=ExtResource("6_7y472")]
+
+[node name="window" type="Label" parent="." unique_id=1016589559]
+offset_left = 179.0
+offset_top = -1.0
+offset_right = 219.0
+offset_bottom = 22.0
+text = "close
+"
+
 [connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
 [connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]
 [connection signal="key_released" from="KeyController" to="." method="_on_key_controller_key_released"]
+[connection signal="beat" from="Beat" to="." method="_on_beat_beat"]
+[connection signal="close_window" from="Beat" to="." method="_on_beat_close_window"]
+[connection signal="open_window" from="Beat" to="." method="_on_beat_open_window"]

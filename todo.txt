@@ -1,0 +1,9 @@
+todo list
+check if errorcount works in traverse
+add misscklick signals
+add visuals for all current spells in the tree
+
+check if two spells at the same time work
+add actual spellcasting + spell logic/framework
+add spell cooldowns
+find a proper bpm to tolerance relationship
