@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xybohmy21dgo" path="res://scripts/Piano.gd" id="1_v6hsj"]
 [ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://scripts/Spell.gd" id="2_1esdx"]
-[ext_resource type="Script" uid="uid://dt3nc4our1mgp" path="res://node_2d.gd" id="2_1krru"]
+[ext_resource type="Script" uid="uid://7wmdwssytper" path="res://scripts/KeyController.gd" id="2_1krru"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_1krru"]
 [ext_resource type="Resource" uid="uid://cxr08rhdrb2tj" path="res://Ressources/Spells/1sda.tres" id="3_7y472"]
 [ext_resource type="Resource" uid="uid://dnf4a3y44l0yd" path="res://Ressources/Spells/2asd.tres" id="4_iepga"]
@@ -16,7 +16,6 @@ metadata/_custom_type_script = "uid://xybohmy21dgo"
 
 [node name="KeyController" type="Node2D" parent="." unique_id=1576125217]
 script = ExtResource("2_1krru")
-metadata/_custom_type_script = "uid://dt3nc4our1mgp"
 
 [node name="PressedKeys" type="VBoxContainer" parent="." unique_id=233151412]
 offset_right = 120.0
