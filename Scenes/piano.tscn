@@ -43,6 +43,9 @@ offset_bottom = 22.0
 text = "close
 "
 
+[node name="trees" type="Node2D" parent="." unique_id=1457884444]
+position = Vector2(700, 27)
+
 [connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
 [connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]
 [connection signal="key_released" from="KeyController" to="." method="_on_key_controller_key_released"]

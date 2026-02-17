@@ -15,6 +15,9 @@ func _ready() -> void:
 	var parser=SpellParser.new()
 	sequence_trees.append(parser.parse_spelldic_into_sequencetree(parser.ex_3))
 	sequence_trees.append(parser.parse_spelldic_into_sequencetree(parser.ex_4))
+	var visual=SequenceTreeVisual.new()
+	visual.set_up(sequence_trees[0])
+	$trees.add_child(visual)
 	#sequence_trees.append(parser.parse_spell_into_sequencetree(parser.example_spell))
 	#sequence_trees.append(parser.parse_spell_into_sequencetree(parser.exs_2))
 	pass
@@ -29,13 +32,13 @@ var remove=[]
 func traverse_sequences():
 	
 	var keys=keyController.active_keys.keys()
-	if not  window_open:
-		print("missclick!")
+	if  window_open:
 		
-	for tree:Sequence_Tree in sequence_trees:
-		if util.is_partial_sum(tree.entry_edge.keys,keys):
-			var started_sequence=tree.get_start_sequence(beat.beat_no)
-			sequences.append(started_sequence)
+			
+		for tree:Sequence_Tree in sequence_trees:
+			if util.is_partial_sum(tree.entry_edge.keys,keys):
+				var started_sequence=tree.get_start_sequence(beat.beat_no)
+				sequences.append(started_sequence)
 	for sequence:Sequence in sequences:
 		if sequence.traverse(keys,beat.beat_no):
 			remove.append(sequence)
@@ -52,6 +55,7 @@ func timeout_sequences():
 		s.progressed=false	
 		
 	for r in remove:
+		r.unhighlight()
 		sequences.erase(r)	
 	remove.clear()	
 func check_spells():

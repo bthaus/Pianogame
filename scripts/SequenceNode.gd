@@ -9,3 +9,9 @@ var outgoing_edge: SequenceEdge
 @export var min_delay_from_start: float
 @export var spell: String
 var beat=0
+var info_dic
+var hits=0:
+	set(val):
+		hits=val
+		hits_changed.emit(hits)
+signal hits_changed(hits)

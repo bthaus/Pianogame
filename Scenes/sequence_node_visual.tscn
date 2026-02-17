@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://0thgjnu3upnv"]
+
+[ext_resource type="Script" uid="uid://cwkriss7yxpf1" path="res://Scenes/sequence_node_visual.gd" id="1_v72sk"]
+[ext_resource type="Texture2D" uid="uid://b0htf74mfmnbc" path="res://Assets/node_white.png" id="1_vnvpj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v72sk"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="SequenceNodeVisual" type="Node2D" unique_id=601562618]
+script = ExtResource("1_v72sk")
+
+[node name="Note" type="Sprite2D" parent="." unique_id=1607729152]
+texture = ExtResource("1_vnvpj")
+
+[node name="Label" type="Label" parent="Note" unique_id=101655868]
+offset_left = -59.0
+offset_top = -45.0
+offset_right = 52.0
+offset_bottom = 51.0
+text = "F4"
+label_settings = SubResource("LabelSettings_v72sk")
+
+[node name="hitno" type="Label" parent="Note" unique_id=188932763]
+offset_left = 15.0
+offset_top = -44.0
+offset_right = 126.0
+offset_bottom = 52.0
+text = "0"
+label_settings = SubResource("LabelSettings_v72sk")

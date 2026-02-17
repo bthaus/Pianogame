@@ -90,12 +90,14 @@ func parse_spelldic_into_sequencetree(dic: Dictionary):
 	var current_edge = tree.entry_edge
 	current_node.incoming_edge = current_edge
 	current_edge.to_node = current_node
+	current_node.info_dic=first
 	
 	while not key_array.is_empty():
 		var current_note=key_array.pop_front()
 		current_edge = SequenceEdge.new(current_note["keys"])
 		current_node.outgoing_edge=current_edge
 		current_node = SequenceNode.new()
+		current_node.info_dic=current_note
 		current_node.incoming_edge = current_edge
 		current_edge.to_node = current_node
 		current_node.beat=current_note["beat"]
