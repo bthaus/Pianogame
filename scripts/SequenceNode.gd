@@ -8,3 +8,4 @@ var outgoing_edge: SequenceEdge
 @export var max_delay_from_start: float
 @export var min_delay_from_start: float
 @export var spell: String
+var beat=0

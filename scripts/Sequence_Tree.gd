@@ -3,8 +3,10 @@ class_name Sequence_Tree
 var entry_edge: SequenceEdge
 @export var nodes: Array[SequenceNode] = []
 
-func get_start_sequence()->Sequence:
+func get_start_sequence(beatno:float)->Sequence:
 	var started_sequence=Sequence.new()
+	started_sequence.start_beat=beatno
+	
 	var start_node=SequenceNode.new()
 	started_sequence.current_node=start_node
 	start_node.outgoing_edge=entry_edge

@@ -2,7 +2,7 @@ extends Node2D
 class_name Piano
 
 @onready var keyController: KeyController = $KeyController
-
+@onready var beat:Beat=$Beat
 var sequence_trees:Array[Sequence_Tree]=[]
 var sequences:Array[Sequence]
 var frame_checked = false
@@ -10,17 +10,18 @@ var hit_low=0
 var hit_high=0
 var accuracy=50
 var window_open=false
+
 func _ready() -> void:
 	var parser=SpellParser.new()
-	sequence_trees.append(parser.parse_spell_into_sequencetree(parser.example_spell))
-	sequence_trees.append(parser.parse_spell_into_sequencetree(parser.exs_2))
+	sequence_trees.append(parser.parse_spelldic_into_sequencetree(parser.ex_3))
+	sequence_trees.append(parser.parse_spelldic_into_sequencetree(parser.ex_4))
+	#sequence_trees.append(parser.parse_spell_into_sequencetree(parser.example_spell))
+	#sequence_trees.append(parser.parse_spell_into_sequencetree(parser.exs_2))
 	pass
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 
 	_add_key_representation(piano_event)
-	if  window_open:
-		print("missclick!")
-		return
+	
 	
 	traverse_sequences()
 	
@@ -28,12 +29,15 @@ var remove=[]
 func traverse_sequences():
 	
 	var keys=keyController.active_keys.keys()
+	if not  window_open:
+		print("missclick!")
+		
 	for tree:Sequence_Tree in sequence_trees:
 		if util.is_partial_sum(tree.entry_edge.keys,keys):
-			var started_sequence=tree.get_start_sequence()
+			var started_sequence=tree.get_start_sequence(beat.beat_no)
 			sequences.append(started_sequence)
 	for sequence:Sequence in sequences:
-		if sequence.traverse(keys):
+		if sequence.traverse(keys,beat.beat_no):
 			remove.append(sequence)
 				
 	pass # Replace with function body.
@@ -68,7 +72,6 @@ func _on_key_controller_before_key_released(piano_event: PianoEvent) -> void:
 
 
 func _on_beat_beat() -> void:
-	var time=Time.get_ticks_msec()
 	
 	pass # Replace with function body.
 

@@ -1,17 +1,21 @@
 extends Node2D
-
+class_name Beat
 signal beat
 signal bar
 signal open_window
 signal close_window
+var beat_no=0
+var bpm
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	set_beat(4,4,180,0.07)
+	set_beat(4,4,60,0.25)
 	pass # Replace with function body.
 
 # Godot GDScript
 func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	var dic=get_beat(x,y,bpm)
+	self.bpm=bpm
 	$beat.wait_time=dic["beat_duration"]
 	$bar.wait_time=dic["bar_duration"]
 	$open_window.wait_time=dic["beat_duration"]
@@ -22,11 +26,14 @@ func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	$bar.start()
 	await get_tree().create_timer(tolerance).timeout
 	$close_window.start()
-	
 	pass
+	
+func _process(delta: float) -> void:
+	beat_no+=bpm/60.0*delta
+		
 func beat_timeout():
 	$beatsound.play(0)
-	print("beat "+str(Time.get_ticks_msec()))
+	
 	pass
 func bar_timeout():
 	$barsound.play()
@@ -53,18 +60,16 @@ func get_beat(x: int, y: int, bpm: float) -> Dictionary:
 		"bar_duration": measure_duration
 	}
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 
 
 func _on_open_window_timeout() -> void:
 	open_window.emit()
-	print("open "+str(Time.get_ticks_msec()))
+	
 	pass # Replace with function body.
 
 
 func _on_close_window_timeout() -> void:
 	close_window.emit()
-	print("close "+str(Time.get_ticks_msec()))
+	
 	pass # Replace with function body.
