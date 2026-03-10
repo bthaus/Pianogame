@@ -12,6 +12,6 @@ var beat=0
 var info_dic
 var hits=0:
 	set(val):
-		hits=val
+		hits=clampi(val,0,5)
 		hits_changed.emit(hits)
 signal hits_changed(hits)

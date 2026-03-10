@@ -49,6 +49,18 @@ var ex_4={
 		"keys":["A4","F4","D4"]}
 	]
 }
+var ex_5={
+	"name"="pause",
+	"keys"=[
+		{"beat":0,
+		"keys":["C5"]},
+		{"beat":1,
+		"keys":[]},
+		{"beat":2,
+		"keys":["C5"]},
+	]
+	
+}
 func _ready():
 	print("spell parser initiated")
 	var tree=parse_spell_into_sequencetree(example_spell)

@@ -33,7 +33,6 @@ func traverse_sequences():
 	
 	var keys=keyController.active_keys.keys()
 	if  window_open:
-		
 			
 		for tree:Sequence_Tree in sequence_trees:
 			if util.is_partial_sum(tree.entry_edge.keys,keys):
