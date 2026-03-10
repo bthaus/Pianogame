@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ceiv5syq5aaws"]
+
+[ext_resource type="Script" uid="uid://xybohmy21dgo" path="res://scripts/Piano.gd" id="1_v6hsj"]
+[ext_resource type="Script" uid="uid://7wmdwssytper" path="res://scripts/KeyController.gd" id="2_1krru"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_1krru"]
+[ext_resource type="PackedScene" uid="uid://iijm1wxh5e31" path="res://Scenes/beat.tscn" id="6_7y472"]
+[ext_resource type="Script" uid="uid://b81ws3xd1o06j" path="res://scripts/SequenceNode.gd" id="7_iepga"]
+[ext_resource type="PackedScene" uid="uid://dsv17eihnnnud" path="res://Scenes/Sequence_Tree.tscn" id="8_jxafu"]
+
+[node name="Piano" type="Node2D" unique_id=430235116]
+script = ExtResource("1_v6hsj")
+metadata/_custom_type_script = "uid://xybohmy21dgo"
+
+[node name="KeyController" type="Node2D" parent="." unique_id=1576125217]
+script = ExtResource("2_1krru")
+
+[node name="PressedKeys" type="VBoxContainer" parent="." unique_id=233151412]
+offset_right = 120.0
+offset_bottom = 234.0
+
+[node name="title" type="Label" parent="PressedKeys" unique_id=1800127478]
+layout_mode = 2
+text = "Pressed keys"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1385772440]
+position = Vector2(368, 42)
+texture = ExtResource("3_1krru")
+
+[node name="SequenceNode" type="Node" parent="." unique_id=1877936449 node_paths=PackedStringArray("next")]
+script = ExtResource("7_iepga")
+next = [null]
+metadata/_custom_type_script = "uid://b81ws3xd1o06j"
+
+[node name="SequenceTree" parent="." unique_id=2049264964 instance=ExtResource("8_jxafu")]
+
+[node name="Beat" parent="." unique_id=1000817660 instance=ExtResource("6_7y472")]
+
+[node name="window" type="Label" parent="." unique_id=1016589559]
+offset_left = 179.0
+offset_top = -1.0
+offset_right = 219.0
+offset_bottom = 22.0
+text = "close
+"
+
+[node name="trees" type="Node2D" parent="." unique_id=1457884444]
+position = Vector2(700, 27)
+
+[connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
+[connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]
+[connection signal="key_released" from="KeyController" to="." method="_on_key_controller_key_released"]
+[connection signal="beat" from="Beat" to="." method="_on_beat_beat"]
+[connection signal="close_window" from="Beat" to="." method="_on_beat_close_window"]
+[connection signal="open_window" from="Beat" to="." method="_on_beat_open_window"]

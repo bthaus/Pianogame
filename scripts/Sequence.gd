@@ -43,7 +43,7 @@ func traverse(active_keys: Array[String],beat):
 		traversed.emit(current_node)
 		current_node.hits+=1
 		if current_node.activating:
-			print("spell "+ current_node.spell+" activated!")
+			#print("spell "+ current_node.spell+" activated!")
 			print("errors: "+str(error_count))
 			done=true
 			finished.emit()

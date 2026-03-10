@@ -16,6 +16,7 @@ func _ready() -> void:
 func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	var dic=get_beat(x,y,bpm)
 	self.bpm=bpm
+	Global.bpm=bpm
 	$beat.wait_time=dic["beat_duration"]
 	$bar.wait_time=dic["bar_duration"]
 	$open_window.wait_time=dic["beat_duration"]

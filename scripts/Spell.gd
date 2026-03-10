@@ -4,7 +4,8 @@ class_name Spell
 
 
 enum SpellType{Attack, Buff, Defense, Movement}
-
+enum State{Cooldown,Ready,Firing}
+var state:State=State.Ready
 @export var spell_name:String
 @export var spell_type:SpellType
 @export var keys:Array[KeyUnit]=[]
@@ -12,14 +13,64 @@ enum SpellType{Attack, Buff, Defense, Movement}
 @export var keys_as_string:String=""
 @export var input_line:String
 @export_tool_button("remove all units") var remove=remove_all_units
+
 var tree:Sequence_Tree
 func remove_all_units():
 	keys.clear()
 func check_start(active_keys,beat_no):
+	if state!=State.Ready:return
+	
 	if util.is_partial_sum(tree.entry_edge.keys,active_keys):
 		var started_sequence=tree.get_start_sequence(beat_no)
+		started_sequence.finished.connect(trigger_spell)
+		started_sequence.cancelled.connect(on_cancel)
+		started_sequence.traversed.connect(on_key_played)
 		return started_sequence
 	pass;
+
+func setup():
+	tree=parse_spell_into_sequencetree()
+
+	pass;
+	
+func trigger_spell():
+	if state!=State.Ready:return
+	print(name+" triggered!")
+	on_trigger()
+	start_cooldown()
+	pass;
+
+func start_cooldown():
+	state=State.Cooldown
+	var timer=get_tree().create_timer(util.seconds_from_beats_and_bpm(cooldown_in_beats,Global.bpm))
+	timer.timeout.connect(on_cooldown_passed)
+	pass
+	
+func on_first_key_played():
+	pass;
+
+func on_key_played(sequence_node):
+	pass;
+
+func on_trigger():
+	
+	pass;
+
+func on_cooldown_passed():
+	state=State.Ready
+	pass;	
+
+func on_perfect_play():
+	pass;
+func on_cancel():
+	pass;
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		_tool_process(delta)
+	pass
+
+
+
 func parse_spell_into_sequencetree():
 	tree = Sequence_Tree.new()
 	var key_array=keys
@@ -46,34 +97,7 @@ func parse_spell_into_sequencetree():
 	current_node.activating = true
 	
 	return tree	
-func setup():
-	tree=parse_spell_into_sequencetree()
-	pass;
-	
-func trigger_spell():
-	on_trigger()
-	pass;
-	
-func on_first_key_played():
-	pass;
 
-func on_key_played():
-	pass;
-
-func on_trigger():
-	
-	pass;
-
-func on_cooldown_passed():
-	pass;	
-
-func on_perfect_play():
-	pass;
-
-func _process(delta: float) -> void:
-	if Engine.is_editor_hint():
-		_tool_process(delta)
-	pass
 
 func _tool_process(delta:float)->void:
 	

@@ -16,19 +16,18 @@ func _ready() -> void:
 	
 	equipped_spells=SpellFactory.get_all_spells()
 	for spell:Spell in equipped_spells:
+		add_child(spell)
 		spell.setup()
 	var visual=SequenceTreeVisual.new()
 	visual.set_up(equipped_spells[0].tree)
 	$trees.add_child(visual)
-	#sequence_trees.append(parser.parse_spell_into_sequencetree(parser.example_spell))
-	#sequence_trees.append(parser.parse_spell_into_sequencetree(parser.exs_2))
+	
 	pass
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 
 	_add_key_representation(piano_event)
-	
-	
 	traverse_sequences()
+	
 	
 var remove=[]	
 func traverse_sequences():
@@ -46,8 +45,7 @@ func traverse_sequences():
 				
 	pass # Replace with function body.
 	
-func _process(delta: float) -> void:
-	frame_checked = false
+	
 	
 func timeout_sequences():
 	for s in sequences:

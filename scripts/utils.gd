@@ -29,3 +29,6 @@ static func strarr_to_string(arr):
 	for a in arr:
 		str+=a
 	return str
+
+static func seconds_from_beats_and_bpm(beats,bpm):
+	return beats*60/bpm

@@ -51,6 +51,7 @@ metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 script = ExtResource("2_6csqb")
 spell_name = "SleepAccord"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_bgm8m")])
+cooldown_in_beats = 4.0
 keys_as_string = "A4F4D4 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
