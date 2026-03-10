@@ -1,6 +1,62 @@
 [gd_scene format=3 uid="uid://dv7g0ynf68jt1"]
 
 [ext_resource type="Script" uid="uid://dsk6hlqvcifbq" path="res://spell_factory.gd" id="1_v6hoi"]
+[ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://scripts/Spell.gd" id="2_6csqb"]
+[ext_resource type="Script" uid="uid://bvheyg7ntax08" path="res://Ressources/key_storage.gd" id="3_bgm8m"]
+
+[sub_resource type="Resource" id="Resource_8pxlp"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["A4"])
+metadata/_custom_type_script = "uid://bvheyg7ntax08"
+
+[sub_resource type="Resource" id="Resource_xoxst"]
+script = ExtResource("3_bgm8m")
+beat = 1.0
+key = Array[String](["G4"])
+metadata/_custom_type_script = "uid://bvheyg7ntax08"
+
+[sub_resource type="Resource" id="Resource_jm26c"]
+script = ExtResource("3_bgm8m")
+beat = 1.5
+key = Array[String](["G4"])
+metadata/_custom_type_script = "uid://bvheyg7ntax08"
+
+[sub_resource type="Resource" id="Resource_i25c7"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["F4"])
+metadata/_custom_type_script = "uid://bvheyg7ntax08"
+
+[sub_resource type="Resource" id="Resource_bgm8m"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["A4", "F4", "D4"])
+metadata/_custom_type_script = "uid://bvheyg7ntax08"
+
+[sub_resource type="Resource" id="Resource_2u5f8"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["A4", "C4"])
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
+
+[node name="SleepSpell" type="Node" parent="." unique_id=868883030]
+script = ExtResource("2_6csqb")
+spell_name = "SleepSpell"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8pxlp"), SubResource("Resource_xoxst"), SubResource("Resource_jm26c"), SubResource("Resource_i25c7")])
+cooldown_in_beats = 4.0
+keys_as_string = "A4 G4 G4 F4 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="SleepAccord" type="Node" parent="." unique_id=1707251070]
+script = ExtResource("2_6csqb")
+spell_name = "SleepAccord"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_bgm8m")])
+keys_as_string = "A4F4D4 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="Fireball" type="Node" parent="." unique_id=1319807311]
+script = ExtResource("2_6csqb")
+spell_name = "Fireball"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_2u5f8")])
+keys_as_string = "A4C4 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
