@@ -13,10 +13,19 @@ var accuracy=50
 var window_open=false
 
 var input_history:Set=Set.new()
-
+var error_count=0
 
 func register_error(e:EventStatus):
+	
+	if e.type!=EventStatus.StatusType.Unstarted:
+		if e.related_sequence.error_tracked:
+			return
+		e.related_sequence.error_tracked=true
 	e.print_info()
+	if e.type!=e.StatusType.Success:
+		error_count+=1
+		l.d(str(error_count))
+		
 	pass
 
 
@@ -56,7 +65,7 @@ func check_inputs():
 			rem.append(a)
 			
 	for r:PianoEvent in rem: 
-		r.error_detected.emit(EventStatus.new(EventStatus.StatusType.Unstarted))
+		r.error_detected.emit(EventStatus.new(EventStatus.StatusType.Unstarted,r,null))
 				
 	l.l(str(input_history.content.size()))	
 	pass;	

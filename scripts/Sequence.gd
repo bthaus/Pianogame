@@ -17,6 +17,11 @@ signal finished
 signal cancelled
 var related_inputs=[]
 
+var status:SequenceStatus=SequenceStatus.Active
+enum SequenceStatus{Active,Cancelled,Success}
+
+
+var error_tracked=false
 func unhighlight():
 	var trav_node=first_node
 	
@@ -28,6 +33,7 @@ func unhighlight():
 			return
 	pass
 func cancel():
+	status=SequenceStatus.Cancelled
 	unhighlight()
 	cancelled.emit()
 	pass
@@ -46,9 +52,11 @@ func traverse(key_dic,beat):
 		l.l(spell.name+"traversed! current = "+notation)
 		traversed.emit(current_node)
 		current_node.hits+=1
+		
 		mark_input_events(key_dic,next_keys)
 		if current_node.activating:
 			finish()
+			status=SequenceStatus.Success
 	var relative_beat=beat-start_beat
 	var beat_diff=abs(current_node.beat-relative_beat)
 	error_count+=beat_diff

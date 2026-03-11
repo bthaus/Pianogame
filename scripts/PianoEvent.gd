@@ -41,12 +41,13 @@ func add_sequence(s:Sequence):
 	s.cancelled.connect(remove_cancelled_sequence.bind(s))
 	
 func remove_finished_sequence(s:Sequence):
-	success_detected.emit(EventStatus.new(EventStatus.StatusType.Success))
+	success_detected.emit(EventStatus.new(EventStatus.StatusType.Success,self,s))
 	pass
 func remove_cancelled_sequence(s:Sequence):
+	
 	related_sequences.rem(s)
 	if related_sequences.is_empty():
-		error_detected.emit(EventStatus.new(EventStatus.StatusType.Cancelled))	
+		error_detected.emit(EventStatus.new(EventStatus.StatusType.Cancelled,self,s))	
 		
 	pass;		
 func get_key()->String:

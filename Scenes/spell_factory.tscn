@@ -36,6 +36,25 @@ metadata/_custom_type_script = "uid://bvheyg7ntax08"
 script = ExtResource("3_bgm8m")
 key = Array[String](["A4", "C4"])
 
+[sub_resource type="Resource" id="Resource_lrb01"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["A4"])
+
+[sub_resource type="Resource" id="Resource_3inhl"]
+script = ExtResource("3_bgm8m")
+beat = 1.0
+key = Array[String](["B4"])
+
+[sub_resource type="Resource" id="Resource_iu7i8"]
+script = ExtResource("3_bgm8m")
+beat = 1.5
+key = Array[String](["B4"])
+
+[sub_resource type="Resource" id="Resource_ebwd2"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["C5"])
+
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
 
@@ -60,4 +79,11 @@ script = ExtResource("2_6csqb")
 spell_name = "Fireball"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_2u5f8")])
 keys_as_string = "A4C4 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="invsleep" type="Node" parent="." unique_id=656805661]
+script = ExtResource("2_6csqb")
+spell_name = "invsleep"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_lrb01"), SubResource("Resource_3inhl"), SubResource("Resource_iu7i8"), SubResource("Resource_ebwd2")])
+keys_as_string = "A4 B4 B4 C5 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
