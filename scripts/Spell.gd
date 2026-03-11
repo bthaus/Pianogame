@@ -25,6 +25,8 @@ func check_start(active_keys,beat_no):
 		started_sequence.finished.connect(trigger_spell)
 		started_sequence.cancelled.connect(on_cancel)
 		started_sequence.traversed.connect(on_key_played)
+		started_sequence.spell=self
+		
 		return started_sequence
 	pass;
 

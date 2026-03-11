@@ -29,13 +29,17 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 	traverse_sequences()
 	
 	
-var remove=[]	
+var remove=[]
+
+
+
+	
 func traverse_sequences():
 	
-	var keys=keyController.active_keys.keys()
+	var keys=keyController.active_keys
 	if  window_open:
 		for spell:Spell in equipped_spells:
-			var maybe_seq=spell.check_start(keys,beat.beat_no)	
+			var maybe_seq=spell.check_start(keys.keys(),beat.beat_no)	
 			if maybe_seq!=null:
 				sequences.append(maybe_seq)
 				
@@ -71,11 +75,6 @@ func _add_key_representation(piano_event: PianoEvent):
 
 func _on_key_controller_before_key_released(piano_event: PianoEvent) -> void:
 	piano_event.press_event.representation.queue_free()
-	pass # Replace with function body.
-
-
-func _on_beat_beat() -> void:
-	
 	pass # Replace with function body.
 
 

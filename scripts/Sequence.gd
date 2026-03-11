@@ -19,7 +19,7 @@ signal cancelled
 
 func unhighlight():
 	var trav_node=first_node
-	cancelled.emit()
+	
 	while true:
 		trav_node.hits-=1
 		if trav_node.outgoing_edge!=null:
@@ -28,9 +28,9 @@ func unhighlight():
 			return
 	pass
 
-func traverse(active_keys: Array[String],beat):
+func traverse(key_dic,beat):
 	if done:return
-	
+	var active_keys=key_dic.keys()
 	var next_keys=current_node.outgoing_edge.keys
 	var errors=util.get_difference(active_keys,next_keys).size()
 	
