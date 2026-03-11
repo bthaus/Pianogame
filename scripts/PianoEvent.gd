@@ -27,8 +27,8 @@ var related_sequences:Set=Set.new()
 enum Progress{Active,Cancelled,Success}
 var progress=Progress.Active
 
-signal error_detected
-signal success_detected
+signal error_detected(status:EventStatus)
+signal success_detected(status:EventStatus)
 
 
 func _init(midi:InputEventMIDI) -> void:
@@ -41,13 +41,13 @@ func add_sequence(s:Sequence):
 	s.cancelled.connect(remove_cancelled_sequence.bind(s))
 	
 func remove_finished_sequence(s:Sequence):
-	success_detected.emit()
+	success_detected.emit(EventStatus.new(EventStatus.StatusType.Success))
 	pass
 func remove_cancelled_sequence(s:Sequence):
 	related_sequences.rem(s)
 	if related_sequences.is_empty():
-		error_detected.emit()	
-		l.l("error from cancellation")
+		error_detected.emit(EventStatus.new(EventStatus.StatusType.Cancelled))	
+		
 	pass;		
 func get_key()->String:
 	return midi_notes[midi_event.pitch]	

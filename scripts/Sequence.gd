@@ -35,9 +35,9 @@ func traverse(key_dic,beat):
 	if done:return
 	var active_keys=key_dic.keys()
 	var next_keys=current_node.outgoing_edge.keys
-	var errors=util.get_difference(active_keys,next_keys).size()
-	
-	error_count+=errors
+	#var errors=util.get_difference(active_keys,next_keys).size()
+	#this is not neccessary anymore as input error detection has been implemented
+	#error_count+=errors
 	var intersec=util.get_intersection(active_keys,next_keys)
 	if intersec.size()==next_keys.size():
 		current_node=current_node.outgoing_edge.to_node

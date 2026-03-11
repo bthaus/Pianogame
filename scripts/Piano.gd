@@ -14,6 +14,12 @@ var window_open=false
 
 var input_history:Set=Set.new()
 
+
+func register_error(e:EventStatus):
+	e.print_info()
+	pass
+
+
 func _process(delta: float) -> void:
 	var st=""
 	for s:Sequence in sequences:
@@ -38,18 +44,21 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 	_add_key_representation(piano_event)
 	traverse_sequences()
 	check_inputs()
-func remove_event_from_history(p):
+func remove_event_from_history(error:EventStatus,p):
 	input_history.rem(p)
-	
+	if error!=null:
+		register_error(error)
 	pass	
 func check_inputs():
 	var rem=[]
 	for a:PianoEvent in input_history.content:
 		if a.related_sequences.is_empty():
 			rem.append(a)
-			l.l("error from unstarted sequence")
+			
 	for r:PianoEvent in rem: 
-		r.error_detected.emit()		
+		r.error_detected.emit(EventStatus.new(EventStatus.StatusType.Unstarted))
+				
+	l.l(str(input_history.content.size()))	
 	pass;	
 	
 var remove=[]
@@ -82,15 +91,14 @@ func timeout_sequences():
 	for s in sequences:
 		if not s.progressed:
 			remove.append(s)
-			
 
 	for r:Sequence in remove:
 		r.cancel()
 		sequences.erase(r)
-		
-	
-			
 	remove.clear()	
+	
+	
+	
 func check_spells():
 	if frame_checked: return
 	frame_checked = true
