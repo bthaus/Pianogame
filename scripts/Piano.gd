@@ -3,7 +3,7 @@ class_name Piano
 
 @onready var keyController: KeyController = $KeyController
 @onready var beat:Beat=$Beat
-var sequence_trees:Array[Sequence_Tree]=[]
+
 var sequences:Array[Sequence]
 var equipped_spells:Array[Spell]=[]
 var frame_checked = false

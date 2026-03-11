@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dg2tl2ngm5sy2"]
+
+[ext_resource type="PackedScene" uid="uid://ceiv5syq5aaws" path="res://Scenes/piano.tscn" id="1_bnps5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg8cr"]
+
+[node name="Node2D" type="CharacterBody2D" unique_id=462267137]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604291212]
+shape = SubResource("CircleShape2D_cg8cr")
+
+[node name="Piano" parent="." unique_id=430235116 instance=ExtResource("1_bnps5")]
