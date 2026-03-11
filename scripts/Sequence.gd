@@ -15,7 +15,7 @@ var start_beat=0
 signal traversed(node:SequenceNode)
 signal finished
 signal cancelled
-
+var related_inputs=[]
 
 func unhighlight():
 	var trav_node=first_node
@@ -27,7 +27,10 @@ func unhighlight():
 		else:
 			return
 	pass
-
+func cancel():
+	unhighlight()
+	cancelled.emit()
+	pass
 func traverse(key_dic,beat):
 	if done:return
 	var active_keys=key_dic.keys()
@@ -35,20 +38,32 @@ func traverse(key_dic,beat):
 	var errors=util.get_difference(active_keys,next_keys).size()
 	
 	error_count+=errors
-	if util.is_partial_sum(active_keys,next_keys):
+	var intersec=util.get_intersection(active_keys,next_keys)
+	if intersec.size()==next_keys.size():
 		current_node=current_node.outgoing_edge.to_node
 		progressed=true
 		notation+=util.strarr_to_string(next_keys)+" "
-		print("traversed! current = "+notation)
+		l.l(spell.name+"traversed! current = "+notation)
 		traversed.emit(current_node)
 		current_node.hits+=1
+		mark_input_events(key_dic,next_keys)
 		if current_node.activating:
-			#print("spell "+ current_node.spell+" activated!")
-			print("errors: "+str(error_count))
-			done=true
-			finished.emit()
+			finish()
 	var relative_beat=beat-start_beat
 	var beat_diff=abs(current_node.beat-relative_beat)
 	error_count+=beat_diff
-	return done		
+	pass
+func mark_input_events(dic:Dictionary,keys):
+	for key in keys:
+		var event=dic[key]
+		related_inputs.append(event)
+		event.add_sequence(self)
+		
+	pass	
+	
+func finish():
+	l.l("errors: "+str(error_count))
+	done=true
+	unhighlight()
+	finished.emit()
 	pass

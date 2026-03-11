@@ -1,9 +1,14 @@
 @tool
 extends Node2D
 class_name SpellFactory
+@export_tool_button("activate_all") var activate_all=activate_all_spells
 
-	
-	
+
+
+func activate_all_spells():
+	for s in get_children():
+		s._disabled=false
+	pass;	
 
 static var instance:SpellFactory:
 	get():
@@ -22,6 +27,7 @@ static func get_spell(spellname):
 static func get_all_spells():
 	var retarr=[] as Array[Spell]
 	for spell in instance.get_children():
+		if spell._disabled:continue
 		retarr.append(spell.duplicate())
 	return retarr	
 	pass	

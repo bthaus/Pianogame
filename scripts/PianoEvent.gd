@@ -23,12 +23,32 @@ var midi_notes = {
 var timestamp	
 var representation
 var press_event:PianoEvent
+var related_sequences:Set=Set.new()
+enum Progress{Active,Cancelled,Success}
+var progress=Progress.Active
+
+signal error_detected
+signal success_detected
+
 
 func _init(midi:InputEventMIDI) -> void:
 	midi_event=midi
 	timestamp=Time.get_ticks_msec()
 	
+func add_sequence(s:Sequence):
+	related_sequences.add(s)
+	s.finished.connect(remove_finished_sequence.bind(s))
+	s.cancelled.connect(remove_cancelled_sequence.bind(s))
 	
+func remove_finished_sequence(s:Sequence):
+	success_detected.emit()
+	pass
+func remove_cancelled_sequence(s:Sequence):
+	related_sequences.rem(s)
+	if related_sequences.is_empty():
+		error_detected.emit()	
+		l.l("error from cancellation")
+	pass;		
 func get_key()->String:
 	return midi_notes[midi_event.pitch]	
 func _print_midi_info():
@@ -36,9 +56,9 @@ func _print_midi_info():
 	if midi_event.message==MIDIMessage.MIDI_MESSAGE_ACTIVE_SENSING:return
 	
 	if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_ON:
-		print(get_key()+" pressed!")
+		l.l(get_key()+" pressed!")
 	if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_OFF:
-		print(get_key()+" released!")
+		l.l(get_key()+" released!")
 
 func handle_signal(pressed:Callable,released:Callable):
 	if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_ON:

@@ -13,7 +13,7 @@ var state:State=State.Ready
 @export var keys_as_string:String=""
 @export var input_line:String
 @export_tool_button("remove all units") var remove=remove_all_units
-
+@export var _disabled=false
 var tree:Sequence_Tree
 func remove_all_units():
 	keys.clear()
@@ -37,7 +37,7 @@ func setup():
 	
 func trigger_spell():
 	if state!=State.Ready:return
-	print(name+" triggered!")
+	l.l(name+" triggered!")
 	on_trigger()
 	start_cooldown()
 	pass;

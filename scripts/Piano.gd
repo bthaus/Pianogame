@@ -12,6 +12,13 @@ var hit_high=0
 var accuracy=50
 var window_open=false
 
+var input_history:Set=Set.new()
+
+func _process(delta: float) -> void:
+	var st=""
+	for s:Sequence in sequences:
+		st+=s.spell.name+"\n"
+	$seqs.text=st	
 func _ready() -> void:
 	
 	equipped_spells=SpellFactory.get_all_spells()
@@ -24,10 +31,26 @@ func _ready() -> void:
 	
 	pass
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
-
+	input_history.add(piano_event)
+	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
+	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
+	
 	_add_key_representation(piano_event)
 	traverse_sequences()
+	check_inputs()
+func remove_event_from_history(p):
+	input_history.rem(p)
 	
+	pass	
+func check_inputs():
+	var rem=[]
+	for a:PianoEvent in input_history.content:
+		if a.related_sequences.is_empty():
+			rem.append(a)
+			l.l("error from unstarted sequence")
+	for r:PianoEvent in rem: 
+		r.error_detected.emit()		
+	pass;	
 	
 var remove=[]
 
@@ -42,10 +65,14 @@ func traverse_sequences():
 			var maybe_seq=spell.check_start(keys.keys(),beat.beat_no)	
 			if maybe_seq!=null:
 				sequences.append(maybe_seq)
+				maybe_seq.finished.connect(func():
+					sequences.erase(maybe_seq)
+					l.d(maybe_seq.spell.name+" should be erased")
+					)
 				
 	for sequence:Sequence in sequences:
-		if sequence.traverse(keys,beat.beat_no):
-			remove.append(sequence)
+		sequence.traverse(keys,beat.beat_no)
+			
 				
 	pass # Replace with function body.
 	
@@ -55,11 +82,14 @@ func timeout_sequences():
 	for s in sequences:
 		if not s.progressed:
 			remove.append(s)
-		s.progressed=false	
-		
+			
+
 	for r:Sequence in remove:
-		r.unhighlight()
-		sequences.erase(r)	
+		r.cancel()
+		sequences.erase(r)
+		
+	
+			
 	remove.clear()	
 func check_spells():
 	if frame_checked: return
@@ -87,5 +117,7 @@ func _on_beat_close_window() -> void:
 
 func _on_beat_open_window() -> void:
 	window_open=true
+	for s in sequences:
+		s.progressed=false
 	$window.text="0000000"
 	pass # Replace with function body.
