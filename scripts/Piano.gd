@@ -63,6 +63,14 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 func handle_input():
 	traverse_sequences()
 	check_inputs()
+	
+	var rem=[]
+	for key:String in keyController.active_keys.keys():
+		if key.contains("UP"):rem.append(key)
+	for r in rem:
+		l.d("lifted "+r)
+		keyController.active_keys.erase(r)	
+	
 	input_happened=false
 	input_handled=true
 	pass;	
@@ -155,4 +163,6 @@ func _on_beat_open_window() -> void:
 
 
 func _on_key_controller_key_released(piano_event: PianoEvent) -> void:
+	input_happened=true
+	input_handled=false
 	pass # Replace with function body.

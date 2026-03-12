@@ -69,6 +69,15 @@ script = ExtResource("3_bgm8m")
 beat = 3.0
 key = Array[String](["A3"])
 
+[sub_resource type="Resource" id="Resource_1uaqm"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["E4"])
+
+[sub_resource type="Resource" id="Resource_ajxgt"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["E4UP"])
+
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
 
@@ -107,4 +116,11 @@ script = ExtResource("2_6csqb")
 spell_name = "delayed"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8up4e"), SubResource("Resource_g7b4h")])
 keys_as_string = "A3 A3 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="hodl" type="Node" parent="." unique_id=1723753964]
+script = ExtResource("2_6csqb")
+spell_name = "hodl"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_1uaqm"), SubResource("Resource_ajxgt")])
+keys_as_string = "E4 E4UP "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

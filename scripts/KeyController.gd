@@ -34,5 +34,6 @@ func _on_key_released(piano_event: PianoEvent) -> void:
 	piano_event.press_event = active_keys[piano_event.get_key()]
 	before_key_released.emit(piano_event)
 	active_keys.erase(piano_event.get_key())
+	active_keys[piano_event.get_key()+"UP"]=piano_event
 	key_released.emit(piano_event)
 	pass # Replace with function body.
