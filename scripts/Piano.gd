@@ -28,8 +28,14 @@ func register_error(e:EventStatus):
 		
 	pass
 
-
+var frame=0
+var input_happened=false
+var input_handled=false
 func _process(delta: float) -> void:
+	if input_happened and not input_handled:
+		call_deferred("handle_input")
+	frame+=1
+	$frame.text=str(frame)
 	var st=""
 	for s:Sequence in sequences:
 		st+=s.spell.name+"\n"
@@ -49,10 +55,17 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 	input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
-	
 	_add_key_representation(piano_event)
+	input_happened=true
+	input_handled=false
+	
+	
+func handle_input():
 	traverse_sequences()
 	check_inputs()
+	input_happened=false
+	input_handled=true
+	pass;	
 func remove_event_from_history(error:EventStatus,p):
 	input_history.rem(p)
 	if error!=null:
@@ -67,7 +80,7 @@ func check_inputs():
 	for r:PianoEvent in rem: 
 		r.error_detected.emit(EventStatus.new(EventStatus.StatusType.Unstarted,r,null))
 				
-	l.l(str(input_history.content.size()))	
+	
 	pass;	
 	
 var remove=[]
@@ -85,7 +98,7 @@ func traverse_sequences():
 				sequences.append(maybe_seq)
 				maybe_seq.finished.connect(func():
 					sequences.erase(maybe_seq)
-					l.d(maybe_seq.spell.name+" should be erased")
+					l.l(maybe_seq.spell.name+" erased")
 					)
 				
 	for sequence:Sequence in sequences:
@@ -97,8 +110,9 @@ func traverse_sequences():
 	
 	
 func timeout_sequences():
-	for s in sequences:
-		if not s.progressed:
+	for s:Sequence in sequences:
+		if s.is_progressed(beat.beat_no):
+		#if not s.progressed:
 			remove.append(s)
 
 	for r:Sequence in remove:
@@ -134,7 +148,11 @@ func _on_beat_close_window() -> void:
 
 func _on_beat_open_window() -> void:
 	window_open=true
-	for s in sequences:
-		s.progressed=false
+	#for s in sequences:
+		#s.progressed=false
 	$window.text="0000000"
+	pass # Replace with function body.
+
+
+func _on_key_controller_key_released(piano_event: PianoEvent) -> void:
 	pass # Replace with function body.

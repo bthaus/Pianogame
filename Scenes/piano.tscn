@@ -52,6 +52,12 @@ offset_top = 250.0
 offset_right = 205.0
 offset_bottom = 297.0
 
+[node name="frame" type="Label" parent="." unique_id=2111947515]
+offset_left = 1085.0
+offset_top = 616.0
+offset_right = 1125.0
+offset_bottom = 639.0
+
 [connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
 [connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]
 [connection signal="key_released" from="KeyController" to="." method="_on_key_controller_key_released"]

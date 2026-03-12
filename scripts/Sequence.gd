@@ -20,8 +20,17 @@ var related_inputs=[]
 var status:SequenceStatus=SequenceStatus.Active
 enum SequenceStatus{Active,Cancelled,Success}
 
-
 var error_tracked=false
+var last_progressed_beat
+
+func is_progressed(beat):
+	var relative_beat=beat-start_beat
+	var beat_diff=abs(current_node.beat-relative_beat)
+	var max_diff=current_node.outgoing_edge.to_node.beat-current_node.beat
+	return beat_diff>max_diff
+	
+
+
 func unhighlight():
 	var trav_node=first_node
 	
@@ -37,6 +46,8 @@ func cancel():
 	unhighlight()
 	cancelled.emit()
 	pass
+	
+	
 func traverse(key_dic,beat):
 	if done:return
 	var active_keys=key_dic.keys()
@@ -46,20 +57,25 @@ func traverse(key_dic,beat):
 	#error_count+=errors
 	var intersec=util.get_intersection(active_keys,next_keys)
 	if intersec.size()==next_keys.size():
+	
 		current_node=current_node.outgoing_edge.to_node
 		progressed=true
+		last_progressed_beat=beat
 		notation+=util.strarr_to_string(next_keys)+" "
 		l.l(spell.name+"traversed! current = "+notation)
 		traversed.emit(current_node)
 		current_node.hits+=1
 		
+		
+		var relative_beat=beat-start_beat
+		var beat_diff=abs(current_node.beat-relative_beat)
+		error_count+=beat_diff
+		
 		mark_input_events(key_dic,next_keys)
 		if current_node.activating:
 			finish()
 			status=SequenceStatus.Success
-	var relative_beat=beat-start_beat
-	var beat_diff=abs(current_node.beat-relative_beat)
-	error_count+=beat_diff
+	
 	pass
 func mark_input_events(dic:Dictionary,keys):
 	for key in keys:
