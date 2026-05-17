@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ce0hrt8rfsj55"]
+
+[ext_resource type="PackedScene" uid="uid://dg2tl2ngm5sy2" path="res://Scenes/character_test.tscn" id="1_wovta"]
+[ext_resource type="Script" uid="uid://cd2dj742ybtwn" path="res://enemy.gd" id="2_xeo28"]
+[ext_resource type="Texture2D" uid="uid://cdua73trdasd5" path="res://Assets/Characters/Enemy sprites/bee_dead.png" id="3_1exfc"]
+[ext_resource type="Texture2D" uid="uid://cnb2kg8i464gv" path="res://Assets/Characters/Enemy sprites/bee.png" id="4_mo1ky"]
+[ext_resource type="Texture2D" uid="uid://y68tifnpvhps" path="res://Assets/Characters/Enemy sprites/bee_fly.png" id="5_6bs3c"]
+[ext_resource type="Texture2D" uid="uid://bjsecjxamx4tf" path="res://Assets/Tiles/Tiles/tile_0069.png" id="6_6bs3c"]
+[ext_resource type="Script" uid="uid://c3dhcl12bn357" path="res://scene/SpellComponents/Projectile.gd" id="7_uoxpr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wovta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1exfc")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mo1ky")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6bs3c")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1exfc"]
+radius = 150.01334
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_idouy"]
+radius = 5.0
+
+[node name="Node2D" unique_id=816301689 instance=ExtResource("1_wovta")]
+collision_layer = 16
+script = ExtResource("2_xeo28")
+jumping_speed = 300
+hp = 5
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
+scale = Vector2(-0.265, 0.265)
+sprite_frames = SubResource("SpriteFrames_wovta")
+animation = &"stand"
+frame_progress = 0.0
+
+[node name="PlayerDetection" type="Area2D" parent="." index="6" unique_id=1983412877]
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" index="0" unique_id=548203195]
+position = Vector2(7, -13)
+rotation = -0.7853982
+shape = SubResource("CircleShape2D_1exfc")
+
+[node name="Projectile" type="Area2D" parent="." index="7" unique_id=1276879591]
+collision_layer = 0
+collision_mask = 524289
+monitoring = false
+monitorable = false
+script = ExtResource("7_uoxpr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile" index="0" unique_id=2120761277]
+position = Vector2(0, -13)
+shape = SubResource("CircleShape2D_idouy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Projectile" index="1" unique_id=1800670913]
+position = Vector2(0, -12.000001)
+rotation = -1.5707964
+scale = Vector2(0.21200784, 0.21200784)
+texture = ExtResource("6_6bs3c")
+
+[node name="hitbox" parent="." index="8" unique_id=150996064]
+collision_layer = 16
+collision_mask = 0
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]

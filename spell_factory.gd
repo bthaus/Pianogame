@@ -29,6 +29,7 @@ static func get_all_spells():
 	for spell in instance.get_children():
 		if spell._disabled:continue
 		retarr.append(spell.duplicate())
+	
 	return retarr	
 	pass	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

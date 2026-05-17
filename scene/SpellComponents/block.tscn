@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://djemmxskvjq25"]
+
+[ext_resource type="Script" uid="uid://nibcwtgemeo7" path="res://Block.gd" id="1_8u8tg"]
+[ext_resource type="Texture2D" uid="uid://byudk5r1ql7aw" path="res://Assets/node_blue.png" id="2_xyuoo"]
+[ext_resource type="Script" uid="uid://bi8q68mwlb7ub" path="res://scene/SpellComponents/shield.gd" id="3_vtr70"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyuoo"]
+radius = 22.022715
+
+[node name="Node2D" type="Node2D" unique_id=906419388]
+script = ExtResource("1_8u8tg")
+
+[node name="shield" type="Sprite2D" parent="." unique_id=994524827]
+modulate = Color(1, 1, 1, 0.23529412)
+position = Vector2(-4.7683716e-07, -4.7683716e-07)
+scale = Vector2(0.10833335, 0.10833335)
+texture = ExtResource("2_xyuoo")
+script = ExtResource("3_vtr70")
+
+[node name="shield" type="Area2D" parent="shield" unique_id=262231916]
+position = Vector2(4.4015733e-06, 4.4015733e-06)
+scale = Vector2(9.230768, 9.230768)
+collision_layer = 524288
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shield/shield" unique_id=1508003343]
+shape = SubResource("CircleShape2D_xyuoo")

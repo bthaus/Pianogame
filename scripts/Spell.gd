@@ -5,6 +5,7 @@ class_name Spell
 
 enum SpellType{Attack, Buff, Defense, Movement}
 enum State{Cooldown,Ready,Firing}
+enum SpellUnit{Nothing,CascadeBolt,CascadeStart}
 var state:State=State.Ready
 @export var spell_name:String
 @export var spell_type:SpellType
@@ -15,12 +16,13 @@ var state:State=State.Ready
 @export_tool_button("remove all units") var remove=remove_all_units
 @export var _disabled=false
 var tree:Sequence_Tree
+var player:PlayerCharacter
 func remove_all_units():
 	keys.clear()
 func check_start(active_keys,beat_no):
 	if state!=State.Ready:return
 	
-	if util.is_partial_sum(tree.entry_edge.keys,active_keys):
+	if util.is_partial_sum(active_keys, tree.entry_edge.keys):
 		var started_sequence=tree.get_start_sequence(beat_no)
 		started_sequence.finished.connect(trigger_spell)
 		started_sequence.cancelled.connect(on_cancel)
@@ -32,7 +34,8 @@ func check_start(active_keys,beat_no):
 
 func setup():
 	tree=parse_spell_into_sequencetree()
-
+	
+		
 	pass;
 	
 func trigger_spell():
@@ -41,8 +44,11 @@ func trigger_spell():
 	on_trigger()
 	start_cooldown()
 	pass;
-
+func trigger_node(node:SequenceNode):
+	node.key_unit.trigger_spell_component(node,self)
+	pass;
 func start_cooldown():
+	if cooldown_in_beats==0:return
 	state=State.Cooldown
 	var timer=get_tree().create_timer(util.seconds_from_beats_and_bpm(cooldown_in_beats,Global.bpm))
 	timer.timeout.connect(on_cooldown_passed)
@@ -85,9 +91,9 @@ func parse_spell_into_sequencetree():
 	current_node.incoming_edge = current_edge
 	current_edge.to_node = current_node
 	current_node.info_dic=first
-	
+	current_node.key_unit=first
 	while not key_array.is_empty():
-		var current_note=key_array.pop_front()
+		var current_note=key_array.pop_front() 
 		current_edge = SequenceEdge.new(current_note.key)
 		current_node.outgoing_edge=current_edge
 		current_node = SequenceNode.new()
@@ -95,7 +101,8 @@ func parse_spell_into_sequencetree():
 		current_node.incoming_edge = current_edge
 		current_edge.to_node = current_node
 		current_node.beat=current_note.beat
-		print(key_array.size())
+		current_node.key_unit=current_note
+		
 	current_node.activating = true
 	
 	return tree	

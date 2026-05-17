@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dsk6hlqvcifbq" path="res://spell_factory.gd" id="1_v6hoi"]
 [ext_resource type="Script" uid="uid://d4c2qs5upr5o3" path="res://scripts/Spell.gd" id="2_6csqb"]
-[ext_resource type="Script" uid="uid://bvheyg7ntax08" path="res://Ressources/key_storage.gd" id="3_bgm8m"]
+[ext_resource type="Script" uid="uid://bvheyg7ntax08" path="res://Ressources/key_unit.gd" id="3_bgm8m"]
+[ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="4_2u5f8"]
+[ext_resource type="Script" uid="uid://pokcg5b32vkm" path="res://scripts/Spells/cascade.gd" id="4_8pxlp"]
+[ext_resource type="PackedScene" uid="uid://cen33qdupg1tu" path="res://scene/SpellComponents/spell_component.tscn" id="5_xoxst"]
+[ext_resource type="PackedScene" uid="uid://djemmxskvjq25" path="res://scene/SpellComponents/block.tscn" id="9_lrb01"]
 
 [sub_resource type="Resource" id="Resource_8pxlp"]
 script = ExtResource("3_bgm8m")
@@ -40,6 +44,7 @@ key = Array[String](["A4"])
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["A4", "F4", "D4"])
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_lrb01"]
 script = ExtResource("3_bgm8m")
@@ -72,11 +77,58 @@ key = Array[String](["A3"])
 [sub_resource type="Resource" id="Resource_1uaqm"]
 script = ExtResource("3_bgm8m")
 key = Array[String](["E4"])
+triggering = true
 
 [sub_resource type="Resource" id="Resource_ajxgt"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["E4UP"])
+triggering = true
+
+[sub_resource type="Resource" id="Resource_b5g72"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["C4", "E4", "G4"])
+spell_component = ExtResource("5_xoxst")
+
+[sub_resource type="Resource" id="Resource_cwllq"]
+script = ExtResource("3_bgm8m")
+beat = 1.5
+key = Array[String](["G4"])
+triggering = true
+spell_component = ExtResource("5_xoxst")
+
+[sub_resource type="Resource" id="Resource_yvnc8"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["F4"])
+triggering = true
+spell_component = ExtResource("5_xoxst")
+
+[sub_resource type="Resource" id="Resource_pimwy"]
+script = ExtResource("3_bgm8m")
+beat = 2.5
+key = Array[String](["E4"])
+triggering = true
+spell_component = ExtResource("5_xoxst")
+
+[sub_resource type="Resource" id="Resource_drsbb"]
+script = ExtResource("3_bgm8m")
+beat = 3.0
+key = Array[String](["D4"])
+triggering = true
+spell_component = ExtResource("5_xoxst")
+
+[sub_resource type="Resource" id="Resource_ccbt2"]
+script = ExtResource("3_bgm8m")
+beat = 3.5
+key = Array[String](["C4"])
+triggering = true
+spell_component = ExtResource("5_xoxst")
+
+[sub_resource type="Resource" id="Resource_d0oep"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["C#2", "G#2"])
+spell_component = ExtResource("9_lrb01")
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
@@ -87,6 +139,7 @@ spell_name = "SleepSpell"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8pxlp"), SubResource("Resource_xoxst"), SubResource("Resource_jm26c"), SubResource("Resource_i25c7")])
 cooldown_in_beats = 4.0
 keys_as_string = "A4 G4 G4 F4 "
+_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="SleepAccord" type="Node" parent="." unique_id=1707251070]
@@ -95,6 +148,7 @@ spell_name = "SleepAccord"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_bgm8m")])
 cooldown_in_beats = 1.0
 keys_as_string = "A4F4D4 "
+_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="Fireball" type="Node" parent="." unique_id=1319807311]
@@ -109,6 +163,7 @@ script = ExtResource("2_6csqb")
 spell_name = "invsleep"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_lrb01"), SubResource("Resource_3inhl"), SubResource("Resource_iu7i8"), SubResource("Resource_ebwd2")])
 keys_as_string = "A4 B4 B4 C5 "
+_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="delayed" type="Node" parent="." unique_id=469123077]
@@ -116,6 +171,7 @@ script = ExtResource("2_6csqb")
 spell_name = "delayed"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8up4e"), SubResource("Resource_g7b4h")])
 keys_as_string = "A3 A3 "
+_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="hodl" type="Node" parent="." unique_id=1723753964]
@@ -123,4 +179,21 @@ script = ExtResource("2_6csqb")
 spell_name = "hodl"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_1uaqm"), SubResource("Resource_ajxgt")])
 keys_as_string = "E4 E4UP "
+_disabled = true
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="Cascade" type="Node" parent="." unique_id=1674580299]
+script = ExtResource("4_8pxlp")
+spell_name = "Cascade"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_b5g72"), SubResource("Resource_cwllq"), SubResource("Resource_yvnc8"), SubResource("Resource_pimwy"), SubResource("Resource_drsbb"), SubResource("Resource_ccbt2")])
+keys_as_string = "C4E4G4 G4 F4 E4 D4 C4 "
+_disabled = true
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="block" type="Node" parent="." unique_id=1703405848]
+script = ExtResource("2_6csqb")
+spell_name = "block"
+spell_type = 2
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_d0oep")])
+keys_as_string = "C#2G#2 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

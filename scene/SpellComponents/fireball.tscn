@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bgar6pexijhhq"]
+
+[ext_resource type="PackedScene" uid="uid://cen33qdupg1tu" path="res://scene/SpellComponents/spell_component.tscn" id="1_wcjnr"]
+[ext_resource type="Script" uid="uid://cm7taotbowqu1" path="res://fireball.gd" id="2_a32q6"]
+[ext_resource type="Script" uid="uid://c3dhcl12bn357" path="res://scene/SpellComponents/Projectile.gd" id="3_3eqc3"]
+[ext_resource type="Texture2D" uid="uid://brhrgfeyd2110" path="res://Assets/Tiles/Tiles/tile_0007.png" id="4_lsf0l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_faq5q"]
+
+[node name="SpellComponent" unique_id=179673675 instance=ExtResource("1_wcjnr")]
+script = ExtResource("2_a32q6")
+damage = 10
+
+[node name="Area2D" type="Area2D" parent="." index="0" unique_id=1928616845]
+collision_layer = 0
+collision_mask = 17
+script = ExtResource("3_3eqc3")
+speed = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=2098122362]
+shape = SubResource("CircleShape2D_faq5q")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="Area2D" index="1" unique_id=981805135]
+position = Vector2(-1, 0)
+scale = Vector2(1.6111112, 1.6111112)
+texture = ExtResource("4_lsf0l")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

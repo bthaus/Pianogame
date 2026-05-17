@@ -11,6 +11,7 @@ font_color = Color(0, 0, 0, 1)
 script = ExtResource("1_v72sk")
 
 [node name="Note" type="Sprite2D" parent="." unique_id=1607729152]
+position = Vector2(2.842171e-14, -0.9999999)
 texture = ExtResource("1_vnvpj")
 
 [node name="Label" type="Label" parent="Note" unique_id=101655868]
@@ -22,9 +23,9 @@ text = "F4"
 label_settings = SubResource("LabelSettings_v72sk")
 
 [node name="hitno" type="Label" parent="Note" unique_id=188932763]
-offset_left = 15.0
-offset_top = -44.0
-offset_right = 126.0
-offset_bottom = 52.0
+offset_left = -9.918213e-05
+offset_top = -51.42864
+offset_right = 110.9999
+offset_bottom = 44.57136
 text = "0"
 label_settings = SubResource("LabelSettings_v72sk")

@@ -11,10 +11,10 @@ var hit_low=0
 var hit_high=0
 var accuracy=50
 var window_open=false
-
+var allow_input_always=true
 var input_history:Set=Set.new()
 var error_count=0
-
+var player:PlayerCharacter
 func register_error(e:EventStatus):
 	
 	if e.type!=EventStatus.StatusType.Unstarted:
@@ -41,17 +41,60 @@ func _process(delta: float) -> void:
 		st+=s.spell.name+"\n"
 	$seqs.text=st	
 func _ready() -> void:
-	
-	equipped_spells=SpellFactory.get_all_spells()
-	for spell:Spell in equipped_spells:
-		add_child(spell)
-		spell.setup()
-	var visual=SequenceTreeVisual.new()
-	visual.set_up(equipped_spells[0].tree)
-	$trees.add_child(visual)
+	for s:Spell in equipped_spells:
+		add_spell_visual(s.tree)
+	var off=0	
+	for s:Node2D in $trees.get_children():
+		s.translate(Vector2(off,0))
+		off+=200
 	
 	pass
+func add_spell_visual(spell):
+	var visual=SequenceTreeVisual.new()
+	visual.set_up(spell)
+	$trees.add_child(visual)
+	print("visual set up")
+	
+	pass;	
+func add_spell(spell:Spell):
+	equipped_spells.append(spell)
+	add_child(spell)
+	spell.setup()
+	pass	
+var last_movement_event:PianoEvent	
+func handle_movement(event:PianoEvent):
+	if event.get_key()=="G2":
+		player.jump()
+		return
+	if last_movement_event==null:
+		last_movement_event=event
+		return
+	if event.timestamp-last_movement_event.timestamp>1000:
+		last_movement_event=event
+		return
+	var diff=movement_keys.find(last_movement_event.get_key())-movement_keys.find(event.get_key())
+	
+	if [-1,1,3,-3].has(diff):
+		if !(last_movement_event.get_key()=="C2" and event.get_key()=="F2") and event.midi_event.pitch>last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="F2" and event.get_key()=="C2"):
+			player.move(Vector2i.RIGHT,event.get_key())
+		if !(last_movement_event.get_key()=="F2" and event.get_key()=="C2") and event.midi_event.pitch<last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="C2" and event.get_key()=="F2"):
+			player.move(Vector2i.LEFT,event.get_key())	
+			
+	last_movement_event=event	
+	pass;
+var movement_pointer=0:
+	set(val):
+		if val>=movement_keys.size():
+			val=0
+		if val<0:
+			val=movement_keys.size()-1
+		movement_pointer=val				
+var movement_keys=[
+	"C2","D2","E2","F2"
+]	
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
+	if movement_keys.has(piano_event.get_key()) or piano_event.get_key()=="G2":
+		handle_movement(piano_event)
 	input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
@@ -68,7 +111,6 @@ func handle_input():
 	for key:String in keyController.active_keys.keys():
 		if key.contains("UP"):rem.append(key)
 	for r in rem:
-		l.d("lifted "+r)
 		keyController.active_keys.erase(r)	
 	
 	input_happened=false
@@ -99,16 +141,18 @@ var remove=[]
 func traverse_sequences():
 	
 	var keys=keyController.active_keys
-	if  window_open:
+	#if  window_open or allow_input_always:
+	if true:
 		for spell:Spell in equipped_spells:
 			var maybe_seq=spell.check_start(keys.keys(),beat.beat_no)	
 			if maybe_seq!=null:
 				sequences.append(maybe_seq)
+			
 				maybe_seq.finished.connect(func():
 					sequences.erase(maybe_seq)
 					l.l(maybe_seq.spell.name+" erased")
 					)
-				
+
 	for sequence:Sequence in sequences:
 		sequence.traverse(keys,beat.beat_no)
 			

@@ -6,9 +6,12 @@ signal open_window
 signal close_window
 var beat_no=0
 var bpm
-
+static var beat_instance:Beat
+static func get_beat_instance()-> Beat:
+	return beat_instance
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	beat_instance=self
 	set_beat(4,4,60,0.25)
 	pass # Replace with function body.
 
@@ -33,11 +36,12 @@ func _process(delta: float) -> void:
 	beat_no+=bpm/60.0*delta
 		
 func beat_timeout():
-	$beatsound.play(0)
-	
+	#$beatsound.play(0)
+	beat.emit()
 	pass
 func bar_timeout():
-	$barsound.play()
+	bar.emit()
+	#$barsound.play()
 	pass;
 func get_beat(x: int, y: int, bpm: float) -> Dictionary:
 	"""

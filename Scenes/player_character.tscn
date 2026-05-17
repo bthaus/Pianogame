@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://fe04lx08pprm"]
+
+[ext_resource type="PackedScene" uid="uid://dg2tl2ngm5sy2" path="res://Scenes/character_test.tscn" id="1_o0f8b"]
+[ext_resource type="Script" uid="uid://d21jfe6m1gb0m" path="res://Scenes/Character.gd" id="2_wko77"]
+
+[node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
+collision_layer = 524290
+script = ExtResource("2_wko77")
+
+[node name="Camera2D" type="Camera2D" parent="." index="0" unique_id=693426872]
+position = Vector2(8, -66)
+zoom = Vector2(4.075, 4.075)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+
+[node name="CollisionShape2D" parent="front" parent_id_path=PackedInt32Array(1177973524) index="0" unique_id=1049179281]
+position = Vector2(18, -13)
+
+[node name="CollisionShape2D" parent="back" parent_id_path=PackedInt32Array(1244012413) index="0" unique_id=2071533418]
+position = Vector2(-19, -13)
+
+[node name="hitbox" parent="." index="7" unique_id=150996064]
+collision_layer = 524288

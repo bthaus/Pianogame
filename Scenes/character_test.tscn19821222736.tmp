@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://dg2tl2ngm5sy2"]
+
+[ext_resource type="PackedScene" uid="uid://ceiv5syq5aaws" path="res://Scenes/piano.tscn" id="1_bnps5"]
+[ext_resource type="Script" uid="uid://d21jfe6m1gb0m" path="res://Scenes/Character.gd" id="1_cg8cr"]
+[ext_resource type="Texture2D" uid="uid://bllp8efvhj8w6" path="res://Assets/Characters/Alien sprites/alienGreen_hurt.png" id="3_jb3v0"]
+[ext_resource type="Texture2D" uid="uid://c4udki4p7cxw0" path="res://Assets/Characters/Alien sprites/alienGreen_jump.png" id="4_jovgy"]
+[ext_resource type="Texture2D" uid="uid://cib6wph1v7v8m" path="res://Assets/Characters/Alien sprites/alienGreen_stand.png" id="5_d6boh"]
+[ext_resource type="Texture2D" uid="uid://cbmidyvafhsma" path="res://Assets/Characters/Alien sprites/alienGreen_walk1.png" id="6_o0eyv"]
+[ext_resource type="Texture2D" uid="uid://xtnevmnv3kvx" path="res://Assets/Characters/Alien sprites/alienGreen_walk2.png" id="7_gobeo"]
+
+[sub_resource type="Curve" id="Curve_jb3v0"]
+_data = [Vector2(0.06140352, 0), 0.0, 0.0, 0, 0, Vector2(0.27192983, 1), 0.0, 0.0, 0, 0, Vector2(0.45614037, 0.24855494), -1.213583, -1.213583, 0, 0, Vector2(0.9766083, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kvee"]
+radius = 11.0
+height = 26.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4av5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jb3v0")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jovgy")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_d6boh")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_o0eyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gobeo")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jb3v0"]
+radius = 2.0
+
+[node name="Node2D" type="CharacterBody2D" unique_id=816301689]
+collision_layer = 2
+script = ExtResource("1_cg8cr")
+jumping_curve = SubResource("Curve_jb3v0")
+jumping_speed = null
+air_control = null
+ground_control = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1604291212]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_2kvee")
+
+[node name="Piano" parent="." unique_id=430235116 instance=ExtResource("1_bnps5")]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=685169871]
+position = Vector2(0, -13.999996)
+scale = Vector2(0.2647059, 0.2647059)
+sprite_frames = SubResource("SpriteFrames_h4av5")
+animation = &"walk"
+frame_progress = 0.3356121
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1822102601]
+position = Vector2(3.0000005, -57.000008)
+rotation = -0.26179937
+scale = Vector2(0.9999999, 0.9999999)
+zoom = Vector2(2.775, 2.775)
+
+[node name="ground_box" type="Area2D" parent="." unique_id=156594418]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground_box" unique_id=1841523660]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_jb3v0")
+
+[connection signal="body_entered" from="ground_box" to="." method="_on_ground_box_body_entered"]
