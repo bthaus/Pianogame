@@ -1,11 +1,12 @@
 extends SpellComponent
 class_name Fireball
-@export var damage:int
+@export var damage=10
 func trigger(spell:Spell):
-	var ball:Projectile=$Area2D.duplicate()
+	var ball:HomingProjectile=$Area2D.duplicate()
 	ball.damage=damage
 	ball.global_position=spell.player.projectile_pos.global_position
 	ball.direction=spell.player.face_direction
+	ball.target=spell.player.enemy_scanner.current_target
 	spell.player.add_sibling(ball)
 	super(spell)
 	pass

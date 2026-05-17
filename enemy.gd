@@ -3,6 +3,7 @@ class_name Enemy
 var beat:Beat
 var player:PlayerCharacter
 var aggrod=false
+@onready var center:Node2D=$center
 func _ready() -> void:
 	call_deferred("connect_beat")
 	super()
@@ -33,6 +34,7 @@ func play_anims(velocity):
 	pass;
 
 func shoot():
+	if hp<=0:return
 	var p=$Projectile.duplicate()
 	add_sibling(p)
 	p.global_position=global_position

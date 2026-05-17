@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bvheyg7ntax08" path="res://Ressources/key_unit.gd" id="3_bgm8m"]
 [ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="4_2u5f8"]
 [ext_resource type="Script" uid="uid://pokcg5b32vkm" path="res://scripts/Spells/cascade.gd" id="4_8pxlp"]
-[ext_resource type="PackedScene" uid="uid://cen33qdupg1tu" path="res://scene/SpellComponents/spell_component.tscn" id="5_xoxst"]
 [ext_resource type="PackedScene" uid="uid://djemmxskvjq25" path="res://scene/SpellComponents/block.tscn" id="9_lrb01"]
 
 [sub_resource type="Resource" id="Resource_8pxlp"]
@@ -88,47 +87,71 @@ triggering = true
 [sub_resource type="Resource" id="Resource_b5g72"]
 script = ExtResource("3_bgm8m")
 key = Array[String](["C4", "E4", "G4"])
-spell_component = ExtResource("5_xoxst")
+spell_component = ExtResource("9_lrb01")
 
 [sub_resource type="Resource" id="Resource_cwllq"]
 script = ExtResource("3_bgm8m")
-beat = 1.5
+beat = 0.5
 key = Array[String](["G4"])
 triggering = true
-spell_component = ExtResource("5_xoxst")
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_yvnc8"]
 script = ExtResource("3_bgm8m")
-beat = 2.0
+beat = 0.75
 key = Array[String](["F4"])
 triggering = true
-spell_component = ExtResource("5_xoxst")
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_pimwy"]
 script = ExtResource("3_bgm8m")
-beat = 2.5
+beat = 1.0
 key = Array[String](["E4"])
 triggering = true
-spell_component = ExtResource("5_xoxst")
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_drsbb"]
 script = ExtResource("3_bgm8m")
-beat = 3.0
+beat = 1.25
 key = Array[String](["D4"])
 triggering = true
-spell_component = ExtResource("5_xoxst")
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_ccbt2"]
 script = ExtResource("3_bgm8m")
-beat = 3.5
+beat = 1.5
 key = Array[String](["C4"])
 triggering = true
-spell_component = ExtResource("5_xoxst")
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_d0oep"]
 script = ExtResource("3_bgm8m")
 key = Array[String](["C#2", "G#2"])
 spell_component = ExtResource("9_lrb01")
+
+[sub_resource type="Resource" id="Resource_lw14p"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["G4", "G3", "E2"])
+
+[sub_resource type="Resource" id="Resource_3fid5"]
+script = ExtResource("3_bgm8m")
+beat = 1.0
+key = Array[String](["G4", "G3", "E2"])
+
+[sub_resource type="Resource" id="Resource_0mvnd"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["G4", "G3", "E2"])
+
+[sub_resource type="Resource" id="Resource_42fdb"]
+script = ExtResource("3_bgm8m")
+beat = 3.0
+key = Array[String](["C2", "C3", "C4"])
+
+[sub_resource type="Resource" id="Resource_h1bn3"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["C5"])
+spell_component = ExtResource("4_2u5f8")
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
@@ -156,6 +179,7 @@ script = ExtResource("2_6csqb")
 spell_name = "Fireball"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_2u5f8"), SubResource("Resource_1mje3")])
 keys_as_string = "A4 A4F4D4 "
+_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="invsleep" type="Node" parent="." unique_id=656805661]
@@ -186,8 +210,8 @@ metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 script = ExtResource("4_8pxlp")
 spell_name = "Cascade"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_b5g72"), SubResource("Resource_cwllq"), SubResource("Resource_yvnc8"), SubResource("Resource_pimwy"), SubResource("Resource_drsbb"), SubResource("Resource_ccbt2")])
+cooldown_in_beats = 3.0
 keys_as_string = "C4E4G4 G4 F4 E4 D4 C4 "
-_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="block" type="Node" parent="." unique_id=1703405848]
@@ -196,4 +220,20 @@ spell_name = "block"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_d0oep")])
 cooldown_in_beats = 1.0
 keys_as_string = "C#2G#2 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="schicksal" type="Node" parent="." unique_id=698778573]
+script = ExtResource("2_6csqb")
+spell_name = "schicksal"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_lw14p"), SubResource("Resource_3fid5"), SubResource("Resource_0mvnd"), SubResource("Resource_42fdb")])
+cooldown_in_beats = 1.0
+keys_as_string = "G4G3E2 G4G3E2 G4G3E2 C2C3C4 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="test" type="Node" parent="." unique_id=1734075857]
+script = ExtResource("2_6csqb")
+spell_name = "test"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_h1bn3")])
+cooldown_in_beats = 4.0
+keys_as_string = "C5 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

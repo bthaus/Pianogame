@@ -60,7 +60,12 @@ func on_first_key_played():
 
 func on_key_played(sequence_node):
 	pass;
-
+func on_first_key_last_unit_lifted():
+	
+	pass;
+func on_all_last_keys_lifted():
+	
+	pass;	
 func on_trigger():
 	
 	pass;

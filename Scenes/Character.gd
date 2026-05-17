@@ -1,6 +1,7 @@
 extends Character
 class_name PlayerCharacter
 @export var piano:Piano
+@onready var enemy_scanner:EnemyScanner=$Enemy_Scanner
 		
 func _ready() -> void:
 	

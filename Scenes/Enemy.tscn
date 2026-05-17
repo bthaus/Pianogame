@@ -44,7 +44,6 @@ radius = 5.0
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_wovta")]
 collision_layer = 16
 script = ExtResource("2_xeo28")
-jumping_speed = 300
 hp = 5
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
@@ -82,5 +81,8 @@ texture = ExtResource("6_6bs3c")
 [node name="hitbox" parent="." index="8" unique_id=150996064]
 collision_layer = 16
 collision_mask = 0
+
+[node name="center" type="Node2D" parent="." index="10" unique_id=369057227]
+position = Vector2(-0.45703888, -12.687088)
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]

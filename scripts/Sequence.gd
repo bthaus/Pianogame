@@ -15,19 +15,26 @@ var start_beat=0
 signal traversed(node:SequenceNode)
 signal finished
 signal cancelled
+signal remove
 var related_inputs=[]
-
+var last_keys_released=[]
 var status:SequenceStatus=SequenceStatus.Active
 enum SequenceStatus{Active,Cancelled,Success}
 
 var error_tracked=false
 var last_progressed_beat
 
-func is_progressed(beat):
-	var relative_beat=beat-start_beat
-	var beat_diff=abs(current_node.beat-relative_beat)
-	var max_diff=current_node.outgoing_edge.to_node.beat-current_node.beat
-	return beat_diff>max_diff
+func is_timeout(beat):
+	if done: return false
+	var next_beat=start_beat+current_node.outgoing_edge.to_node.beat
+	var max_diff=next_beat-start_beat
+	var current_diff=beat-start_beat
+	var timeout= max_diff<current_diff
+	return timeout
+	#var relative_beat=beat-start_beat
+	#var beat_diff=abs(current_node.beat-relative_beat)
+	#var max_diff=current_node.outgoing_edge.to_node.beat-current_node.beat
+	#return beat_diff>max_diff*2
 	
 
 
@@ -48,9 +55,28 @@ func cancel():
 	cancelled.emit()
 	pass
 	
-	
+func handle_releases(keys):
+	for key:String in keys:
+		if key.contains("UP"):
+			key=key.replace("UP","")
+			if current_node.key_unit.key.has(key):
+				last_keys_released.append(key)
+				if last_keys_released.size()==0:
+					spell.on_first_key_last_unit_lifted()
+					l.d("first key lifted")
+	if last_keys_released.size()==current_node.key_unit.key.size():
+		last_keys_released.clear()
+		spell.on_all_last_keys_lifted()				
+		l.d("all keys lifted")	
+		unhighlight()
+		remove.emit()
+		if current_node.outgoing_edge!=null:
+			cancel()		
+	pass
 func traverse(key_dic,beat):
-	if done:return
+	if done:
+		handle_releases(key_dic.keys())
+		return
 	var active_keys=key_dic.keys()
 	var next_keys=current_node.outgoing_edge.keys
 	#var errors=util.get_difference(active_keys,next_keys).size()
@@ -94,6 +120,5 @@ func finish():
 	l.l("errors: "+str(error_count))
 	done=true
 	spell.cooldown_passed.connect(unhighlight)
-	
 	finished.emit()
 	pass

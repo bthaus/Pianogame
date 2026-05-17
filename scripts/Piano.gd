@@ -143,11 +143,8 @@ func traverse_sequences():
 			var maybe_seq=spell.check_start(keys.keys(),beat.beat_no)	
 			if maybe_seq!=null:
 				sequences.append(maybe_seq)
+				maybe_seq.remove.connect(func():sequences.erase(maybe_seq))
 			
-				maybe_seq.finished.connect(func():
-					sequences.erase(maybe_seq)
-					l.l(maybe_seq.spell.name+" erased")
-					)
 
 	for sequence:Sequence in sequences:
 		sequence.traverse(keys,beat.beat_no)
@@ -159,14 +156,15 @@ func traverse_sequences():
 	
 func timeout_sequences():
 	for s:Sequence in sequences:
-		if s.is_progressed(beat.beat_no):
-		#if not s.progressed:
+		if s.is_timeout(beat.beat_no):
+			s.done=true
 			remove.append(s)
+			l.d("removed "+s.spell.spell_name)
 
-	for r:Sequence in remove:
-		r.cancel()
-		sequences.erase(r)
-	remove.clear()	
+		for r:Sequence in remove:
+			r.cancel()
+			sequences.erase(r)
+		remove.clear()	
 	
 	
 	

@@ -19,8 +19,9 @@ func set_up(tree:Sequence_Tree):
 		var visual=	load('res://Scenes/sequence_node_visual.tscn').instantiate() as SequenceNodeVisual
 		visual.set_up(current_node,line_offset)
 		add_child(visual)
+		offset+=Vector2.RIGHT*50.0*current_node.beat
 		visual.translate(offset)
-		offset+=Vector2.RIGHT*100
+	
 		if current_node.outgoing_edge!=null:
 			current_node=current_node.outgoing_edge.to_node
 		else:

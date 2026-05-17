@@ -28,5 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var b=body.get_parent()
 	if b.has_method("hit"):
 		b.hit(damage)
+	if body.has_method("hit"):
+		body.hit(damage)	
 	collide()	
 	pass # Replace with function body.

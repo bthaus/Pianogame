@@ -2,7 +2,8 @@ extends Node2D
 class_name SpellComponent
 
 func trigger(spell:Spell):
-	l.d("kaboom")
+	
+
 	pass
 	
 func on_spell_cancelled():
