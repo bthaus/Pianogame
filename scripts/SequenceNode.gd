@@ -12,8 +12,10 @@ var outgoing_edge: SequenceEdge
 var key_unit:KeyUnit
 var beat=0
 var info_dic
-var hits=0:
+var hits:int=0:
 	set(val):
 		hits=clampi(val,0,5)
-		hits_changed.emit(hits)
-signal hits_changed(hits)
+		if val<=0:
+			hits=0
+		hits_changed.emit(self)
+signal hits_changed(node:SequenceNode)

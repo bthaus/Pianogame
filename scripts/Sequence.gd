@@ -32,10 +32,11 @@ func is_progressed(beat):
 
 
 func unhighlight():
+	
 	var trav_node=first_node
 	
 	while true:
-		trav_node.hits-=1
+		trav_node.hits=0
 		if trav_node.outgoing_edge!=null:
 			trav_node=trav_node.outgoing_edge.to_node
 		else:
@@ -57,7 +58,10 @@ func traverse(key_dic,beat):
 	#error_count+=errors
 	var intersec=util.get_intersection(active_keys,next_keys)
 	if intersec.size()==next_keys.size():
-	
+		var _relative_beat=beat-start_beat
+		var _beat_diff=abs(current_node.outgoing_edge.to_node.beat-_relative_beat)
+		if _beat_diff>current_node.outgoing_edge.to_node.beat/2:
+			return
 		current_node=current_node.outgoing_edge.to_node
 		progressed=true
 		last_progressed_beat=beat
@@ -69,6 +73,7 @@ func traverse(key_dic,beat):
 		
 		var relative_beat=beat-start_beat
 		var beat_diff=abs(current_node.beat-relative_beat)
+		
 		error_count+=beat_diff
 		spell.trigger_node(current_node)
 		mark_input_events(key_dic,next_keys)
@@ -88,6 +93,7 @@ func mark_input_events(dic:Dictionary,keys):
 func finish():
 	l.l("errors: "+str(error_count))
 	done=true
-	unhighlight()
+	spell.cooldown_passed.connect(unhighlight)
+	
 	finished.emit()
 	pass

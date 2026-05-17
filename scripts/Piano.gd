@@ -34,12 +34,7 @@ var input_handled=false
 func _process(delta: float) -> void:
 	if input_happened and not input_handled:
 		call_deferred("handle_input")
-	frame+=1
-	$frame.text=str(frame)
-	var st=""
-	for s:Sequence in sequences:
-		st+=s.spell.name+"\n"
-	$seqs.text=st	
+	
 func _ready() -> void:
 	for s:Spell in equipped_spells:
 		add_spell_visual(s.tree)
@@ -50,9 +45,10 @@ func _ready() -> void:
 	
 	pass
 func add_spell_visual(spell):
-	var visual=SequenceTreeVisual.new()
-	visual.set_up(spell)
+	var visual=load('res://Scenes/note_visual.tscn').instantiate()
 	$trees.add_child(visual)
+	visual.set_up(spell)
+	
 	print("visual set up")
 	
 	pass;	

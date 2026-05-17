@@ -296,4 +296,4 @@ position = Vector2(294, 104)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=252380692]
 
 [node name="Piano" parent="CanvasLayer" unique_id=430235116 instance=ExtResource("4_abwln")]
-position = Vector2(17, 20)
+position = Vector2(154, 129)

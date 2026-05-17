@@ -12,9 +12,11 @@ script = ExtResource("1_v6hsj")
 metadata/_custom_type_script = "uid://xybohmy21dgo"
 
 [node name="KeyController" type="Node2D" parent="." unique_id=1576125217]
+visible = false
 script = ExtResource("2_1krru")
 
 [node name="PressedKeys" type="VBoxContainer" parent="." unique_id=233151412]
+visible = false
 offset_right = 120.0
 offset_bottom = 234.0
 
@@ -23,6 +25,7 @@ layout_mode = 2
 text = "Pressed keys"
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1385772440]
+visible = false
 position = Vector2(368, 42)
 texture = ExtResource("3_1krru")
 
@@ -32,10 +35,13 @@ next = [null]
 metadata/_custom_type_script = "uid://b81ws3xd1o06j"
 
 [node name="SequenceTree" parent="." unique_id=2049264964 instance=ExtResource("8_jxafu")]
+visible = false
 
 [node name="Beat" parent="." unique_id=1000817660 instance=ExtResource("6_7y472")]
+visible = false
 
 [node name="window" type="Label" parent="." unique_id=1016589559]
+visible = false
 offset_left = 179.0
 offset_top = -1.0
 offset_right = 219.0
@@ -47,6 +53,7 @@ text = "close
 position = Vector2(700, 27)
 
 [node name="seqs" type="Label" parent="." unique_id=340283489]
+visible = false
 offset_left = 29.0
 offset_top = 250.0
 offset_right = 205.0

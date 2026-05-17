@@ -17,6 +17,7 @@ var state:State=State.Ready
 @export var _disabled=false
 var tree:Sequence_Tree
 var player:PlayerCharacter
+signal cooldown_passed
 func remove_all_units():
 	keys.clear()
 func check_start(active_keys,beat_no):
@@ -28,7 +29,7 @@ func check_start(active_keys,beat_no):
 		started_sequence.cancelled.connect(on_cancel)
 		started_sequence.traversed.connect(on_key_played)
 		started_sequence.spell=self
-		
+		started_sequence.start_beat=beat_no
 		return started_sequence
 	pass;
 
@@ -66,6 +67,7 @@ func on_trigger():
 
 func on_cooldown_passed():
 	state=State.Ready
+	cooldown_passed.emit()
 	pass;	
 
 func on_perfect_play():

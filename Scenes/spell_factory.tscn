@@ -193,7 +193,7 @@ metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 [node name="block" type="Node" parent="." unique_id=1703405848]
 script = ExtResource("2_6csqb")
 spell_name = "block"
-spell_type = 2
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_d0oep")])
+cooldown_in_beats = 1.0
 keys_as_string = "C#2G#2 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
