@@ -4,6 +4,7 @@ var beat:Beat
 var player:PlayerCharacter
 var aggrod=false
 @onready var center:Node2D=$center
+
 func _ready() -> void:
 	call_deferred("connect_beat")
 	
@@ -20,20 +21,22 @@ func move(direction,key="A1"):
 	counter+=1
 	if player==null:
 		if counter%2==0:
-			return super(Vector2i.RIGHT)
+			return super(Vector2.RIGHT)
 		else:
-			return super(Vector2i.LEFT)	
+			return super(Vector2.LEFT)	
 			
 	var dir=player.global_position-global_position
-	if dir.length()>70:
-		super(Vector2i(dir.normalized().x,0))
+	if max_proximity_to_player()<abs(dir.length()):
+		super(Vector2(dir.normalized().x,0))
 func play_anims(velocity):
 	if velocity.x>0.1:
 		$AnimatedSprite2D.play(&'walk')
 	else:
 		$AnimatedSprite2D.play(&'stand')	
 	pass;
-
+func max_proximity_to_player():
+	return 70
+	
 func shoot():
 	if hp<=0:return
 	var p=$Projectile.duplicate()
@@ -45,10 +48,12 @@ func shoot():
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body is PlayerCharacter and not aggrod:
 		player=body as PlayerCharacter
-		beat.beat.connect(shoot)
+		connect_action()
 		aggrod=true
 	pass # Replace with function body.
-
+func connect_action():
+	beat.beat.connect(shoot)
+	pass
 
 func _on_projectile_body_entered(body: Node2D) -> void:
 	

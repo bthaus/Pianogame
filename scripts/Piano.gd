@@ -74,9 +74,9 @@ func handle_movement(event:PianoEvent):
 	
 	if [-1,1,3,-3].has(diff):
 		if !(last_movement_event.get_key()=="C2" and event.get_key()=="F2") and event.midi_event.pitch>last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="F2" and event.get_key()=="C2"):
-			player.move(Vector2i.RIGHT,event.get_key())
+			player.move(Vector2.RIGHT,event.get_key())
 		if !(last_movement_event.get_key()=="F2" and event.get_key()=="C2") and event.midi_event.pitch<last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="C2" and event.get_key()=="F2"):
-			player.move(Vector2i.LEFT,event.get_key())	
+			player.move(Vector2.LEFT,event.get_key())	
 			
 	last_movement_event=event	
 	pass;

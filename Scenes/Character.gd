@@ -36,7 +36,7 @@ func determine_x_velocity(delta):
 		)
 	pass
 func easy_move(direction):
-	if direction!=0:face_direction=Vector2i(direction,0)
+	if direction!=0:face_direction=Vector2(direction,0)
 	easy_move_direction=direction
 	pass;	
 func die():

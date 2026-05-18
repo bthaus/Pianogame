@@ -9,10 +9,10 @@ var movement_speed=300
 @onready var projectile_pos:Node2D=$projectileposition
 @onready var shield_pos:Node2D=$shield_pos
 var jumping=false
-var face_direction=Vector2i.RIGHT:
+var face_direction=Vector2.RIGHT:
 	set(val):
 		face_direction=val
-		$AnimatedSprite2D.flip_h=face_direction==Vector2i.LEFT
+		$AnimatedSprite2D.flip_h=face_direction==Vector2.LEFT
 var map_position	
 var target_position
 signal hp_changed()
@@ -26,10 +26,14 @@ signal died
 func _process(delta: float) -> void:
 	pass
 func _ready() -> void:
-	map_position=map.local_to_map(global_position)
-	target_position=map_position
+	call_deferred("get_map")
 	max_hp=hp
 	hp=hp
+func get_map():
+	map=Map.get_map()
+	map_position=map.local_to_map(global_position)
+	target_position=map_position as Vector2
+	pass	
 func jump():
 	if jumping:return
 	if is_on_floor():
@@ -39,8 +43,8 @@ func move(direction,key="A1"):
 	face_direction=direction
 	
 	is_on_wall()
-	if direction==Vector2i.RIGHT and $front.has_overlapping_bodies():target_position=map_position;return
-	if direction==Vector2i.LEFT and $back.has_overlapping_bodies():target_position=map_position;return
+	if direction==Vector2.RIGHT and $front.has_overlapping_bodies():target_position=map_position;return
+	if direction==Vector2.LEFT and $back.has_overlapping_bodies():target_position=map_position;return
 	target_position+=direction
 	pass;
 

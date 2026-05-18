@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ceiv5syq5aaws" path="res://Scenes/piano.tscn" id="2_fccik"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1141357918 node_paths=PackedStringArray("piano")]
+visible = false
 script = ExtResource("1_e0onf")
 piano = NodePath("Piano")
 

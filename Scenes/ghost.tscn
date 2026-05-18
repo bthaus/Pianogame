@@ -49,5 +49,11 @@ visible = false
 [node name="CollisionShape2D" parent="Projectile" index="0" unique_id=2120761277]
 visible = false
 
+[node name="hitbox" parent="." index="8" unique_id=150996064]
+visible = true
+collision_mask = 524288
+
 [node name="shield_pos" parent="." index="9" unique_id=1954406466]
 visible = true
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

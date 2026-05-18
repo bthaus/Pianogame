@@ -41,7 +41,7 @@ func set_up(node:SequenceNode,offset):
 		var note:Sprite2D=$Note.duplicate()
 		note.translate(Vector2(0,-off))
 		var oct=octave_offset[octave]
-		note.translate(Vector2i(0,oct*7*offset/2))
+		note.translate(Vector2(0,oct*7*offset/2))
 		add_child(note)
 		notes.append(note)
 		note.show()
