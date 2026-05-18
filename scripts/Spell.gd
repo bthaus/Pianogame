@@ -19,11 +19,16 @@ var tree:Sequence_Tree
 var player:PlayerCharacter
 signal cooldown_passed
 signal triggered
+signal spell_started
+signal spell_failure_or_success
+
 func remove_all_units():
 	keys.clear()
+	
+var is_active=false
 func check_start(active_keys,beat_no):
 	if state!=State.Ready:return
-	
+	if is_active:return
 	if util.is_partial_sum(active_keys, tree.entry_edge.keys):
 		var started_sequence=tree.get_start_sequence(beat_no)
 		started_sequence.finished.connect(trigger_spell)
@@ -31,13 +36,18 @@ func check_start(active_keys,beat_no):
 		started_sequence.traversed.connect(on_key_played)
 		started_sequence.spell=self
 		started_sequence.start_beat=beat_no
+		spell_started.emit()
+		is_active=true
+		started_sequence.finished.connect(on_failure_or_success)
+		started_sequence.cancelled.connect(on_failure_or_success)
 		return started_sequence
 	pass;
-
+func on_failure_or_success():
+	is_active=false
+	spell_failure_or_success.emit()
+	pass
 func setup():
 	tree=parse_spell_into_sequencetree()
-	
-		
 	pass;
 	
 func trigger_spell():

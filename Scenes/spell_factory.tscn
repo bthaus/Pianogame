@@ -247,5 +247,6 @@ metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 script = ExtResource("2_6csqb")
 spell_name = "jump"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_fjc73"), SubResource("Resource_65et7"), SubResource("Resource_g7msj")])
+cooldown_in_beats = 4.0
 keys_as_string = "C3E3G3 C4E4G4 C5E5G5 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
