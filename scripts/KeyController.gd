@@ -28,7 +28,6 @@ func _on_key_pressed(piano_event: PianoEvent) -> void:
 
 
 func _on_key_released(piano_event: PianoEvent) -> void:
-	
 	if not active_keys.has(piano_event.get_key()):
 		print("stray release event caught")
 		return

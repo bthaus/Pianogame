@@ -36,12 +36,12 @@ func _process(delta: float) -> void:
 	beat_no+=bpm/60.0*delta
 		
 func beat_timeout():
-	$beatsound.play(0)
+	#$beatsound.play(0)
 	beat.emit()
 	pass
 func bar_timeout():
 	bar.emit()
-	$barsound.play()
+	#$barsound.play()
 	pass;
 func get_beat(x: int, y: int, bpm: float) -> Dictionary:
 	"""

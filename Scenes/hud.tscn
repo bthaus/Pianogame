@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://eo30kruldshw"]
+
+[ext_resource type="Script" uid="uid://cg8yakgevo7wv" path="res://hud.gd" id="1_e0onf"]
+[ext_resource type="PackedScene" uid="uid://ceiv5syq5aaws" path="res://Scenes/piano.tscn" id="2_fccik"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1141357918 node_paths=PackedStringArray("piano")]
+script = ExtResource("1_e0onf")
+piano = NodePath("Piano")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1541818453]
+offset_left = -19.0
+offset_right = 1933.0
+offset_bottom = 234.0
+
+[node name="Piano" parent="." unique_id=430235116 instance=ExtResource("2_fccik")]
+position = Vector2(404.99997, 91)
+scale = Vector2(0.43, 0.43)
+
+[node name="HPbar" type="ProgressBar" parent="." unique_id=735713438]
+unique_name_in_owner = true
+self_modulate = Color(0, 1, 0, 1)
+offset_left = 74.0
+offset_top = 60.0
+offset_right = 339.0
+offset_bottom = 87.0
+value = 70.0
+show_percentage = false

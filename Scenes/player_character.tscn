@@ -12,6 +12,8 @@ radius = 273.52878
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
 collision_layer = 524290
 script = ExtResource("2_wko77")
+acceleration = 1200.0
+friction = 1000.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="0" unique_id=693426872]
 position = Vector2(8, -66)

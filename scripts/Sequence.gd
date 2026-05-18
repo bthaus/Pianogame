@@ -29,7 +29,7 @@ func is_timeout(beat):
 	var next_beat=start_beat+current_node.outgoing_edge.to_node.beat
 	var max_diff=next_beat-start_beat
 	var current_diff=beat-start_beat
-	var timeout= max_diff<current_diff
+	var timeout= max_diff*2<current_diff
 	return timeout
 	#var relative_beat=beat-start_beat
 	#var beat_diff=abs(current_node.beat-relative_beat)

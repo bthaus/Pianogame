@@ -9,14 +9,27 @@ var movement_speed=300
 @onready var projectile_pos:Node2D=$projectileposition
 @onready var shield_pos:Node2D=$shield_pos
 var jumping=false
-var face_direction=Vector2i.RIGHT
+var face_direction=Vector2i.RIGHT:
+	set(val):
+		face_direction=val
+		$AnimatedSprite2D.flip_h=face_direction==Vector2i.LEFT
 var map_position	
 var target_position
-@export var hp=100
-
+signal hp_changed()
+var max_hp=0
+signal died
+@export var hp=100:
+	set(value):
+		hp=value
+		l.d("hp:" +str(hp))
+		hp_changed.emit()
+func _process(delta: float) -> void:
+	pass
 func _ready() -> void:
 	map_position=map.local_to_map(global_position)
 	target_position=map_position
+	max_hp=hp
+	hp=hp
 func jump():
 	if jumping:return
 	if is_on_floor():
@@ -24,7 +37,7 @@ func jump():
 	jumping=true
 func move(direction,key="A1"):
 	face_direction=direction
-	$AnimatedSprite2D.flip_h=face_direction==Vector2i.LEFT
+	
 	is_on_wall()
 	if direction==Vector2i.RIGHT and $front.has_overlapping_bodies():target_position=map_position;return
 	if direction==Vector2i.LEFT and $back.has_overlapping_bodies():target_position=map_position;return
@@ -39,9 +52,7 @@ func _physics_process(delta: float) -> void:
 		return
 	velocity.y += 800 * delta
 	#if map_position!=target_position:
-	var target_x = (map.map_to_local(target_position) ).x
-
-	velocity.x = (target_x - global_position.x) * 10.0
+	determine_x_velocity(delta)
 	velocity.x = clamp(velocity.x, -movement_speed, movement_speed)
 	var test=velocity
 	play_anims(velocity)
@@ -51,6 +62,10 @@ func _physics_process(delta: float) -> void:
 	#if x==x2:
 		#target_position.x=map_position.x
 	pass
+func determine_x_velocity(delta):
+	var target_x = (map.map_to_local(target_position) ).x
+	velocity.x = (target_x - global_position.x) * 10.0
+	pass	
 func play_anims(velocity):
 	if jumping:
 		$AnimatedSprite2D.play(&'jump')
@@ -68,6 +83,8 @@ func hit(damage):
 		die()
 	pass
 func die():
+	collision_layer=0
+	died.emit()
 	var tween=create_tween()
 	tween.tween_property($AnimatedSprite2D,"position",Vector2(0,50),2)
 	#create_tween().tween_property(self,"rotation",deg_to_rad(-90),1)

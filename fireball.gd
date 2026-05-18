@@ -8,5 +8,6 @@ func trigger(spell:Spell):
 	ball.direction=spell.player.face_direction
 	ball.target=spell.player.enemy_scanner.current_target
 	spell.player.add_sibling(ball)
+	spell.player.enemy_scanner.target_changed.connect(func(target:Enemy):if ball!=null:ball.target=target)
 	super(spell)
 	pass

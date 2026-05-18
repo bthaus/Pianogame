@@ -1,12 +1,12 @@
 extends Projectile
 class_name HomingProjectile
-var target:Node2D
+var target:Enemy
 func _process(delta: float) -> void:
 	if target == null:
 		return super(delta)
 
 	# Direction from projectile to target
-	var desired_direction: Vector2 = global_position.direction_to(target.global_position)
+	var desired_direction: Vector2 = global_position.direction_to(target.center.global_position)
 
 	# How quickly the projectile can turn (higher = faster)
 	var turn_speed := 3.0

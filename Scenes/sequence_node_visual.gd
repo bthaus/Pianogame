@@ -12,19 +12,39 @@ var offset_dic={
 	"A"=5,
 	"B"=6
 }
+var octave_offset={
+	"2"=2,
+	"3"=1,
+	"4"=0,
+	"5"=-1,
+	"6"=-2
+}
 var notes:Array[Sprite2D]=[]
 func set_up(node:SequenceNode,offset):
 	var keys:Array=node.key_unit.key
 	for k:String in keys:
-		k=k.remove_chars("123456789UP")
+		
+		
 		var sharp=k.contains("#")
 		#$Line2D.visible=sharp
-		k=k.replace("#","") 
+		$Note/sharp.visible=sharp
+		k=k.replace("#","") 	
+		$Note/Line2D.visible= k=="C4"
+		$Note/Line2D.visible= k=="C2" 
+		if k=="C2" :
+			var line=$Note/Line2D.duplicate()
+			$Note.add_child(line)
+			line.translate(Vector2.UP*offset)
+		var octave=k[1]
+		k=k.remove_chars("123456789UP")
+		
 		var off=offset_dic[k]*offset/2
 		
-		$Note/Line2D.visible= k.contains("C")
+		
 		var note:Sprite2D=$Note.duplicate()
 		note.translate(Vector2(0,-off))
+		var oct=octave_offset[octave]
+		note.translate(Vector2i(0,oct*7*offset/2))
 		add_child(note)
 		notes.append(note)
 		note.show()

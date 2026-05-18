@@ -15,6 +15,7 @@ var allow_input_always=true
 var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
+var easy_move=true
 func register_error(e:EventStatus):
 	
 	if e.type!=EventStatus.StatusType.Unstarted:
@@ -37,11 +38,12 @@ func _process(delta: float) -> void:
 	
 func _ready() -> void:
 	for s:Spell in equipped_spells:
-		add_spell_visual(s.tree)
+		add_spell_visual(s)
 	var off=0	
-	for s:Node2D in $trees.get_children():
+	for s:SequenceTreeVisual in $trees.get_children():
 		s.translate(Vector2(off,0))
-		off+=200
+		var addoff=s.tree.get_last_node().beat*50
+		off+=150+addoff
 	
 	pass
 func add_spell_visual(spell):
@@ -88,9 +90,23 @@ var movement_pointer=0:
 var movement_keys=[
 	"C2","D2","E2","F2"
 ]	
+func handle_easy_movement(event:PianoEvent):
+	var direction=0
+	if keyController.active_keys.has("C2"):
+		direction+=-1
+	if keyController.active_keys.has("E2"):
+		direction+=1
+	if event.get_key()=="D2":
+		player.jump()
+	player.easy_move(direction)			
+	pass
+var easy_move_keys=["C2","D2","E2"]
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
-	if movement_keys.has(piano_event.get_key()) or piano_event.get_key()=="G2":
+	if not easy_move and movement_keys.has(piano_event.get_key()) or piano_event.get_key()=="G2":
 		handle_movement(piano_event)
+	if easy_move and easy_move_keys.has(piano_event.get_key()):
+		handle_easy_movement(piano_event)
+	l.e(piano_event.get_key())		
 	input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
@@ -176,11 +192,12 @@ func _add_key_representation(piano_event: PianoEvent):
 	var label = Label.new()
 	label.text = piano_event.get_key()
 	label.name = piano_event.get_key()
-	$PressedKeys.add_child(label)
 	piano_event.representation = label
 	
 
 func _on_key_controller_before_key_released(piano_event: PianoEvent) -> void:
+	l.e(piano_event.get_key())
+	
 	piano_event.press_event.representation.queue_free()
 	pass # Replace with function body.
 
@@ -188,7 +205,7 @@ func _on_key_controller_before_key_released(piano_event: PianoEvent) -> void:
 func _on_beat_close_window() -> void:
 	window_open=false
 	timeout_sequences()
-	$window.text="c"
+	
 	pass # Replace with function body.
 
 
@@ -196,11 +213,13 @@ func _on_beat_open_window() -> void:
 	window_open=true
 	#for s in sequences:
 		#s.progressed=false
-	$window.text="0000000"
+
 	pass # Replace with function body.
 
 
 func _on_key_controller_key_released(piano_event: PianoEvent) -> void:
+	if easy_move and easy_move_keys.has(piano_event.get_key()) and not piano_event.get_key()=="D2":
+		handle_easy_movement(piano_event)
 	input_happened=true
 	input_handled=false
 	pass # Replace with function body.

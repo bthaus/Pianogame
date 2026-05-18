@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bxrsfes6nn0wt"]
+
+[ext_resource type="Script" uid="uid://d1vhb3jwcc2b6" path="res://jump_spell.gd" id="1_h0ity"]
+
+[node name="Node2D" type="Node2D" unique_id=77486635]
+script = ExtResource("1_h0ity")

@@ -3,14 +3,27 @@
 [ext_resource type="Script" uid="uid://c86gfel41g4k2" path="res://Scenes/sequence_tree_visual.gd" id="1_7d8a1"]
 [ext_resource type="PackedScene" uid="uid://0thgjnu3upnv" path="res://Scenes/sequence_node_visual.tscn" id="2_jq7ay"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_jq7ay"]
+font_color = Color(0, 0, 0, 1)
+
 [node name="Node2D" type="Node2D" unique_id=623535090]
 script = ExtResource("1_7d8a1")
 
 [node name="base_line" type="Line2D" parent="." unique_id=1750322036]
 unique_name_in_owner = true
-points = PackedVector2Array(0, 0, 200, 0)
+points = PackedVector2Array(0, 0, 2000, 0)
 width = 5.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="SequenceNodeVisual" parent="." unique_id=601562618 instance=ExtResource("2_jq7ay")]
 position = Vector2(29, -32)
+
+[node name="Spellname" type="Label" parent="." unique_id=617492944]
+offset_left = 2.0
+offset_top = -177.0
+offset_right = 45.0
+offset_bottom = -154.0
+text = "asdf"
+label_settings = SubResource("LabelSettings_jq7ay")
+
+[node name="notes" type="Node2D" parent="." unique_id=514999529]

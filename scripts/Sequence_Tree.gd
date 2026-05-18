@@ -14,3 +14,9 @@ func get_start_sequence(beatno:float)->Sequence:
 
 func traverse_tree(keys):
 	pass
+func get_last_node():
+	var node=entry_edge.to_node
+	while node.outgoing_edge!=null:
+		node=node.outgoing_edge.to_node
+	return node	
+	

@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://cwkriss7yxpf1" path="res://Scenes/sequence_node_visual.gd" id="1_v72sk"]
 [ext_resource type="Texture2D" uid="uid://c8oyuseh0xa61" path="res://Assets/UI/note.png" id="2_v72sk"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_v72sk"]
+line_spacing = 2.805
+font_size = 311
+font_color = Color(0, 0, 0, 1)
+
 [node name="SequenceNodeVisual" type="Node2D" unique_id=601562618]
 script = ExtResource("1_v72sk")
 
@@ -20,3 +25,11 @@ scale = Vector2(6.0606055, 6.0606055)
 points = PackedVector2Array(-50, 31, 26, 31)
 width = 5.0
 default_color = Color(0, 0, 0, 1)
+
+[node name="sharp" type="Label" parent="Note" unique_id=200806260]
+offset_left = -339.39392
+offset_top = -65.51514
+offset_right = -138.39392
+offset_bottom = 359.48486
+text = "#"
+label_settings = SubResource("LabelSettings_v72sk")

@@ -3,13 +3,15 @@ class_name Projectile
 
 var direction:Vector2
 @export var speed:int=200
-var damage=10
+@export var damage=10
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	area_entered.connect(_on_body_entered)
 	body_entered.connect(_on_body_entered)
 	pass # Replace with function body.
-
+func hit(damage):
+	collide()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,7 +30,11 @@ func _on_body_entered(body: Node2D) -> void:
 	var b=body.get_parent()
 	if b.has_method("hit"):
 		b.hit(damage)
-	if body.has_method("hit"):
+		collide()
+		return
+	elif body.has_method("hit"):
 		body.hit(damage)	
+		collide()
+		return
 	collide()	
 	pass # Replace with function body.

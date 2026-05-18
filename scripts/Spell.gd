@@ -18,6 +18,7 @@ var state:State=State.Ready
 var tree:Sequence_Tree
 var player:PlayerCharacter
 signal cooldown_passed
+signal triggered
 func remove_all_units():
 	keys.clear()
 func check_start(active_keys,beat_no):
@@ -44,6 +45,7 @@ func trigger_spell():
 	l.l(name+" triggered!")
 	on_trigger()
 	start_cooldown()
+	triggered.emit()
 	pass;
 func trigger_node(node:SequenceNode):
 	node.key_unit.trigger_spell_component(node,self)

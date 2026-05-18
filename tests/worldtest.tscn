@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://ccul01tjjjf7o"]
 
+[ext_resource type="PackedScene" uid="uid://eo30kruldshw" path="res://Scenes/hud.tscn" id="1_abwln"]
 [ext_resource type="PackedScene" uid="uid://fe04lx08pprm" path="res://Scenes/player_character.tscn" id="2_8j6nv"]
 [ext_resource type="PackedScene" uid="uid://ce0hrt8rfsj55" path="res://Scenes/Enemy.tscn" id="2_abwln"]
 [ext_resource type="Texture2D" uid="uid://c81fldtsc7yth" path="res://Assets/Tiles/Tilemap/tilemap.png" id="2_y54vk"]
-[ext_resource type="PackedScene" uid="uid://ceiv5syq5aaws" path="res://Scenes/piano.tscn" id="4_abwln"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8j6nv"]
 texture = ExtResource("2_y54vk")
@@ -286,14 +286,18 @@ sources/1 = SubResource("TileSetAtlasSource_8j6nv")
 tile_map_data = PackedByteArray("AAD+/wYAAQACAAEAAAD//wYAAQACAAEAAAAAAAYAAQACAAEAAAABAAYAAQACAAEAAAACAAYAAQACAAMAAAADAAYAAQACAAMAAAAEAAYAAQACAAMAAAAFAAYAAQACAAUAAAAGAAYAAQACAAUAAAAHAAYAAQACAAUAAAAIAAYAAQACAAYAAAAJAAYAAQACAAYAAAAKAAYAAQACAAEAAAALAAYAAQACAAEAAAAMAAYAAQACAAEAAAANAAYAAQACAAEAAAAOAAYAAQACAAEAAAAPAAYAAQACAAEAAAAQAAYAAQACAAMAAAARAAYAAQACAAMAAAASAAYAAQACAAMAAAATAAYAAQACAAUAAAAUAAYAAQACAAUAAAAVAAYAAQACAAUAAAAWAAYAAQACAAYAAAAXAAYAAQACAAYAAAAYAAYAAQACAAEAAAAZAAYAAQACAAEAAAAaAAYAAQACAAEAAAAbAAYAAQACAAEAAAAcAAYAAQACAAEAAAAdAAYAAQACAAEAAAAeAAYAAQACAAMAAAAfAAYAAQACAAMAAADt/wYAAQACAAUAAADu/wYAAQACAAUAAADv/wYAAQACAAUAAADw/wYAAQACAAYAAADx/wYAAQACAAYAAADy/wYAAQACAAEAAADz/wYAAQACAAEAAAD0/wYAAQACAAEAAAD1/wYAAQACAAMAAAD2/wYAAQACAAMAAAD3/wYAAQACAAMAAAD4/wYAAQACAAUAAAD5/wYAAQACAAUAAAD6/wYAAQACAAUAAAD7/wYAAQACAAYAAAD8/wYAAQACAAYAAAD9/wYAAQACAAEAAAAgAAYAAQACAAMAAAAhAAYAAQACAAUAAAAiAAYAAQACAAEAAAAjAAYAAQACAAEAAAAkAAYAAQACAAEAAAAlAAYAAQACAAEAAAAmAAYAAQACAAEAAAAnAAYAAQACAAEAAAAoAAYAAQACAAMAAAApAAYAAQACAAMAAAAqAAYAAQACAAMAAAArAAYAAQACAAUAAAAsAAYAAQACAAUAAAAtAAYAAQACAAUAAAAuAAYAAQACAAYAAAAvAAYAAQACAAYAAAAwAAYAAQACAAMAAADc/wYAAQACAAEAAADd/wYAAQACAAEAAADe/wYAAQACAAMAAADf/wYAAQACAAMAAADg/wYAAQACAAMAAADh/wYAAQACAAUAAADi/wYAAQACAAUAAADj/wYAAQACAAUAAADk/wYAAQACAAYAAADl/wYAAQACAAYAAADm/wYAAQACAAEAAADn/wYAAQACAAEAAADo/wYAAQACAAEAAADp/wYAAQACAAEAAADq/wYAAQACAAMAAADr/wYAAQACAAMAAADs/wYAAQACAAMAAADY/wYAAQACAAEAAADZ/wYAAQACAAEAAADa/wYAAQACAAEAAADb/wYAAQACAAEAAAAxAAYAAQACAAMAAAAyAAYAAQACAAMAAAAzAAYAAQACAAUAAAA0AAYAAQACAAUAAAA1AAYAAQACAAUAAAA2AAYAAQACAAYAAAA3AAYAAQACAAYAAAAFAAMAAQAAAAAAAAAHAAEAAQAAAAAAAAAKAP//AQABAAAAAAAIAAUAAQACAAYAAAAIAAQAAQACAAEAAAA=")
 tile_set = SubResource("TileSet_abwln")
 
-[node name="player" parent="." unique_id=145437748 node_paths=PackedStringArray("piano") instance=ExtResource("2_8j6nv")]
+[node name="player" parent="." unique_id=145437748 node_paths=PackedStringArray("hud") instance=ExtResource("2_8j6nv")]
 position = Vector2(48, 101)
-piano = NodePath("../CanvasLayer/Piano")
+hud = NodePath("../HUD")
+
+[node name="HUD" parent="." unique_id=1141357918 node_paths=PackedStringArray("player") instance=ExtResource("1_abwln")]
+player = NodePath("../player")
 
 [node name="Node2D2" parent="." unique_id=921364907 instance=ExtResource("2_abwln")]
-position = Vector2(294, 104)
+position = Vector2(299, 103)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=252380692]
+[node name="Node2D3" parent="." unique_id=816301689 instance=ExtResource("2_abwln")]
+position = Vector2(336, 103)
 
-[node name="Piano" parent="CanvasLayer" unique_id=430235116 instance=ExtResource("4_abwln")]
-position = Vector2(154, 129)
+[node name="Node2D4" parent="." unique_id=956926361 instance=ExtResource("2_abwln")]
+position = Vector2(372, 101)

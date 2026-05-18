@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bvheyg7ntax08" path="res://Ressources/key_unit.gd" id="3_bgm8m"]
 [ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="4_2u5f8"]
 [ext_resource type="Script" uid="uid://pokcg5b32vkm" path="res://scripts/Spells/cascade.gd" id="4_8pxlp"]
+[ext_resource type="PackedScene" uid="uid://bxrsfes6nn0wt" path="res://scene/SpellComponents/jump.tscn" id="7_i25c7"]
 [ext_resource type="PackedScene" uid="uid://djemmxskvjq25" path="res://scene/SpellComponents/block.tscn" id="9_lrb01"]
 
 [sub_resource type="Resource" id="Resource_8pxlp"]
@@ -148,10 +149,22 @@ script = ExtResource("3_bgm8m")
 beat = 3.0
 key = Array[String](["C2", "C3", "C4"])
 
-[sub_resource type="Resource" id="Resource_h1bn3"]
+[sub_resource type="Resource" id="Resource_fjc73"]
 script = ExtResource("3_bgm8m")
-key = Array[String](["C5"])
-spell_component = ExtResource("4_2u5f8")
+key = Array[String](["C3", "E3", "G3"])
+spell_component = ExtResource("7_i25c7")
+
+[sub_resource type="Resource" id="Resource_65et7"]
+script = ExtResource("3_bgm8m")
+beat = 1.0
+key = Array[String](["C4", "E4", "G4"])
+spell_component = ExtResource("7_i25c7")
+
+[sub_resource type="Resource" id="Resource_g7msj"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["C5", "E5", "G5"])
+spell_component = ExtResource("7_i25c7")
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
@@ -230,10 +243,9 @@ cooldown_in_beats = 1.0
 keys_as_string = "G4G3E2 G4G3E2 G4G3E2 C2C3C4 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
-[node name="test" type="Node" parent="." unique_id=1734075857]
+[node name="jump" type="Node" parent="." unique_id=407644771]
 script = ExtResource("2_6csqb")
-spell_name = "test"
-keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_h1bn3")])
-cooldown_in_beats = 4.0
-keys_as_string = "C5 "
+spell_name = "jump"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_fjc73"), SubResource("Resource_65et7"), SubResource("Resource_g7msj")])
+keys_as_string = "C3E3G3 C4E4G4 C5E5G5 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

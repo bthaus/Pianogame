@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://brhrgfeyd2110" path="res://Assets/Tiles/Tiles/tile_0007.png" id="4_lsf0l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_faq5q"]
+radius = 3.1622777
 
 [node name="SpellComponent" unique_id=179673675 instance=ExtResource("1_wcjnr")]
 script = ExtResource("2_a32q6")
