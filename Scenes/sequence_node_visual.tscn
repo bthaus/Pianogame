@@ -20,8 +20,17 @@ texture = ExtResource("2_v72sk")
 [node name="Line2D" type="Line2D" parent="Note" unique_id=1202211988]
 visible = false
 show_behind_parent = true
-position = Vector2(0, 98.12121)
-scale = Vector2(6.0606055, 6.0606055)
+position = Vector2(-40, 98.121)
+scale = Vector2(5, 6.061)
+points = PackedVector2Array(-50, 31, 26, 31)
+width = 5.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="Note" unique_id=349361457]
+visible = false
+show_behind_parent = true
+position = Vector2(-40, -120)
+scale = Vector2(5, 6.061)
 points = PackedVector2Array(-50, 31, 26, 31)
 width = 5.0
 default_color = Color(0, 0, 0, 1)

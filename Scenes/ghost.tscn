@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dm2lfii4ja50u"]
+
+[ext_resource type="PackedScene" uid="uid://ce0hrt8rfsj55" path="res://Scenes/Enemy.tscn" id="1_e3r4w"]
+[ext_resource type="Texture2D" uid="uid://bdhyr36rmq38u" path="res://Assets/Characters/Enemy sprites/ghost_hit.png" id="2_3btnm"]
+[ext_resource type="Texture2D" uid="uid://cpgdylrpe22ko" path="res://Assets/Characters/Enemy sprites/ghost_normal.png" id="2_108wt"]
+[ext_resource type="Script" uid="uid://ds6o71nusx4mf" path="res://Scenes/ghost.gd" id="2_taxxh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3btnm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3btnm")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_108wt")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_108wt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Node2D" unique_id=816301689 instance=ExtResource("1_e3r4w")]
+script = ExtResource("2_taxxh")
+hp = 100
+
+[node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
+sprite_frames = SubResource("SpriteFrames_3btnm")
+animation = &"hurt"
+
+[node name="PlayerDetection" parent="." index="6" unique_id=1983412877]
+visible = false
+
+[node name="Projectile" parent="." index="7" unique_id=1276879591]
+visible = false
+
+[node name="CollisionShape2D" parent="Projectile" index="0" unique_id=2120761277]
+visible = false
+
+[node name="shield_pos" parent="." index="9" unique_id=1954406466]
+visible = true

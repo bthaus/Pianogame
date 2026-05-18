@@ -31,10 +31,7 @@ func set_up(node:SequenceNode,offset):
 		k=k.replace("#","") 	
 		$Note/Line2D.visible= k=="C4"
 		$Note/Line2D.visible= k=="C2" 
-		if k=="C2" :
-			var line=$Note/Line2D.duplicate()
-			$Note.add_child(line)
-			line.translate(Vector2.UP*offset)
+		$Note/Line2D2.visible=k=="C2"
 		var octave=k[1]
 		k=k.remove_chars("123456789UP")
 		

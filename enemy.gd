@@ -6,6 +6,7 @@ var aggrod=false
 @onready var center:Node2D=$center
 func _ready() -> void:
 	call_deferred("connect_beat")
+	
 	super()
 var counter=0	
 func connect_beat():

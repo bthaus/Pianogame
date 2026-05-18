@@ -5,6 +5,7 @@ class_name HUD
 @onready var hp_bar:ProgressBar=%HPbar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	show()
 	player.hp_changed.connect(update)
 	pass # Replace with function body.
 func update():

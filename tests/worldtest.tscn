@@ -5,6 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://ce0hrt8rfsj55" path="res://Scenes/Enemy.tscn" id="2_abwln"]
 [ext_resource type="Texture2D" uid="uid://c81fldtsc7yth" path="res://Assets/Tiles/Tilemap/tilemap.png" id="2_y54vk"]
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_abwln"]
+scenes/1/scene = ExtResource("2_abwln")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8j6nv"]
 texture = ExtResource("2_y54vk")
 separation = Vector2i(1, 1)
@@ -279,6 +282,7 @@ texture_region_size = Vector2i(18, 18)
 tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_8j6nv")
+sources/0 = SubResource("TileSetScenesCollectionSource_abwln")
 
 [node name="Node2D" type="Node2D" unique_id=895717489]
 

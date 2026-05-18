@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://y68tifnpvhps" path="res://Assets/Characters/Enemy sprites/bee_fly.png" id="5_6bs3c"]
 [ext_resource type="Texture2D" uid="uid://bjsecjxamx4tf" path="res://Assets/Tiles/Tiles/tile_0069.png" id="6_6bs3c"]
 [ext_resource type="Script" uid="uid://c3dhcl12bn357" path="res://scene/SpellComponents/Projectile.gd" id="7_uoxpr"]
+[ext_resource type="Script" uid="uid://da02gswj1ta7l" path="res://Scenes/hp.gd" id="8_uoxpr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wovta"]
 animations = [{
@@ -44,7 +45,7 @@ radius = 5.0
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_wovta")]
 collision_layer = 16
 script = ExtResource("2_xeo28")
-hp = 5
+hp = 20
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
 scale = Vector2(-0.265, 0.265)
@@ -57,7 +58,7 @@ collision_layer = 0
 collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" index="0" unique_id=548203195]
-position = Vector2(7, -13)
+position = Vector2(9.536743e-07, -13.000001)
 rotation = -0.7853982
 shape = SubResource("CircleShape2D_1exfc")
 
@@ -86,4 +87,14 @@ collision_mask = 0
 [node name="center" type="Node2D" parent="." index="10" unique_id=369057227]
 position = Vector2(-0.45703888, -12.687088)
 
+[node name="hp" type="ProgressBar" parent="." index="11" unique_id=378101407 node_paths=PackedStringArray("player")]
+offset_left = -15.0
+offset_top = -31.0
+offset_right = 15.0
+offset_bottom = -27.0
+show_percentage = false
+script = ExtResource("8_uoxpr")
+player = NodePath("..")
+
+[connection signal="hp_changed" from="." to="hp" method="_on_node_2d_hp_changed"]
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]

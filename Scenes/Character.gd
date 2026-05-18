@@ -39,3 +39,6 @@ func easy_move(direction):
 	if direction!=0:face_direction=Vector2i(direction,0)
 	easy_move_direction=direction
 	pass;	
+func die():
+	get_tree().reload_current_scene()
+	

@@ -13,15 +13,15 @@ offset_right = 1933.0
 offset_bottom = 234.0
 
 [node name="Piano" parent="." unique_id=430235116 instance=ExtResource("2_fccik")]
-position = Vector2(404.99997, 91)
+position = Vector2(85.99994, 90)
 scale = Vector2(0.43, 0.43)
 
 [node name="HPbar" type="ProgressBar" parent="." unique_id=735713438]
 unique_name_in_owner = true
 self_modulate = Color(0, 1, 0, 1)
-offset_left = 74.0
-offset_top = 60.0
-offset_right = 339.0
-offset_bottom = 87.0
+offset_left = 67.0
+offset_top = 1020.0
+offset_right = 332.0
+offset_bottom = 1047.0
 value = 70.0
 show_percentage = false
