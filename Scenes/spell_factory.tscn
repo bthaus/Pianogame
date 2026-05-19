@@ -6,76 +6,96 @@
 [ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="4_2u5f8"]
 [ext_resource type="Script" uid="uid://pokcg5b32vkm" path="res://scripts/Spells/cascade.gd" id="4_8pxlp"]
 [ext_resource type="PackedScene" uid="uid://bxrsfes6nn0wt" path="res://scene/SpellComponents/jump.tscn" id="7_i25c7"]
+[ext_resource type="PackedScene" uid="uid://bf7juy5n0tcfd" path="res://scene/SpellComponents/blow.tscn" id="8_2u5f8"]
 [ext_resource type="PackedScene" uid="uid://djemmxskvjq25" path="res://scene/SpellComponents/block.tscn" id="9_lrb01"]
 
 [sub_resource type="Resource" id="Resource_8pxlp"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["A4"])
+triggering = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_xoxst"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["G4"])
+triggering = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_jm26c"]
 script = ExtResource("3_bgm8m")
 beat = 1.5
 key = Array[String](["G4"])
+triggering = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_i25c7"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["F4"])
+triggering = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_bgm8m"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["A4", "F4", "D4"])
+triggering = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_2u5f8"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["A4"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_1mje3"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["A4", "F4", "D4"])
+triggering = null
 spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_lrb01"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["A4"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_3inhl"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["B4"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_iu7i8"]
 script = ExtResource("3_bgm8m")
 beat = 1.5
 key = Array[String](["B4"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_ebwd2"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["C5"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_8up4e"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["A3"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_g7b4h"]
 script = ExtResource("3_bgm8m")
 beat = 3.0
 key = Array[String](["A3"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_1uaqm"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["E4"])
 triggering = true
 
@@ -87,7 +107,9 @@ triggering = true
 
 [sub_resource type="Resource" id="Resource_b5g72"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["C4", "E4", "G4"])
+triggering = null
 spell_component = ExtResource("9_lrb01")
 
 [sub_resource type="Resource" id="Resource_cwllq"]
@@ -127,44 +149,72 @@ spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_d0oep"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["C#2", "G#2"])
+triggering = null
 spell_component = ExtResource("9_lrb01")
 
 [sub_resource type="Resource" id="Resource_lw14p"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["G4", "G3", "E2"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_3fid5"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["G4", "G3", "E2"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_0mvnd"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["G4", "G3", "E2"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_42fdb"]
 script = ExtResource("3_bgm8m")
 beat = 3.0
 key = Array[String](["C2", "C3", "C4"])
+triggering = null
 
 [sub_resource type="Resource" id="Resource_fjc73"]
 script = ExtResource("3_bgm8m")
+beat = null
 key = Array[String](["C3", "E3", "G3"])
+triggering = null
 spell_component = ExtResource("7_i25c7")
 
 [sub_resource type="Resource" id="Resource_65et7"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["C4", "E4", "G4"])
+triggering = null
 spell_component = ExtResource("7_i25c7")
 
 [sub_resource type="Resource" id="Resource_g7msj"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["C5", "E5", "G5"])
+triggering = null
 spell_component = ExtResource("7_i25c7")
+
+[sub_resource type="Resource" id="Resource_h1bn3"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["D4", "F4", "A4"])
+spell_component = ExtResource("8_2u5f8")
+
+[sub_resource type="Resource" id="Resource_d7uee"]
+script = ExtResource("3_bgm8m")
+beat = 1.0
+key = Array[String](["F4", "A4", "C5"])
+spell_component = ExtResource("8_2u5f8")
+
+[sub_resource type="Resource" id="Resource_cvkbw"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["C4", "E4", "G4"])
+spell_component = ExtResource("8_2u5f8")
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
@@ -249,4 +299,11 @@ spell_name = "jump"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_fjc73"), SubResource("Resource_65et7"), SubResource("Resource_g7msj")])
 cooldown_in_beats = 4.0
 keys_as_string = "C3E3G3 C4E4G4 C5E5G5 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="blast" type="Node" parent="." unique_id=247776925]
+script = ExtResource("2_6csqb")
+spell_name = "blast"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_h1bn3"), SubResource("Resource_d7uee"), SubResource("Resource_cvkbw")])
+keys_as_string = "D4F4A4 F4A4C5 C4E4G4 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

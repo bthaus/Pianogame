@@ -2,12 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c4t4rv0bfpbj3" path="res://beat.gd" id="1_xfmun"]
 [ext_resource type="AudioStream" uid="uid://cqcrfgsed62ci" path="res://Assets/sounds/beat.wav" id="2_6hu35"]
+[ext_resource type="Script" uid="uid://c5h4m802bd5vv" path="res://Scenes/beat.gd" id="2_lxvgy"]
 [ext_resource type="AudioStream" uid="uid://d4om708s5rjd" path="res://Assets/sounds/bar.wav" id="3_lxvgy"]
 
 [node name="Beat" type="Node2D" unique_id=1000817660]
 script = ExtResource("1_xfmun")
 
 [node name="beat" type="Timer" parent="." unique_id=638661330]
+script = ExtResource("2_lxvgy")
 
 [node name="bar" type="Timer" parent="." unique_id=513607463]
 

@@ -66,6 +66,10 @@ func _physics_process(delta: float) -> void:
 	#if x==x2:
 		#target_position.x=map_position.x
 	pass
+func reset_positions():
+	map_position=map.local_to_map(global_position)as Vector2
+	target_position=map_position
+	pass;	
 func determine_x_velocity(delta):
 	var target_x = (map.map_to_local(target_position) ).x
 	velocity.x = (target_x - global_position.x) * 10.0

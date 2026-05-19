@@ -7,15 +7,19 @@ var easy_move_direction=0
 
 @export var acceleration := 1200.0
 @export var friction := 1000.0	
+var spells
 func _ready() -> void:
 
 	piano=hud.piano
 	if piano.easy_move:movement_speed/=2
-	var spell=SpellFactory.get_all_spells()
+	spells=SpellFactory.get_all_spells()
 	piano.player=self
-	for s:Spell in spell:
+	
+	for s:Spell in spells:
 		s.player=self
+		s.prepare_spell()
 		piano.add_spell(s)
+		
 	super()
 func determine_x_velocity(delta):
 	# Target horizontal speed

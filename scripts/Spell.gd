@@ -49,7 +49,11 @@ func on_failure_or_success():
 func setup():
 	tree=parse_spell_into_sequencetree()
 	pass;
-	
+func prepare_spell():
+	l.e(str(keys.size()))
+	for k:KeyUnit in keys:
+		k.set_up(self)
+	pass	
 func trigger_spell():
 	if state!=State.Ready:return
 	l.l(name+" triggered!")
@@ -100,7 +104,7 @@ func _process(delta: float) -> void:
 
 func parse_spell_into_sequencetree():
 	tree = Sequence_Tree.new()
-	var key_array=keys
+	var key_array=keys.duplicate()
 	
 	var first=key_array.pop_front()
 	tree.entry_edge = SequenceEdge.new(first.key)

@@ -88,6 +88,9 @@ func traverse(key_dic,beat):
 		var _beat_diff=abs(current_node.outgoing_edge.to_node.beat-_relative_beat)
 		if _beat_diff>current_node.outgoing_edge.to_node.beat/2:
 			return
+		var beat_adherance_for_first_node=0
+		if is_first_node():
+			beat_adherance_for_first_node=Beat.get_beat_adherance()	
 		current_node=current_node.outgoing_edge.to_node
 		progressed=true
 		last_progressed_beat=beat
@@ -101,13 +104,16 @@ func traverse(key_dic,beat):
 		var beat_diff=abs(current_node.beat-relative_beat)
 		
 		error_count+=beat_diff
-		spell.trigger_node(current_node,error_count)
+		spell.trigger_node(current_node,error_count+beat_adherance_for_first_node)
 		mark_input_events(key_dic,next_keys)
 		if current_node.outgoing_edge==null:
 			finish()
 			status=SequenceStatus.Success
 	
 	pass
+func is_first_node():
+	return current_node==first_node
+	pass	
 func mark_input_events(dic:Dictionary,keys):
 	for key in keys:
 		var event=dic[key]

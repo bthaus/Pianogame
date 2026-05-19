@@ -106,7 +106,6 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 		handle_movement(piano_event)
 	if easy_move and easy_move_keys.has(piano_event.get_key()):
 		handle_easy_movement(piano_event)
-	l.e(piano_event.get_key())		
 	input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
@@ -196,8 +195,6 @@ func _add_key_representation(piano_event: PianoEvent):
 	
 
 func _on_key_controller_before_key_released(piano_event: PianoEvent) -> void:
-	l.e(piano_event.get_key())
-	
 	piano_event.press_event.representation.queue_free()
 	pass # Replace with function body.
 

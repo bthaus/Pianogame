@@ -1,8 +1,9 @@
 extends Node2D
 class_name SpellComponent
-
-func trigger(spell:Spell,error_count):
+func set_up(spell:Spell):
 	
+	pass
+func trigger(spell:Spell,error_count):
 
 	pass
 	
@@ -20,4 +21,6 @@ func on_spell_started():
 func on_previous_node_traversed():
 	pass
 
-					
+func get_beat_adherance():
+	return Beat.get_beat_adherance()
+	

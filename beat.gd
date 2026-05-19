@@ -6,6 +6,7 @@ signal open_window
 signal close_window
 var beat_no=0
 var bpm
+@onready var beat_timer:Timer=$beat
 static var beat_instance:Beat
 static func get_beat_instance()-> Beat:
 	return beat_instance
@@ -31,7 +32,9 @@ func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	await get_tree().create_timer(tolerance).timeout
 	$close_window.start()
 	pass
-	
+static func get_beat_adherance():
+	return get_beat_instance().beat_timer.get_trigger_value()
+	pass;	
 func _process(delta: float) -> void:
 	beat_no+=bpm/60.0*delta
 		

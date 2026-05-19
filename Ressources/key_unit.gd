@@ -6,7 +6,11 @@ class_name KeyUnit
 @export var spell_component:PackedScene
 var loaded_spell_component:SpellComponent
 		
-		
+func set_up(spell:Spell):
+	var comp=get_spell_component()
+	if comp!=null:
+		comp.set_up(spell)
+	pass
 func get_spell_component()->SpellComponent:
 	if loaded_spell_component==null and spell_component!=null and spell_component is PackedScene:
 		loaded_spell_component=spell_component.instantiate()
