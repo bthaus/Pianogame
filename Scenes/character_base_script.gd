@@ -18,6 +18,7 @@ var target_position
 signal hp_changed()
 var max_hp=0
 signal died
+var frozen=false
 @export var hp=100:
 	set(value):
 		hp=value
@@ -41,7 +42,7 @@ func jump():
 	jumping=true
 func move(direction,key="A1"):
 	face_direction=direction
-	
+	if frozen:return
 	is_on_wall()
 	if direction.x>0 and $front.has_overlapping_bodies():target_position=map_position;return
 	if direction.x<0 and $back.has_overlapping_bodies():target_position=map_position;return

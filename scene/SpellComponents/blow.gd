@@ -6,12 +6,12 @@ func trigger(spell:Spell,error_count):
 	var enemies=scanner.get_overlapping_bodies()
 	
 	for e:Enemy in enemies:
-		blast_away(e,error_count)
+		freeze(e,error_count)
 	pass
-func blast_away(e:Enemy,error_count):
-	var direction=e.global_position-global_position
-	e.move(direction.normalized())
-	
+func freeze(e:Enemy,error_count):
+	e.frozen=true
+	e.get_tree().create_timer(2-error_count).timeout.connect(func():e.frozen=false)
+	pass
 		
 func set_up(spell:Spell):
 	scanner=$Area2D
