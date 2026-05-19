@@ -101,7 +101,7 @@ func traverse(key_dic,beat):
 		var beat_diff=abs(current_node.beat-relative_beat)
 		
 		error_count+=beat_diff
-		spell.trigger_node(current_node)
+		spell.trigger_node(current_node,error_count)
 		mark_input_events(key_dic,next_keys)
 		if current_node.outgoing_edge==null:
 			finish()

@@ -1,7 +1,7 @@
 extends Node2D
 class_name SpellComponent
 
-func trigger(spell:Spell):
+func trigger(spell:Spell,error_count):
 	
 
 	pass

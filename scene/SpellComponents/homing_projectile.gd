@@ -4,7 +4,7 @@ var target:Enemy
 func _process(delta: float) -> void:
 	if target == null:
 		return super(delta)
-
+	
 	# Direction from projectile to target
 	var desired_direction: Vector2 = global_position.direction_to(target.center.global_position)
 

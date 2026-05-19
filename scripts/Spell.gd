@@ -57,8 +57,8 @@ func trigger_spell():
 	start_cooldown()
 	triggered.emit()
 	pass;
-func trigger_node(node:SequenceNode):
-	node.key_unit.trigger_spell_component(node,self)
+func trigger_node(node:SequenceNode,error_count):
+	node.key_unit.trigger_spell_component(node,self,error_count)
 	pass;
 func start_cooldown():
 	if cooldown_in_beats==0:return
