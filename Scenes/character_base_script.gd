@@ -43,15 +43,15 @@ func move(direction,key="A1"):
 	face_direction=direction
 	
 	is_on_wall()
-	if direction==Vector2.RIGHT and $front.has_overlapping_bodies():target_position=map_position;return
-	if direction==Vector2.LEFT and $back.has_overlapping_bodies():target_position=map_position;return
+	if direction.x>0 and $front.has_overlapping_bodies():target_position=map_position;return
+	if direction.x<0 and $back.has_overlapping_bodies():target_position=map_position;return
 	target_position+=direction
 	pass;
 
 var last_pos=Vector2.ZERO	
 func _physics_process(delta: float) -> void:
 	if target_position==null:return
-	map_position=map.local_to_map(global_position)
+	map_position=map.local_to_map(global_position)as Vector2
 	if hp<=0:
 		return
 	velocity.y += 800 * delta
