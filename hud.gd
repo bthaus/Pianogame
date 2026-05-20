@@ -11,9 +11,19 @@ func _ready() -> void:
 func update():
 	hp_bar.max_value=player.max_hp
 	hp_bar.value=player.hp
+	$HPbar/max.text=str(player.max_hp)
 	var t=1
 	var color=remap(player.hp,0,player.max_hp,0,t)
 	hp_bar.self_modulate=Color(t-color,color,0,t)
+	
+	var max_shield_hp=1
+	var shield_hp=0
+	for s in player.shields:
+		max_shield_hp+=s.max_hp
+		shield_hp+=s.hp
+	$Shieldbar/max.text=str(max_shield_hp)
+	$Shieldbar.max_value=max_shield_hp
+	$Shieldbar.value=shield_hp	
 	pass;
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

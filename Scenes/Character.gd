@@ -8,6 +8,7 @@ var easy_move_direction=0
 @export var acceleration := 1200.0
 @export var friction := 1000.0	
 var spells
+
 func _ready() -> void:
 
 	piano=hud.piano

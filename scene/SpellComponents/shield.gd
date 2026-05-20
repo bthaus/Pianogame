@@ -1,14 +1,21 @@
 extends Node2D
-var hp=5
-signal destroyed
-func hit(damage):
-	hp-=damage
-	if hp<=0:
-		destroy()
+var max_hp
+var hp=5:
+	set(val):
+		hp=clamp(val,0,100000)
+		shield_hp_changed.emit()
+		if hp<=0:
+			destroy()
+
+signal shield_hp_changed()
+signal destroyed(shield)
+
 func _ready() -> void:
-	get_tree().create_timer(3).timeout.connect(destroy)
+	shield_hp_changed.emit()
+	get_tree().create_timer(3).timeout.connect(func():hp=0)
 
 func destroy():
+	
 	queue_free()
-	destroyed.emit()
+	destroyed.emit(self)
 	pass;

@@ -84,8 +84,18 @@ func play_anims(velocity):
 		$AnimatedSprite2D.play(&"stand")
 	pass		
 
-	
+var shields=[]
 func hit(damage):
+	if not shields.is_empty():
+		for shield in shields:
+			if damage <= 0:
+				break
+
+			# absorb as much damage as possible
+			var absorbed = min(shield.hp, damage)
+
+			shield.hp -= absorbed
+			damage -= absorbed
 	hp-=damage
 	$AnimatedSprite2D.play(&'hurt')
 	if hp<0:

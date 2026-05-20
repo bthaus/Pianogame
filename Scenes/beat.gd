@@ -23,4 +23,4 @@ func get_trigger_value() -> float:
 	var half_cycle: float = wait_time * 0.5
 
 	# map: 0 -> 0, half_cycle -> 1
-	return remap(nearest, 0.0, half_cycle, 0.0, 1.0)
+	return remap(nearest, 0.0, half_cycle, 1.0, 0.0)

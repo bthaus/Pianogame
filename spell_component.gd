@@ -1,7 +1,8 @@
 extends Node2D
 class_name SpellComponent
+var spell:Spell
 func set_up(spell:Spell):
-	
+	self.spell=spell
 	pass
 func trigger(spell:Spell,error_count):
 

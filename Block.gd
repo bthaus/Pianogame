@@ -12,9 +12,15 @@ func trigger(spell:Spell,error_count):
 	s.global_position=spell.player.shield_pos.global_position	
 	s.destroyed.connect(destroyed)
 	shield_active=true
+	s.max_hp=shield_hp
+	spell.player.shields.append(s)
+	s.shield_hp_changed.connect(spell.player.hud.update)
+	spell.player.hud.update()
+	
 	super(spell,error_count)
 	pass
 
-func destroyed():
+func destroyed(shield):
 	shield_active=false
+	spell.player.shields.erase(shield)
 	pass	
