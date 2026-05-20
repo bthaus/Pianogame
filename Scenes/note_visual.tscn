@@ -30,7 +30,7 @@ label_settings = SubResource("LabelSettings_jq7ay")
 [node name="notes" type="Node2D" parent="." unique_id=514999529]
 
 [node name="indicator" type="Line2D" parent="." unique_id=357461483]
-points = PackedVector2Array(0, -219, 0, 327)
+points = PackedVector2Array(0, -219, 0, 200)
 width = 2.0
 default_color = Color(0, 1, 1, 1)
 script = ExtResource("3_w0yvc")

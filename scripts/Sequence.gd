@@ -20,7 +20,7 @@ var related_inputs=[]
 var last_keys_released=[]
 var status:SequenceStatus=SequenceStatus.Active
 enum SequenceStatus{Active,Cancelled,Success}
-var beat_adherance_tolerance=0.0
+var beat_adherance_tolerance=0.15
 var error_tracked=false
 var last_progressed_beat
 
@@ -91,9 +91,10 @@ func traverse(key_dic,beat):
 		var beat_adherance_for_first_node=0
 		if is_first_node():
 			beat_adherance_for_first_node=Beat.get_beat_adherance()
-			l.e(str(beat_adherance_for_first_node))
+			
 			if beat_adherance_for_first_node<=beat_adherance_tolerance:
 				beat_adherance_for_first_node=0
+		
 		current_node=current_node.outgoing_edge.to_node
 		progressed=true
 		last_progressed_beat=beat

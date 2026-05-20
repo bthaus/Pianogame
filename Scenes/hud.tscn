@@ -2,20 +2,27 @@
 
 [ext_resource type="Script" uid="uid://cg8yakgevo7wv" path="res://hud.gd" id="1_e0onf"]
 [ext_resource type="PackedScene" uid="uid://ceiv5syq5aaws" path="res://Scenes/piano.tscn" id="2_fccik"]
+[ext_resource type="Shader" uid="uid://bgf4a5rliiwcd" path="res://Scenes/hud.gdshader" id="3_6fbih"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="4_t1xeu"]
+[ext_resource type="Script" uid="uid://lr4fg74d4fua" path="res://Scenes/sprite_2d.gd" id="5_t1xeu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_36asn"]
+shader = ExtResource("3_6fbih")
+shader_parameter/wave_amplitude = 0.0
+shader_parameter/wave_frequency = 90.0
+shader_parameter/wave_speed = 9.0
+shader_parameter/left_falloff = 1.0
+shader_parameter/right_falloff = 1.0
 
 [node name="HUD" type="CanvasLayer" unique_id=1141357918 node_paths=PackedStringArray("piano")]
-visible = false
 script = ExtResource("1_e0onf")
 piano = NodePath("Piano")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1541818453]
-offset_left = -19.0
-offset_right = 1933.0
-offset_bottom = 234.0
-
-[node name="Piano" parent="." unique_id=430235116 instance=ExtResource("2_fccik")]
-position = Vector2(85.99994, 90)
-scale = Vector2(0.43, 0.43)
+offset_left = -23.0
+offset_top = -32.0
+offset_right = 1929.0
+offset_bottom = 202.0
 
 [node name="HPbar" type="ProgressBar" parent="." unique_id=735713438]
 unique_name_in_owner = true
@@ -70,3 +77,16 @@ offset_right = 260.0
 offset_bottom = 25.0
 text = "100"
 horizontal_alignment = 2
+
+[node name="Piano" parent="." unique_id=430235116 instance=ExtResource("2_fccik")]
+z_index = 2
+position = Vector2(85.99994, 90)
+scale = Vector2(0.43, 0.43)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=112309205]
+material = SubResource("ShaderMaterial_36asn")
+position = Vector2(950.00006, 227)
+rotation = -3.1415927
+scale = Vector2(15.250204, -1)
+texture = ExtResource("4_t1xeu")
+script = ExtResource("5_t1xeu")

@@ -3,10 +3,12 @@ class_name HUD
 @export var piano:Piano
 @export var player:PlayerCharacter
 @onready var hp_bar:ProgressBar=%HPbar
+var beat:Beat
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	show()
 	player.hp_changed.connect(update)
+	beat=Beat.get_beat_instance()
 	pass # Replace with function body.
 func update():
 	hp_bar.max_value=player.max_hp
