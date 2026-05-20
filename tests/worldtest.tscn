@@ -1,11 +1,26 @@
 [gd_scene format=4 uid="uid://ccul01tjjjf7o"]
 
 [ext_resource type="PackedScene" uid="uid://eo30kruldshw" path="res://Scenes/hud.tscn" id="1_abwln"]
+[ext_resource type="Shader" uid="uid://bm8d08s4j8fp6" path="res://tests/worldtest.gdshader" id="1_uvjov"]
 [ext_resource type="PackedScene" uid="uid://fe04lx08pprm" path="res://Scenes/player_character.tscn" id="2_8j6nv"]
 [ext_resource type="PackedScene" uid="uid://ce0hrt8rfsj55" path="res://Scenes/Enemy.tscn" id="2_abwln"]
 [ext_resource type="PackedScene" uid="uid://dm2lfii4ja50u" path="res://Scenes/ghost.tscn" id="2_nomwf"]
 [ext_resource type="Texture2D" uid="uid://c81fldtsc7yth" path="res://Assets/Tiles/Tilemap/tilemap.png" id="2_y54vk"]
 [ext_resource type="Script" uid="uid://cmiaufh0lf8e" path="res://tests/map.gd" id="4_uy5q8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uvjov"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wew5v"]
+noise = SubResource("FastNoiseLite_uvjov")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wew5v"]
+shader = ExtResource("1_uvjov")
+shader_parameter/u_dither_tex = SubResource("NoiseTexture2D_wew5v")
+shader_parameter/u_color_tex = SubResource("NoiseTexture2D_wew5v")
+shader_parameter/u_bit_depth = 717
+shader_parameter/u_contrast = 3.87
+shader_parameter/u_offset = 5.14
+shader_parameter/u_dither_size = 671
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_abwln"]
 scenes/1/scene = ExtResource("2_abwln")
@@ -289,16 +304,24 @@ sources/0 = SubResource("TileSetScenesCollectionSource_abwln")
 
 [node name="Node2D" type="Node2D" unique_id=895717489]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=436784271]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=688554112]
+material = SubResource("ShaderMaterial_wew5v")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1563339560]
+size = Vector2i(1920, 1080)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="SubViewportContainer/SubViewport" unique_id=436784271]
 tile_map_data = PackedByteArray("AAD+/wYAAQACAAEAAAD//wYAAQACAAEAAAAAAAYAAQACAAEAAAABAAYAAQACAAEAAAACAAYAAQACAAMAAAADAAYAAQACAAMAAAAEAAYAAQACAAMAAAAFAAYAAQACAAUAAAAGAAYAAQACAAUAAAAHAAYAAQACAAUAAAAIAAYAAQACAAYAAAAJAAYAAQACAAYAAAAKAAYAAQACAAEAAAALAAYAAQACAAEAAAAMAAYAAQACAAEAAAANAAYAAQACAAEAAAAOAAYAAQACAAEAAAAPAAYAAQACAAEAAAAQAAYAAQACAAMAAAARAAYAAQACAAMAAAASAAYAAQACAAMAAAATAAYAAQACAAUAAAAUAAYAAQACAAUAAAAVAAYAAQACAAUAAAAWAAYAAQACAAYAAAAXAAYAAQACAAYAAAAYAAYAAQACAAEAAAAZAAYAAQACAAEAAAAaAAYAAQACAAEAAAAbAAYAAQACAAEAAAAcAAYAAQACAAEAAAAdAAYAAQACAAEAAAAeAAYAAQACAAMAAAAfAAYAAQACAAMAAADt/wYAAQACAAUAAADu/wYAAQACAAUAAADv/wYAAQACAAUAAADw/wYAAQACAAYAAADx/wYAAQACAAYAAADy/wYAAQACAAEAAADz/wYAAQACAAEAAAD0/wYAAQACAAEAAAD1/wYAAQACAAMAAAD2/wYAAQACAAMAAAD3/wYAAQACAAMAAAD4/wYAAQACAAUAAAD5/wYAAQACAAUAAAD6/wYAAQACAAUAAAD7/wYAAQACAAYAAAD8/wYAAQACAAYAAAD9/wYAAQACAAEAAAAgAAYAAQACAAMAAAAhAAYAAQACAAUAAAAiAAYAAQACAAEAAAAjAAYAAQACAAEAAAAkAAYAAQACAAEAAAAlAAYAAQACAAEAAAAmAAYAAQACAAEAAAAnAAYAAQACAAEAAAAoAAYAAQACAAMAAAApAAYAAQACAAMAAAAqAAYAAQACAAMAAAArAAYAAQACAAUAAAAsAAYAAQACAAUAAAAtAAYAAQACAAUAAAAuAAYAAQACAAYAAAAvAAYAAQACAAYAAAAwAAYAAQACAAMAAADc/wYAAQACAAEAAADd/wYAAQACAAEAAADe/wYAAQACAAMAAADf/wYAAQACAAMAAADg/wYAAQACAAMAAADh/wYAAQACAAUAAADi/wYAAQACAAUAAADj/wYAAQACAAUAAADk/wYAAQACAAYAAADl/wYAAQACAAYAAADm/wYAAQACAAEAAADn/wYAAQACAAEAAADo/wYAAQACAAEAAADp/wYAAQACAAEAAADq/wYAAQACAAMAAADr/wYAAQACAAMAAADs/wYAAQACAAMAAADY/wYAAQACAAEAAADZ/wYAAQACAAEAAADa/wYAAQACAAEAAADb/wYAAQACAAEAAAAxAAYAAQACAAMAAAAyAAYAAQACAAMAAAAzAAYAAQACAAUAAAA0AAYAAQACAAUAAAA1AAYAAQACAAUAAAA2AAYAAQACAAYAAAA3AAYAAQACAAYAAAAFAAMAAQAAAAAAAAAHAAEAAQAAAAAAAAAKAP//AQABAAAAAAAIAAUAAQACAAYAAAAIAAQAAQACAAEAAAAPAAUAAAAAAAAAAgA=")
 tile_set = SubResource("TileSet_abwln")
 script = ExtResource("4_uy5q8")
 
-[node name="player" parent="." unique_id=145437748 node_paths=PackedStringArray("hud") instance=ExtResource("2_8j6nv")]
+[node name="player" parent="SubViewportContainer/SubViewport" unique_id=145437748 node_paths=PackedStringArray("hud") instance=ExtResource("2_8j6nv")]
 position = Vector2(48, 101)
 hud = NodePath("../HUD")
 
-[node name="HUD" parent="." unique_id=1141357918 node_paths=PackedStringArray("player") instance=ExtResource("1_abwln")]
+[node name="HUD" parent="SubViewportContainer/SubViewport" unique_id=1141357918 node_paths=PackedStringArray("player") instance=ExtResource("1_abwln")]
 player = NodePath("../player")
 
-[connection signal="hp_changed" from="TileMapLayer/Node2D" to="TileMapLayer/Node2D/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="SubViewportContainer/SubViewport/TileMapLayer/@CharacterBody2D@78490" to="SubViewportContainer/SubViewport/TileMapLayer/@CharacterBody2D@78490/hp" method="_on_node_2d_hp_changed"]
