@@ -4,14 +4,15 @@ var shield_active=false
 func trigger(spell:Spell,error_count):
 	if shield_active:return
 	var s=$shield.duplicate()
+	shield_active=true
 	s.show()
 	s.scale*=(1-error_count)
-	s.hp=shield_hp*(1-error_count)
+	s.hp=shield_hp*(1-error_count)+1
 	spell.player.add_child(s)
 	l.e(str(error_count))
 	s.global_position=spell.player.shield_pos.global_position	
 	s.destroyed.connect(destroyed)
-	shield_active=true
+	
 	s.max_hp=shield_hp
 	spell.player.shields.append(s)
 	s.shield_hp_changed.connect(spell.player.hud.update)

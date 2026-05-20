@@ -10,6 +10,7 @@ func get_start_sequence(beatno:float)->Sequence:
 	started_sequence.first_node=start_node
 	started_sequence.current_node=start_node
 	start_node.outgoing_edge=entry_edge
+	started_sequence.error_count=0
 	return started_sequence
 
 func traverse_tree(keys):
