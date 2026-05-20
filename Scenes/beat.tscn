@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bd4wmacj0npj2" path="res://Assets/sounds/base.wav" id="5_q2xo6"]
 [ext_resource type="Script" uid="uid://ch4gj74rko44t" path="res://Scenes/base.gd" id="6_2xwja"]
 [ext_resource type="AudioStream" uid="uid://1y6kvmv10ken" path="res://Assets/sounds/boss.wav" id="6_5sink"]
+[ext_resource type="Script" uid="uid://c6tyxwnegbe0n" path="res://Scenes/boss.gd" id="8_tt0my"]
 
 [node name="Beat" type="Node2D" unique_id=1000817660]
 script = ExtResource("1_xfmun")
@@ -23,23 +24,27 @@ stream = ExtResource("2_6hu35")
 stream = ExtResource("3_lxvgy")
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=79618295]
+current = true
 
 [node name="open_window" type="Timer" parent="." unique_id=2121833302]
 
 [node name="close_window" type="Timer" parent="." unique_id=546568277]
 
-[node name="base" type="AudioStreamPlayer2D" parent="." unique_id=1399845927]
+[node name="base" type="AudioStreamPlayer2D" parent="." unique_id=1399845927 node_paths=PackedStringArray("beat")]
 stream = ExtResource("5_q2xo6")
 autoplay = true
 script = ExtResource("6_2xwja")
+beat = NodePath("../beat")
 
 [node name="boss" type="AudioStreamPlayer2D" parent="." unique_id=1974825300]
 stream = ExtResource("6_5sink")
 volume_db = -80.0
 autoplay = true
+script = ExtResource("8_tt0my")
 
 [connection signal="timeout" from="beat" to="." method="beat_timeout"]
 [connection signal="timeout" from="bar" to="." method="bar_timeout"]
 [connection signal="timeout" from="open_window" to="." method="_on_open_window_timeout"]
 [connection signal="timeout" from="close_window" to="." method="_on_close_window_timeout"]
 [connection signal="finished" from="base" to="base" method="_on_finished"]
+[connection signal="finished" from="boss" to="boss" method="play"]

@@ -216,6 +216,10 @@ beat = 2.0
 key = Array[String](["C4", "E4", "G4"])
 spell_component = ExtResource("8_2u5f8")
 
+[sub_resource type="Resource" id="Resource_6q4dg"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["D3"])
+
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
 
@@ -306,4 +310,11 @@ script = ExtResource("2_6csqb")
 spell_name = "blast"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_h1bn3"), SubResource("Resource_d7uee"), SubResource("Resource_cvkbw")])
 keys_as_string = "D4F4A4 F4A4C5 C4E4G4 "
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="test" type="Node" parent="." unique_id=1888311494]
+script = ExtResource("2_6csqb")
+spell_name = "test"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_6q4dg")])
+keys_as_string = "D3 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

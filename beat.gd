@@ -34,12 +34,20 @@ func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	pass
 static func get_beat_adherance():
 	return get_beat_instance().beat_timer.get_trigger_value()
-	pass;	
+	pass;
+var boss_music_on=false		
 func _process(delta: float) -> void:
 	beat_no+=bpm/60.0*delta
-		
+	if Input.is_action_just_pressed(&'C'):
+		boss_music_on=!boss_music_on
+		if boss_music_on:
+			create_tween().tween_property($boss,^'volume_db',0.0,2).set_ease(Tween.EASE_IN)
+			create_tween().tween_property($base,^'volume_db',-80.0,4)
+		else:
+			create_tween().tween_property($boss,^'volume_db',-80.0,4)
+			create_tween().tween_property($base,^'volume_db',0.0,2)
 func beat_timeout():
-	$beatsound.play(0)
+	#$beatsound.play(0)c
 	beat.emit()
 	pass
 func bar_timeout():
@@ -67,8 +75,6 @@ func get_beat(x: int, y: int, bpm: float) -> Dictionary:
 		"beat_duration": beat_duration,
 		"bar_duration": measure_duration
 	}
-
-
 
 
 func _on_open_window_timeout() -> void:
