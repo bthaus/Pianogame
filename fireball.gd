@@ -6,9 +6,14 @@ func trigger(spell:Spell,error_count):
 	ball.damage=damage*(2-error_count)
 	ball.scale*=(2-error_count)
 	ball.global_position=spell.player.projectile_pos.global_position
-	ball.direction=spell.player.face_direction
+	ball.direction=get_direction(spell)
 	ball.target=spell.player.enemy_scanner.current_target
+	ball.error_count=error_count
 	spell.player.add_sibling(ball)
 	spell.player.enemy_scanner.target_changed.connect(func(target:Enemy):if ball!=null:ball.target=target)
 	super(spell,error_count)
+	pass
+
+func get_direction(spell:Spell):
+	return spell.player.face_direction
 	pass

@@ -43,5 +43,28 @@ shape = SubResource("CircleShape2D_ons1q")
 texture = ExtResource("3_wko77")
 script = ExtResource("4_pb3n0")
 
+[node name="C" type="ColorRect" parent="." index="11" unique_id=1566885859]
+offset_left = -3.0
+offset_top = -10.0
+offset_right = -2.0
+offset_bottom = -6.0
+
+[node name="D" type="ColorRect" parent="." index="12" unique_id=1122427958]
+offset_left = -1.0
+offset_top = -10.0
+offset_bottom = -6.0
+
+[node name="E" type="ColorRect" parent="." index="13" unique_id=1834849992]
+offset_left = 1.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = -6.0
+
+[node name="F" type="ColorRect" parent="." index="14" unique_id=1667497830]
+offset_left = 3.0
+offset_top = -10.0
+offset_right = 4.0
+offset_bottom = -6.0
+
 [connection signal="body_entered" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_entered"]
 [connection signal="body_exited" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_exited"]

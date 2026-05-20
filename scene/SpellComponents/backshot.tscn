@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bfqm08gan72yu"]
+
+[ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="1_wi21p"]
+[ext_resource type="Script" uid="uid://bsqpy8vhwh5o0" path="res://backshot.gd" id="2_rdr0a"]
+
+[node name="SpellComponent" unique_id=179673675 instance=ExtResource("1_wi21p")]
+script = ExtResource("2_rdr0a")
+damage = 15

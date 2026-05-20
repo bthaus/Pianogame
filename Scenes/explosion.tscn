@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://pwh3ksna60ud"]
+
+[ext_resource type="Script" uid="uid://70qdaxbdoqyd" path="res://explosion.gd" id="1_aayv4"]
+[ext_resource type="Texture2D" uid="uid://dupmuujpgsye2" path="res://Assets/effects/explosion/e1.png" id="2_48id1"]
+[ext_resource type="Texture2D" uid="uid://bxpiql36duy2h" path="res://Assets/effects/explosion/e2.png" id="3_h4yxj"]
+[ext_resource type="Texture2D" uid="uid://v5ilaqjcp02" path="res://Assets/effects/explosion/e3.png" id="4_021c3"]
+[ext_resource type="Texture2D" uid="uid://bh6gcox2kog7p" path="res://Assets/effects/explosion/e4.png" id="5_fjw3j"]
+[ext_resource type="Texture2D" uid="uid://byfwqe58mjrl0" path="res://Assets/effects/explosion/e5.png" id="6_pyedb"]
+[ext_resource type="Texture2D" uid="uid://deh6752cyqxps" path="res://Assets/effects/explosion/e6.png" id="7_kqepn"]
+[ext_resource type="Texture2D" uid="uid://c4twhwjx7mqic" path="res://Assets/effects/explosion/e7.png" id="8_drq55"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a801j"]
+radius = 66.61081
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_88btf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_48id1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h4yxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_021c3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fjw3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pyedb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kqepn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_drq55")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Explosion" type="Node2D" unique_id=93445483]
+script = ExtResource("1_aayv4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=172000796]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1848536331]
+shape = SubResource("CircleShape2D_a801j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D" unique_id=335261315]
+position = Vector2(2.000023, -4.000023)
+scale = Vector2(0.5509091, 0.5509091)
+sprite_frames = SubResource("SpriteFrames_88btf")
+autoplay = "default"
+frame = 6
+frame_progress = 1.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="animation_finished" from="Area2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

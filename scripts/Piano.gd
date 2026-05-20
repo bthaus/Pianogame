@@ -15,7 +15,7 @@ var allow_input_always=true
 var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
-var easy_move=true
+var easy_move=false
 func register_error(e:EventStatus):
 	
 	if e.type!=EventStatus.StatusType.Unstarted:
@@ -61,6 +61,7 @@ func add_spell(spell:Spell):
 	pass	
 var last_movement_event:PianoEvent	
 func handle_movement(event:PianoEvent):
+	player.highlight_move_key(event.get_key())
 	if event.get_key()=="G2":
 		player.jump()
 		return

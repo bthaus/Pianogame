@@ -2,6 +2,7 @@ extends Area2D
 class_name Projectile
 
 var direction:Vector2
+var error_count
 @export var speed:int=200
 @export var damage=10
 # Called when the node enters the scene tree for the first time.

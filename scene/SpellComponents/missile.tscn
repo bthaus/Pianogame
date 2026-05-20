@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d1ea064snh52p"]
+
+[ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="1_64of4"]
+[ext_resource type="Script" uid="uid://y5suhsf4t2f4" path="res://scene/SpellComponents/exploding_homing.gd" id="2_a77rf"]
+[ext_resource type="Texture2D" uid="uid://bjsecjxamx4tf" path="res://Assets/Tiles/Tiles/tile_0069.png" id="3_ws3de"]
+
+[node name="SpellComponent" unique_id=179673675 instance=ExtResource("1_64of4")]
+
+[node name="Area2D" parent="." index="0" unique_id=1928616845]
+script = ExtResource("2_a77rf")
+speed = null
+damage = null
+
+[node name="AnimatedSprite2D" parent="Area2D" index="1" unique_id=981805135]
+position = Vector2(-9.536743e-07, 9.536743e-07)
+rotation = -1.5707964
+scale = Vector2(0.75528467, 0.75528467)
+texture = ExtResource("3_ws3de")
