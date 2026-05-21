@@ -51,6 +51,7 @@ func move(direction,key="A1"):
 
 var last_pos=Vector2.ZERO	
 func _physics_process(delta: float) -> void:
+	if $AnimatedSprite2D.animation=="hurt":return
 	if target_position==null:return
 	map_position=map.local_to_map(global_position)as Vector2
 	if hp<=0:
@@ -76,6 +77,8 @@ func determine_x_velocity(delta):
 	velocity.x = (target_x - global_position.x) * 10.0
 	pass	
 func play_anims(velocity):
+	if $AnimatedSprite2D.animation=="hurt":
+		return
 	if jumping:
 		$AnimatedSprite2D.play(&'jump')
 	elif abs(velocity.x)>1:
@@ -86,6 +89,7 @@ func play_anims(velocity):
 
 var shields=[]
 func hit(damage):
+	
 	if not shields.is_empty():
 		for shield in shields:
 			if damage <= 0:
@@ -97,6 +101,8 @@ func hit(damage):
 			shield.hp -= absorbed
 			damage -= absorbed
 	hp-=damage
+	if damage>0:
+		$AnimatedSprite2D.play(&'hurt')
 	$AnimatedSprite2D.play(&'hurt')
 	if hp<0:
 		die()

@@ -16,9 +16,19 @@ var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
 var easy_move=true
+var number_of_errors_unstarted=0:
+	set(value):
+		number_of_errors_unstarted=clamp(value,0,50)
+		player.hud.update()
+		if number_of_errors_unstarted>=5:hit_player()
+func hit_player():
+	player.hit(5)
+	pass		
 func register_error(e:EventStatus):
-	
+	if e.type==EventStatus.StatusType.Unstarted:
+		number_of_errors_unstarted+=1
 	if e.type!=EventStatus.StatusType.Unstarted:
+		
 		if e.related_sequence.error_tracked:
 			return
 		e.related_sequence.error_tracked=true
@@ -117,7 +127,7 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 	
 func handle_input():
 	traverse_sequences()
-	check_inputs()
+	#check_inputs()
 	
 	var rem=[]
 	for key:String in keyController.active_keys.keys():
@@ -133,15 +143,16 @@ func remove_event_from_history(error:EventStatus,p):
 	if error!=null:
 		register_error(error)
 	pass	
+	
 func check_inputs():
 	var rem=[]
 	for a:PianoEvent in input_history.content:
+		if movement_keys.has(a.get_key()):continue
 		if a.related_sequences.is_empty():
 			rem.append(a)
 			
 	for r:PianoEvent in rem: 
 		r.error_detected.emit(EventStatus.new(EventStatus.StatusType.Unstarted,r,null))
-				
 	
 	pass;	
 	
@@ -220,4 +231,10 @@ func _on_key_controller_key_released(piano_event: PianoEvent) -> void:
 		handle_easy_movement(piano_event)
 	input_happened=true
 	input_handled=false
+	pass # Replace with function body.
+
+
+func _on_beat_beat() -> void:
+	number_of_errors_unstarted-=1
+	check_inputs()
 	pass # Replace with function body.

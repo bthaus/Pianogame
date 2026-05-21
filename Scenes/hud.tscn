@@ -14,6 +14,10 @@ shader_parameter/wave_speed = 9.0
 shader_parameter/left_falloff = 1.0
 shader_parameter/right_falloff = 1.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_t1xeu"]
+font_size = 58
+font_color = Color(0, 0, 0, 1)
+
 [node name="HUD" type="CanvasLayer" unique_id=1141357918 node_paths=PackedStringArray("piano")]
 script = ExtResource("1_e0onf")
 piano = NodePath("Piano")
@@ -90,3 +94,11 @@ rotation = -3.1415927
 scale = Vector2(15.250204, -1)
 texture = ExtResource("4_t1xeu")
 script = ExtResource("5_t1xeu")
+
+[node name="errors" type="Label" parent="." unique_id=1879201292]
+offset_left = 1783.0
+offset_top = 133.0
+offset_right = 1884.0
+offset_bottom = 200.0
+text = "0"
+label_settings = SubResource("LabelSettings_t1xeu")

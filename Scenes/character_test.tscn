@@ -17,7 +17,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_jb3v0")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -70,8 +70,7 @@ shape = SubResource("CapsuleShape2D_jb3v0")
 position = Vector2(0, -13.999996)
 scale = Vector2(0.2647059, 0.2647059)
 sprite_frames = SubResource("SpriteFrames_h4av5")
-animation = &"walk"
-frame_progress = 0.91753906
+animation = &"hurt"
 
 [node name="ground_box" type="Area2D" parent="." unique_id=156594418]
 visible = false

@@ -67,6 +67,7 @@ func determine_x_velocity(delta):
 var deflecting=false	
 var deflect_spell:DeflectSpell
 func hit(damage):
+	
 	if deflecting:
 		deflect_spell.successful_deflect()
 		l.d("deflect successfull")
@@ -89,3 +90,8 @@ func easy_move(direction):
 func die():
 	get_tree().reload_current_scene()
 	
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.play(&'stand')
+	pass # Replace with function body.

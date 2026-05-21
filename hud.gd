@@ -11,6 +11,7 @@ func _ready() -> void:
 	beat=Beat.get_beat_instance()
 	pass # Replace with function body.
 func update():
+	$errors.text=str(player.piano.number_of_errors_unstarted)
 	hp_bar.max_value=player.max_hp
 	hp_bar.value=player.hp
 	$HPbar/max.text=str(player.max_hp)
