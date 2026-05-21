@@ -21,6 +21,9 @@ zoom = Vector2(4.075, 4.075)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
+[node name="CollisionShape2D" parent="." index="1" unique_id=1604291212]
+visible = true
+
 [node name="CollisionShape2D" parent="front" parent_id_path=PackedInt32Array(1177973524) index="0" unique_id=1049179281]
 position = Vector2(18, -13)
 

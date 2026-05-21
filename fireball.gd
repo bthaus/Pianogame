@@ -4,7 +4,8 @@ class_name Fireball
 func trigger(spell:Spell,error_count):
 	var ball:HomingProjectile=$Area2D.duplicate()
 	ball.damage=damage*(2-error_count)
-	ball.scale*=(2-error_count)
+	ball.scale*=(clamp(2-error_count,0,2))
+	
 	ball.global_position=spell.player.projectile_pos.global_position
 	ball.direction=get_direction(spell)
 	ball.target=spell.player.enemy_scanner.current_target

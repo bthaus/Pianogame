@@ -20,4 +20,6 @@ func get_spell_component()->SpellComponent:
 func trigger_spell_component(from_node:SequenceNode, spell:Spell,error_count):
 	if get_spell_component()!=null:
 		loaded_spell_component.trigger(spell,error_count)
+		return true
+	return false	
 	pass;

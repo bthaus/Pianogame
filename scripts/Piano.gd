@@ -15,7 +15,7 @@ var allow_input_always=true
 var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
-var easy_move=false
+var easy_move=true
 func register_error(e:EventStatus):
 	
 	if e.type!=EventStatus.StatusType.Unstarted:

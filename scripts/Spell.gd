@@ -13,6 +13,15 @@ var state:State=State.Ready
 @export var cooldown_in_beats:float
 @export var keys_as_string:String=""
 @export var input_line:String
+
+
+@export var beats:float=0
+@export_tool_button("set_beats") var set_beats_button=set_beats
+
+@export var component_for_all:PackedScene
+@export_tool_button("set_components") var set_comp_button=set_comps
+
+
 @export_tool_button("remove all units") var remove=remove_all_units
 @export var _disabled=false
 var tree:Sequence_Tree
@@ -21,7 +30,16 @@ signal cooldown_passed
 signal triggered
 signal spell_started
 signal spell_failure_or_success
-
+func set_beats():
+	var off=0
+	for k:KeyUnit in keys:
+		k.beat=off
+		off+=beats
+	pass
+func set_comps():
+	for k:KeyUnit in keys:
+		k.spell_component=component_for_all
+	pass;	
 func remove_all_units():
 	keys.clear()
 	
@@ -64,11 +82,12 @@ func trigger_spell():
 func trigger_node(node:SequenceNode,error_count):
 	node.key_unit.trigger_spell_component(node,self,error_count)
 	pass;
+var cooldown_timer:SceneTreeTimer	
 func start_cooldown():
 	if cooldown_in_beats==0:return
 	state=State.Cooldown
-	var timer=get_tree().create_timer(util.seconds_from_beats_and_bpm(cooldown_in_beats,Global.bpm))
-	timer.timeout.connect(on_cooldown_passed)
+	cooldown_timer=get_tree().create_timer(util.seconds_from_beats_and_bpm(cooldown_in_beats,Global.bpm))
+	cooldown_timer.timeout.connect(on_cooldown_passed)
 	pass
 	
 func on_first_key_played():
@@ -94,6 +113,7 @@ func on_cooldown_passed():
 func on_perfect_play():
 	pass;
 func on_cancel():
+	l.e("CANCELLED")
 	pass;
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():

@@ -63,6 +63,24 @@ func determine_x_velocity(delta):
 			friction * delta
 		)
 	pass
+	
+var deflecting=false	
+var deflect_spell:DeflectSpell
+func hit(damage):
+	if deflecting:
+		deflect_spell.successful_deflect()
+		l.d("deflect successfull")
+		return
+	super(damage)
+	pass	
+func deflect():
+	deflecting=true
+	$AnimatedSprite2D.modulate=Color(100,100,100,100)
+	get_tree().create_timer(0.25).timeout.connect(func():
+		deflecting=false
+		$AnimatedSprite2D.modulate=Color(1,1,1,1)
+		)
+	pass	
 func easy_move(direction):
 	easy_on=true
 	if direction!=0:face_direction=Vector2(direction,0)
