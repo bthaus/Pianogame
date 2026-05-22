@@ -15,10 +15,11 @@ var allow_input_always=true
 var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
-var easy_move=true
+static var easy_move=true
 var number_of_errors_unstarted=0:
 	set(value):
-		number_of_errors_unstarted=clamp(value,0,50)
+		if not player:return
+		number_of_errors_unstarted=clamp(value,0,5)
 		player.hud.update()
 		if number_of_errors_unstarted>=5:hit_player()
 func hit_player():
@@ -49,25 +50,29 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	for s:Spell in equipped_spells:
 		add_spell_visual(s)
-	var off=0	
-	for s:SequenceTreeVisual in $trees.get_children():
-		s.translate(Vector2(off,0))
-		var addoff=s.tree.get_last_node().beat*50
-		off+=150+addoff
-	
+
 	pass
 func add_spell_visual(spell):
 	var visual=load('res://Scenes/note_visual.tscn').instantiate()
+	visual.spell=spell
 	$trees.add_child(visual)
 	visual.set_up(spell)
 	
 	print("visual set up")
+	var off=0	
+	for s:SequenceTreeVisual in $trees.get_children():
+		s.position=Vector2(off,0)
+		var addoff=s.tree.get_last_node().beat*50
+		off+=150+addoff
 	
 	pass;	
 func add_spell(spell:Spell):
+	spell.player=player
 	equipped_spells.append(spell)
 	add_child(spell)
 	spell.setup()
+	add_spell_visual(spell)
+	
 	pass	
 var last_movement_event:PianoEvent	
 func handle_movement(event:PianoEvent):

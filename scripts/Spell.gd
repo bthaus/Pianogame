@@ -66,6 +66,7 @@ func on_failure_or_success():
 	pass
 func setup():
 	tree=parse_spell_into_sequencetree()
+	prepare_spell()
 	pass;
 func prepare_spell():
 	l.e(str(keys.size()))

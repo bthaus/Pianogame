@@ -15,7 +15,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_1exfc")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -51,8 +51,6 @@ hp = 20
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
 scale = Vector2(-0.265, 0.265)
 sprite_frames = SubResource("SpriteFrames_wovta")
-animation = &"stand"
-frame_progress = 0.0
 
 [node name="PlayerDetection" type="Area2D" parent="." index="6" unique_id=1983412877]
 collision_layer = 0

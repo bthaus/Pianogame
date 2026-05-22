@@ -11,13 +11,23 @@ var spells
 var easy_on=false
 var on_color=Color(1.0, 0.0, 0.0, 1.0)
 var off_color=Color(1.0, 1.0, 1.0, 1.0)
-
+var heals=5:
+	set(value):
+		heals=clamp(value,0,5)
+		hud.update()
 var since_last=0
 func _process(delta: float) -> void:
 	since_last+=delta
 	if since_last>1:
 		highlight_move_key("none")
 	pass
+	
+func unlock(spell_name):
+	if learned_spells.has(spell_name):return
+	var spell=SpellFactory.get_spell(spell_name)
+	piano.add_spell(spell)
+	learned_spells.append(spell_name)
+	pass;	
 func highlight_move_key(key:String):
 	
 	$C.color=off_color
@@ -32,18 +42,20 @@ func highlight_move_key(key:String):
 	since_last=0
 	pass
 func _ready() -> void:
-
+	
 	piano=hud.piano
 	if piano.easy_move:movement_speed/=2
-	spells=SpellFactory.get_all_spells()
 	piano.player=self
+	call_deferred("add_learned_spells")
 	
-	for s:Spell in spells:
-		s.player=self
-		s.prepare_spell()
-		piano.add_spell(s)
-		
 	super()
+func add_learned_spells():
+	for spell in SpellFactory.get_all_spells():
+		learned_spells.append(spell)
+	for s in learned_spells:
+		piano.add_spell(SpellFactory.get_spell(s))
+		
+	pass;	
 func determine_x_velocity(delta):
 	# Target horizontal speed
 	if not easy_on:super(delta)
@@ -88,10 +100,5 @@ func easy_move(direction):
 	easy_move_direction=direction
 	pass;	
 func die():
-	get_tree().reload_current_scene()
-	
-
-
-func _on_animated_sprite_2d_animation_finished() -> void:
-	$AnimatedSprite2D.play(&'stand')
-	pass # Replace with function body.
+	get_tree().change_scene_to_file('res://tests/worldtest.tscn')
+static var learned_spells=[]	

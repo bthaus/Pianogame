@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://2yvq6yiiep7y"]
+
+[ext_resource type="Texture2D" uid="uid://c8oyuseh0xa61" path="res://Assets/UI/note.png" id="1_1ehe0"]
+[ext_resource type="Script" uid="uid://lekjychlp37n" path="res://Scenes/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://ceiv5syq5aaws" path="res://Scenes/piano.tscn" id="3_n45e2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_opfnp"]
+font_size = 56
+
+[node name="Node2D" type="Node2D" unique_id=1513552021 node_paths=PackedStringArray("piano")]
+script = ExtResource("1_ce3w2")
+piano = NodePath("Piano2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2053478771]
+offset_right = 1936.0
+offset_bottom = 1094.0
+color = Color(0, 0, 0, 1)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2091413007]
+position = Vector2(-5, -196)
+
+[node name="Line2D" type="Line2D" parent="Node2D" unique_id=453446664]
+position = Vector2(0.25437737, 0)
+scale = Vector2(1.0133883, 1)
+points = PackedVector2Array(-9, 1000, 1913, 1000)
+
+[node name="Line2D2" type="Line2D" parent="Node2D" unique_id=1501245179]
+scale = Vector2(1.0133883, 1)
+points = PackedVector2Array(-9, 900, 1913, 900)
+
+[node name="Line2D3" type="Line2D" parent="Node2D" unique_id=1158601970]
+scale = Vector2(1.0133883, 1)
+points = PackedVector2Array(-9, 800, 1913, 800)
+
+[node name="Line2D4" type="Line2D" parent="Node2D" unique_id=171525246]
+scale = Vector2(1.0133883, 1)
+points = PackedVector2Array(-9, 700, 1913, 700)
+
+[node name="Line2D5" type="Line2D" parent="Node2D" unique_id=57553474]
+scale = Vector2(1.0133883, 1)
+points = PackedVector2Array(-9, 600, 1913, 600)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=832794225]
+clip_children = 1
+position = Vector2(326, 659.00006)
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("1_1ehe0")
+
+[node name="ColorRect2" type="ColorRect" parent="Sprite2D" unique_id=1688326793]
+offset_left = -206.95653
+offset_top = -400.0
+offset_right = 265.04346
+offset_bottom = 429.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=476141343]
+clip_children = 1
+position = Vector2(903, 551)
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("1_1ehe0")
+
+[node name="ColorRect2" type="ColorRect" parent="Sprite2D2" unique_id=803822200]
+offset_left = -241.73914
+offset_top = -400.0001
+offset_right = 230.26086
+offset_bottom = 428.9999
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=958561738]
+clip_children = 1
+position = Vector2(1349, 448)
+scale = Vector2(0.575, 0.575)
+texture = ExtResource("1_1ehe0")
+
+[node name="ColorRect2" type="ColorRect" parent="Sprite2D3" unique_id=1322237998]
+offset_left = -206.95653
+offset_top = -400.0
+offset_right = 265.04346
+offset_bottom = 429.0
+
+[node name="Label" type="Label" parent="." unique_id=1137811379]
+offset_left = 341.0
+offset_top = 797.0
+offset_right = 706.0
+offset_bottom = 977.0
+text = "Start Spellcaster"
+label_settings = SubResource("LabelSettings_opfnp")
+
+[node name="Label2" type="Label" parent="." unique_id=1905944635]
+offset_left = 923.0
+offset_top = 700.0
+offset_right = 1288.0
+offset_bottom = 880.0
+text = "Start Base Defense"
+label_settings = SubResource("LabelSettings_opfnp")
+
+[node name="Label3" type="Label" parent="." unique_id=61987629]
+offset_left = 1365.9999
+offset_top = 597.0
+offset_right = 1730.9999
+offset_bottom = 777.0
+text = "easy_move"
+label_settings = SubResource("LabelSettings_opfnp")
+
+[node name="Piano2" parent="." unique_id=430235116 instance=ExtResource("3_n45e2")]
+
+[node name="CheckBox" type="CheckBox" parent="." unique_id=2086792323]
+offset_left = 1694.0
+offset_top = 599.0
+offset_right = 1871.0
+offset_bottom = 700.0
+button_pressed = true
+expand_icon = true

@@ -18,7 +18,7 @@ func update():
 	var t=1
 	var color=remap(player.hp,0,player.max_hp,0,t)
 	hp_bar.self_modulate=Color(t-color,color,0,t)
-	
+	$heals.text="+"+str(player.heals)
 	var max_shield_hp=1
 	var shield_hp=0
 	for s in player.shields:

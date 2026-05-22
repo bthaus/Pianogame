@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://du67mlc3t6tpp"]
+
+[ext_resource type="Script" uid="uid://c2qtws8jml0tj" path="res://unlockable.gd" id="1_tg4ot"]
+[ext_resource type="Texture2D" uid="uid://bcbv5se0fjuax" path="res://Assets/Tiles/Tiles/tile_0028.png" id="2_jva25"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jva25"]
+
+[node name="Node2D" type="Node2D" unique_id=2045563660]
+script = ExtResource("1_tg4ot")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=516360726]
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=645780266]
+shape = SubResource("CircleShape2D_jva25")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1999917638]
+texture = ExtResource("2_jva25")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

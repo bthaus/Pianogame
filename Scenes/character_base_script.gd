@@ -16,12 +16,13 @@ var face_direction=Vector2.RIGHT:
 var map_position	
 var target_position
 signal hp_changed()
-var max_hp=0
+var max_hp=100
 signal died
 var frozen=false
+
 @export var hp=100:
 	set(value):
-		hp=value
+		hp=clamp(value,0,max_hp)
 		l.d("hp:" +str(hp))
 		hp_changed.emit()
 func _process(delta: float) -> void:
@@ -65,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	var x=global_position.x		
 	move_and_slide()	
 	var x2=global_position.x
+	if global_position.y>500:die()
 	#if x==x2:
 		#target_position.x=map_position.x
 	pass
@@ -104,7 +106,7 @@ func hit(damage):
 	if damage>0:
 		$AnimatedSprite2D.play(&'hurt')
 	$AnimatedSprite2D.play(&'hurt')
-	if hp<0:
+	if hp<=0:
 		die()
 	pass
 func die():
@@ -117,4 +119,9 @@ func die():
 	pass
 func _on_ground_box_body_entered(body: Node2D) -> void:
 	jumping=false
+	pass # Replace with function body.
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$AnimatedSprite2D.play(&'stand')
 	pass # Replace with function body.

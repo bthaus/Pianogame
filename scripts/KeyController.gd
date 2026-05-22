@@ -6,11 +6,13 @@ signal key_released(piano_event: PianoEvent)
 @export var debug_active = true
 var active_keys: Dictionary[String, PianoEvent] = {}
 signal before_key_released(piano_event: PianoEvent)
-
+static var midi_open=false
 func _ready():
+	if midi_open:return
+	midi_open=true
 	OS.open_midi_inputs()
 	print(OS.get_connected_midi_inputs())
-
+	
 func _input(input_event):
 	if input_event is InputEventMIDI:
 		input_event = PianoEvent.new(input_event)

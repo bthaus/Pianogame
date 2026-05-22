@@ -39,7 +39,7 @@ func max_proximity_to_player():
 	
 func shoot():
 	if frozen:return
-	if hp<=0:return
+	if hp<=0:die()
 	var p=$Projectile.duplicate()
 	add_sibling(p)
 	p.global_position=global_position

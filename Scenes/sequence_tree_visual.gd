@@ -4,6 +4,10 @@ class_name SequenceTreeVisual
 var tree:Sequence_Tree
 const line_offset=30
 @onready var indicator:Line2D=$indicator
+var spell:Spell
+func _ready() -> void:
+	print("Hi????ß")
+	pass
 func set_up(spell:Spell):
 	spell.cooldown_passed.connect(func():$notes.modulate=Color(1,1,1,1))
 	spell.triggered.connect(func():$notes.modulate=Color(1,1,1,0.5))

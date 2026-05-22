@@ -25,10 +25,10 @@ static func get_spell(spellname):
 	
 	
 static func get_all_spells():
-	var retarr=[] as Array[Spell]
+	var retarr=[] 
 	for spell in instance.get_children():
 		if spell._disabled:continue
-		retarr.append(spell.duplicate())
+		retarr.append(spell.spell_name)
 	
 	return retarr	
 	pass	

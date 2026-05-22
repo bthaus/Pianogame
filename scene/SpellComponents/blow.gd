@@ -14,7 +14,7 @@ func freeze(e:Enemy,error_count):
 	pass
 		
 func set_up(spell:Spell):
-	scanner=$Area2D
+	scanner=$Area2D.duplicate()
 	$Area2D.global_position=spell.player.global_position
 	scanner.reparent(spell.player)
 	

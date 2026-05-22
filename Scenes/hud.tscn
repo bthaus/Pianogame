@@ -102,3 +102,10 @@ offset_right = 1884.0
 offset_bottom = 200.0
 text = "0"
 label_settings = SubResource("LabelSettings_t1xeu")
+
+[node name="heals" type="Label" parent="." unique_id=652675084]
+offset_left = 340.0
+offset_top = 1022.0
+offset_right = 368.0
+offset_bottom = 1045.0
+text = "+5"
