@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bchy4yc2xn3xy"]
+
+[ext_resource type="Script" uid="uid://1donp8g0bpkh" path="res://enemyspawner.gd" id="1_07s5y"]
+[ext_resource type="Texture2D" uid="uid://bwssgojnefi3s" path="res://Assets/Tiles/Tiles/tile_0013.png" id="2_ewccr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7h51p"]
+
+[node name="Enemyspawner" type="Node2D" unique_id=796078740]
+script = ExtResource("1_07s5y")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=647859363]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1056693258]
+shape = SubResource("RectangleShape2D_7h51p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=75020710]
+texture = ExtResource("2_ewccr")

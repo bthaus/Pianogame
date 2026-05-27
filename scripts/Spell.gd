@@ -14,6 +14,7 @@ var state:State=State.Ready
 @export var keys_as_string:String=""
 @export var input_line:String
 
+var accuracy_history=[]
 
 @export var beats:float=0
 @export_tool_button("set_beats") var set_beats_button=set_beats
@@ -75,7 +76,8 @@ func prepare_spell():
 	pass	
 func trigger_spell():
 	if state!=State.Ready:return
-	l.l(name+" triggered!")
+	
+	
 	on_trigger()
 	start_cooldown()
 	triggered.emit()

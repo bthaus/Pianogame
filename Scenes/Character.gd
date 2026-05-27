@@ -16,6 +16,10 @@ var heals=5:
 		heals=clamp(value,0,5)
 		hud.update()
 var since_last=0
+func increase_max_health():
+	max_hp+=25
+	hp+=25
+	pass
 func _process(delta: float) -> void:
 	since_last+=delta
 	if since_last>1:
@@ -85,6 +89,14 @@ func hit(damage):
 		l.d("deflect successfull")
 		return
 	super(damage)
+	pass	
+func heal(valu):
+	hp+=valu
+	var tw=create_tween()
+	tw.tween_property($AnimatedSprite2D, "self_modulate", Color(0,1,0,1), .25)
+	tw.tween_property($AnimatedSprite2D, "self_modulate", Color(1,1,1,1), .25)
+	tw.tween_property($AnimatedSprite2D, "self_modulate", Color(0,1,0,1), .25)
+	tw.tween_property($AnimatedSprite2D, "self_modulate", Color(1,1,1,1), .25)
 	pass	
 func deflect():
 	deflecting=true

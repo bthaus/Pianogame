@@ -63,11 +63,11 @@ func handle_releases(keys):
 				last_keys_released.append(key)
 				if last_keys_released.size()==0:
 					spell.on_first_key_last_unit_lifted()
-					l.d("first key lifted")
+					#l.d("first key lifted")
 	if last_keys_released.size()==current_node.key_unit.key.size():
 		last_keys_released.clear()
 		spell.on_all_last_keys_lifted()				
-		l.d("all keys lifted")	
+		#l.d("all keys lifted")	
 		unhighlight()
 		remove.emit()
 		if current_node.outgoing_edge!=null:
@@ -87,6 +87,7 @@ func traverse(key_dic,beat):
 		var _relative_beat=beat-start_beat
 		var _beat_diff=abs(current_node.outgoing_edge.to_node.beat-_relative_beat)
 		if _beat_diff>current_node.outgoing_edge.to_node.beat/2:
+			error_count+=_beat_diff
 			return
 		var beat_adherance_for_first_node=0
 		if is_first_node():
@@ -98,7 +99,7 @@ func traverse(key_dic,beat):
 		progressed=true
 		last_progressed_beat=beat
 		notation+=util.strarr_to_string(next_keys)+" "
-		l.l(spell.name+"traversed! current = "+notation)
+	
 		traversed.emit(current_node)
 		current_node.hits+=1
 		
@@ -110,6 +111,10 @@ func traverse(key_dic,beat):
 		spell.trigger_node(current_node,error_count)
 		mark_input_events(key_dic,next_keys)
 		if current_node.outgoing_edge==null:
+			spell.accuracy_history.push_back(error_count)
+			if error_count<0.5:
+				spell.player.heal(5)
+			print(spell.accuracy_history)
 			finish()
 			status=SequenceStatus.Success
 	

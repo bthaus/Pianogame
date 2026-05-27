@@ -16,9 +16,19 @@ var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
 static var easy_move=true
+var upgrade_values=[10,15,25,40]
+var consecutive_spells_without_error=0:
+	set(value):
+		consecutive_spells_without_error=value
+		if consecutive_spells_without_error==upgrade_values.front():
+			player.increase_max_health()
+			upgrade_values.pop_front()
+		pass
 var number_of_errors_unstarted=0:
 	set(value):
 		if not player:return
+		if number_of_errors_unstarted<value:
+			consecutive_spells_without_error=0
 		number_of_errors_unstarted=clamp(value,0,5)
 		player.hud.update()
 		if number_of_errors_unstarted>=5:hit_player()
@@ -36,7 +46,7 @@ func register_error(e:EventStatus):
 	e.print_info()
 	if e.type!=e.StatusType.Success:
 		error_count+=1
-		l.d(str(error_count))
+		
 		
 	pass
 
@@ -191,7 +201,7 @@ func timeout_sequences():
 		if s.is_timeout(beat.beat_no):
 			s.done=true
 			remove.append(s)
-			l.d("removed "+s.spell.spell_name)
+			
 
 		for r:Sequence in remove:
 			r.cancel()
