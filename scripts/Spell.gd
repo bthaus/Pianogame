@@ -14,7 +14,7 @@ var state:State=State.Ready
 @export var keys_as_string:String=""
 @export var input_line:String
 
-var accuracy_history=[]
+static var accuracy_history:Dictionary={}
 
 @export var beats:float=0
 @export_tool_button("set_beats") var set_beats_button=set_beats
@@ -67,6 +67,9 @@ func on_failure_or_success():
 	pass
 func setup():
 	tree=parse_spell_into_sequencetree()
+	if not accuracy_history.has(spell_name):accuracy_history[spell_name]=[]
+	if not upgrade_values.has(spell_name):upgrade_values[spell_name]=[2,15,25,40]
+	if not Sequence.beat_adherance.has(spell_name):Sequence.beat_adherance[spell_name]=[]
 	prepare_spell()
 	pass;
 func prepare_spell():
@@ -74,6 +77,39 @@ func prepare_spell():
 	for k:KeyUnit in keys:
 		k.set_up(self)
 	pass	
+
+
+static var upgrade_values:Dictionary
+var accuracy_threshold=0.5
+func add_accuracy_to_history(val):
+	accuracy_history[spell_name].push_back(
+		{"val"=val,
+				"hp"=player.hp,
+				"enemies"=Enemy.num_alive,
+				"time"=Time.get_ticks_msec()}
+				)
+		
+	
+	var last_corrects=get_number_of_correct_last_spells()
+	if last_corrects>upgrade_values[spell_name].front():
+		upgrade_spell()		
+	pass
+func get_number_of_correct_last_spells():
+	var count=0
+	for i in range(accuracy_history[spell_name].size()-1,0,-1):
+		count+=1
+		if accuracy_history[spell_name][i]["val"]>accuracy_threshold:break
+	return count
+	pass	
+func upgrade_spell():
+	upgrade_values[spell_name].pop_front()
+	
+	player.level_up()
+	for key:KeyUnit in keys:
+		if key.get_spell_component()!=null:
+			key.get_spell_component().upgrade_spell_component()
+	pass	
+	
 func trigger_spell():
 	if state!=State.Ready:return
 	

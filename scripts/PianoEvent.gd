@@ -56,10 +56,10 @@ func _print_midi_info():
 	if midi_event.message==MIDIMessage.MIDI_MESSAGE_NONE:return
 	if midi_event.message==MIDIMessage.MIDI_MESSAGE_ACTIVE_SENSING:return
 	
-	if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_ON:
-		l.l(get_key()+" pressed!")
-	if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_OFF:
-		l.l(get_key()+" released!")
+	#if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_ON:
+		#l.l(get_key()+" pressed!")
+	#if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_OFF:
+		#l.l(get_key()+" released!")
 
 func handle_signal(pressed:Callable,released:Callable):
 	if midi_event.message==MIDIMessage.MIDI_MESSAGE_NOTE_ON:

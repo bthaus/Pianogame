@@ -73,6 +73,10 @@ func handle_releases(keys):
 		if current_node.outgoing_edge!=null:
 			cancel()		
 	pass
+static var beat_adherance:Dictionary={}	
+var beat_adherance_for_first_node=0
+var enemies_alive=0
+var hp=0
 func traverse(key_dic,beat):
 	if done:
 		handle_releases(key_dic.keys())
@@ -89,9 +93,11 @@ func traverse(key_dic,beat):
 		if _beat_diff>current_node.outgoing_edge.to_node.beat/2:
 			error_count+=_beat_diff
 			return
-		var beat_adherance_for_first_node=0
+		beat_adherance_for_first_node=0
 		if is_first_node():
 			beat_adherance_for_first_node=Beat.get_beat_adherance()
+			enemies_alive=Enemy.num_alive
+			hp=spell.player.hp
 			if beat_adherance_for_first_node<=beat_adherance_tolerance:
 				beat_adherance_for_first_node=0
 			error_count+=beat_adherance_for_first_node
@@ -111,13 +117,19 @@ func traverse(key_dic,beat):
 		spell.trigger_node(current_node,error_count)
 		mark_input_events(key_dic,next_keys)
 		if current_node.outgoing_edge==null:
-			spell.accuracy_history.push_back(error_count)
+			spell.add_accuracy_to_history(error_count)
 			if error_count<0.5:
 				spell.player.heal(5)
 			print(spell.accuracy_history)
 			finish()
+			beat_adherance[spell.spell_name].push_back(
+				{"val"=beat_adherance_for_first_node,
+				"hp"=hp,
+				"enemies"=enemies_alive}
+				)
+			spell.player.piano.consecutive_spells_without_error+=1
 			status=SequenceStatus.Success
-	
+		
 	pass
 func is_first_node():
 	return current_node==first_node

@@ -23,7 +23,7 @@ var frozen=false
 @export var hp=100:
 	set(value):
 		hp=clamp(value,0,max_hp)
-		l.d("hp:" +str(hp))
+	
 		hp_changed.emit()
 func _process(delta: float) -> void:
 	pass

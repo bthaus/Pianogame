@@ -4,10 +4,13 @@ var beat:Beat
 var player:PlayerCharacter
 var aggrod=false
 @onready var center:Node2D=$center
-
+static var num_alive=0:
+	set(val):
+		num_alive=clamp(val,0,10000)
+		pass
 func _ready() -> void:
 	call_deferred("connect_beat")
-	
+	num_alive+=1
 	super()
 var counter=0	
 func connect_beat():
@@ -39,7 +42,9 @@ func max_proximity_to_player():
 	
 func shoot():
 	if frozen:return
-	if hp<=0:die()
+	if hp<=0:
+		die()
+		return
 	var p=$Projectile.duplicate()
 	add_sibling(p)
 	p.global_position=global_position
@@ -55,7 +60,10 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 func connect_action():
 	beat.beat.connect(shoot)
 	pass
-
+func die():
+	num_alive-=1
+	super()
+	pass
 func _on_projectile_body_entered(body: Node2D) -> void:
 	
 	pass # Replace with function body.

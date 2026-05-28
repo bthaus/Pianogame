@@ -16,7 +16,9 @@ var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
 static var easy_move=true
-var upgrade_values=[10,15,25,40]
+var upgrade_values=[5,15,25,40]
+
+static var total_errors=[]
 var consecutive_spells_without_error=0:
 	set(value):
 		consecutive_spells_without_error=value
@@ -29,6 +31,7 @@ var number_of_errors_unstarted=0:
 		if not player:return
 		if number_of_errors_unstarted<value:
 			consecutive_spells_without_error=0
+			total_errors.push_back({"value"=1,"hp"=player.hp,"enemies"=Enemy.num_alive,"time"=Time.get_ticks_msec()})
 		number_of_errors_unstarted=clamp(value,0,5)
 		player.hud.update()
 		if number_of_errors_unstarted>=5:hit_player()

@@ -18,3 +18,7 @@ func trigger(spell:Spell,error_count):
 func get_direction(spell:Spell):
 	return spell.player.face_direction
 	pass
+
+func upgrade_spell_component():
+	damage*=1.3
+	pass

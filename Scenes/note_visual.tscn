@@ -34,3 +34,9 @@ points = PackedVector2Array(0, -219, 0, 200)
 width = 2.0
 default_color = Color(0, 1, 1, 1)
 script = ExtResource("3_w0yvc")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1810070218]
+offset_top = -203.0
+offset_right = 97.0
+offset_bottom = -176.0
+value = 50.0

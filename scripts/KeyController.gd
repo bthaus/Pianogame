@@ -24,7 +24,7 @@ func _on_key_pressed(piano_event: PianoEvent) -> void:
 		print("stray press event caught")
 		return
 	active_keys[piano_event.get_key()] = piano_event
-	l.d(piano_event.get_key())
+
 	key_pressed.emit(piano_event)
 	pass # Replace with function body.
 

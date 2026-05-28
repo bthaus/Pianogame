@@ -17,6 +17,7 @@ var heals=5:
 		hud.update()
 var since_last=0
 func increase_max_health():
+	level_up()
 	max_hp+=25
 	hp+=25
 	pass
@@ -24,6 +25,8 @@ func _process(delta: float) -> void:
 	since_last+=delta
 	if since_last>1:
 		highlight_move_key("none")
+	if Input.is_action_just_pressed(&'C'):
+		DataStorer.save_player_data(self)	
 	pass
 	
 func unlock(spell_name):
@@ -54,8 +57,8 @@ func _ready() -> void:
 	
 	super()
 func add_learned_spells():
-	for spell in SpellFactory.get_all_spells():
-		learned_spells.append(spell)
+	#for spell in SpellFactory.get_all_spells():
+		#if not learned_spells.has(spell):learned_spells.append(spell)
 	for s in learned_spells:
 		piano.add_spell(SpellFactory.get_spell(s))
 		
@@ -90,6 +93,9 @@ func hit(damage):
 		return
 	super(damage)
 	pass	
+func level_up():
+	$level_up.emitting=true
+	pass	
 func heal(valu):
 	hp+=valu
 	var tw=create_tween()
@@ -112,5 +118,6 @@ func easy_move(direction):
 	easy_move_direction=direction
 	pass;	
 func die():
-	get_tree().change_scene_to_file('res://tests/worldtest.tscn')
+	DataStorer.save_player_data(self)
+	get_tree().change_scene_to_file("res://Scenes/stats.tscn")
 static var learned_spells=[]	

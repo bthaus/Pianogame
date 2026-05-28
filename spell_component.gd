@@ -7,7 +7,9 @@ func set_up(spell:Spell):
 func trigger(spell:Spell,error_count):
 
 	pass
+func upgrade_spell_component():
 	
+	pass	
 func on_spell_cancelled():
 	
 	pass;

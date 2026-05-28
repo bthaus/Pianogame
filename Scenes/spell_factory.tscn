@@ -322,12 +322,13 @@ spell_component = ExtResource("13_1mje3")
 
 [sub_resource type="Resource" id="Resource_y5ng2"]
 script = ExtResource("3_bgm8m")
-key = Array[String](["C4"])
+key = Array[String](["B3"])
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_w31ye"]
 script = ExtResource("3_bgm8m")
-beat = 0.667
-key = Array[String](["E4"])
+beat = 0.5
+key = Array[String](["D4"])
 spell_component = ExtResource("4_2u5f8")
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
@@ -486,6 +487,7 @@ script = ExtResource("2_6csqb")
 spell_name = "Simple"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_y5ng2"), SubResource("Resource_w31ye")])
 cooldown_in_beats = 2.0
-keys_as_string = "C4 E4 "
+keys_as_string = "B3 D4 "
 beats = 0.5
+component_for_all = ExtResource("4_2u5f8")
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

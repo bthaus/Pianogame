@@ -1,7 +1,7 @@
 extends SpellComponent
 
 var scanner:Area2D
-
+var freeze_duration=2
 func trigger(spell:Spell,error_count):
 	var enemies=scanner.get_overlapping_bodies()
 	
@@ -10,7 +10,7 @@ func trigger(spell:Spell,error_count):
 	pass
 func freeze(e:Enemy,error_count):
 	e.frozen=true
-	e.get_tree().create_timer(2-error_count).timeout.connect(func():e.frozen=false)
+	e.get_tree().create_timer(freeze_duration-error_count).timeout.connect(func():e.frozen=false)
 	pass
 		
 func set_up(spell:Spell):
@@ -20,3 +20,6 @@ func set_up(spell:Spell):
 	
 	super(spell)
 	pass
+
+func upgrade_spell_component():
+	freeze_duration*1.5

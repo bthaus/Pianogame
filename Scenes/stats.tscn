@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://qqkxcpw0tbic"]
+
+[ext_resource type="Script" uid="uid://d3ccvy5qo7hom" path="res://statistics_screen.gd" id="1_elwjw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_elwjw"]
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehh3d"]
+font_size = 19
+
+[node name="Node2D" type="Control" unique_id=1629836655]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_elwjw")
+
+[node name="Accuracies" type="ScrollContainer" parent="." unique_id=1707488873]
+layout_mode = 0
+offset_right = 459.0
+offset_bottom = 1071.0
+
+[node name="container" type="VBoxContainer" parent="Accuracies" unique_id=782773006]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Accuracies/container" unique_id=34265127]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Average Spell timing errors"
+label_settings = SubResource("LabelSettings_elwjw")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Accuracies/container" unique_id=1881994544]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "The lower, the better"
+label_settings = SubResource("LabelSettings_ehh3d")
+horizontal_alignment = 1
+
+[node name="Graph2D" type="Control" parent="." unique_id=1552377360]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 0
+offset_left = 582.0
+offset_top = 16.0
+offset_right = 1082.0
+offset_bottom = 516.0
+size_flags_horizontal = 3
+
+[node name="error_graph" type="Control" parent="." unique_id=1313179370]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 0
+offset_left = 572.0
+offset_top = 562.0
+offset_right = 1072.0
+offset_bottom = 1062.0
+size_flags_horizontal = 3
+
+[node name="hp_graph" type="Control" parent="." unique_id=1750268485]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 0
+offset_left = 1115.0
+offset_top = 563.0
+offset_right = 1615.0
+offset_bottom = 1063.0
+size_flags_horizontal = 3
+
+[node name="improvement_graph" type="Control" parent="." unique_id=690159581]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 0
+offset_left = 1162.0
+offset_top = 39.0
+offset_right = 1662.0
+offset_bottom = 539.0
+size_flags_horizontal = 3
+
+[node name="total_spells" type="Label" parent="." unique_id=278926166]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 963.0
+offset_right = 115.0
+offset_bottom = 986.0
+text = "Total spells:"
+
+[node name="total_errors" type="Label" parent="." unique_id=1871495407]
+layout_mode = 0
+offset_left = 29.26001
+offset_top = 996.72003
+offset_right = 124.26001
+offset_bottom = 1019.72003
+text = "Total errors:"
+
+[node name="average_errors" type="Label" parent="." unique_id=437215668]
+layout_mode = 0
+offset_left = 28.26001
+offset_top = 1021.72003
+offset_right = 120.26001
+offset_bottom = 1044.72
+text = "ratio:"
+
+[node name="Label" type="Label" parent="." unique_id=1488426766]
+layout_mode = 0
+offset_left = 748.0
+offset_top = 20.0
+offset_right = 878.0
+offset_bottom = 43.0
+text = "timing error History"
+
+[node name="Label2" type="Label" parent="." unique_id=358610890]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 570.0
+offset_right = 973.0
+offset_bottom = 593.0
+text = "Average error rates with enemies/spell"

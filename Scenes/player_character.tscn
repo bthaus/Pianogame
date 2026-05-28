@@ -5,9 +5,14 @@
 [ext_resource type="Script" uid="uid://lxard0ubsfbw" path="res://Scenes/enemy_scanner.gd" id="3_pb3n0"]
 [ext_resource type="Texture2D" uid="uid://4tpq73qea8qy" path="res://Assets/UI/pngegg(1).png" id="3_wko77"]
 [ext_resource type="Script" uid="uid://ccit15nmuovgs" path="res://Scenes/tracker.gd" id="4_pb3n0"]
+[ext_resource type="Texture2D" uid="uid://c8oyuseh0xa61" path="res://Assets/UI/note.png" id="6_ons1q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ons1q"]
 radius = 273.52878
+
+[sub_resource type="Gradient" id="Gradient_ajo0r"]
+offsets = PackedFloat32Array(0, 0.6363636, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.64, 0.64, 0.64, 0.6039216, 1, 1, 1, 0)
 
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
 collision_layer = 524290
@@ -72,6 +77,26 @@ offset_left = 3.0
 offset_top = -10.0
 offset_right = 4.0
 offset_bottom = -6.0
+
+[node name="level_up" type="CPUParticles2D" parent="." index="15" unique_id=805568361]
+position = Vector2(0.3736801, -17.151003)
+emitting = false
+texture = ExtResource("6_ons1q")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 15.67
+direction = Vector2(0, -1)
+spread = 32.39
+gravity = Vector2(0, 450)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+scale_amount_min = 0.01
+scale_amount_max = 0.03
+color = Color(18.892157, 18.892157, 2.7260628, 1)
+color_ramp = SubResource("Gradient_ajo0r")
 
 [connection signal="body_entered" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_entered"]
 [connection signal="body_exited" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_exited"]
