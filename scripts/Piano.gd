@@ -15,7 +15,7 @@ var allow_input_always=true
 var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
-static var easy_move=true
+static var easy_move=false
 var upgrade_values=[5,15,25,40]
 
 static var total_errors=[]

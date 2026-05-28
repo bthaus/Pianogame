@@ -41,6 +41,7 @@ func max_proximity_to_player():
 	return 70
 	
 func shoot():
+	
 	if frozen:return
 	if hp<=0:
 		die()

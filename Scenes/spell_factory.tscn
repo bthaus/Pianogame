@@ -384,9 +384,9 @@ keys_as_string = "E4 E4UP "
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
-[node name="Cascade" type="Node" parent="." unique_id=1674580299]
+[node name="cascade" type="Node" parent="." unique_id=1674580299]
 script = ExtResource("4_8pxlp")
-spell_name = "Cascade"
+spell_name = "cascade"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_b5g72"), SubResource("Resource_cwllq"), SubResource("Resource_yvnc8"), SubResource("Resource_pimwy"), SubResource("Resource_drsbb"), SubResource("Resource_ccbt2")])
 cooldown_in_beats = 3.0
 keys_as_string = "C4E4G4 G4 F4 E4 D4 C4 "
@@ -482,9 +482,9 @@ keys_as_string = "C3 D3 E3 F3 G3 F3 E3 D3 C3 "
 beats = 1.0
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
-[node name="Simple" type="Node" parent="." unique_id=119549026]
+[node name="simple" type="Node" parent="." unique_id=119549026]
 script = ExtResource("2_6csqb")
-spell_name = "Simple"
+spell_name = "simple"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_y5ng2"), SubResource("Resource_w31ye")])
 cooldown_in_beats = 2.0
 keys_as_string = "B3 D4 "

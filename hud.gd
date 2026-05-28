@@ -5,6 +5,12 @@ class_name HUD
 @onready var hp_bar:ProgressBar=%HPbar
 var beat:Beat
 # Called when the node enters the scene tree for the first time.
+func hide_player_stats():
+	%HPbar.hide()
+	%Shieldbar.hide()
+	$errors.hide()
+	$heals.hide()
+	pass;
 func _ready() -> void:
 	show()
 	player.hp_changed.connect(update)

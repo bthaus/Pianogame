@@ -34,15 +34,10 @@ animations = [{
 
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_e3r4w")]
 script = ExtResource("2_taxxh")
-jumping_speed = 300
 hp = 100
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
 sprite_frames = SubResource("SpriteFrames_3btnm")
-animation = &"stand"
-
-[node name="PlayerDetection" parent="." index="6" unique_id=1983412877]
-visible = false
 
 [node name="Projectile" parent="." index="7" unique_id=1276879591]
 visible = false

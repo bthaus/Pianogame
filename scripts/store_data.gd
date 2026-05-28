@@ -3,6 +3,7 @@ class_name DataStorer
 
 static func save_player_data(player:PlayerCharacter):
 	var data={}
+	if player.learned_spells.is_empty():return
 	data["accuracy_histories"]=player.piano.equipped_spells.front().accuracy_history
 	data["total_missclicks"]=player.piano.total_errors
 	data["rhythm adherance"]=Sequence.beat_adherance

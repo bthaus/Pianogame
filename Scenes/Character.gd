@@ -29,11 +29,12 @@ func _process(delta: float) -> void:
 		DataStorer.save_player_data(self)	
 	pass
 	
-func unlock(spell_name):
-	if learned_spells.has(spell_name):return
+func unlock(spell_name,learn=true):
+	if learned_spells.has(spell_name) and learn:return
 	var spell=SpellFactory.get_spell(spell_name)
 	piano.add_spell(spell)
-	learned_spells.append(spell_name)
+	if learn:learned_spells.append(spell_name)
+	return spell
 	pass;	
 func highlight_move_key(key:String):
 	
@@ -59,9 +60,11 @@ func _ready() -> void:
 func add_learned_spells():
 	#for spell in SpellFactory.get_all_spells():
 		#if not learned_spells.has(spell):learned_spells.append(spell)
+	for s in add_spells_override:
+		if not learned_spells.has(s):learned_spells.append(s)
 	for s in learned_spells:
 		piano.add_spell(SpellFactory.get_spell(s))
-		
+			
 	pass;	
 func determine_x_velocity(delta):
 	# Target horizontal speed
@@ -117,7 +120,15 @@ func easy_move(direction):
 	if direction!=0:face_direction=Vector2(direction,0)
 	easy_move_direction=direction
 	pass;	
+var tree:SceneTree
 func die():
 	DataStorer.save_player_data(self)
-	get_tree().change_scene_to_file("res://Scenes/stats.tscn")
+	
+	tree=get_tree()	
+	queue_free()
+	call_deferred("swap_scene")
+func swap_scene():	
+	tree.change_scene_to_file("res://Scenes/stats.tscn")
+	
 static var learned_spells=[]	
+@export var add_spells_override:Array[String]=[]

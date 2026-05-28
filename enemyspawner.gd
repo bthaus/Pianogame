@@ -10,6 +10,7 @@ var enemies=[]
 		
 @export var spawnpoints:Array[Node2D]=[]
 @export var reward_spell:String
+signal finished
 func handle_enemies_defeated():
 	if number_of_enemies.is_empty():
 		give_reward()
@@ -20,6 +21,7 @@ func give_reward():
 	reward.spell_name=reward_spell
 	add_sibling(reward)
 	reward.global_position=global_position
+	finished.emit()
 	queue_free()
 	pass
 
@@ -38,7 +40,8 @@ func spawn_enemies():
 				if enemies.is_empty():
 					handle_enemies_defeated()
 				)
-			spawnpoints.pick_random().add_child(enemy)
+			if spawnpoints.is_empty():add_child(enemy)
+			else:spawnpoints.pick_random().add_child(enemy)
 			)
 	
 		
@@ -52,4 +55,5 @@ func get_enemy():
 	pass;
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$Area2D.monitorable=enemies.is_empty()
 	pass

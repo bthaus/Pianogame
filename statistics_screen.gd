@@ -3,6 +3,10 @@ extends Control
 var data
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$player.piano.keyController.key_pressed.connect(func(piano_event:PianoEvent):
+		if piano_event.get_key()=="B1":
+			get_tree().change_scene_to_file('res://tests/worldtest.tscn')
+	)
 	data=DataStorer.get_last_data()
 	var average_accuracies={}
 	var spell_names=data["accuracy_histories"].keys()
@@ -22,18 +26,23 @@ func _ready() -> void:
 		var label=Button.new()
 		label.text=spell+": "+str(average_accuracies[spell])	
 		$Accuracies/container.add_child(label)
+		$player.unlock(spell,false)
+		
 		label.pressed.connect(setup_graph.bind(spell))
 	$total_errors.text+=str(data["total_missclicks"].size())
 	$total_spells.text+=str(total_spells)
 	if total_spells!=0 and data["total_missclicks"].size()!=0:
 		$average_errors.text+=str(total_spells/data["total_missclicks"].size())
-		
+	$HUD.hide_player_stats()	
+	for spell:Spell in $player.piano.equipped_spells:
+		spell.triggered.connect(setup_graph.bind(spell.spell_name))
+	$Camera2D.make_current()	
 	pass # Replace with function body.
 
 func setup_graph(spell_name):
 	var index=0
 	var graph=setup_graph_node($Graph2D)
-	var item=graph.add_plot_item("history")
+	var item=graph.add_plot_item("timing error rates")
 	graph.x_max=data["accuracy_histories"][spell_name].size()
 	graph.y_max=5
 	for entry in data["accuracy_histories"][spell_name]:
@@ -42,7 +51,7 @@ func setup_graph(spell_name):
 	
 	
 	var graph_errors=setup_graph_node($error_graph)
-	var error_item=graph_errors.add_plot_item("history")
+	var error_item=graph_errors.add_plot_item("errors with enemies")
 	
 	var max_enemies=0
 	var average_dic={}
@@ -66,7 +75,7 @@ func setup_graph(spell_name):
 	
 	
 	var hp=setup_graph_node($hp_graph)
-	var hp_item=hp.add_plot_item("history")
+	var hp_item=hp.add_plot_item("errors with hp")
 	
 	var max_hp=0
 	average_dic={}
@@ -168,7 +177,7 @@ func smooth_points(points: Array, window_size := 2) -> Array:
 func setup_graph_node(node:Control):
 	
 	var graph=Graph2D.new()
-	graph.custom_minimum_size=Vector2(500,500)
+	graph.custom_minimum_size=Vector2(350,350)
 	for child in node.get_children():
 		child.queue_free()
 	node.add_child(graph)
@@ -176,4 +185,5 @@ func setup_graph_node(node:Control):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$player.global_position=Vector2.ZERO
 	pass

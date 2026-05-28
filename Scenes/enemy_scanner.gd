@@ -1,6 +1,7 @@
 extends Area2D
 class_name EnemyScanner
 @onready var tracker:Tracker=$'../Tracker'
+@export var player:PlayerCharacter
 signal target_changed(target:Enemy)
 var current_target:Enemy:
 	set(value):
@@ -16,7 +17,19 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-
+	var nearest=10000000000000
+	var tempt=null
+	for e:Enemy in overlapping_enemies:
+		var distance=e.global_position-player.global_position
+		if distance.x>0 and player.face_direction.x<0 or distance.x<0 and player.face_direction.x>0:
+			distance*2
+		distance=distance.length_squared()
+		player.face_direction
+		if distance<nearest:
+			nearest=distance
+			tempt=e
+	if tempt!=null and current_target!=tempt and is_instance_valid(tempt):		
+		current_target=tempt
 	pass
 
 

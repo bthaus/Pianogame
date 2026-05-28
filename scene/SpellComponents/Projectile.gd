@@ -10,8 +10,10 @@ func _ready() -> void:
 	area_entered.connect(_on_body_entered)
 	body_entered.connect(_on_body_entered)
 	pass # Replace with function body.
-func hit(damage):
-	collide()
+func hit(d):
+	damage-=d
+	if damage<=0:collide()
+	
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,13 +31,14 @@ func shoot(dir):
 	pass;
 func _on_body_entered(body: Node2D) -> void:
 	var b=body.get_parent()
-	if b.has_method("hit"):
-		b.hit(damage)
-		collide()
-		return
-	elif body.has_method("hit"):
+	if body.has_method("hit"):
 		body.hit(damage)	
 		collide()
 		return
+	elif b.has_method("hit"):
+		b.hit(damage)
+		collide()
+		return
+	
 	collide()	
 	pass # Replace with function body.
