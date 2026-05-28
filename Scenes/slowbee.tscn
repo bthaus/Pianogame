@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://blpbwpvgymss8"]
+
+[ext_resource type="PackedScene" uid="uid://ce0hrt8rfsj55" path="res://Scenes/Enemy.tscn" id="1_wa2nc"]
+[ext_resource type="Script" uid="uid://b0rf3rfur6quo" path="res://slow_bee.gd" id="2_jvjpm"]
+
+[node name="Node2D" unique_id=816301689 instance=ExtResource("1_wa2nc")]
+script = ExtResource("2_jvjpm")
+hp = 100

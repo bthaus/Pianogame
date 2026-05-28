@@ -17,19 +17,27 @@ colors = PackedColorArray(0, 0, 0, 1, 0.64, 0.64, 0.64, 0.6039216, 1, 1, 1, 0)
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
 collision_layer = 524290
 script = ExtResource("2_wko77")
+movement_locked = false
 acceleration = 1200.0
 friction = 1000.0
+add_spells_override = Array[String]([])
 
-[node name="Camera2D" type="Camera2D" parent="." index="0" unique_id=693426872]
+[node name="shoot_cam" type="Camera2D" parent="." index="0" unique_id=693426872]
 position = Vector2(8, -66)
 zoom = Vector2(4.075, 4.075)
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=1604291212]
+[node name="base_defense_cam" type="Camera2D" parent="." index="1" unique_id=522991589]
+position = Vector2(175, -109)
+zoom = Vector2(4.075, 4.075)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=1604291212]
 visible = true
 
-[node name="AnimatedSprite2D" parent="." index="2" unique_id=685169871]
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=685169871]
 animation = &"jump"
 frame_progress = 0.16543362
 
@@ -39,10 +47,10 @@ position = Vector2(18, -13)
 [node name="CollisionShape2D" parent="back" parent_id_path=PackedInt32Array(1244012413) index="0" unique_id=2071533418]
 position = Vector2(-19, -13)
 
-[node name="hitbox" parent="." index="7" unique_id=150996064]
+[node name="hitbox" parent="." index="8" unique_id=150996064]
 collision_layer = 524288
 
-[node name="Enemy_Scanner" type="Area2D" parent="." index="9" unique_id=249560597 node_paths=PackedStringArray("player")]
+[node name="Enemy_Scanner" type="Area2D" parent="." index="10" unique_id=249560597 node_paths=PackedStringArray("player")]
 visible = false
 collision_layer = 0
 collision_mask = 16
@@ -52,34 +60,34 @@ player = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Scanner" index="0" unique_id=2143882239]
 shape = SubResource("CircleShape2D_ons1q")
 
-[node name="Tracker" type="Sprite2D" parent="." index="10" unique_id=921732267]
+[node name="Tracker" type="Sprite2D" parent="." index="11" unique_id=921732267]
 texture = ExtResource("3_wko77")
 script = ExtResource("4_pb3n0")
 
-[node name="C" type="ColorRect" parent="." index="11" unique_id=1566885859]
+[node name="C" type="ColorRect" parent="." index="12" unique_id=1566885859]
 offset_left = -3.0
 offset_top = -10.0
 offset_right = -2.0
 offset_bottom = -6.0
 
-[node name="D" type="ColorRect" parent="." index="12" unique_id=1122427958]
+[node name="D" type="ColorRect" parent="." index="13" unique_id=1122427958]
 offset_left = -1.0
 offset_top = -10.0
 offset_bottom = -6.0
 
-[node name="E" type="ColorRect" parent="." index="13" unique_id=1834849992]
+[node name="E" type="ColorRect" parent="." index="14" unique_id=1834849992]
 offset_left = 1.0
 offset_top = -10.0
 offset_right = 2.0
 offset_bottom = -6.0
 
-[node name="F" type="ColorRect" parent="." index="14" unique_id=1667497830]
+[node name="F" type="ColorRect" parent="." index="15" unique_id=1667497830]
 offset_left = 3.0
 offset_top = -10.0
 offset_right = 4.0
 offset_bottom = -6.0
 
-[node name="level_up" type="CPUParticles2D" parent="." index="15" unique_id=805568361]
+[node name="level_up" type="CPUParticles2D" parent="." index="16" unique_id=805568361]
 position = Vector2(0.3736801, -17.151003)
 emitting = false
 texture = ExtResource("6_ons1q")

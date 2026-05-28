@@ -37,6 +37,10 @@ var number_of_errors_unstarted=0:
 		if number_of_errors_unstarted>=5:hit_player()
 func hit_player():
 	player.hit(5)
+	pass	
+func get_spell_instance(spell_name):
+	for spell:Spell in equipped_spells:
+		if spell.spell_name==spell_name:return spell
 	pass		
 func register_error(e:EventStatus):
 	if e.type==EventStatus.StatusType.Unstarted:

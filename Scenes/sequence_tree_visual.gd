@@ -6,10 +6,11 @@ const line_offset=30
 @onready var indicator:Line2D=$indicator
 var spell:Spell
 func _process(delta: float) -> void:
+	
 	$ProgressBar.value=spell.get_number_of_correct_last_spells()
 	$ProgressBar.max_value=spell.upgrade_values[spell.spell_name].front()
 func _ready() -> void:
-	print("Hi????ß")
+	
 	pass
 func set_up(spell:Spell):
 	spell.cooldown_passed.connect(func():$notes.modulate=Color(1,1,1,1))

@@ -8,6 +8,9 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is PlayerCharacter:
-		body.unlock(spell_name)
+		if spell_name=="elise":
+			var all=SpellFactory.get_all_spells()
+			for a in all:
+				body.unlock(a)
 		queue_free()
 	pass # Replace with function body.

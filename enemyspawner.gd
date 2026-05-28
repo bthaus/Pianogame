@@ -15,13 +15,16 @@ func handle_enemies_defeated():
 	if number_of_enemies.is_empty():
 		give_reward()
 	pass
-
+static var finished_spawers=[false,false,false,false]
+@export var finish_index=0
 func give_reward():
 	var reward=load('res://Scenes/unlockable.tscn').instantiate()
 	reward.spell_name=reward_spell
 	add_sibling(reward)
 	reward.global_position=global_position
 	finished.emit()
+	player.spawnpoint=global_position
+	finished_spawers[finish_index]=true
 	queue_free()
 	pass
 
@@ -48,6 +51,14 @@ func spawn_enemies():
 	pass;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if finished_spawers[finish_index]:
+		finished.emit()
+		queue_free()
+	if reward_spell=="":
+		var am=4
+		for i in range(10):
+			number_of_enemies.append(am)
+			am+=4
 	pass # Replace with function body.
 
 func get_enemy():

@@ -14,6 +14,6 @@ func can_traverse(active_keys:Dictionary):
 		if active_keys[key].timestamp<smallest:smallest=active_keys[key].timestamp
 	for key in intersec:
 		off+=active_keys[key].timestamp-smallest
-	return off<60	
+	return off<100	
 	
 	

@@ -129,7 +129,7 @@ func traverse(key_dic,beat):
 				)
 			spell.player.piano.consecutive_spells_without_error+=1
 			status=SequenceStatus.Success
-		
+		 
 	pass
 func is_first_node():
 	return current_node==first_node

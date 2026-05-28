@@ -45,7 +45,6 @@ radius = 5.0
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_wovta")]
 collision_layer = 16
 script = ExtResource("2_xeo28")
-hp = 20
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
 scale = Vector2(-0.265, 0.265)
@@ -62,6 +61,7 @@ shape = SubResource("CircleShape2D_1exfc")
 
 [node name="Projectile" type="Area2D" parent="." index="7" unique_id=1276879591]
 collision_layer = 16
+collision_mask = 524289
 monitoring = false
 monitorable = false
 script = ExtResource("7_uoxpr")

@@ -7,6 +7,7 @@
 [node name="SpellComponent" unique_id=179673675 instance=ExtResource("1_64of4")]
 
 [node name="Area2D" parent="." index="0" unique_id=1928616845]
+collision_layer = 0
 script = ExtResource("2_a77rf")
 speed = null
 damage = null

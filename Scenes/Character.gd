@@ -3,8 +3,9 @@ class_name PlayerCharacter
 @export var piano:Piano
 @export var hud:HUD
 @onready var enemy_scanner:EnemyScanner=$Enemy_Scanner
+@export var movement_locked=false
 var easy_move_direction=0	
-
+static var spawnpoint:Vector2=Vector2.ZERO
 @export var acceleration := 1200.0
 @export var friction := 1000.0	
 var spells
@@ -16,16 +17,24 @@ var heals=5:
 		heals=clamp(value,0,5)
 		hud.update()
 var since_last=0
+func jump():
+	if movement_locked:return
+	super()
 func increase_max_health():
 	level_up()
 	max_hp+=25
 	hp+=25
 	pass
+func _physics_process(delta: float) -> void:
+	super(delta)
+	if movement_locked:velocity=Vector2.ZERO
 func _process(delta: float) -> void:
 	since_last+=delta
 	if since_last>1:
 		highlight_move_key("none")
 	if Input.is_action_just_pressed(&'C'):
+		for spell in SpellFactory.get_all_spells():
+			unlock(spell)
 		DataStorer.save_player_data(self)	
 	pass
 	
@@ -50,23 +59,37 @@ func highlight_move_key(key:String):
 	since_last=0
 	pass
 func _ready() -> void:
-	
+	if movement_locked:$base_defense_cam.make_current()
+	global_position=spawnpoint
 	piano=hud.piano
 	if piano.easy_move:movement_speed/=2
 	piano.player=self
 	call_deferred("add_learned_spells")
 	
 	super()
+func load_data():
+	var data=DataStorer.get_last_data()
+	var accuracy:Dictionary=data["accuracy_histories"]
+	Spell.accuracy_history=accuracy
+	#for spell in learned_spells:
+		#var arr=accuracy[spell]
+		#var spell_instance=piano.get_spell_instance(spell)
+		#spell_instance.accuracy_history=arr
+	var misses=data["total_missclicks"]
+	Piano.total_errors=misses
+	pass	
 func add_learned_spells():
-	#for spell in SpellFactory.get_all_spells():
-		#if not learned_spells.has(spell):learned_spells.append(spell)
+	if movement_locked:
+		for spell in SpellFactory.get_all_spells():
+			if not add_spells_override.has(spell):add_spells_override.append(spell)
 	for s in add_spells_override:
 		if not learned_spells.has(s):learned_spells.append(s)
 	for s in learned_spells:
 		piano.add_spell(SpellFactory.get_spell(s))
-			
+	load_data()		
 	pass;	
 func determine_x_velocity(delta):
+	if movement_locked:return
 	# Target horizontal speed
 	if not easy_on:super(delta)
 	var target_speed = easy_move_direction * movement_speed
@@ -116,6 +139,7 @@ func deflect():
 		)
 	pass	
 func easy_move(direction):
+	if movement_locked:return
 	easy_on=true
 	if direction!=0:face_direction=Vector2(direction,0)
 	easy_move_direction=direction

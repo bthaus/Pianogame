@@ -39,13 +39,17 @@ func play_anims(velocity):
 	pass;
 func max_proximity_to_player():
 	return 70
-	
+func hit(damage):
+	if player.movement_locked:damage=damage*2
+	super(damage)	
 func shoot():
 	
 	if frozen:return
 	if hp<=0:
 		die()
 		return
+	var distance=(player.global_position-global_position).length()
+	if distance>100:return	
 	var p=$Projectile.duplicate()
 	add_sibling(p)
 	p.global_position=global_position
