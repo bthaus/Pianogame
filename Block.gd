@@ -1,7 +1,7 @@
 extends SpellComponent
 var shield_hp=20
 var shield_active=false
-func trigger(spell:Spell,error_count):
+func trigger(spell:Spell,error_count,factor=1):
 	if shield_active:return
 	var s=$shield.duplicate()
 	shield_active=true

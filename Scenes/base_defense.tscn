@@ -65,10 +65,6 @@ position = Vector2(18.31828, 155.51534)
 scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_ctdyx")
 
-[node name="spawn_timer" type="Timer" parent="CastlePng30640" unique_id=1689343500]
-wait_time = 4.0
-autostart = true
-
 [node name="ProgressBar" type="ProgressBar" parent="CastlePng30640" unique_id=1422064500]
 offset_left = -540.75635
 offset_top = 804.2015
@@ -77,5 +73,3 @@ show_percentage = false
 
 [node name="spawnpoint" type="Node2D" parent="CastlePng30640" unique_id=1794379048]
 position = Vector2(-677.54297, 549.25903)
-
-[connection signal="timeout" from="CastlePng30640/spawn_timer" to="CastlePng30640" method="_on_spawn_timer_timeout"]

@@ -2,7 +2,7 @@ extends SpellComponent
 
 var scanner:Area2D
 var freeze_duration=2
-func trigger(spell:Spell,error_count):
+func trigger(spell:Spell,error_count,factor=1):
 	var enemies=scanner.get_overlapping_bodies()
 	
 	for e:Enemy in enemies:

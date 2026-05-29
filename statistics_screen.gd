@@ -111,40 +111,49 @@ func setup_graph(spell_name):
 	var imp=setup_graph_node($improvement_graph)
 	var impi=imp.add_plot_item("improvement")
 	imp.x_max=data["accuracy_histories"][spell_name].size()
-	
-	index=0
-	#(Yi+1-Yi-1)/(Xi+1-Xi-1)
-	var smooth=smooth_points(data["accuracy_histories"][spell_name],2)
-	var max=0
-	var min=0
-	var derivatives=[]
-	for i in range(smooth.size()):
-		# Randpunkte überspringen
-		if i == 0 or i == smooth.size() - 1:
-			continue
-		
-		var prev = smooth[i - 1]
-		var next = smooth[i + 1]
-
-		#var dx = i+1 - i-1
-#
-		## Safety gegen Division durch 0
-		#if dx == 0:
+	var data_arr=[]
+	for a in data["accuracy_histories"][spell_name]:
+		data_arr.append(a["val"])
+	var points=get_regression_line_points(data_arr)
+	impi.add_point(Vector2(0,points["start_y"]))
+	impi.add_point(Vector2(imp.x_max,points["end_y"]))
+	imp.y_max=max(points["start_y"],points["end_y"])
+	imp.y_min=min(points["start_y"],points["end_y"])
+	#
+	#index=0
+	##(Yi+1-Yi-1)/(Xi+1-Xi-1)
+	#var smoothess=data["accuracy_histories"][spell_name].size()/5
+	#var smooth=smooth_points(data["accuracy_histories"][spell_name],smoothess)
+	#var max=0
+	#var min=0
+	#var derivatives=[]
+	#for i in range(smooth.size()):
+		## Randpunkte überspringen
+		#if i == 0 or i == smooth.size() - 1:
 			#continue
-
-		var dy = next - prev
-
-		var result = dy / (-2)
-		if result>max:max=result
-		if result<min:min=result
-		derivatives.append(result)
-		impi.add_point(Vector2(i,result))
-		#derivatives.append(Vector2(smooth[i].x, result))
-	imp.y_max=max
-	imp.y_min=min
-	var zero=imp.add_plot_item("")
-	zero.add_point(Vector2(0,0))
-	zero.add_point(Vector2(smooth.size(),0))
+		#
+		#var prev = smooth[i - 1]
+		#var next = smooth[i + 1]
+#
+		##var dx = i+1 - i-1
+##
+		### Safety gegen Division durch 0
+		##if dx == 0:
+			##continue
+#
+		#var dy = next - prev
+#
+		#var result = dy / (-2)
+		#if result>max:max=result
+		#if result<min:min=result
+		#derivatives.append(result)
+		#impi.add_point(Vector2(i,result))
+		##derivatives.append(Vector2(smooth[i].x, result))
+	#imp.y_max=max
+	#imp.y_min=min
+	#var zero=imp.add_plot_item("")
+	#zero.add_point(Vector2(0,0))
+	#zero.add_point(Vector2(smooth.size(),0))
 	pass
 func smooth_points(points: Array, window_size := 2) -> Array:
 	var result = []
@@ -192,3 +201,60 @@ func setup_graph_node(node:Control):
 func _process(delta: float) -> void:
 	$player.global_position=Vector2.ZERO
 	pass
+	
+func get_regression_line(data: Array) -> Dictionary:
+	var n := data.size()
+
+	if n < 2:
+		return {
+			"slope": 0.0,
+			"intercept": data[0] if n == 1 else 0.0
+		}
+
+	var sum_x := 0.0
+	var sum_y := 0.0
+	var sum_xy := 0.0
+	var sum_x2 := 0.0
+
+	for i in range(n):
+		var x := float(i)
+		var y := float(data[i])
+
+		sum_x += x
+		sum_y += y
+		sum_xy += x * y
+		sum_x2 += x * x
+
+	var denominator := (n * sum_x2) - (sum_x * sum_x)
+
+	if denominator == 0.0:
+		return {
+			"slope": 0.0,
+			"intercept": 0.0
+		}
+
+	var slope := ((n * sum_xy) - (sum_x * sum_y)) / denominator
+	var intercept := (sum_y - slope * sum_x) / n
+
+	return {
+		"slope": slope,
+		"intercept": intercept
+	}	
+
+
+func get_regression_line_points(data: Array) -> Dictionary:
+	var line := get_regression_line(data)
+
+	var slope = -line.slope
+	var intercept = line.intercept
+
+	var start_x := 0.0
+	var end_x := float(data.size())
+
+	var start_y = slope * start_x + intercept
+	var end_y = slope * end_x + intercept
+
+	return {
+		"start_y": start_y,
+		"end_y": end_y
+	}	

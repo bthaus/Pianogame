@@ -1,9 +1,10 @@
 extends SpellComponent
 class_name Fireball
 @export var damage=10
-func trigger(spell:Spell,error_count):
+func trigger(spell:Spell,error_count,factor=1):
 	var ball:HomingProjectile=$Area2D.duplicate()
-	ball.damage=damage*(2-error_count)
+	if spell.spell_name=="simple":damage*=1.5
+	ball.damage=damage*factor*(2-error_count)
 	ball.scale*=(clamp(2-error_count,0,2))
 	
 	ball.global_position=spell.player.projectile_pos.global_position
@@ -12,7 +13,7 @@ func trigger(spell:Spell,error_count):
 	ball.error_count=error_count
 	spell.player.add_sibling(ball)
 	spell.player.enemy_scanner.target_changed.connect(func(target:Enemy):if ball!=null:ball.target=target)
-	super(spell,error_count)
+	super(spell,error_count,factor)
 	pass
 
 func get_direction(spell:Spell):

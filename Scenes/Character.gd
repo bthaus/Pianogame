@@ -69,6 +69,7 @@ func _ready() -> void:
 	super()
 func load_data():
 	var data=DataStorer.get_last_data()
+	if data==null:return
 	var accuracy:Dictionary=data["accuracy_histories"]
 	Spell.accuracy_history=accuracy
 	#for spell in learned_spells:

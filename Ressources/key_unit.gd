@@ -5,8 +5,9 @@ class_name KeyUnit
 @export var triggering=false
 @export var spell_component:PackedScene
 var loaded_spell_component:SpellComponent
-		
+const factor=1		
 func set_up(spell:Spell):
+	
 	var comp=get_spell_component()
 	if comp!=null:
 		comp.set_up(spell)
@@ -19,7 +20,7 @@ func get_spell_component()->SpellComponent:
 
 func trigger_spell_component(from_node:SequenceNode, spell:Spell,error_count):
 	if get_spell_component()!=null:
-		loaded_spell_component.trigger(spell,error_count)
+		loaded_spell_component.trigger(spell,error_count,factor)
 		return true
 	return false	
 	pass;

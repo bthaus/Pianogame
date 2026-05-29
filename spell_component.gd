@@ -4,7 +4,7 @@ var spell:Spell
 func set_up(spell:Spell):
 	self.spell=spell
 	pass
-func trigger(spell:Spell,error_count):
+func trigger(spell:Spell,error_count,factor=1):
 
 	pass
 func upgrade_spell_component():

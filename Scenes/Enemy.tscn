@@ -61,7 +61,7 @@ shape = SubResource("CircleShape2D_1exfc")
 
 [node name="Projectile" type="Area2D" parent="." index="7" unique_id=1276879591]
 collision_layer = 16
-collision_mask = 524289
+collision_mask = 786433
 monitoring = false
 monitorable = false
 script = ExtResource("7_uoxpr")
