@@ -38,14 +38,14 @@ static func get_beat_adherance():
 var boss_music_on=false		
 func _process(delta: float) -> void:
 	beat_no+=bpm/60.0*delta
-	if Input.is_action_just_pressed(&'C'):
-		boss_music_on=!boss_music_on
-		if boss_music_on:
-			create_tween().tween_property($boss,^'volume_db',0.0,2).set_ease(Tween.EASE_IN)
-			create_tween().tween_property($base,^'volume_db',-40.0,4).set_ease(Tween.EASE_IN)
-		else:
-			create_tween().tween_property($boss,^'volume_db',-40.0,4).set_ease(Tween.EASE_IN)
-			create_tween().tween_property($base,^'volume_db',0.0,2).set_ease(Tween.EASE_IN)
+	#if Input.is_action_just_pressed(&'C'):
+		#boss_music_on=!boss_music_on
+		#if boss_music_on:
+			#create_tween().tween_property($boss,^'volume_db',0.0,2).set_ease(Tween.EASE_IN)
+			#create_tween().tween_property($base,^'volume_db',-40.0,4).set_ease(Tween.EASE_IN)
+		#else:
+			#create_tween().tween_property($boss,^'volume_db',-40.0,4).set_ease(Tween.EASE_IN)
+			#create_tween().tween_property($base,^'volume_db',0.0,2).set_ease(Tween.EASE_IN)
 func beat_timeout():
 	#$beatsound.play(0)c
 	beat.emit()

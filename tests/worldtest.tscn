@@ -121,7 +121,7 @@ position = Vector2(1129.9519, -264.6558)
 position = Vector2(1540.2089, -21.468414)
 
 [node name="Enemyspawner2" parent="." unique_id=791155895 node_paths=PackedStringArray("player", "spawnpoints") instance=ExtResource("8_wew5v")]
-position = Vector2(1298, -28)
+position = Vector2(1300, -18)
 player = NodePath("../player")
 types = Array[PackedScene]([ExtResource("2_nomwf")])
 number_of_enemies = [2, 4, 6]

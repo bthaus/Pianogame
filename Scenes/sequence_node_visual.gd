@@ -24,7 +24,7 @@ func set_up(node:SequenceNode,offset):
 	var keys:Array=node.key_unit.key
 	for k:String in keys:
 		
-		
+		var full_note=k
 		var sharp=k.contains("#")
 		#$Line2D.visible=sharp
 		$Note/sharp.visible=sharp
@@ -33,9 +33,11 @@ func set_up(node:SequenceNode,offset):
 		$Note/Line2D.visible= k=="C2" 
 		$Note/Line2D2.visible=k=="C2"
 		var octave=k[1]
+		
 		k=k.remove_chars("123456789UP")
 		
 		var off=offset_dic[k]*offset/2
+		
 		
 		
 		var note:Sprite2D=$Note.duplicate()
@@ -45,16 +47,23 @@ func set_up(node:SequenceNode,offset):
 		add_child(note)
 		notes.append(note)
 		note.show()
-	print("connected "+util.strarr_to_string(keys))	
+		var piano=Piano.get_piano()
+		piano.keyController.key_pressed.connect(func(event:PianoEvent):
+			if event.get_key()==full_note:note.texture=active_text)
+		piano.keyController.key_released.connect(func(event:PianoEvent):
+			var x=event.get_key()
+			if event.get_key()==full_note:note.texture=inactive_text)
+		
+	
 	node.hits_changed.connect(update_activity)
 	pass;
 
 func update_activity(node:SequenceNode):
-	var val=node.hits
-	for n in notes:
-		if val>0:
-			n.texture=active_text
-		else:
-			n.texture=inactive_text
-			
+	#var val=node.hits
+	#for n in notes:
+		#if val>0:
+			#n.texture=active_text
+		#else:
+			#n.texture=inactive_text
+			#
 	pass

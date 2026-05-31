@@ -18,6 +18,7 @@ static var accuracy_history:Dictionary={}
 
 @export var beats:float=0
 @export_tool_button("set_beats") var set_beats_button=set_beats
+@export_tool_button("play_spell") var play=play_spell
 
 @export var component_for_all:PackedScene
 @export_tool_button("set_components") var set_comp_button=set_comps
@@ -78,7 +79,24 @@ func prepare_spell():
 		k.set_up(self)
 	pass	
 
-
+func play_spell():
+	for key:KeyUnit in keys:
+		for note:String in key.key:
+			var bpm=Beat.get_beat_instance().bpm
+			var time_Factor=60/bpm
+			var timeout=time_Factor*key.beat
+			player.get_tree().create_timer(timeout).timeout.connect(play_note.bind(note))
+			
+	pass
+func play_note(note):
+	var lower_case=note.to_lower()+".mp3"
+	lower_case.replace("#","-")
+	var audio_player=AudioStreamPlayer.new()
+	player.add_child(audio_player)
+	audio_player.stream=load("res://Assets/mp3 Notes/"+lower_case)
+	audio_player.play()
+	audio_player.finished.connect(func():audio_player.queue_free())
+	pass;	
 static var upgrade_values:Dictionary
 var accuracy_threshold=0.5
 func add_accuracy_to_history(val):
@@ -96,6 +114,7 @@ func add_accuracy_to_history(val):
 	pass
 func get_number_of_correct_last_spells():
 	var count=0
+	if not accuracy_history.has(spell_name):return
 	for i in range(accuracy_history[spell_name].size()-1,0,-1):
 		count+=1
 		if accuracy_history[spell_name][i]["val"]>accuracy_threshold:break

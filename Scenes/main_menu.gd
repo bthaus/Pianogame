@@ -11,9 +11,9 @@ func handle_input(piano_event:PianoEvent):
 		start_shooter()
 	if piano_event.get_key()=="G4":
 		start_base_defense()	
-	if piano_event.get_key()=="B4":
-		Piano.easy_move=!Piano.easy_move
-		$CheckBox.visible=Piano.easy_move
+	#if piano_event.get_key()=="B4":
+		#Piano.easy_move=!Piano.easy_move
+		#$CheckBox.visible=Piano.easy_move
 	pass
 func start_base_defense():
 	get_tree().change_scene_to_file('res://Scenes/base_defense.tscn')

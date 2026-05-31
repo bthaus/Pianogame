@@ -17,7 +17,10 @@ var error_count=0
 var player:PlayerCharacter
 static var easy_move=false
 var upgrade_values=[5,15,25,40]
-
+static var piano_instance=null
+static func get_piano()->Piano:
+	return piano_instance
+	
 static var total_errors=[]
 var consecutive_spells_without_error=0:
 	set(value):
@@ -65,6 +68,7 @@ func _process(delta: float) -> void:
 		call_deferred("handle_input")
 	
 func _ready() -> void:
+	piano_instance=self
 	for s:Spell in equipped_spells:
 		add_spell_visual(s)
 

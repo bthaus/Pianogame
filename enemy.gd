@@ -40,6 +40,7 @@ func play_anims(velocity):
 func max_proximity_to_player():
 	return 70
 func hit(damage):
+	if not is_instance_valid(player):return
 	if player.movement_locked:damage=damage*2
 	super(damage)	
 func shoot():

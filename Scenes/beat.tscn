@@ -32,6 +32,7 @@ current = true
 
 [node name="base" type="AudioStreamPlayer2D" parent="." unique_id=1399845927 node_paths=PackedStringArray("beat")]
 stream = ExtResource("5_q2xo6")
+volume_db = -80.0
 autoplay = true
 script = ExtResource("6_2xwja")
 beat = NodePath("../beat")

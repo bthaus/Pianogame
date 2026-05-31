@@ -33,9 +33,11 @@ func _process(delta: float) -> void:
 	if since_last>1:
 		highlight_move_key("none")
 	if Input.is_action_just_pressed(&'C'):
-		for spell in SpellFactory.get_all_spells():
-			unlock(spell)
-		DataStorer.save_player_data(self)	
+		var casc:Spell=piano.get_spell_instance("cascade")
+		casc.play_spell()
+		#for spell in SpellFactory.get_all_spells():
+			#unlock(spell)
+		#DataStorer.save_player_data(self)	
 	pass
 	
 func unlock(spell_name,learn=true):

@@ -102,12 +102,12 @@ func setup_graph(spell_name):
 		var count=average_dic[k].size()	
 		var sum=0
 		for entry in average_dic[k]:
+	
 			sum+=entry
 		if count!=0 and sum!=0:	
 			hp_item.add_point(Vector2(k,sum/count))
 	hp.x_max=max_hp
 	hp.y_max=5	
-	
 	var imp=setup_graph_node($improvement_graph)
 	var impi=imp.add_plot_item("improvement")
 	imp.x_max=data["accuracy_histories"][spell_name].size()

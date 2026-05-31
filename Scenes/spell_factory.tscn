@@ -19,7 +19,6 @@ script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["A4"])
 triggering = null
-factor = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_xoxst"]
@@ -27,7 +26,6 @@ script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["G4"])
 triggering = null
-factor = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_jm26c"]
@@ -35,7 +33,6 @@ script = ExtResource("3_bgm8m")
 beat = 1.5
 key = Array[String](["G4"])
 triggering = null
-factor = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_i25c7"]
@@ -43,7 +40,6 @@ script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["F4"])
 triggering = null
-factor = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_bgm8m"]
@@ -51,7 +47,6 @@ script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["A4", "F4", "D4"])
 triggering = null
-factor = null
 metadata/_custom_type_script = "uid://bvheyg7ntax08"
 
 [sub_resource type="Resource" id="Resource_2u5f8"]
@@ -59,7 +54,6 @@ script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["A4"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_1mje3"]
 script = ExtResource("3_bgm8m")
@@ -67,63 +61,54 @@ beat = 1.0
 key = Array[String](["A4", "F4", "D4"])
 triggering = null
 spell_component = ExtResource("4_2u5f8")
-factor = null
 
 [sub_resource type="Resource" id="Resource_lrb01"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["A4"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_3inhl"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["B4"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_iu7i8"]
 script = ExtResource("3_bgm8m")
 beat = 1.5
 key = Array[String](["B4"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_ebwd2"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["C5"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_8up4e"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["A3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_g7b4h"]
 script = ExtResource("3_bgm8m")
 beat = 3.0
 key = Array[String](["A3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_1uaqm"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["E4"])
 triggering = true
-factor = null
 
 [sub_resource type="Resource" id="Resource_ajxgt"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["E4UP"])
 triggering = true
-factor = null
 
 [sub_resource type="Resource" id="Resource_b5g72"]
 script = ExtResource("3_bgm8m")
@@ -131,7 +116,6 @@ beat = null
 key = Array[String](["C4", "E4", "G4"])
 triggering = null
 spell_component = ExtResource("9_lrb01")
-factor = null
 
 [sub_resource type="Resource" id="Resource_cwllq"]
 script = ExtResource("3_bgm8m")
@@ -139,7 +123,6 @@ beat = 0.5
 key = Array[String](["G4"])
 triggering = true
 spell_component = ExtResource("4_2u5f8")
-factor = null
 
 [sub_resource type="Resource" id="Resource_yvnc8"]
 script = ExtResource("3_bgm8m")
@@ -147,7 +130,6 @@ beat = 0.75
 key = Array[String](["F4"])
 triggering = true
 spell_component = ExtResource("4_2u5f8")
-factor = null
 
 [sub_resource type="Resource" id="Resource_pimwy"]
 script = ExtResource("3_bgm8m")
@@ -155,7 +137,6 @@ beat = 1.0
 key = Array[String](["E4"])
 triggering = true
 spell_component = ExtResource("4_2u5f8")
-factor = null
 
 [sub_resource type="Resource" id="Resource_drsbb"]
 script = ExtResource("3_bgm8m")
@@ -163,7 +144,6 @@ beat = 1.25
 key = Array[String](["D4"])
 triggering = true
 spell_component = ExtResource("4_2u5f8")
-factor = null
 
 [sub_resource type="Resource" id="Resource_ccbt2"]
 script = ExtResource("3_bgm8m")
@@ -171,7 +151,6 @@ beat = 1.5
 key = Array[String](["C4"])
 triggering = true
 spell_component = ExtResource("4_2u5f8")
-factor = null
 
 [sub_resource type="Resource" id="Resource_d0oep"]
 script = ExtResource("3_bgm8m")
@@ -179,35 +158,30 @@ beat = null
 key = Array[String](["C#2", "G#2"])
 triggering = null
 spell_component = ExtResource("9_lrb01")
-factor = null
 
 [sub_resource type="Resource" id="Resource_lw14p"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["G4", "G3", "E2"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_3fid5"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["G4", "G3", "E2"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_0mvnd"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["G4", "G3", "E2"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_42fdb"]
 script = ExtResource("3_bgm8m")
 beat = 3.0
 key = Array[String](["C2", "C3", "C4"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_fjc73"]
 script = ExtResource("3_bgm8m")
@@ -215,7 +189,6 @@ beat = null
 key = Array[String](["C3", "E3", "G3"])
 triggering = null
 spell_component = ExtResource("7_i25c7")
-factor = null
 
 [sub_resource type="Resource" id="Resource_65et7"]
 script = ExtResource("3_bgm8m")
@@ -223,7 +196,6 @@ beat = 1.0
 key = Array[String](["C4", "E4", "G4"])
 triggering = null
 spell_component = ExtResource("7_i25c7")
-factor = null
 
 [sub_resource type="Resource" id="Resource_g7msj"]
 script = ExtResource("3_bgm8m")
@@ -231,7 +203,6 @@ beat = 2.0
 key = Array[String](["C5", "E5", "G5"])
 triggering = null
 spell_component = ExtResource("7_i25c7")
-factor = null
 
 [sub_resource type="Resource" id="Resource_h1bn3"]
 script = ExtResource("3_bgm8m")
@@ -239,14 +210,12 @@ beat = null
 key = Array[String](["D4", "F4", "A4"])
 triggering = null
 spell_component = ExtResource("8_2u5f8")
-factor = null
 
 [sub_resource type="Resource" id="Resource_d7uee"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["F4", "A4", "C5"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_cvkbw"]
 script = ExtResource("3_bgm8m")
@@ -254,14 +223,12 @@ beat = 2.0
 key = Array[String](["D4", "F#4", "A4"])
 triggering = null
 spell_component = ExtResource("9_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_6q4dg"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["D3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_1racs"]
 script = ExtResource("3_bgm8m")
@@ -274,14 +241,12 @@ beat = null
 key = Array[String](["B3", "D#4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_u31xo"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["A4"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_ve6iq"]
 script = ExtResource("3_bgm8m")
@@ -289,7 +254,6 @@ beat = 0.3
 key = Array[String](["G#4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_1vf4r"]
 script = ExtResource("3_bgm8m")
@@ -297,7 +261,6 @@ beat = 0.6
 key = Array[String](["A4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_vbmny"]
 script = ExtResource("3_bgm8m")
@@ -305,7 +268,6 @@ beat = 0.8999999999999999
 key = Array[String](["G#4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_mmxs0"]
 script = ExtResource("3_bgm8m")
@@ -313,7 +275,6 @@ beat = 1.2
 key = Array[String](["A4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_rvf5p"]
 script = ExtResource("3_bgm8m")
@@ -321,7 +282,6 @@ beat = 1.5
 key = Array[String](["E4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_gxvlx"]
 script = ExtResource("3_bgm8m")
@@ -329,7 +289,6 @@ beat = 1.8
 key = Array[String](["G4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_j4g1y"]
 script = ExtResource("3_bgm8m")
@@ -337,7 +296,6 @@ beat = 2.1
 key = Array[String](["F4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_3m7bb"]
 script = ExtResource("3_bgm8m")
@@ -345,14 +303,12 @@ beat = 2.4
 key = Array[String](["D4"])
 triggering = null
 spell_component = ExtResource("10_3inhl")
-factor = null
 
 [sub_resource type="Resource" id="Resource_vlsjy"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["C#2", "F#2"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_kv5q6"]
 script = ExtResource("3_bgm8m")
@@ -360,7 +316,6 @@ beat = null
 key = Array[String](["D4", "F4"])
 triggering = null
 spell_component = ExtResource("12_ebwd2")
-factor = null
 
 [sub_resource type="Resource" id="Resource_ehk3b"]
 script = ExtResource("3_bgm8m")
@@ -368,7 +323,6 @@ beat = 0.5
 key = Array[String](["F4", "A4"])
 triggering = null
 spell_component = ExtResource("12_ebwd2")
-factor = null
 
 [sub_resource type="Resource" id="Resource_4gs0p"]
 script = ExtResource("3_bgm8m")
@@ -376,63 +330,54 @@ beat = 1.0
 key = Array[String](["A4", "C5"])
 triggering = null
 spell_component = ExtResource("12_ebwd2")
-factor = null
 
 [sub_resource type="Resource" id="Resource_ugto8"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["C3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_qv4lp"]
 script = ExtResource("3_bgm8m")
 beat = 1.0
 key = Array[String](["D3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_p4ncf"]
 script = ExtResource("3_bgm8m")
 beat = 2.0
 key = Array[String](["E3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_41gki"]
 script = ExtResource("3_bgm8m")
 beat = 3.0
 key = Array[String](["F3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_uajx1"]
 script = ExtResource("3_bgm8m")
 beat = 4.0
 key = Array[String](["G3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_wjsh1"]
 script = ExtResource("3_bgm8m")
 beat = 5.0
 key = Array[String](["F3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_32p34"]
 script = ExtResource("3_bgm8m")
 beat = 6.0
 key = Array[String](["E3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_mg1bm"]
 script = ExtResource("3_bgm8m")
 beat = 7.0
 key = Array[String](["D3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_1lh0a"]
 script = ExtResource("3_bgm8m")
@@ -440,14 +385,12 @@ beat = 8.0
 key = Array[String](["C3"])
 triggering = null
 spell_component = ExtResource("13_1mje3")
-factor = null
 
 [sub_resource type="Resource" id="Resource_y5ng2"]
 script = ExtResource("3_bgm8m")
 beat = null
 key = Array[String](["B3"])
 triggering = null
-factor = null
 
 [sub_resource type="Resource" id="Resource_w31ye"]
 script = ExtResource("3_bgm8m")
@@ -455,7 +398,6 @@ beat = 0.5
 key = Array[String](["D4"])
 triggering = null
 spell_component = ExtResource("4_2u5f8")
-factor = 2
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
