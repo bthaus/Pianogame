@@ -48,7 +48,7 @@ func get_spell_instance(spell_name):
 func register_error(e:EventStatus):
 	if e.type==EventStatus.StatusType.Unstarted:
 		number_of_errors_unstarted+=1
-		$error.play()
+		
 	if e.type!=EventStatus.StatusType.Unstarted:
 		
 		if e.related_sequence.error_tracked:
@@ -67,6 +67,22 @@ var input_handled=false
 func _process(delta: float) -> void:
 	if input_happened and not input_handled:
 		call_deferred("handle_input")
+	show()
+	for c in $history.get_children():
+		c.queue_free()
+	for a:PianoEvent in input_history.content:
+		if a.related_sequences.content.is_empty():
+			a.checked_frames+=delta
+			if a.checked_frames>=0.1 and not a.error_played:
+				$error.play()
+				#remove.append(a)
+				a.error_played=true
+		var l=Label.new()
+		l.text=a.get_key()+" "+str(a.related_sequences.content.size())
+		l.label_settings=LabelSettings.new()
+		l.label_settings.font_size=45
+		l.label_settings.font_color=Color(0.0, 0.0, 0.0, 1.0)
+		$history.add_child(l)	
 	
 func _ready() -> void:
 	piano_instance=self
@@ -81,7 +97,7 @@ func add_spell_visual(spell):
 	$trees.add_child(visual)
 	visual.set_up(spell)
 	visuals.append(visual)
-	print("visual set up")
+	
 	var off=0	
 	for s:SequenceTreeVisual in $trees.get_children():
 		s.position=Vector2(off,0)
@@ -169,7 +185,8 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 		handle_quick_menu(1)	
 	if piano_event.get_key()=="B1":
 		play_sound()	
-	input_history.add(piano_event)
+	if !easy_move_keys.has(piano_event.get_key()) and !movement_keys.has(piano_event.get_key()):	
+		input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
 	_add_key_representation(piano_event)
@@ -214,18 +231,29 @@ var remove=[]
 
 	
 func traverse_sequences():
-	
+	var traversed_sequences=[]
 	var keys=keyController.active_keys
+	for sequence:Sequence in sequences:
+		if not is_instance_valid(sequence):
+			continue
+		if sequence.traverse(keys,beat.beat_no):
+			traversed_sequences.append(sequence.spell.name)
+		
 	#if  window_open or allow_input_always:
 	if true:
 		for spell:Spell in equipped_spells:
-			var maybe_seq=spell.check_start(keys.keys(),beat.beat_no)	
+			if traversed_sequences.has(spell.spell_name):
+				l.d("continued")
+				continue
+			var maybe_seq=spell.check_start(keys,beat.beat_no)	
 			if maybe_seq!=null:
 				sequences.append(maybe_seq)
+				maybe_seq.cancelled.connect(func():sequences.erase(maybe_seq))
 				maybe_seq.remove.connect(func():sequences.erase(maybe_seq))
 			
 
 	for sequence:Sequence in sequences:
+		if traversed_sequences.has(sequence.spell.spell_name):continue
 		sequence.traverse(keys,beat.beat_no)
 			
 				

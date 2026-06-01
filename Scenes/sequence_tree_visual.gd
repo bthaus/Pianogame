@@ -62,4 +62,5 @@ func start_move_indicator():
 	pass;
 func stop_indicator():
 	indicator.active=false
+	
 	pass;	

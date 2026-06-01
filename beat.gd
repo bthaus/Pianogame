@@ -17,6 +17,9 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 # Godot GDScript
+static func get_beat_time():
+	return 60/beat_instance.bpm
+	pass
 func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	var dic=get_beat(x,y,bpm)
 	self.bpm=bpm
@@ -32,6 +35,9 @@ func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	await get_tree().create_timer(tolerance).timeout
 	$close_window.start()
 	pass
+static func get_timing():
+	return get_beat_instance().beat_timer.get_early_or_fast()
+	pass	
 static func get_beat_adherance():
 	return get_beat_instance().beat_timer.get_trigger_value()
 	pass;

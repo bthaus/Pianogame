@@ -62,7 +62,7 @@ var ex_5={
 	
 }
 func _ready():
-	print("spell parser initiated")
+	
 	var tree=parse_spell_into_sequencetree(example_spell)
 	print_sequence_tree(tree)	
 	pass
@@ -84,10 +84,10 @@ func parse_spell_into_sequencetree(key_array: Array):
 		current_node = SequenceNode.new()
 		current_node.incoming_edge = current_edge
 		current_edge.to_node = current_node
-		print(key_array.size())
+		
 	current_node.activating = true
 	current_node.spell=spell
-	print("tree done")
+	
 	return tree
 
 func parse_spelldic_into_sequencetree(dic: Dictionary):
@@ -113,10 +113,10 @@ func parse_spelldic_into_sequencetree(dic: Dictionary):
 		current_node.incoming_edge = current_edge
 		current_edge.to_node = current_node
 		current_node.beat=current_note["beat"]
-		print(key_array.size())
+		
 	current_node.activating = true
 	current_node.spell=spell
-	print("tree done")
+	
 	return tree	
 	
 func print_sequence_tree(tree:Sequence_Tree):

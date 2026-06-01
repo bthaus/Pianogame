@@ -30,3 +30,17 @@ func get_trigger_value() -> float:
 	
 	
 	return clamp(in_between*2,0.0,1.0)
+func get_early_or_fast() :
+	var current=player.get_playback_position()-0.2
+	var beat_time=60.0/90.0
+	var exact_beat=current/beat_time
+	
+	var last_beat_count=floor(current/beat_time)
+	var next_beat_count=ceil(current/beat_time)
+	var in_between=exact_beat-last_beat_count
+	var next_beat_time=next_beat_count*beat_time
+	var last_beat_time=last_beat_count*beat_time
+	var response_dic={}
+	response_dic["from_last"]=clamp(in_between*2,0.0,1.0)
+	response_dic["to_next"]=clamp((1-in_between)*2,0.0,1.0)
+	return response_dic

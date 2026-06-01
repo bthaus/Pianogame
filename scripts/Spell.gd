@@ -44,12 +44,14 @@ func set_comps():
 	pass;	
 func remove_all_units():
 	keys.clear()
-	
+var current_sequence:Sequence	
 var is_active=false
 func check_start(active_keys,beat_no):
-	if state!=State.Ready:return
-	if is_active:return
-	if util.is_partial_sum(active_keys, tree.entry_edge.keys):
+#	if state!=State.Ready:return
+	if tree.entry_edge.can_traverse(active_keys):
+	#if util.is_partial_sum(active_keys, tree.entry_edge.keys):
+		if is_active:
+			current_sequence.cancel()
 		var started_sequence=tree.get_start_sequence(beat_no)
 		started_sequence.finished.connect(trigger_spell)
 		started_sequence.cancelled.connect(on_cancel)
@@ -60,10 +62,16 @@ func check_start(active_keys,beat_no):
 		is_active=true
 		started_sequence.finished.connect(on_failure_or_success)
 		started_sequence.cancelled.connect(on_failure_or_success)
+		spell_failure_or_success.connect(started_sequence.check_off_time)
+		#spell_failure_or_success.connect(func():
+		##	started_sequence.queue_free()
+			#)
+		current_sequence=started_sequence
 		return started_sequence
 	pass;
 func on_failure_or_success():
 	is_active=false
+	
 	spell_failure_or_success.emit()
 	pass
 func setup():
@@ -183,21 +191,27 @@ func _process(delta: float) -> void:
 func parse_spell_into_sequencetree():
 	tree = Sequence_Tree.new()
 	var key_array=keys.duplicate()
-	
+	var index=1
 	var first=key_array.pop_front()
 	tree.entry_edge = SequenceEdge.new(first.key)
 	var current_node = SequenceNode.new()
+	current_node.node_nr=index
 	current_node.beat=first.beat
 	var current_edge = tree.entry_edge
 	current_node.incoming_edge = current_edge
 	current_edge.to_node = current_node
 	current_node.info_dic=first
 	current_node.key_unit=first
+	
 	while not key_array.is_empty():
+		
 		var current_note=key_array.pop_front() 
 		current_edge = SequenceEdge.new(current_note.key)
 		current_node.outgoing_edge=current_edge
 		current_node = SequenceNode.new()
+		index+=1
+		current_node.node_nr=index
+		
 		current_node.info_dic=current_note
 		current_node.incoming_edge = current_edge
 		current_edge.to_node = current_node
@@ -215,7 +229,7 @@ func _tool_process(delta:float)->void:
 		var u=KeyUnit.new()
 		var arr:PackedStringArray=input_line.remove_char(32).split("+") 
 		var k:Array[String]=Array(Array(arr),TYPE_STRING,"",null)
-		print(util.strarr_to_string(k))
+		
 		u.key=k
 		u.beat=keys.size()
 		input_line=""

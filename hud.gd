@@ -28,6 +28,7 @@ func update():
 	var max_shield_hp=1
 	var shield_hp=0
 	for s in player.shields:
+		if not is_instance_valid(s):continue
 		max_shield_hp+=s.max_hp
 		shield_hp+=s.hp
 	$Shieldbar/max.text=str(max_shield_hp)

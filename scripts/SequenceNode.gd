@@ -8,9 +8,9 @@ var outgoing_edge: SequenceEdge
 @export var max_delay_from_start: float
 @export var min_delay_from_start: float
 @export var spell: String
-
+var node_nr
 var key_unit:KeyUnit
-var beat=0
+var beat:float=0
 var info_dic
 var hits:int=0:
 	set(val):

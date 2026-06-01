@@ -1,7 +1,7 @@
 extends Node2D
 signal test
 func test_signal(s:String):
-	print(s)
+	pass
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	test.connect(test_signal.bind("hi"))

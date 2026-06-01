@@ -8,6 +8,7 @@ var easy_move_direction=0
 static var spawnpoint:Vector2=Vector2.ZERO
 @export var acceleration := 1200.0
 @export var friction := 1000.0	
+@export var all_spells_unlocked=false
 var spells
 var walking=false
 var on_color=Color(1.0, 0.0, 0.0, 1.0)
@@ -71,6 +72,32 @@ func _ready() -> void:
 	call_deferred("add_learned_spells")
 	
 	super()
+	#beat_adherance_for_first_node=min(timing["from_last"],timing["to_next"])
+func hidebubble2():
+	$timing_bubble.hide()
+	pass	
+func call_off_time(time_diff,timing_dic):
+	if min(timing_dic["from_last"],timing_dic["to_next"])>0.4:
+		if timing_dic["from_last"]>timing_dic["to_next"]:
+			$timing_bubble/bubble_text.text="Off beat"
+			$timing_bubble.show()
+			get_tree().create_timer(2).timeout.connect(hidebubble2)
+		#else:
+			#$timing_bubble.show()
+			#$timing_bubble/bubble_text.text="too early"	
+			#get_tree().create_timer(2).timeout.connect(hidebubble2)
+	if time_diff>0.5:
+		$bubble/bubble_text.text="Too fast"
+		$bubble.show()
+		get_tree().create_timer(2).timeout.connect(hidebubble)
+	if time_diff<-0.5:
+		$bubble/bubble_text.text="Too slow"	
+		$bubble.show()
+		get_tree().create_timer(2).timeout.connect(hidebubble)
+	pass	
+func hidebubble():
+	$bubble.hide()
+		
 func load_data():
 	var data=DataStorer.get_last_data()
 	if data==null:return
@@ -84,9 +111,10 @@ func load_data():
 	Piano.total_errors=misses
 	pass	
 func add_learned_spells():
-	if movement_locked:
+	if all_spells_unlocked:
 		for spell in SpellFactory.get_all_spells():
 			if not add_spells_override.has(spell):add_spells_override.append(spell)
+	
 	for s in add_spells_override:
 		if not learned_spells.has(s):learned_spells.append(s)
 	for s in learned_spells:

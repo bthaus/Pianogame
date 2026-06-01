@@ -1,6 +1,10 @@
 extends Line2D
 var default_pos
-var active=false
+var active=false:
+	set(value):
+		active=value
+		if not active:
+			position=default_pos
 var bps
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

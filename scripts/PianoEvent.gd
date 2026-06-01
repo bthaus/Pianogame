@@ -24,6 +24,8 @@ var timestamp
 var representation
 var press_event:PianoEvent
 var related_sequences:Set=Set.new()
+var checked_frames=0
+var error_played=false
 enum Progress{Active,Cancelled,Success}
 var progress=Progress.Active
 

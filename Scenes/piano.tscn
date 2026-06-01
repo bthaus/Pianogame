@@ -15,8 +15,10 @@ script = ExtResource("2_1krru")
 
 [node name="PressedKeys" type="VBoxContainer" parent="." unique_id=233151412]
 visible = false
-offset_right = 120.0
-offset_bottom = 234.0
+offset_left = 1516.0
+offset_top = 556.0
+offset_right = 1703.0
+offset_bottom = 875.0
 
 [node name="title" type="Label" parent="PressedKeys" unique_id=1800127478]
 layout_mode = 2
@@ -30,6 +32,12 @@ position = Vector2(240, 15)
 
 [node name="error" type="AudioStreamPlayer" parent="." unique_id=1660418171]
 stream = ExtResource("4_eambc")
+
+[node name="history" type="VBoxContainer" parent="." unique_id=1235419026]
+offset_left = 1309.6831
+offset_top = 526.4849
+offset_right = 1561.0
+offset_bottom = 864.0
 
 [connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
 [connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]

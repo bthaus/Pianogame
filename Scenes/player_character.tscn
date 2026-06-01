@@ -23,12 +23,17 @@ colors = PackedColorArray(0, 0, 0, 1, 0.64, 0.64, 0.64, 0.6039216, 1, 1, 1, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ajo0r"]
 radius = 1.4142135
 
+[sub_resource type="LabelSettings" id="LabelSettings_fcng2"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
 collision_layer = 524290
 script = ExtResource("2_wko77")
 movement_locked = false
 acceleration = 1200.0
 friction = 1000.0
+all_spells_unlocked = false
 add_spells_override = Array[String]([])
 
 [node name="Glow2" type="Sprite2D" parent="." index="0" unique_id=1958231696]
@@ -141,6 +146,31 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="groundbox" index="0" unique_id=759708754]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ajo0r")
+
+[node name="bubble" type="Polygon2D" parent="." index="20" unique_id=1206687705]
+visible = false
+polygon = PackedVector2Array(3, -28, 10, -37, -2, -37, -2, -51, 50, -51, 50, -37, 17, -37)
+
+[node name="bubble_text" type="Label" parent="bubble" index="0" unique_id=1749166661]
+offset_left = 2.0
+offset_top = -52.0
+offset_right = 45.0
+offset_bottom = -29.0
+text = "Too slow"
+label_settings = SubResource("LabelSettings_fcng2")
+
+[node name="timing_bubble" type="Polygon2D" parent="." index="21" unique_id=995914993]
+visible = false
+position = Vector2(-58, 0)
+polygon = PackedVector2Array(44, -25, 10, -37, -2, -37, -2, -51, 50, -51, 50, -37, 17, -37)
+
+[node name="bubble_text" type="Label" parent="timing_bubble" index="0" unique_id=29352240]
+offset_left = 1.0
+offset_top = -52.0
+offset_right = 44.0
+offset_bottom = -29.0
+text = "Too early"
+label_settings = SubResource("LabelSettings_fcng2")
 
 [connection signal="body_entered" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_entered"]
 [connection signal="body_exited" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_exited"]
