@@ -456,7 +456,6 @@ metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 script = ExtResource("4_8pxlp")
 spell_name = "cascade"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_b5g72"), SubResource("Resource_cwllq"), SubResource("Resource_yvnc8"), SubResource("Resource_pimwy"), SubResource("Resource_drsbb"), SubResource("Resource_ccbt2")])
-cooldown_in_beats = 3.0
 keys_as_string = "C4E4G4 G4 F4 E4 D4 C4 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -503,7 +502,6 @@ metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 script = ExtResource("2_6csqb")
 spell_name = "missile"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_1racs")])
-cooldown_in_beats = 4.0
 keys_as_string = "D4B3G3E3C3 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -511,7 +509,6 @@ metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 script = ExtResource("2_6csqb")
 spell_name = "backshot"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_o6723")])
-cooldown_in_beats = 2.0
 keys_as_string = "B3D#4 "
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 

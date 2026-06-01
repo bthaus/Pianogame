@@ -19,6 +19,7 @@ var octave_offset={
 	"5"=-1,
 	"6"=-2
 }
+
 var notes:Array[Sprite2D]=[]
 func set_up(node:SequenceNode,offset):
 	var keys:Array=node.key_unit.key
@@ -51,7 +52,6 @@ func set_up(node:SequenceNode,offset):
 		piano.keyController.key_pressed.connect(func(event:PianoEvent):
 			if event.get_key()==full_note:note.texture=active_text)
 		piano.keyController.key_released.connect(func(event:PianoEvent):
-			var x=event.get_key()
 			if event.get_key()==full_note:note.texture=inactive_text)
 		
 	
@@ -59,11 +59,11 @@ func set_up(node:SequenceNode,offset):
 	pass;
 
 func update_activity(node:SequenceNode):
-	#var val=node.hits
-	#for n in notes:
-		#if val>0:
-			#n.texture=active_text
-		#else:
-			#n.texture=inactive_text
-			#
+	var val=node.hits
+	for n in notes:
+		if val>0:
+			n.texture=active_text
+		else:
+			n.texture=inactive_text
+			
 	pass

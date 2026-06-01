@@ -90,7 +90,7 @@ func play_spell():
 	pass
 func play_note(note):
 	var lower_case=note.to_lower()+".mp3"
-	lower_case.replace("#","-")
+	lower_case=lower_case.replace("#","-")
 	var audio_player=AudioStreamPlayer.new()
 	player.add_child(audio_player)
 	audio_player.stream=load("res://Assets/mp3 Notes/"+lower_case)

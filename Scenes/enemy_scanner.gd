@@ -2,11 +2,14 @@ extends Area2D
 class_name EnemyScanner
 @onready var tracker:Tracker=$'../Tracker'
 @export var player:PlayerCharacter
-signal target_changed(target:Enemy)
+signal target_changed(target)
 var current_target:Enemy:
 	set(value):
 		current_target=value
 		tracker.target=current_target
+		if not is_instance_valid(current_target):
+			target_changed.emit(null)
+			return
 		target_changed.emit(current_target)
 		
 var overlapping_enemies:Array[Enemy]
@@ -44,5 +47,6 @@ func _on_body_entered(body: Node2D) -> void:
 func _on_body_exited(body: Node2D) -> void:
 	if body is Enemy:
 		overlapping_enemies.erase(body)
-		current_target=overlapping_enemies.front()	
+		if overlapping_enemies.is_empty():current_target=null	
+		else:current_target=overlapping_enemies.front()	
 	pass # Replace with function body.

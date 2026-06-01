@@ -12,7 +12,7 @@ func trigger(spell:Spell,error_count,factor=1):
 	ball.target=spell.player.enemy_scanner.current_target
 	ball.error_count=error_count
 	spell.player.add_sibling(ball)
-	spell.player.enemy_scanner.target_changed.connect(func(target:Enemy):if ball!=null:ball.target=target)
+	ball.connect_with_scanner(spell.player)	
 	super(spell,error_count,factor)
 	pass
 

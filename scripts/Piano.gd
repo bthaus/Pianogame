@@ -15,7 +15,7 @@ var allow_input_always=true
 var input_history:Set=Set.new()
 var error_count=0
 var player:PlayerCharacter
-static var easy_move=false
+static var easy_move=true
 var upgrade_values=[5,15,25,40]
 static var piano_instance=null
 static func get_piano()->Piano:
@@ -37,7 +37,7 @@ var number_of_errors_unstarted=0:
 			total_errors.push_back({"value"=1,"hp"=player.hp,"enemies"=Enemy.num_alive,"time"=Time.get_ticks_msec()})
 		number_of_errors_unstarted=clamp(value,0,5)
 		player.hud.update()
-		if number_of_errors_unstarted>=5:hit_player()
+		#if number_of_errors_unstarted>=5:hit_player()
 func hit_player():
 	player.hit(5)
 	pass	
@@ -73,12 +73,13 @@ func _ready() -> void:
 		add_spell_visual(s)
 
 	pass
+var visuals=[]	
 func add_spell_visual(spell):
 	var visual=load('res://Scenes/note_visual.tscn').instantiate()
 	visual.spell=spell
 	$trees.add_child(visual)
 	visual.set_up(spell)
-	
+	visuals.append(visual)
 	print("visual set up")
 	var off=0	
 	for s:SequenceTreeVisual in $trees.get_children():
@@ -98,21 +99,21 @@ func add_spell(spell:Spell):
 var last_movement_event:PianoEvent	
 func handle_movement(event:PianoEvent):
 	player.highlight_move_key(event.get_key())
-	if event.get_key()=="G2":
-		player.jump()
-		return
+
 	if last_movement_event==null:
 		last_movement_event=event
+		player.reset_positions()
 		return
 	if event.timestamp-last_movement_event.timestamp>1000:
+		player.reset_positions()
 		last_movement_event=event
 		return
 	var diff=movement_keys.find(last_movement_event.get_key())-movement_keys.find(event.get_key())
 	
-	if [-1,1,3,-3].has(diff):
-		if !(last_movement_event.get_key()=="C2" and event.get_key()=="F2") and event.midi_event.pitch>last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="F2" and event.get_key()=="C2"):
+	if [-1,1,4,-4].has(diff):
+		if !(last_movement_event.get_key()=="F2" and event.get_key()=="C3") and event.midi_event.pitch>last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="C3" and event.get_key()=="F2"):
 			player.move(Vector2.RIGHT,event.get_key())
-		if !(last_movement_event.get_key()=="F2" and event.get_key()=="C2") and event.midi_event.pitch<last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="C2" and event.get_key()=="F2"):
+		if !(last_movement_event.get_key()=="C3" and event.get_key()=="F2") and event.midi_event.pitch<last_movement_event.midi_event.pitch or (last_movement_event.get_key()=="F2" and event.get_key()=="C1"):
 			player.move(Vector2.LEFT,event.get_key())	
 			
 	last_movement_event=event	
@@ -124,25 +125,49 @@ var movement_pointer=0:
 		if val<0:
 			val=movement_keys.size()-1
 		movement_pointer=val				
-var movement_keys=[
-	"C2","D2","E2","F2"
-]	
-func handle_easy_movement(event:PianoEvent):
+	
+func handle_easy_movement(event:PianoEvent,up=false):
 	var direction=0
-	if keyController.active_keys.has("C2"):
+	if keyController.active_keys.has("F#2"):
 		direction+=-1
-	if keyController.active_keys.has("E2"):
+	if keyController.active_keys.has("A#2"):
 		direction+=1
-	if event.get_key()=="D2":
+	if event.get_key()=="G#2" and not up:
 		player.jump()
 	player.easy_move(direction)			
 	pass
-var easy_move_keys=["C2","D2","E2"]
+var movement_keys=[
+	"F2","G2","A2","B2","C3"
+]	
+var easy_move_keys=["F#2","G#2","A#2"]
+var quick_menu_keys=["C#2","D#2"]
+var quick_menu_index=0:
+	set(val):
+		quick_menu_index=val
+		if quick_menu_index>=visuals.size():quick_menu_index=0
+		if quick_menu_index<0:quick_menu_index=visuals.size()-1
+		pass
+func handle_quick_menu(direction):
+	if visuals.is_empty():return	
+	visuals[quick_menu_index].unhighlight()
+	quick_menu_index+=direction
+	visuals[quick_menu_index].highlight()
+	pass
+func	 play_sound():
+	if visuals.is_empty():return	
+	visuals[quick_menu_index].spell.play_spell()
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
-	if not easy_move and movement_keys.has(piano_event.get_key()) or piano_event.get_key()=="G2":
+	if movement_keys.has(piano_event.get_key()):
 		handle_movement(piano_event)
-	if easy_move and easy_move_keys.has(piano_event.get_key()):
+	if easy_move_keys.has(piano_event.get_key()):
 		handle_easy_movement(piano_event)
+	
+	if piano_event.get_key()==quick_menu_keys.front():
+		handle_quick_menu(-1)
+	if piano_event.get_key()==quick_menu_keys.back():
+		handle_quick_menu(1)	
+	if piano_event.get_key()=="B1":
+		play_sound()	
 	input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
@@ -254,7 +279,7 @@ func _on_beat_open_window() -> void:
 
 func _on_key_controller_key_released(piano_event: PianoEvent) -> void:
 	if easy_move and easy_move_keys.has(piano_event.get_key()) and not piano_event.get_key()=="D2":
-		handle_easy_movement(piano_event)
+		handle_easy_movement(piano_event,true)
 	input_happened=true
 	input_handled=false
 	pass # Replace with function body.

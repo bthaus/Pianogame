@@ -14,3 +14,9 @@ func _process(delta: float) -> void:
 	# Smoothly rotate current direction toward target direction
 	direction = direction.slerp(desired_direction, turn_speed * delta).normalized()
 	super(delta)
+
+func connect_with_scanner(player:PlayerCharacter):
+	player.enemy_scanner.target_changed.connect(func(t):
+		target=t)
+	
+	pass	

@@ -51,13 +51,16 @@ func move(direction,key="A1"):
 	pass;
 
 var last_pos=Vector2.ZERO	
+func add_gravity(delta):
+	velocity.y += 800 * delta
+	pass
 func _physics_process(delta: float) -> void:
 	if $AnimatedSprite2D.animation=="hurt":return
 	if target_position==null:return
 	map_position=map.local_to_map(global_position)as Vector2
 	if hp<=0:
 		return
-	velocity.y += 800 * delta
+	add_gravity(delta)
 	#if map_position!=target_position:
 	determine_x_velocity(delta)
 	velocity.x = clamp(velocity.x, -movement_speed, movement_speed)

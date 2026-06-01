@@ -14,6 +14,9 @@ radius = 273.52878
 offsets = PackedFloat32Array(0, 0.6363636, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.64, 0.64, 0.64, 0.6039216, 1, 1, 1, 0)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajo0r"]
+radius = 1.4142135
+
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
 collision_layer = 524290
 script = ExtResource("2_wko77")
@@ -64,30 +67,41 @@ shape = SubResource("CircleShape2D_ons1q")
 texture = ExtResource("3_wko77")
 script = ExtResource("4_pb3n0")
 
-[node name="C" type="ColorRect" parent="." index="12" unique_id=1566885859]
-offset_left = -3.0
-offset_top = -10.0
-offset_right = -2.0
-offset_bottom = -6.0
+[node name="F" type="ColorRect" parent="." index="12" unique_id=1566885859]
+offset_left = -4.0
+offset_top = -11.0
+offset_right = -3.0
+offset_bottom = -5.7951803
+scale = Vector2(0.83, 0.83)
 
-[node name="D" type="ColorRect" parent="." index="13" unique_id=1122427958]
-offset_left = -1.0
+[node name="G" type="ColorRect" parent="." index="13" unique_id=1122427958]
+offset_left = -2.0
 offset_top = -10.0
+offset_right = -1.0
 offset_bottom = -6.0
+scale = Vector2(0.83, 0.83)
 
-[node name="E" type="ColorRect" parent="." index="14" unique_id=1834849992]
-offset_left = 1.0
+[node name="A" type="ColorRect" parent="." index="14" unique_id=1834849992]
 offset_top = -10.0
-offset_right = 2.0
+offset_right = 1.0
 offset_bottom = -6.0
+scale = Vector2(0.83, 0.83)
 
-[node name="F" type="ColorRect" parent="." index="15" unique_id=1667497830]
-offset_left = 3.0
+[node name="B" type="ColorRect" parent="." index="15" unique_id=1667497830]
+offset_left = 2.0
 offset_top = -10.0
-offset_right = 4.0
+offset_right = 3.0
 offset_bottom = -6.0
+scale = Vector2(0.83, 0.83)
 
-[node name="level_up" type="CPUParticles2D" parent="." index="16" unique_id=805568361]
+[node name="C" type="ColorRect" parent="." index="16" unique_id=1540309619]
+offset_left = 4.0
+offset_top = -11.0
+offset_right = 5.0
+offset_bottom = -5.7951803
+scale = Vector2(0.83, 0.83)
+
+[node name="level_up" type="CPUParticles2D" parent="." index="17" unique_id=805568361]
 position = Vector2(0.3736801, -17.151003)
 emitting = false
 texture = ExtResource("6_ons1q")
@@ -107,5 +121,13 @@ scale_amount_max = 0.03
 color = Color(18.892157, 18.892157, 2.7260628, 1)
 color_ramp = SubResource("Gradient_ajo0r")
 
+[node name="groundbox" type="Area2D" parent="." index="18" unique_id=1199454751]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="groundbox" index="0" unique_id=759708754]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ajo0r")
+
 [connection signal="body_entered" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_entered"]
 [connection signal="body_exited" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_exited"]
+[connection signal="body_entered" from="groundbox" to="." method="_on_groundbox_body_entered"]

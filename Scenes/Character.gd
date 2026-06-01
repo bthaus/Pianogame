@@ -9,7 +9,7 @@ static var spawnpoint:Vector2=Vector2.ZERO
 @export var acceleration := 1200.0
 @export var friction := 1000.0	
 var spells
-var easy_on=false
+var walking=false
 var on_color=Color(1.0, 0.0, 0.0, 1.0)
 var off_color=Color(1.0, 1.0, 1.0, 1.0)
 var heals=5:
@@ -49,15 +49,17 @@ func unlock(spell_name,learn=true):
 	pass;	
 func highlight_move_key(key:String):
 	
-	$C.color=off_color
-	$D.color=off_color
-	$E.color=off_color
 	$F.color=off_color
+	$G.color=off_color
+	$A.color=off_color
+	$B.color=off_color
+	$C.color=off_color
 	
-	if key.contains("C"):$C.color=on_color
-	if key.contains("D"):$D.color=on_color
-	if key.contains("E"):$E.color=on_color
 	if key.contains("F"):$F.color=on_color
+	if key.contains("G"):$G.color=on_color
+	if key.contains("A"):$A.color=on_color
+	if key.contains("B"):$B.color=on_color
+	if key.contains("C"):$C.color=on_color
 	since_last=0
 	pass
 func _ready() -> void:
@@ -94,7 +96,7 @@ func add_learned_spells():
 func determine_x_velocity(delta):
 	if movement_locked:return
 	# Target horizontal speed
-	if not easy_on:super(delta)
+	if not walking:super(delta)
 	var target_speed = easy_move_direction * movement_speed
 	
 	# Smooth acceleration / deceleration
@@ -122,6 +124,13 @@ func hit(damage):
 		return
 	super(damage)
 	pass	
+func add_gravity(delta):
+	#if not walking:return super(delta/2)
+	#super(delta)
+	super(delta)
+	if not walking:
+		velocity.y=clamp(velocity.y,-150,400)
+	pass	
 func level_up():
 	$level_up.emitting=true
 	pass	
@@ -141,9 +150,16 @@ func deflect():
 		$AnimatedSprite2D.modulate=Color(1,1,1,1)
 		)
 	pass	
+func move(direction,key="A1"):
+	walking=false
+	
+	velocity.y-=100
+	if velocity.y>0:velocity.y=0
+	super(direction,key)
+	pass	
 func easy_move(direction):
 	if movement_locked:return
-	easy_on=true
+	walking=true
 	if direction!=0:face_direction=Vector2(direction,0)
 	easy_move_direction=direction
 	pass;	
@@ -159,3 +175,8 @@ func swap_scene():
 	
 static var learned_spells=[]	
 @export var add_spells_override:Array[String]=[]
+
+
+func _on_groundbox_body_entered(body: Node2D) -> void:
+	reset_positions()
+	pass # Replace with function body.

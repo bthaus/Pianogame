@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://0thgjnu3upnv" path="res://Scenes/sequence_node_visual.tscn" id="2_jq7ay"]
 [ext_resource type="Script" uid="uid://db404vbc07gtr" path="res://Scenes/indicator.gd" id="3_w0yvc"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_jq7ay"]
+[sub_resource type="LabelSettings" id="LabelSettings_w0yvc"]
 font_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" unique_id=623535090]
@@ -25,7 +25,7 @@ offset_top = -177.0
 offset_right = 45.0
 offset_bottom = -154.0
 text = "asdf"
-label_settings = SubResource("LabelSettings_jq7ay")
+label_settings = SubResource("LabelSettings_w0yvc")
 
 [node name="notes" type="Node2D" parent="." unique_id=514999529]
 
