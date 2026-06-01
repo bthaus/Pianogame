@@ -94,17 +94,23 @@ func play_spell():
 			var bpm=Beat.get_beat_instance().bpm
 			var time_Factor=60/bpm
 			var timeout=time_Factor*key.beat
-			player.get_tree().create_timer(timeout).timeout.connect(play_note.bind(note))
+			var visual=SequenceTreeVisual.visual_dic[key]
+			player.get_tree().create_timer(timeout).timeout.connect(play_note.bind(note,visual))
 			
 	pass
-func play_note(note):
+func play_note(note,unit:SequenceNodeVisual):
+	#var visual:SequenceTreeVisual=player.piano.get_spell_visual(spell_name)
+	unit.highlight()
 	var lower_case=note.to_lower()+".mp3"
 	lower_case=lower_case.replace("#","-")
 	var audio_player=AudioStreamPlayer.new()
 	player.add_child(audio_player)
+	audio_player.volume_db=10
 	audio_player.stream=load("res://Assets/mp3 Notes/"+lower_case)
-	audio_player.play()
-	audio_player.finished.connect(func():audio_player.queue_free())
+	audio_player.play(0.03)
+	audio_player.finished.connect(func():
+		unit.unhighlight()
+		audio_player.queue_free())
 	pass;	
 static var upgrade_values:Dictionary
 var accuracy_threshold=0.5

@@ -30,9 +30,8 @@ func set_up(node:SequenceNode,offset):
 		#$Line2D.visible=sharp
 		$Note/sharp.visible=sharp
 		k=k.replace("#","") 	
-		$Note/Line2D.visible= k=="C4"
-		$Note/Line2D.visible= k=="C2" 
-		$Note/Line2D2.visible=k=="C2"
+		$Note/Line2D.visible= k.contains("C4") or k.contains("C2") 
+		$Note/Line2D2.visible= k.contains("C2") 
 		var octave=k[1]
 		
 		k=k.remove_chars("123456789UP")
@@ -57,7 +56,14 @@ func set_up(node:SequenceNode,offset):
 	
 	node.hits_changed.connect(update_activity)
 	pass;
-
+func highlight():
+	for n in notes:
+		n.texture=active_text
+	pass
+func unhighlight():
+	for n in notes:
+		n.texture=inactive_text
+	pass	
 func update_activity(node:SequenceNode):
 	var val=node.hits
 	for n in notes:

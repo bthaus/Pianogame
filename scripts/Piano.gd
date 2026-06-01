@@ -113,6 +113,11 @@ func add_spell(spell:Spell):
 	add_spell_visual(spell)
 	
 	pass	
+func get_spell_visual(spell_name):
+	for visual:SequenceTreeVisual in visuals:
+		if visual.spell.spell_name==spell_name:
+			return visual
+	pass	
 var last_movement_event:PianoEvent	
 func handle_movement(event:PianoEvent):
 	player.highlight_move_key(event.get_key())
@@ -185,7 +190,7 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 		handle_quick_menu(1)	
 	if piano_event.get_key()=="B1":
 		play_sound()	
-	if !easy_move_keys.has(piano_event.get_key()) and !movement_keys.has(piano_event.get_key()):	
+	if !easy_move_keys.has(piano_event.get_key()) and !movement_keys.has(piano_event.get_key()) and !quick_menu_keys.has(piano_event.get_key()) and !piano_event.get_key()=="B1":	
 		input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))

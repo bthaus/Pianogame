@@ -20,7 +20,8 @@ func highlight():
 func unhighlight():
 	$Spellname.label_settings.font_color=Color(0.0, 0.0, 0.0, 1.0)
 
-	pass		
+	pass	
+static var visual_dic={}		
 func set_up(spell:Spell):
 	spell.cooldown_passed.connect(func():$notes.modulate=Color(1,1,1,1))
 	spell.triggered.connect(func():
@@ -48,7 +49,9 @@ func set_up(spell:Spell):
 	var current_node=tree.entry_edge.to_node
 	var offset=Vector2.ZERO
 	while true:
+		
 		var visual=	load('res://Scenes/sequence_node_visual.tscn').instantiate() as SequenceNodeVisual
+		visual_dic[current_node.key_unit]=visual
 		visual.set_up(current_node,line_offset)
 		$notes.add_child(visual)
 		#offset+=Vector2.RIGHT*50.0*current_node.beat
