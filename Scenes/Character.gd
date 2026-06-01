@@ -86,11 +86,11 @@ func call_off_time(time_diff,timing_dic):
 			#$timing_bubble.show()
 			#$timing_bubble/bubble_text.text="too early"	
 			#get_tree().create_timer(2).timeout.connect(hidebubble2)
-	if time_diff>0.5:
+	if time_diff>0.2:
 		$bubble/bubble_text.text="Too fast"
 		$bubble.show()
 		get_tree().create_timer(2).timeout.connect(hidebubble)
-	if time_diff<-0.5:
+	if time_diff<-0.2:
 		$bubble/bubble_text.text="Too slow"	
 		$bubble.show()
 		get_tree().create_timer(2).timeout.connect(hidebubble)

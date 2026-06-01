@@ -1,4 +1,4 @@
-extends RefCounted
+extends Node
 class_name Sequence
 
 var sequence_start: float # timestamp

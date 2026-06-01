@@ -22,8 +22,10 @@ func unhighlight():
 
 	pass		
 func set_up(spell:Spell):
-	#spell.cooldown_passed.connect(func():$notes.modulate=Color(1,1,1,1))
-	#spell.triggered.connect(func():$notes.modulate=Color(1,1,1,0.5))
+	spell.cooldown_passed.connect(func():$notes.modulate=Color(1,1,1,1))
+	spell.triggered.connect(func():
+		if spell.cooldown_in_beats>=1:
+			$notes.modulate=Color(1,1,1,0.5))
 	spell.spell_started.connect(start_move_indicator)
 	spell.spell_failure_or_success.connect(stop_indicator)
 	

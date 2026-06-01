@@ -47,7 +47,7 @@ func remove_all_units():
 var current_sequence:Sequence	
 var is_active=false
 func check_start(active_keys,beat_no):
-#	if state!=State.Ready:return
+	if state!=State.Ready:return
 	if tree.entry_edge.can_traverse(active_keys):
 	#if util.is_partial_sum(active_keys, tree.entry_edge.keys):
 		if is_active:
@@ -62,10 +62,11 @@ func check_start(active_keys,beat_no):
 		is_active=true
 		started_sequence.finished.connect(on_failure_or_success)
 		started_sequence.cancelled.connect(on_failure_or_success)
-		spell_failure_or_success.connect(started_sequence.check_off_time)
-		#spell_failure_or_success.connect(func():
-		##	started_sequence.queue_free()
-			#)
+		started_sequence.finished.connect(started_sequence.check_off_time)
+		spell_failure_or_success.connect(func():
+			if is_instance_valid(started_sequence):
+				started_sequence.queue_free()
+			)
 		current_sequence=started_sequence
 		return started_sequence
 	pass;

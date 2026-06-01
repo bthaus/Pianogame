@@ -251,27 +251,36 @@ func traverse_sequences():
 				maybe_seq.cancelled.connect(func():sequences.erase(maybe_seq))
 				maybe_seq.remove.connect(func():sequences.erase(maybe_seq))
 			
-
+	var rem=[]
 	for sequence:Sequence in sequences:
+		if not is_instance_valid(sequence):
+			rem.append(sequence)
+			continue
 		if traversed_sequences.has(sequence.spell.spell_name):continue
 		sequence.traverse(keys,beat.beat_no)
-			
+	for r in rem:
+		sequences.erase(r)		
 				
 	pass # Replace with function body.
 	
 	
 	
 func timeout_sequences():
+	var rem=[]
 	for s:Sequence in sequences:
+		if not is_instance_valid(s):
+			rem.append(s)
+			continue
 		if s.is_timeout(beat.beat_no):
 			s.done=true
 			remove.append(s)
 			
-
-		for r:Sequence in remove:
-			r.cancel()
-			sequences.erase(r)
-		remove.clear()	
+	for r in rem:
+		sequences.erase(r)
+	for r:Sequence in remove:
+		r.cancel()
+		sequences.erase(r)
+	remove.clear()	
 	
 	
 	
@@ -309,8 +318,8 @@ func _on_beat_open_window() -> void:
 func _on_key_controller_key_released(piano_event: PianoEvent) -> void:
 	if easy_move and easy_move_keys.has(piano_event.get_key()) and not piano_event.get_key()=="D2":
 		handle_easy_movement(piano_event,true)
-	input_happened=true
-	input_handled=false
+	#input_happened=true
+	#input_handled=false
 	pass # Replace with function body.
 
 
