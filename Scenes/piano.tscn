@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xybohmy21dgo" path="res://scripts/Piano.gd" id="1_v6hsj"]
 [ext_resource type="Script" uid="uid://7wmdwssytper" path="res://scripts/KeyController.gd" id="2_1krru"]
+[ext_resource type="AudioStream" uid="uid://2baoa0gtxbes" path="res://Assets/sounds/error.mp3" id="4_eambc"]
 [ext_resource type="PackedScene" uid="uid://iijm1wxh5e31" path="res://Scenes/beat.tscn" id="6_7y472"]
 
 [node name="Piano" type="Node2D" unique_id=430235116]
@@ -26,6 +27,9 @@ visible = false
 
 [node name="trees" type="Node2D" parent="." unique_id=1457884444]
 position = Vector2(240, 15)
+
+[node name="error" type="AudioStreamPlayer" parent="." unique_id=1660418171]
+stream = ExtResource("4_eambc")
 
 [connection signal="before_key_released" from="KeyController" to="." method="_on_key_controller_before_key_released"]
 [connection signal="key_pressed" from="KeyController" to="." method="_on_key_controller_key_pressed"]

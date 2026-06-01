@@ -48,6 +48,7 @@ func get_spell_instance(spell_name):
 func register_error(e:EventStatus):
 	if e.type==EventStatus.StatusType.Unstarted:
 		number_of_errors_unstarted+=1
+		$error.play()
 	if e.type!=EventStatus.StatusType.Unstarted:
 		
 		if e.related_sequence.error_tracked:

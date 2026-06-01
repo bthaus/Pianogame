@@ -18,7 +18,13 @@ func connect_beat():
 	if beat==null:
 		l.e("beat not passed")
 	beat.bar.connect(move.bind(Vector2.ZERO))
+	beat.beat.connect(squish)
 	pass;
+func squish():
+	var tw=create_tween()
+	tw.tween_property(self,^"scale",Vector2(1,0.5),60/beat.bpm/2)
+	tw.tween_property(self,^"scale",Vector2(1,1),60/beat.bpm/2)
+	pass	
 func move(direction,key="A1"):
 	
 	counter+=1

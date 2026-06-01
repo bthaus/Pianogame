@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fe04lx08pprm" path="res://Scenes/player_character.tscn" id="2_8j6nv"]
 [ext_resource type="PackedScene" uid="uid://dm2lfii4ja50u" path="res://Scenes/ghost.tscn" id="2_nomwf"]
 [ext_resource type="Texture2D" uid="uid://d08aknvjjwjkc" path="res://Assets/kenney_background-elements-remastered/PNG/Default/cloud6.png" id="3_j4w8j"]
+[ext_resource type="Script" uid="uid://coykum5tm8q3j" path="res://tests/parallax_2d_2.gd" id="3_x8r61"]
 [ext_resource type="Script" uid="uid://cmiaufh0lf8e" path="res://tests/map.gd" id="4_uy5q8"]
 [ext_resource type="Texture2D" uid="uid://bemlkomae4pbc" path="res://Assets/kenney_background-elements-remastered/PNG/Default/cloud3.png" id="4_x8r61"]
 [ext_resource type="Texture2D" uid="uid://tivndh5c15re" path="res://Assets/kenney_background-elements-remastered/PNG/Default/cloud1.png" id="5_mon0f"]
@@ -44,8 +45,9 @@ texture = ExtResource("2_7o5ud")
 
 [node name="Parallax2D2" type="Parallax2D" parent="." unique_id=968719265]
 repeat_size = Vector2(1165, 524)
-autoscroll = Vector2(10, 0)
+autoscroll = Vector2(5, 0)
 repeat_times = 5
+script = ExtResource("3_x8r61")
 
 [node name="Cloud6" type="Sprite2D" parent="Parallax2D2" unique_id=614645500]
 position = Vector2(56, -304.5)

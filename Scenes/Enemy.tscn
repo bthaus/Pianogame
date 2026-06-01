@@ -50,7 +50,14 @@ script = ExtResource("2_xeo28")
 scale = Vector2(-0.265, 0.265)
 sprite_frames = SubResource("SpriteFrames_wovta")
 
+[node name="front" parent="." index="3" unique_id=1177973524]
+visible = false
+
+[node name="back" parent="." index="4" unique_id=1244012413]
+visible = false
+
 [node name="PlayerDetection" type="Area2D" parent="." index="6" unique_id=1983412877]
+visible = false
 collision_layer = 0
 collision_mask = 524288
 

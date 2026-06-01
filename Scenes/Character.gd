@@ -46,7 +46,7 @@ func unlock(spell_name,learn=true):
 	piano.add_spell(spell)
 	if learn:learned_spells.append(spell_name)
 	return spell
-	pass;	
+	
 func highlight_move_key(key:String):
 	
 	$F.color=off_color

@@ -90,9 +90,9 @@ func traverse(key_dic,beat):
 	if current_node.outgoing_edge.can_traverse(key_dic):	
 		var _relative_beat=beat-start_beat
 		var _beat_diff=abs(current_node.outgoing_edge.to_node.beat-_relative_beat)
-		if _beat_diff>current_node.outgoing_edge.to_node.beat/2:
-			error_count+=_beat_diff
-			return
+		#if _beat_diff>current_node.outgoing_edge.to_node.beat/2:
+			#error_count+=_beat_diff
+			#return
 		beat_adherance_for_first_node=0
 		if is_first_node():
 			beat_adherance_for_first_node=Beat.get_beat_adherance()
