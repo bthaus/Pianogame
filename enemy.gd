@@ -4,11 +4,26 @@ var beat:Beat
 var player:PlayerCharacter
 var aggrod=false
 @onready var center:Node2D=$center
+var colors=["Red","Blue","Green","White"]
+static var unlocked_colors=["White"]
+var color_dic={
+	"Red"=Color(1.0, 0.0, 0.0, 1.0),
+	"Blue"=Color(0.0, 0.0, 1.0, 1.0),
+	"Green"=Color(0.0, 1.0, 0.0, 1.0),
+	"White"=Color(1.0, 1.0, 1.0, 1.0),
+	"Yellow"=Color(1.0, 1.0, 0.0, 1.0)
+}
+var color
 static var num_alive=0:
 	set(val):
 		num_alive=clamp(val,0,10000)
 		pass
+func set_color():
+	color="Yellow"
+	pass		
 func _ready() -> void:
+	set_color()
+	$AnimatedSprite2D.modulate=color_dic[color]
 	call_deferred("connect_beat")
 	num_alive+=1
 	super()
@@ -45,10 +60,14 @@ func play_anims(velocity):
 	pass;
 func max_proximity_to_player():
 	return 70
-func hit(damage):
+func hit(damage,c):
 	if not is_instance_valid(player):return
+	if c==color:
+		damage*=2
+	else:
+		damage/=2	
 	if player.movement_locked:damage=damage*2
-	super(damage)	
+	super(damage,c)	
 func shoot():
 	
 	if frozen:return

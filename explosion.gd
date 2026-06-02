@@ -24,7 +24,7 @@ func _ready() -> void:
 func explode():
 	var enemies= area.get_overlapping_bodies()
 	for e:Enemy in enemies:
-		e.hit(damage)
+		e.hit(damage,"Red")
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

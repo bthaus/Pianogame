@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 		highlight_move_key("none")
 	if Input.is_action_just_pressed(&'C'):
 		var casc:Spell=piano.get_spell_instance("cascade")
-		casc.play_spell()
+		casc.play_spell(1)
 		#for spell in SpellFactory.get_all_spells():
 			#unlock(spell)
 		#DataStorer.save_player_data(self)	
@@ -65,7 +65,8 @@ func highlight_move_key(key:String):
 	pass
 func _ready() -> void:
 	if movement_locked:$base_defense_cam.make_current()
-	global_position=spawnpoint
+	if not get_parent() is SafeSpace:
+		global_position=spawnpoint
 	piano=hud.piano
 	if piano.easy_move:movement_speed/=2
 	piano.player=self
@@ -111,6 +112,9 @@ func load_data():
 	Piano.total_errors=misses
 	pass	
 func add_learned_spells():
+	if get_parent().day:
+		$PointLight2D.energy=0
+		$PointLight2D.visible=false
 	if all_spells_unlocked:
 		for spell in SpellFactory.get_all_spells():
 			if not add_spells_override.has(spell):add_spells_override.append(spell)
@@ -144,13 +148,13 @@ func determine_x_velocity(delta):
 	
 var deflecting=false	
 var deflect_spell:DeflectSpell
-func hit(damage):
+func hit(damage,color):
 	
 	if deflecting:
 		deflect_spell.successful_deflect()
 		l.d("deflect successfull")
 		return
-	super(damage)
+	super(damage,color)
 	pass	
 func add_gravity(delta):
 	#if not walking:return super(delta/2)

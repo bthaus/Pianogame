@@ -44,6 +44,11 @@ scale = Vector2(0.53125, 0.53125)
 texture = ExtResource("4_fcng2")
 script = ExtResource("5_fcng2")
 
+[node name="PointLight2D" type="PointLight2D" parent="Glow2" index="0" unique_id=68238617]
+energy = 0.05
+texture = ExtResource("4_fcng2")
+texture_scale = 1.95
+
 [node name="shoot_cam" type="Camera2D" parent="." index="1" unique_id=693426872]
 position = Vector2(8, -66)
 zoom = Vector2(4.075, 4.075)
@@ -171,6 +176,12 @@ offset_right = 44.0
 offset_bottom = -29.0
 text = "Too early"
 label_settings = SubResource("LabelSettings_fcng2")
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="22" unique_id=1039357015]
+position = Vector2(2, -14)
+energy = 0.5
+texture = ExtResource("4_fcng2")
+texture_scale = 2.28
 
 [connection signal="body_entered" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_entered"]
 [connection signal="body_exited" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_exited"]

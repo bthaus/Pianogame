@@ -8,10 +8,12 @@
 
 [node name="Area2D" parent="." index="0" unique_id=1928616845]
 script = ExtResource("2_a77rf")
+color = "Red"
 speed = null
 damage = null
 
 [node name="AnimatedSprite2D" parent="Area2D" index="1" unique_id=981805135]
+modulate = Color(1, 0, 0, 1)
 position = Vector2(-9.536743e-07, 9.536743e-07)
 rotation = -1.5707964
 scale = Vector2(0.75528467, 0.75528467)

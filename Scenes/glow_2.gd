@@ -10,4 +10,5 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	scale=Vector2.ONE*(1-Beat.beat_instance.get_beat_adherance())
+	$PointLight2D.energy=remap(Beat.beat_instance.get_beat_adherance(),0,1,0,0.1)
 	pass

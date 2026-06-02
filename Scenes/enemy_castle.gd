@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	$ProgressBar.max_value=max_hp
 	$ProgressBar.value=hp
 	pass
-func hit(damage):
+func hit(damage,color):
 	hp-=damage
 	if hp<=0:
 		hp_arr.pop_front()

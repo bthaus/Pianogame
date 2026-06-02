@@ -4,7 +4,7 @@ class_name Piano
 @onready var keyController: KeyController = $KeyController
 @onready var beat:Beat=$Beat
 
-var sequences:Array[Sequence]
+var sequences:Array
 var equipped_spells:Array[Spell]=[]
 var frame_checked = false
 var hit_low=0
@@ -38,9 +38,7 @@ var number_of_errors_unstarted=0:
 		number_of_errors_unstarted=clamp(value,0,5)
 		player.hud.update()
 		#if number_of_errors_unstarted>=5:hit_player()
-func hit_player():
-	player.hit(5)
-	pass	
+
 func get_spell_instance(spell_name):
 	for spell:Spell in equipped_spells:
 		if spell.spell_name==spell_name:return spell
@@ -175,9 +173,9 @@ func handle_quick_menu(direction):
 	quick_menu_index+=direction
 	visuals[quick_menu_index].highlight()
 	pass
-func	 play_sound():
+func	 play_sound(speed):
 	if visuals.is_empty():return	
-	visuals[quick_menu_index].spell.play_spell()
+	visuals[quick_menu_index].spell.play_spell(speed)
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 	if movement_keys.has(piano_event.get_key()):
 		handle_movement(piano_event)
@@ -189,7 +187,9 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 	if piano_event.get_key()==quick_menu_keys.back():
 		handle_quick_menu(1)	
 	if piano_event.get_key()=="B1":
-		play_sound()	
+		play_sound(1)
+	if piano_event.get_key()=="A1":
+		play_sound(2.5)		
 	if !easy_move_keys.has(piano_event.get_key()) and !movement_keys.has(piano_event.get_key()) and !quick_menu_keys.has(piano_event.get_key()) and !piano_event.get_key()=="B1":	
 		input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
@@ -238,7 +238,7 @@ var remove=[]
 func traverse_sequences():
 	var traversed_sequences=[]
 	var keys=keyController.active_keys
-	for sequence:Sequence in sequences:
+	for sequence in sequences:
 		if not is_instance_valid(sequence):
 			continue
 		if sequence.traverse(keys,beat.beat_no):
@@ -257,7 +257,7 @@ func traverse_sequences():
 				maybe_seq.remove.connect(func():sequences.erase(maybe_seq))
 			
 	var rem=[]
-	for sequence:Sequence in sequences:
+	for sequence in sequences:
 		if not is_instance_valid(sequence):
 			rem.append(sequence)
 			continue
@@ -272,7 +272,7 @@ func traverse_sequences():
 	
 func timeout_sequences():
 	var rem=[]
-	for s:Sequence in sequences:
+	for s in sequences:
 		if not is_instance_valid(s):
 			rem.append(s)
 			continue
@@ -282,7 +282,7 @@ func timeout_sequences():
 			
 	for r in rem:
 		sequences.erase(r)
-	for r:Sequence in remove:
+	for r in remove:
 		r.cancel()
 		sequences.erase(r)
 	remove.clear()	

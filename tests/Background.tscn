@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bqraf2pwx5y71"]
+
+[ext_resource type="Texture2D" uid="uid://buqqcfqvk03bi" path="res://Assets/kenney_background-elements-remastered/Backgrounds/backgroundCastles.png" id="1_jvymr"]
+[ext_resource type="Script" uid="uid://bagbl1f7hperx" path="res://tests/background.gd" id="1_pvjim"]
+[ext_resource type="Script" uid="uid://coykum5tm8q3j" path="res://tests/parallax_2d_2.gd" id="2_pvjim"]
+[ext_resource type="Texture2D" uid="uid://d08aknvjjwjkc" path="res://Assets/kenney_background-elements-remastered/PNG/Default/cloud6.png" id="3_f2dot"]
+[ext_resource type="Texture2D" uid="uid://bemlkomae4pbc" path="res://Assets/kenney_background-elements-remastered/PNG/Default/cloud3.png" id="4_sr3ue"]
+[ext_resource type="Texture2D" uid="uid://tivndh5c15re" path="res://Assets/kenney_background-elements-remastered/PNG/Default/cloud1.png" id="5_cp1h7"]
+[ext_resource type="Texture2D" uid="uid://m40214y72kfv" path="res://Assets/kenney_background-elements-remastered/PNG/Default/cloud8.png" id="6_wusp5"]
+
+[node name="Node2D6" type="Node2D" unique_id=1014881546]
+script = ExtResource("1_pvjim")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=136712537]
+offset_left = -748.0
+offset_top = -2233.0
+offset_right = 5151.0
+offset_bottom = -474.0
+color = Color(0.8117647, 0.9372549, 0.9882353, 1)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=2066675109]
+repeat_size = Vector2(1024, 0)
+repeat_times = 50
+
+[node name="BackgroundCastles" type="Sprite2D" parent="Parallax2D" unique_id=1668644126]
+position = Vector2(419, -53)
+texture = ExtResource("1_jvymr")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=296374973]
+repeat_size = Vector2(1165, 524)
+autoscroll = Vector2(5, 0)
+repeat_times = 5
+script = ExtResource("2_pvjim")
+
+[node name="Cloud6" type="Sprite2D" parent="Parallax2D2" unique_id=586709384]
+position = Vector2(56, -304.5)
+texture = ExtResource("3_f2dot")
+
+[node name="Cloud3" type="Sprite2D" parent="Parallax2D2" unique_id=1861479242]
+position = Vector2(318, -170.5)
+texture = ExtResource("4_sr3ue")
+
+[node name="Cloud1" type="Sprite2D" parent="Parallax2D2" unique_id=297464840]
+position = Vector2(622, -514.5)
+texture = ExtResource("5_cp1h7")
+
+[node name="Cloud8" type="Sprite2D" parent="Parallax2D2" unique_id=98845433]
+position = Vector2(849, -289.5)
+texture = ExtResource("6_wusp5")

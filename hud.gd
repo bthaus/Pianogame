@@ -3,6 +3,7 @@ class_name HUD
 @export var piano:Piano
 @export var player:PlayerCharacter
 @onready var hp_bar:ProgressBar=%HPbar
+@onready var visual_piano=$Piano2
 var beat:Beat
 # Called when the node enters the scene tree for the first time.
 func hide_player_stats():
@@ -16,6 +17,8 @@ func _ready() -> void:
 	player.hp_changed.connect(update)
 	beat=Beat.get_beat_instance()
 	pass # Replace with function body.
+func toggle_piano(on):
+	$Piano2.visible=on	
 func update():
 	$errors.text=str(player.piano.number_of_errors_unstarted)
 	hp_bar.max_value=player.max_hp

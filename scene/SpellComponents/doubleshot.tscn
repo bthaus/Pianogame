@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://vgjt4xrw5c6u"]
+
+[ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="1_6t83r"]
+[ext_resource type="Script" uid="uid://dk66k175eyyc7" path="res://scene/SpellComponents/doubleshot.gd" id="2_u0a5g"]
+
+[node name="SpellComponent" unique_id=179673675 instance=ExtResource("1_6t83r")]
+script = ExtResource("2_u0a5g")
+damage = 10
+
+[node name="Area2D" parent="." index="0" unique_id=1928616845]
+modulate = Color(0, 1, 0, 1)
+color = "Green"
+speed = 120
+damage = 7
+
+[node name="AnimatedSprite2D" parent="Area2D" index="1" unique_id=981805135]
+modulate = Color(0, 1, 0, 1)

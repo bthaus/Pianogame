@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cm7taotbowqu1" path="res://fireball.gd" id="2_a32q6"]
 [ext_resource type="Script" uid="uid://dnr7j70dxc4rs" path="res://scene/SpellComponents/homing_projectile.gd" id="3_3eqc3"]
 [ext_resource type="Texture2D" uid="uid://brhrgfeyd2110" path="res://Assets/Tiles/Tiles/tile_0007.png" id="4_lsf0l"]
+[ext_resource type="Texture2D" uid="uid://dynj7gfdrk6cy" path="res://Assets/effects/Glow/glow1.png" id="5_lsf0l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_faq5q"]
 radius = 3.1622777
@@ -21,8 +22,19 @@ script = ExtResource("3_3eqc3")
 shape = SubResource("CircleShape2D_faq5q")
 
 [node name="AnimatedSprite2D" type="Sprite2D" parent="Area2D" index="1" unique_id=981805135]
+clip_children = 2
 position = Vector2(-1, 0)
 scale = Vector2(1.6111112, 1.6111112)
 texture = ExtResource("4_lsf0l")
+
+[node name="ColorRect" type="ColorRect" parent="Area2D/AnimatedSprite2D" index="0" unique_id=2033829115]
+offset_left = -16.13793
+offset_top = -19.862068
+offset_right = 23.86207
+offset_bottom = 20.137932
+
+[node name="PointLight2D" type="PointLight2D" parent="Area2D" index="2" unique_id=1997761574]
+energy = 0.5
+texture = ExtResource("5_lsf0l")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

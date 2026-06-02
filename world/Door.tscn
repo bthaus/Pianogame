@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://cm3ebpmiw5kqo"]
+
+[ext_resource type="Script" uid="uid://dhynmk2wgpeq1" path="res://world/exit.gd" id="1_qkyu6"]
+[ext_resource type="TileSet" uid="uid://b88fgsq1t633y" path="res://Ressources/tiles.tres" id="2_pb21a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4kbh"]
+radius = 31.633385
+
+[node name="exit" type="Area2D" unique_id=1259217655]
+collision_layer = 0
+collision_mask = 524288
+script = ExtResource("1_qkyu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1744561490]
+position = Vector2(9, -3)
+shape = SubResource("CircleShape2D_q4kbh")
+
+[node name="Label" type="Label" parent="." unique_id=720994164]
+visible = false
+offset_left = -27.369598
+offset_top = -40.565475
+offset_right = 41.6304
+offset_bottom = -17.565475
+text = "B1 Enter"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=728242642]
+tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 1, 0, 10, 0, 5, 0, 0, 0, 0, 0, 255, 255, 1, 0, 10, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 0, 10, 0, 7, 0, 0, 0)
+tile_set = ExtResource("2_pb21a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

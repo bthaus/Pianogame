@@ -7,6 +7,7 @@
 
 [node name="Area2D" parent="." index="0" unique_id=1928616845]
 script = ExtResource("2_dw1xo")
+color = "Blue"
 
 [node name="AnimatedSprite2D" parent="Area2D" index="1" unique_id=981805135]
 modulate = Color(0, 2.63432, 2.8157141, 1)

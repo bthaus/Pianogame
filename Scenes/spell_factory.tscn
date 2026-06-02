@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bkn1lew513pjl" path="res://Scenes/deflect_.gd" id="11_iu7i8"]
 [ext_resource type="PackedScene" uid="uid://bnvcmaxkynqi0" path="res://scene/SpellComponents/freezebolt.tscn" id="12_ebwd2"]
 [ext_resource type="PackedScene" uid="uid://b0hwy8oqr6fib" path="res://scene/SpellComponents/heal.tscn" id="13_1mje3"]
+[ext_resource type="PackedScene" uid="uid://vgjt4xrw5c6u" path="res://scene/SpellComponents/doubleshot.tscn" id="14_8up4e"]
 
 [sub_resource type="Resource" id="Resource_8pxlp"]
 script = ExtResource("3_bgm8m")
@@ -399,6 +400,113 @@ key = Array[String](["D4"])
 triggering = null
 spell_component = ExtResource("4_2u5f8")
 
+[sub_resource type="Resource" id="Resource_8doqg"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["B4"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_4h6vh"]
+script = ExtResource("3_bgm8m")
+beat = 0.25
+key = Array[String](["E5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_q3l20"]
+script = ExtResource("3_bgm8m")
+beat = 0.75
+key = Array[String](["G5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_jxnvk"]
+script = ExtResource("3_bgm8m")
+beat = 1.0
+key = Array[String](["F#5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_aurh2"]
+script = ExtResource("3_bgm8m")
+beat = 1.25
+key = Array[String](["E5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_sjqe6"]
+script = ExtResource("3_bgm8m")
+beat = 1.75
+key = Array[String](["B5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_i4vr4"]
+script = ExtResource("3_bgm8m")
+beat = 2.0
+key = Array[String](["A5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_up27w"]
+script = ExtResource("3_bgm8m")
+beat = 2.5
+key = Array[String](["F#5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_imy54"]
+script = ExtResource("3_bgm8m")
+beat = 3.0
+key = Array[String](["B4"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_k8ijw"]
+script = ExtResource("3_bgm8m")
+beat = 3.5
+key = Array[String](["E5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_4e8ir"]
+script = ExtResource("3_bgm8m")
+beat = 3.75
+key = Array[String](["G5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_wfvkc"]
+script = ExtResource("3_bgm8m")
+beat = 4.0
+key = Array[String](["F#5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_j5v8i"]
+script = ExtResource("3_bgm8m")
+beat = 4.25
+key = Array[String](["D#5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_y3qlw"]
+script = ExtResource("3_bgm8m")
+beat = 4.75
+key = Array[String](["F5"])
+spell_component = ExtResource("12_ebwd2")
+
+[sub_resource type="Resource" id="Resource_uryub"]
+script = ExtResource("3_bgm8m")
+beat = 5.25
+key = Array[String](["B4"])
+spell_component = ExtResource("12_ebwd2")
+metadata/_custom_type_script = "uid://bvheyg7ntax08"
+
+[sub_resource type="Resource" id="Resource_luux1"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["D3", "D4"])
+spell_component = ExtResource("14_8up4e")
+
+[sub_resource type="Resource" id="Resource_8ob7p"]
+script = ExtResource("3_bgm8m")
+beat = 0.25
+key = Array[String](["E3", "E4"])
+spell_component = ExtResource("14_8up4e")
+
+[sub_resource type="Resource" id="Resource_tvf46"]
+script = ExtResource("3_bgm8m")
+beat = 0.5
+key = Array[String](["F3", "F4"])
+spell_component = ExtResource("14_8up4e")
+
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
 
@@ -408,6 +516,8 @@ spell_name = "SleepSpell"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8pxlp"), SubResource("Resource_xoxst"), SubResource("Resource_jm26c"), SubResource("Resource_i25c7")])
 cooldown_in_beats = 4.0
 keys_as_string = "A4 G4 G4 F4 "
+store_keys = null
+timing_factor = null
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -417,6 +527,8 @@ spell_name = "SleepAccord"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_bgm8m")])
 cooldown_in_beats = 1.0
 keys_as_string = "A4F4D4 "
+store_keys = null
+timing_factor = null
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -425,6 +537,8 @@ script = ExtResource("2_6csqb")
 spell_name = "Fireball"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_2u5f8"), SubResource("Resource_1mje3")])
 keys_as_string = "A4 A4F4D4 "
+store_keys = null
+timing_factor = null
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -433,6 +547,8 @@ script = ExtResource("2_6csqb")
 spell_name = "invsleep"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_lrb01"), SubResource("Resource_3inhl"), SubResource("Resource_iu7i8"), SubResource("Resource_ebwd2")])
 keys_as_string = "A4 B4 B4 C5 "
+store_keys = null
+timing_factor = null
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -441,6 +557,8 @@ script = ExtResource("2_6csqb")
 spell_name = "delayed"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8up4e"), SubResource("Resource_g7b4h")])
 keys_as_string = "A3 A3 "
+store_keys = null
+timing_factor = null
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -449,6 +567,8 @@ script = ExtResource("2_6csqb")
 spell_name = "hodl"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_1uaqm"), SubResource("Resource_ajxgt")])
 keys_as_string = "E4 E4UP "
+store_keys = null
+timing_factor = null
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -464,6 +584,8 @@ script = ExtResource("2_6csqb")
 spell_name = "block"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_d0oep")])
 keys_as_string = "C#2G#2 "
+store_keys = null
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="schicksal" type="Node" parent="." unique_id=698778573]
@@ -472,6 +594,8 @@ spell_name = "schicksal"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_lw14p"), SubResource("Resource_3fid5"), SubResource("Resource_0mvnd"), SubResource("Resource_42fdb")])
 cooldown_in_beats = 1.0
 keys_as_string = "G4G3E2 G4G3E2 G4G3E2 C2C3C4 "
+store_keys = null
+timing_factor = null
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
@@ -481,6 +605,8 @@ spell_name = "jump"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_fjc73"), SubResource("Resource_65et7"), SubResource("Resource_g7msj")])
 cooldown_in_beats = 4.0
 keys_as_string = "C3E3G3 C4E4G4 C5E5G5 "
+store_keys = null
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="blast" type="Node" parent="." unique_id=247776925]
@@ -488,6 +614,8 @@ script = ExtResource("2_6csqb")
 spell_name = "blast"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_h1bn3"), SubResource("Resource_d7uee"), SubResource("Resource_cvkbw")])
 keys_as_string = "D4F4A4 F4A4C5 D4F#4A4 "
+store_keys = null
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="test" type="Node" parent="." unique_id=1888311494]
@@ -495,6 +623,8 @@ script = ExtResource("2_6csqb")
 spell_name = "test"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_6q4dg")])
 keys_as_string = "D3 "
+store_keys = null
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="missile" type="Node" parent="." unique_id=687611614]
@@ -503,6 +633,8 @@ spell_name = "missile"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_1racs")])
 cooldown_in_beats = 2.0
 keys_as_string = "D4B3G3E3C3 "
+store_keys = null
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="backshot" type="Node" parent="." unique_id=1207679291]
@@ -510,6 +642,8 @@ script = ExtResource("2_6csqb")
 spell_name = "backshot"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_o6723")])
 keys_as_string = "B3D#4 "
+store_keys = null
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="elise" type="Node" parent="." unique_id=838841625]
@@ -517,8 +651,10 @@ script = ExtResource("2_6csqb")
 spell_name = "elise"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_u31xo"), SubResource("Resource_ve6iq"), SubResource("Resource_1vf4r"), SubResource("Resource_vbmny"), SubResource("Resource_mmxs0"), SubResource("Resource_rvf5p"), SubResource("Resource_gxvlx"), SubResource("Resource_j4g1y"), SubResource("Resource_3m7bb")])
 keys_as_string = "A4 G#4 A4 G#4 A4 E4 G4 F4 D4 "
+store_keys = null
 beats = 0.3
 component_for_all = ExtResource("10_3inhl")
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="deflect " type="Node" parent="." unique_id=1035035879]
@@ -533,8 +669,10 @@ script = ExtResource("2_6csqb")
 spell_name = "freezbolts"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_kv5q6"), SubResource("Resource_ehk3b"), SubResource("Resource_4gs0p")])
 keys_as_string = "D4F4 F4A4 A4C5 "
+store_keys = null
 beats = 0.5
 component_for_all = ExtResource("12_ebwd2")
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="heal" type="Node" parent="." unique_id=1426221573]
@@ -542,7 +680,9 @@ script = ExtResource("2_6csqb")
 spell_name = "heal"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_ugto8"), SubResource("Resource_qv4lp"), SubResource("Resource_p4ncf"), SubResource("Resource_41gki"), SubResource("Resource_uajx1"), SubResource("Resource_wjsh1"), SubResource("Resource_32p34"), SubResource("Resource_mg1bm"), SubResource("Resource_1lh0a")])
 keys_as_string = "C3 D3 E3 F3 G3 F3 E3 D3 C3 "
+store_keys = null
 beats = 1.0
+timing_factor = null
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="simple" type="Node" parent="." unique_id=119549026]
@@ -550,6 +690,28 @@ script = ExtResource("2_6csqb")
 spell_name = "simple"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_y5ng2"), SubResource("Resource_w31ye")])
 keys_as_string = "B3 D4 "
+store_keys = null
 beats = 0.5
 component_for_all = ExtResource("4_2u5f8")
+timing_factor = null
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="wizard" type="Node" parent="." unique_id=63864248]
+script = ExtResource("2_6csqb")
+spell_name = "wizard"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8doqg"), SubResource("Resource_4h6vh"), SubResource("Resource_q3l20"), SubResource("Resource_jxnvk"), SubResource("Resource_aurh2"), SubResource("Resource_sjqe6"), SubResource("Resource_i4vr4"), SubResource("Resource_up27w"), SubResource("Resource_imy54"), SubResource("Resource_k8ijw"), SubResource("Resource_4e8ir"), SubResource("Resource_wfvkc"), SubResource("Resource_j5v8i"), SubResource("Resource_y3qlw"), SubResource("Resource_uryub")])
+keys_as_string = "B4 E5 G5 F#5 E5 B5 A5 F#5 B4 E5 G5 F#5 D#5 F5 B4 "
+store_keys = null
+component_for_all = ExtResource("12_ebwd2")
+timing_factor = 1.25
+error_factor = 0.5
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="double" type="Node" parent="." unique_id=1023331963]
+script = ExtResource("2_6csqb")
+spell_name = "double"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_luux1"), SubResource("Resource_8ob7p"), SubResource("Resource_tvf46")])
+keys_as_string = "D3D4 E3E4 F3F4 "
+beats = 0.25
+component_for_all = ExtResource("14_8up4e")
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

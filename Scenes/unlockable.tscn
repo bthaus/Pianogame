@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c2qtws8jml0tj" path="res://unlockable.gd" id="1_tg4ot"]
 [ext_resource type="Texture2D" uid="uid://bcbv5se0fjuax" path="res://Assets/Tiles/Tiles/tile_0028.png" id="2_jva25"]
+[ext_resource type="Texture2D" uid="uid://dynj7gfdrk6cy" path="res://Assets/effects/Glow/glow1.png" id="2_pq5t4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jva25"]
 
@@ -14,6 +15,9 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=645780266]
 shape = SubResource("CircleShape2D_jva25")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1792660861]
+texture = ExtResource("2_pq5t4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1999917638]
 texture = ExtResource("2_jva25")

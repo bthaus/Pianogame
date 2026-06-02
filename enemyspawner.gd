@@ -18,8 +18,9 @@ func handle_enemies_defeated():
 static var finished_spawers=[false,false,false,false]
 @export var finish_index=0
 func give_reward():
-	var reward=load('res://Scenes/unlockable.tscn').instantiate()
-	reward.spell_name=reward_spell
+	var reward:Door=load("res://world/Door.tscn").instantiate()
+	reward.unlock_spell=reward_spell
+	reward.player=player
 	add_sibling(reward)
 	reward.global_position=global_position
 	finished.emit()
@@ -28,7 +29,7 @@ func give_reward():
 	queue_free()
 	pass
 
-func hit(damage):
+func hit(damage,color):
 	if not enemies.is_empty():return
 	spawn_enemies()
 	

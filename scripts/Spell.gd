@@ -13,7 +13,7 @@ var state:State=State.Ready
 @export var cooldown_in_beats:float
 @export var keys_as_string:String=""
 @export var input_line:String
-
+@export var store_keys:Array[KeyUnit]
 static var accuracy_history:Dictionary={}
 
 @export var beats:float=0
@@ -22,10 +22,11 @@ static var accuracy_history:Dictionary={}
 
 @export var component_for_all:PackedScene
 @export_tool_button("set_components") var set_comp_button=set_comps
-
+@export var timing_factor:float=1
 
 @export_tool_button("remove all units") var remove=remove_all_units
 @export var _disabled=false
+@export var error_factor:float=1.0
 var tree:Sequence_Tree
 var player:PlayerCharacter
 signal cooldown_passed
@@ -88,33 +89,43 @@ func prepare_spell():
 		k.set_up(self)
 	pass	
 
-func play_spell():
+func play_spell(speed):
+	player.hud.toggle_piano(true)
+	
 	for key:KeyUnit in keys:
 		for note:String in key.key:
 			var bpm=Beat.get_beat_instance().bpm
-			var time_Factor=60/bpm
+			var time_Factor=60/bpm*speed
 			var timeout=time_Factor*key.beat
+			var last=false
+			last=keys.back()==key and key.key.back()==note
 			var visual=SequenceTreeVisual.visual_dic[key]
-			player.get_tree().create_timer(timeout).timeout.connect(play_note.bind(note,visual))
-			
+			player.get_tree().create_timer(timeout).timeout.connect(play_note.bind(note,visual,last))
+					
 	pass
-func play_note(note,unit:SequenceNodeVisual):
+func play_note(note,unit:SequenceNodeVisual,last):
+	
 	#var visual:SequenceTreeVisual=player.piano.get_spell_visual(spell_name)
 	unit.highlight()
+	player.hud.visual_piano.toggle_key(PianoEvent.pitches[note],true,true)
 	var lower_case=note.to_lower()+".mp3"
 	lower_case=lower_case.replace("#","-")
 	var audio_player=AudioStreamPlayer.new()
 	player.add_child(audio_player)
-	audio_player.volume_db=10
+	audio_player.volume_db=-80
 	audio_player.stream=load("res://Assets/mp3 Notes/"+lower_case)
 	audio_player.play(0.03)
 	audio_player.finished.connect(func():
 		unit.unhighlight()
+		if last:player.hud.toggle_piano(false)
+			
+		player.hud.visual_piano.toggle_key(PianoEvent.pitches[note],false,false)
 		audio_player.queue_free())
 	pass;	
 static var upgrade_values:Dictionary
 var accuracy_threshold=0.5
 func add_accuracy_to_history(val):
+	if !accuracy_history.has(spell_name):accuracy_history[spell_name]=[]
 	accuracy_history[spell_name].push_back(
 		{"val"=val,
 				"hp"=player.hp,
@@ -153,7 +164,7 @@ func trigger_spell():
 	triggered.emit()
 	pass;
 func trigger_node(node:SequenceNode,error_count):
-	node.key_unit.trigger_spell_component(node,self,error_count)
+	node.key_unit.trigger_spell_component(node,self,error_count*error_factor)
 	pass;
 var cooldown_timer:SceneTreeTimer	
 func start_cooldown():
@@ -222,7 +233,7 @@ func parse_spell_into_sequencetree():
 		current_node.info_dic=current_note
 		current_node.incoming_edge = current_edge
 		current_edge.to_node = current_node
-		current_node.beat=current_note.beat
+		current_node.beat=current_note.beat*timing_factor
 		current_node.key_unit=current_note
 		
 	current_node.activating = true

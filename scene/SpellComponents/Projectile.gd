@@ -3,6 +3,7 @@ class_name Projectile
 
 var direction:Vector2
 var error_count
+@export var color:String="White"
 @export var speed:int=200
 @export var damage=10
 # Called when the node enters the scene tree for the first time.
@@ -10,7 +11,7 @@ func _ready() -> void:
 	area_entered.connect(_on_body_entered)
 	body_entered.connect(_on_body_entered)
 	pass # Replace with function body.
-func hit(d):
+func hit(d,c):
 	damage-=d
 	if damage<=0:collide()
 	
@@ -32,11 +33,11 @@ func shoot(dir):
 func _on_body_entered(body: Node2D) -> void:
 	var b=body.get_parent()
 	if body.has_method("hit"):
-		body.hit(damage)	
+		body.hit(damage,color)	
 		collide()
 		return
 	elif b.has_method("hit"):
-		b.hit(damage)
+		b.hit(damage,color)
 		collide()
 		return
 	

@@ -36,7 +36,7 @@ func is_timeout(beat):
 	var current_relative_beat=beat-start_beat-current_node.beat
 	var max_relative_beat=current_node.outgoing_edge.to_node.beat-current_node.beat
 	var max_extra_beat=Beat.get_beat_time()
-	var timeout=current_relative_beat>(max_relative_beat+max_extra_beat*2+(max_extra_beat/4*current_node.node_nr))
+	var timeout=current_relative_beat>(max_relative_beat+max_extra_beat*2+(max_extra_beat/8*current_node.node_nr))
 	if timeout:
 		print("here")
 	return timeout

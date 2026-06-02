@@ -93,7 +93,7 @@ func play_anims(velocity):
 	pass		
 
 var shields=[]
-func hit(damage):
+func hit(damage,color):
 	
 	if not shields.is_empty():
 		for shield in shields:

@@ -5,6 +5,7 @@
 [ext_resource type="Shader" uid="uid://bgf4a5rliiwcd" path="res://Scenes/hud.gdshader" id="3_6fbih"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="4_t1xeu"]
 [ext_resource type="Script" uid="uid://lr4fg74d4fua" path="res://Scenes/sprite_2d.gd" id="5_t1xeu"]
+[ext_resource type="PackedScene" path="res://piano.tscn" id="6_36asn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_36asn"]
 shader = ExtResource("3_6fbih")
@@ -109,3 +110,12 @@ offset_top = 1022.0
 offset_right = 368.0
 offset_bottom = 1045.0
 text = "+5"
+
+[node name="Piano2" parent="." unique_id=730847809 instance=ExtResource("6_36asn")]
+visible = false
+offset_left = 408.0
+offset_top = 314.0
+offset_right = -414.0
+offset_bottom = -630.0
+grow_horizontal = 2
+grow_vertical = 2

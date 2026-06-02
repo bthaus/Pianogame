@@ -7,7 +7,7 @@ const line_offset=30
 var spell:Spell
 
 func _process(delta: float) -> void:
-	
+	if spell.get_number_of_correct_last_spells()==null:return
 	$ProgressBar.value=spell.get_number_of_correct_last_spells()
 	$ProgressBar.max_value=spell.upgrade_values[spell.spell_name].front()
 func _ready() -> void:
