@@ -15,7 +15,21 @@ static var spell_names = {
 			"ember", "blaze", "scorch", "combust", "ignition",
 			"flarex", "burna", "heatwave", "pyre", "smolder"
 		]
-	},
+	},"Green": {
+	"prefix": [
+		"Verdan", "Sylva", "Thorn", "Briar", "Oaken",
+		"Wildra", "Mossen", "Fernis", "Blooma", "Rootar",
+		"Druida", "Willow", "Bramble", "Grove", "Cedar",
+		"Vinea", "Petala", "Sprout", "Yarrow", "Elder"
+	],
+
+	"suffix": [
+		"bloom", "root", "vine", "thorn", "grove",
+		"leaf", "bark", "seed", "petal", "canopy",
+		"wilds", "growth", "bramble", "sprout", "blossom",
+		"wood", "forest", "verdure", "thicket", "wreath"
+	]
+},
 
 	"Blue": {
 		"prefix": [
@@ -64,10 +78,20 @@ static var spell_names = {
 	]
 	}
 }
+static var spell_components={
+	"White"=[load('res://scene/SpellComponents/fireball.tscn')],
+	"Red"=[load('res://scene/SpellComponents/missile.tscn')],
+	"Green"=[load('res://scene/SpellComponents/doubleshot.tscn')],
+	"Blue"=[load('res://scene/SpellComponents/freezebolt.tscn')],
+	"Yellow"=[load('res://scene/SpellComponents/backshot.tscn')]
+}
+static func get_spell_component(color:String):
+	return spell_components[color].pick_random()
+	pass
 static func get_new_spell_name(color:String):
 	var prefix=spell_names[color]["prefix"]
 	var suffix=spell_names[color]["suffix"]
-	return prefix+" "+suffix
+	return prefix.pick_random()+" "+suffix.pick_random()
 	pass
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,17 +104,49 @@ func register_key_press(event:PianoEvent):
 	print(event.get_key())
 	if event.get_key()=="B1":
 		store_keys()
+	var k=event.get_key()	
+	if Piano.easy_move_keys.has(k) or Piano.quick_menu_keys.has(k) or Piano.menu_keys.has(k) or Piano.movement_keys.has(k):
+		return
 	keys.push_back(event)
 	pass
+func get_spell(color,spell_string="",spell_name=""):
+	if spell_string=="":
+		spell_string=store_keys()
+	if spell_string==null:return
+	var spell=Spell.new()
+	spell.full_input=spell_string
+	spell.parse_input()
+	spell.component_for_all=get_spell_component(color)
+	spell.set_comps()
+	if spell_name=="":spell_name=get_new_spell_name(color)
+	spell.spell_name=spell_name
+	
+	return spell
+	pass	
+
+static func get_spell_from_data(color,spell_string,spell_name):
+	var spell=Spell.new()
+	spell.full_input=spell_string
+	spell.parse_input()
+	spell.component_for_all=get_spell_component(color)
+	spell.set_comps()
+	if spell_name=="":spell_name=get_new_spell_name(color)
+	spell.spell_name=spell_name
+	
+	return spell
+	pass	
 func store_keys():
+	if keys.is_empty():return
 	var first_timestamp=keys.front().timestamp
+	var string=""
 	for k:PianoEvent in keys:
 		var off_time=k.timestamp-first_timestamp
+		string+=str(off_time)+"+"+k.get_key()+"-"
 		print(str(off_time)+"+"+k.get_key())
 		print("-")
-		
-		
-	pass
+	keys.clear()	
+	return string	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

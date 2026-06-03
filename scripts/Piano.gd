@@ -145,7 +145,13 @@ var movement_pointer=0:
 		if val<0:
 			val=movement_keys.size()-1
 		movement_pointer=val				
-	
+func remove_spell(spell_name):
+	var spell=get_spell_instance(spell_name)
+	equipped_spells.erase(spell)
+	var  visual=get_spell_visual(spell_name)
+	visuals.erase(visual)
+	visual.queue_free()
+	pass	
 func handle_easy_movement(event:PianoEvent,up=false):
 	var direction=0
 	if keyController.active_keys.has("F#2"):
@@ -156,11 +162,12 @@ func handle_easy_movement(event:PianoEvent,up=false):
 		player.jump()
 	player.easy_move(direction)			
 	pass
-var movement_keys=[
+static var movement_keys=[
 	"F2","G2","A2","B2","C3"
 ]	
-var easy_move_keys=["F#2","G#2","A#2"]
-var quick_menu_keys=["C#2","D#2"]
+static var easy_move_keys=["F#2","G#2","A#2"]
+static var quick_menu_keys=["C#2","D#2"]
+static var menu_keys=["E2","D2"]
 var quick_menu_index=0:
 	set(val):
 		quick_menu_index=val

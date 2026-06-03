@@ -11,8 +11,11 @@ func _ready() -> void:
 		if get_overlapping_bodies().is_empty():return
 		if locked:return
 		if event.get_key()=="B1":
-			if get_parent() is SafeSpace:
+			if get_parent() is SafeSpace and unlock_spell=="":
 				get_tree().change_scene_to_file(Main.current_level)
+			elif get_parent() is SafeSpace and unlock_spell=="Custom":
+				delete_spell()	
+				return
 			elif to_scene!=null: 
 				get_tree().change_scene_to_packed(to_scene)
 			else:
@@ -27,7 +30,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	pass
-
+func delete_spell():
+	get_parent().delete_spell()
+	get_tree().change_scene_to_file("res://world/Safe_space.tscn")
+	pass
 
 func _on_body_entered(body: Node2D) -> void:
 	if locked:return

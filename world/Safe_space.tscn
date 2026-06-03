@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fe04lx08pprm" path="res://Scenes/player_character.tscn" id="2_3fddg"]
 [ext_resource type="TileSet" uid="uid://b88fgsq1t633y" path="res://Ressources/tiles.tres" id="2_aru50"]
 [ext_resource type="Texture2D" uid="uid://b4dh58yrhxuhl" path="res://Assets/kenney_background-elements-remastered/Backgrounds/backgroundColorForest.png" id="2_iskyj"]
+[ext_resource type="PackedScene" uid="uid://cro5i6alali5l" path="res://Scenes/spellcreator.tscn" id="2_qfjjn"]
 [ext_resource type="PackedScene" uid="uid://eo30kruldshw" path="res://Scenes/hud.tscn" id="3_e0giv"]
 [ext_resource type="Texture2D" uid="uid://dynj7gfdrk6cy" path="res://Assets/effects/Glow/glow1.png" id="7_iskyj"]
 [ext_resource type="PackedScene" uid="uid://cm3ebpmiw5kqo" path="res://world/Door.tscn" id="9_q4kbh"]
@@ -16,10 +17,22 @@ polygon = PackedVector2Array(197.09572, -7.398636, 198.09572, 206.60136, -88.904
 [sub_resource type="LabelSettings" id="LabelSettings_q4kbh"]
 font_size = 7
 
-[node name="Node2D" type="Node2D" unique_id=1882263145 node_paths=PackedStringArray("door", "player")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfjjn"]
+size = Vector2(60, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgx6y"]
+size = Vector2(58, 50)
+
+[node name="Node2D" type="Node2D" unique_id=1882263145 node_paths=PackedStringArray("door", "spell_creator", "standing_position", "spell_creator_nodes", "player")]
 script = ExtResource("1_q4kbh")
 door = NodePath("exit")
+spell_creator = NodePath("Node2D2")
+standing_position = NodePath("spell_creator_podium/Area2D")
+spell_creator_nodes = NodePath("spell_creator_podium")
 player = NodePath("Node2D")
+
+[node name="Node2D2" parent="." unique_id=1718422276 instance=ExtResource("2_qfjjn")]
+position = Vector2(8, -70)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1538154763]
 color = Color(0.26841527, 0.29999995, 0.3670424, 1)
@@ -57,6 +70,7 @@ player = NodePath("../Node2D")
 position = Vector2(74.38199, -4.307045)
 
 [node name="Label" type="Label" parent="." unique_id=1093475365]
+visible = false
 modulate = Color(18.892157, 18.892157, 18.892157, 1)
 offset_left = 8.0
 offset_top = -70.0
@@ -64,3 +78,36 @@ offset_right = 365.0
 offset_bottom = -47.0
 text = "Cast your new spell 3 times to unlock the door"
 label_settings = SubResource("LabelSettings_q4kbh")
+
+[node name="spell_creator_podium" type="ColorRect" parent="." unique_id=619336660]
+offset_left = 47.0
+offset_top = 1.0
+offset_right = 107.0
+offset_bottom = 20.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="spell_creator_podium" unique_id=699897272]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spell_creator_podium/RigidBody2D" unique_id=1982140653]
+position = Vector2(30, 10)
+shape = SubResource("RectangleShape2D_qfjjn")
+
+[node name="Area2D" type="Area2D" parent="spell_creator_podium" unique_id=1516144671]
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spell_creator_podium/Area2D" unique_id=1210583613]
+position = Vector2(30, -17)
+shape = SubResource("RectangleShape2D_rgx6y")
+
+[node name="Label" type="Label" parent="spell_creator_podium" unique_id=2001651749]
+visible = false
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+layout_mode = 0
+offset_left = -65.0
+offset_top = -78.0
+offset_right = 148.0
+offset_bottom = -55.0
+text = "Play a melody to your liking"
+
+[connection signal="body_entered" from="spell_creator_podium/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="spell_creator_podium/Area2D" to="." method="_on_area_2d_body_exited"]
