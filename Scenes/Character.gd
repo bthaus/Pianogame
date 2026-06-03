@@ -66,7 +66,8 @@ func highlight_move_key(key:String):
 func _ready() -> void:
 	if movement_locked:$base_defense_cam.make_current()
 	if not get_parent() is SafeSpace:
-		global_position=spawnpoint
+		if !get_parent() is Stats:
+			global_position=spawnpoint
 	piano=hud.piano
 	if piano.easy_move:movement_speed/=2
 	piano.player=self
@@ -112,7 +113,7 @@ func load_data():
 	Piano.total_errors=misses
 	pass	
 func add_learned_spells():
-	if get_parent().day:
+	if get_parent() is World and get_parent().day:
 		$PointLight2D.energy=0
 		$PointLight2D.visible=false
 	if all_spells_unlocked:
@@ -159,6 +160,8 @@ func hit(damage,color):
 func add_gravity(delta):
 	#if not walking:return super(delta/2)
 	#super(delta)
+	if not walking:
+		delta/=2
 	super(delta)
 	if not walking:
 		velocity.y=clamp(velocity.y,-150,400)
@@ -185,7 +188,7 @@ func deflect():
 func move(direction,key="A1"):
 	walking=false
 	
-	velocity.y-=100
+	velocity.y-=50
 	if velocity.y>0:velocity.y=0
 	super(direction,key)
 	pass	

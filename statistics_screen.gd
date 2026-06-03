@@ -1,5 +1,5 @@
 extends Control
-
+class_name Stats
 var data
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 	)
 	data=DataStorer.get_last_data()
 	var average_accuracies={}
-	if data["accuracy_histories"]:return
+	if data["accuracy_histories"]==null:return
 	var spell_names=data["accuracy_histories"].keys()
 	var total_spells=0
 	for key in spell_names:

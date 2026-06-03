@@ -34,6 +34,7 @@ script = ExtResource("4_uy5q8")
 [node name="player" parent="." unique_id=145437748 node_paths=PackedStringArray("hud") instance=ExtResource("2_8j6nv")]
 position = Vector2(1723, -10)
 hud = NodePath("../HUD")
+all_spells_unlocked = true
 
 [node name="HUD" parent="." unique_id=1141357918 node_paths=PackedStringArray("player") instance=ExtResource("1_abwln")]
 visible = false

@@ -4,7 +4,7 @@ var beat:Beat
 var player:PlayerCharacter
 var aggrod=false
 @onready var center:Node2D=$center
-var colors=["Red","Blue","Green","White"]
+var colors=["Red","Blue","Green","White","Yellow"]
 static var unlocked_colors=["White"]
 var color_dic={
 	"Red"=Color(1.0, 0.0, 0.0, 1.0),

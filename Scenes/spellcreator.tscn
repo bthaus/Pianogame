@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cro5i6alali5l"]
+
+[ext_resource type="Script" uid="uid://6m6prsqeycmg" path="res://spell_creator.gd" id="1_l6s37"]
+[ext_resource type="Script" uid="uid://7wmdwssytper" path="res://scripts/KeyController.gd" id="2_lfpkw"]
+
+[node name="Node2D" type="Node2D" unique_id=1718422276 node_paths=PackedStringArray("key_controller")]
+script = ExtResource("1_l6s37")
+key_controller = NodePath("KeyController")
+
+[node name="KeyController" type="Node2D" parent="." unique_id=1648056090]
+script = ExtResource("2_lfpkw")
+metadata/_custom_type_script = "uid://7wmdwssytper"

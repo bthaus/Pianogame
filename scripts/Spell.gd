@@ -27,12 +27,52 @@ static var accuracy_history:Dictionary={}
 @export_tool_button("remove all units") var remove=remove_all_units
 @export var _disabled=false
 @export var error_factor:float=1.0
+
+@export var full_input:String=""
+@export_tool_button("parse full input") var parse=parse_input
 var tree:Sequence_Tree
 var player:PlayerCharacter
 signal cooldown_passed
 signal triggered
 signal spell_started
 signal spell_failure_or_success
+
+func parse_input():
+	var cleanaed=full_input.replace("\n","")
+	var keyunits=cleanaed.split("-")
+	var units=[]
+	for k in keyunits:
+		var temp=k.split("+")
+		if temp.size()<2:continue
+		print(temp)
+		units.push_back({"time":temp[0],"key":temp[1]})
+	var beat_time=60.0/90.0
+	beat_time*=1000
+	keys.clear()
+	var last_stamp=0
+	var last_keys=[]
+	for entry in units:
+		var beat=entry["time"].to_float()
+		var key=entry["key"]
+		if beat-last_stamp<50:
+			last_keys.append(key)
+			last_stamp=beat
+			continue
+		elif not last_keys.is_empty():
+			var unit=KeyUnit.new()
+			unit.beat=last_stamp/beat_time
+			unit.key.append_array(last_keys)
+			keys.push_back(unit)
+			last_keys.clear()
+			
+		
+		var unit=KeyUnit.new()
+		unit.beat=beat/beat_time
+		unit.key.append(key)
+		keys.push_back(unit)
+	
+	pass
+
 func set_beats():
 	var off=0
 	for k:KeyUnit in keys:
