@@ -5,9 +5,12 @@ func trigger(spell:Spell,error_count,factor=1):
 	shoot(spell,error_count,factor)
 	super(spell,error_count,factor)
 	pass
-func shoot(spell,error_count,factor):
+func shoot(spell:Spell,error_count,factor):
 	var ball:HomingProjectile=$Area2D.duplicate()
 	#if spell.spell_name=="simple":damage*=0.7
+	var typos=spell.player.piano.number_of_errors_unstarted
+	if typos==0:error_count=0
+	#error_count=remap(spell.player.piano.number_of_errors_unstarted,0,4,0,2)
 	ball.damage=damage*factor*(2-error_count)
 	if ball.damage<0:ball.damage=0
 	ball.scale*=(clamp(2-error_count,0,2))

@@ -40,7 +40,7 @@ func squish():
 	tw.tween_property(self,^"scale",Vector2(1,0.5),60/beat.bpm/2)
 	tw.tween_property(self,^"scale",Vector2(1,1),60/beat.bpm/2)
 	pass	
-func move(direction,key="A1"):
+func move(direction,key="D2"):
 	
 	counter+=1
 	if player==null:

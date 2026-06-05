@@ -102,7 +102,7 @@ var keys:Array[PianoEvent]=[]
 
 func register_key_press(event:PianoEvent):
 	print(event.get_key())
-	if event.get_key()=="B1":
+	if event.get_key()=="E2":
 		store_keys()
 	var k=event.get_key()	
 	if Piano.easy_move_keys.has(k) or Piano.quick_menu_keys.has(k) or Piano.menu_keys.has(k) or Piano.movement_keys.has(k):
@@ -134,7 +134,7 @@ static func get_spell_from_data(color,spell_string,spell_name):
 	spell.spell_name=spell_name
 	
 	return spell
-	pass	
+	
 func store_keys():
 	if keys.is_empty():return
 	var first_timestamp=keys.front().timestamp

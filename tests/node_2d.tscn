@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://bq53oaxhtbxmw"]
+
+[ext_resource type="Script" uid="uid://b0lymcwe7ijsm" path="res://tessssst.gd" id="1_4s1l6"]
+[ext_resource type="Texture2D" uid="uid://byudk5r1ql7aw" path="res://Assets/node_blue.png" id="2_dwj28"]
+
+[node name="Node2D" type="Node2D" unique_id=139326061]
+script = ExtResource("1_4s1l6")
+
+[node name="base" type="Node2D" parent="." unique_id=2083576029]
+
+[node name="Sprite2D" type="Sprite2D" parent="base" unique_id=1103245671]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D2" type="Sprite2D" parent="base" unique_id=1681398567]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 120)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D3" type="Sprite2D" parent="base" unique_id=2017388670]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 240)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D4" type="Sprite2D" parent="base" unique_id=271008279]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 360)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D5" type="Sprite2D" parent="base" unique_id=1977654140]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 480)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D6" type="Sprite2D" parent="base" unique_id=2016499424]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 600)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D7" type="Sprite2D" parent="base" unique_id=554481924]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 720)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D8" type="Sprite2D" parent="base" unique_id=520740889]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 840)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D9" type="Sprite2D" parent="base" unique_id=1058259889]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, 960)
+texture = ExtResource("2_dwj28")
+
+[node name="in" type="Node2D" parent="." unique_id=606400438]
+position = Vector2(-4, -56)
+
+[node name="Sprite2D" type="Sprite2D" parent="in" unique_id=1820848899]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D2" type="Sprite2D" parent="in" unique_id=1960848955]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 80)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D3" type="Sprite2D" parent="in" unique_id=958228723]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 160)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D4" type="Sprite2D" parent="in" unique_id=550720159]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 240)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D5" type="Sprite2D" parent="in" unique_id=488599717]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 320)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D6" type="Sprite2D" parent="in" unique_id=721296985]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 400)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D7" type="Sprite2D" parent="in" unique_id=70694796]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 480)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D8" type="Sprite2D" parent="in" unique_id=2013415994]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 560)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D9" type="Sprite2D" parent="in" unique_id=1475244829]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 640)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D10" type="Sprite2D" parent="in" unique_id=822044804]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 720)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D11" type="Sprite2D" parent="in" unique_id=2063650312]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 800)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D12" type="Sprite2D" parent="in" unique_id=1932812655]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 880)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D13" type="Sprite2D" parent="in" unique_id=1184120300]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 960)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D14" type="Sprite2D" parent="in" unique_id=2017331933]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 1040)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D15" type="Sprite2D" parent="in" unique_id=1577500215]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 1120)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D16" type="Sprite2D" parent="in" unique_id=1484784212]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 1200)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D17" type="Sprite2D" parent="in" unique_id=1648968107]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 1280)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D18" type="Sprite2D" parent="in" unique_id=1596737366]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 1360)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")
+
+[node name="Sprite2D19" type="Sprite2D" parent="in" unique_id=495264100]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+position = Vector2(0, 1440)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_dwj28")

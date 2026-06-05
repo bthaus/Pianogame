@@ -38,6 +38,7 @@ static func get_spell(spellname):
 	var spell= instance.find_child(spellname.to_lower())
 	if spell!=null:
 		return spell.duplicate()
+	var temp=spells
 	spell=spells[spellname].duplicate()
 	return spell	
 	

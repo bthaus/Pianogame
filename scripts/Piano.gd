@@ -193,11 +193,11 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 		handle_quick_menu(-1)
 	if piano_event.get_key()==quick_menu_keys.back():
 		handle_quick_menu(1)	
-	if piano_event.get_key()=="B1":
+	if piano_event.get_key()=="E2":
 		play_sound(1)
-	if piano_event.get_key()=="A1":
+	if piano_event.get_key()=="D2":
 		play_sound(2.5)		
-	if !easy_move_keys.has(piano_event.get_key()) and !movement_keys.has(piano_event.get_key()) and !quick_menu_keys.has(piano_event.get_key()) and !piano_event.get_key()=="B1":	
+	if !easy_move_keys.has(piano_event.get_key()) and !movement_keys.has(piano_event.get_key()) and !quick_menu_keys.has(piano_event.get_key()) and !piano_event.get_key()=="E2":	
 		input_history.add(piano_event)
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))

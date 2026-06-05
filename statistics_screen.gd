@@ -4,11 +4,11 @@ var data
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$player.piano.keyController.key_pressed.connect(func(piano_event:PianoEvent):
-		if piano_event.get_key()=="B1" and Main.shooter:
+		if piano_event.get_key()=="E2" and Main.shooter:
 			get_tree().change_scene_to_file('res://tests/worldtest.tscn')
-		if piano_event.get_key()=="B1" and !Main.shooter:
+		if piano_event.get_key()=="E2" and !Main.shooter:
 			get_tree().change_scene_to_file('res://Scenes/base_defense.tscn')	
-		if piano_event.get_key()=="A1" :
+		if piano_event.get_key()=="D2" :
 			get_tree().change_scene_to_file('res://Scenes/main_menu.tscn')	
 			
 	)
@@ -31,8 +31,9 @@ func _ready() -> void:
 	for spell in spell_names:
 		var label=Button.new()
 		label.text=spell+": "+str(average_accuracies[spell])	
-		$Accuracies/container.add_child(label)
 		$player.unlock(spell,false)
+		$Accuracies/container.add_child(label)
+		
 		
 		label.pressed.connect(setup_graph.bind(spell))
 	$total_errors.text+=str(data["total_missclicks"].size())

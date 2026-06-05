@@ -48,11 +48,13 @@ func _process(delta: float) -> void:
 	
 	pass
 
-
+var vol
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not custom_spell_mode:return
 	spell_creator.keys.clear()
 	$spell_creator_podium/Label.show()
+	vol=player.piano.find_child("error").volume_db
+	player.piano.find_child("error").volume_db=-80
 	pass # Replace with function body.
 
 func delete_spell():
@@ -64,6 +66,7 @@ func delete_spell():
 var spell_name	
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if not custom_spell_mode:return
+	player.piano.find_child("error").volume_db=vol
 	$spell_creator_podium/Label.hide()
 	var spell:Spell=spell_creator.get_spell(color)
 	if spell==null:return

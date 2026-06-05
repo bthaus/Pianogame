@@ -204,6 +204,8 @@ func trigger_spell():
 	triggered.emit()
 	pass;
 func trigger_node(node:SequenceNode,error_count):
+	if error_count<0.7:
+		player.emit_shockwave()
 	node.key_unit.trigger_spell_component(node,self,error_count*error_factor)
 	pass;
 var cooldown_timer:SceneTreeTimer	

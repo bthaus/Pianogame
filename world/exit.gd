@@ -10,7 +10,7 @@ func _ready() -> void:
 	player.piano.keyController.key_pressed.connect(func(event:PianoEvent):
 		if get_overlapping_bodies().is_empty():return
 		if locked:return
-		if event.get_key()=="B1":
+		if event.get_key()=="E2":
 			if get_parent() is SafeSpace and unlock_spell=="":
 				get_tree().change_scene_to_file(Main.current_level)
 			elif get_parent() is SafeSpace and unlock_spell=="Custom":

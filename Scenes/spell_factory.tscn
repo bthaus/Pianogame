@@ -511,31 +511,37 @@ spell_component = ExtResource("14_8up4e")
 script = ExtResource("3_bgm8m")
 beat = 0.024
 key = Array[String](["E4", "C4", "G4"])
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_ab7jc"]
 script = ExtResource("3_bgm8m")
 beat = 0.4245
 key = Array[String](["G4"])
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_4vtcy"]
 script = ExtResource("3_bgm8m")
 beat = 0.6495000000000001
 key = Array[String](["F4"])
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_5maj4"]
 script = ExtResource("3_bgm8m")
 beat = 0.8505
 key = Array[String](["E4"])
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_ndlft"]
 script = ExtResource("3_bgm8m")
 beat = 1.0755
 key = Array[String](["D4"])
+spell_component = ExtResource("4_2u5f8")
 
 [sub_resource type="Resource" id="Resource_yw22i"]
 script = ExtResource("3_bgm8m")
 beat = 1.3005
 key = Array[String](["C4"])
+spell_component = ExtResource("4_2u5f8")
 
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
@@ -718,7 +724,7 @@ script = ExtResource("2_6csqb")
 spell_name = "hedwik"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_6xmbu"), SubResource("Resource_ab7jc"), SubResource("Resource_4vtcy"), SubResource("Resource_5maj4"), SubResource("Resource_ndlft"), SubResource("Resource_yw22i")])
 keys_as_string = "E4C4G4 G4 F4 E4 D4 C4 "
-component_for_all = ExtResource("12_ebwd2")
+component_for_all = ExtResource("4_2u5f8")
 error_factor = 0.5
 full_input = "0+E4-0+C4-16+G4-283+G4-433+F4-567+E4-717+D4-867+C4-"
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

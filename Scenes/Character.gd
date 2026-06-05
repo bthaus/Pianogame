@@ -26,6 +26,19 @@ func increase_max_health():
 	max_hp+=25
 	hp+=25
 	pass
+func emit_shockwave():
+	var light=$shockwave_range/freeze_light
+	var tw=create_tween()
+	tw.tween_property(light,"energy",8,0.1)
+	tw.tween_property(light,"energy",0,0.1)
+	for body in $shockwave_range.get_overlapping_bodies():
+		if body is Enemy:
+			body.frozen=true
+			get_tree().create_timer(0.4).timeout.connect(func():
+				if !is_instance_valid(body):return
+				body.frozen=false)
+		
+	pass	
 func _physics_process(delta: float) -> void:
 	super(delta)
 	if movement_locked:velocity=Vector2.ZERO
@@ -88,11 +101,11 @@ func call_off_time(time_diff,timing_dic):
 			#$timing_bubble.show()
 			#$timing_bubble/bubble_text.text="too early"	
 			#get_tree().create_timer(2).timeout.connect(hidebubble2)
-	if time_diff>0.2:
+	if time_diff>0.1:
 		$bubble/bubble_text.text="Too fast"
 		$bubble.show()
 		get_tree().create_timer(2).timeout.connect(hidebubble)
-	if time_diff<-0.2:
+	if time_diff<-0.1:
 		$bubble/bubble_text.text="Too slow"	
 		$bubble.show()
 		get_tree().create_timer(2).timeout.connect(hidebubble)
