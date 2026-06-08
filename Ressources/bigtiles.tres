@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bryytjuevfg1o" path="res://Assets/kenney_new-platformer-pack-1.1/Spritesheets/spritesheet-tiles-default.png" id="1_e0s6y"]
 [ext_resource type="PackedScene" uid="uid://dak22uu54dbop" path="res://scene/torch.tscn" id="2_4fdr6"]
+[ext_resource type="PackedScene" uid="uid://dm2lfii4ja50u" path="res://Scenes/ghost.tscn" id="3_wqq2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yofyw"]
 texture = ExtResource("1_e0s6y")
@@ -524,6 +525,7 @@ texture_region_size = Vector2i(64, 64)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_e0s6y"]
 scenes/1/scene = ExtResource("2_4fdr6")
+scenes/2/scene = ExtResource("3_wqq2x")
 
 [resource]
 tile_size = Vector2i(64, 64)

@@ -14,7 +14,7 @@ var state:State=State.Ready
 @export var keys_as_string:String=""
 @export var input_line:String
 @export var store_keys:Array[KeyUnit]
-
+@export var color:Enemy.Colorss=Enemy.Colorss.White
 static var accuracy_history:Dictionary={}
 
 @export var beats:float=0

@@ -22,6 +22,7 @@ var frozen=false
 
 @export var hp=100:
 	set(value):
+		if value==null:hp=null;return
 		hp=clamp(value,0,max_hp)
 	
 		hp_changed.emit()

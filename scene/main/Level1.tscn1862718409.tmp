@@ -4750,7 +4750,6 @@ tile_set = ExtResource("4_0d5aa")
 
 [node name="Node2D" parent="." unique_id=816301689 node_paths=PackedStringArray("hud") instance=ExtResource("6_u0ch8")]
 hud = NodePath("../HUD")
-add_spells_override = Array[String](["simple"])
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=385179982]
 color = Color(0.26841527, 0.29999995, 0.3670424, 1)
@@ -4758,7 +4757,7 @@ color = Color(0.26841527, 0.29999995, 0.3670424, 1)
 [node name="exit" parent="." unique_id=1259217655 node_paths=PackedStringArray("player", "next_position") instance=ExtResource("7_utldl")]
 position = Vector2(365, -216)
 player = NodePath("../Node2D")
-unlock_spell = "freezbolts"
+unlock_spell = "simple"
 next_position = NodePath("../spawn_1")
 state = 1
 
@@ -4769,6 +4768,7 @@ position = Vector2(596, -225)
 
 [node name="Node2D" parent="enemis" unique_id=2055004662 instance=ExtResource("8_fg5v1")]
 position = Vector2(818, -225)
+override_color = 5
 
 [node name="Map2" type="TileMapLayer" parent="." unique_id=1768040980]
 tile_map_data = PackedByteArray("AAA/APD/AAAAAAAAAgBFAPD/AAAAAAAAAgA6APf/AAAAAAAAAgA/APf/AAAAAAAAAgBCAPf/AAAAAAAAAgBHAPf/AAAAAAAAAgA=")
@@ -4777,8 +4777,8 @@ script = ExtResource("5_bmloq")
 metadata/_custom_type_script = "uid://cmiaufh0lf8e"
 
 [connection signal="hp_changed" from="Map2/Node2D" to="Map2/Node2D/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="Map2/@CharacterBody2D@45871" to="Map2/@CharacterBody2D@45871/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="Map2/@CharacterBody2D@45872" to="Map2/@CharacterBody2D@45872/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="Map2/@CharacterBody2D@45873" to="Map2/@CharacterBody2D@45873/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="Map2/@CharacterBody2D@45874" to="Map2/@CharacterBody2D@45874/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="Map2/@CharacterBody2D@45875" to="Map2/@CharacterBody2D@45875/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="Map2/@CharacterBody2D@67881" to="Map2/@CharacterBody2D@67881/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="Map2/@CharacterBody2D@67882" to="Map2/@CharacterBody2D@67882/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="Map2/@CharacterBody2D@67883" to="Map2/@CharacterBody2D@67883/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="Map2/@CharacterBody2D@67884" to="Map2/@CharacterBody2D@67884/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="Map2/@CharacterBody2D@67885" to="Map2/@CharacterBody2D@67885/hp" method="_on_node_2d_hp_changed"]

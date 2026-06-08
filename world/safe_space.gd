@@ -81,6 +81,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	spell_creator_nodes.queue_free()
 	var door:Door=$exit.duplicate()
 	door.unlock_spell="Custom"
+	door.state=Door.DoorDirection.DeleteSpell
 	door.global_position=Vector2.ZERO
 	add_child(door)
 	pass # Replace with function body.

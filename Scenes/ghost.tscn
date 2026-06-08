@@ -35,6 +35,7 @@ animations = [{
 
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_e3r4w")]
 script = ExtResource("2_taxxh")
+override_color = 5
 hp = 100
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]

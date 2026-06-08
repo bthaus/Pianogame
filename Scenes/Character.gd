@@ -13,7 +13,7 @@ var spells
 var walking=false
 var on_color=Color(1.0, 0.0, 0.0, 1.0)
 var off_color=Color(1.0, 1.0, 1.0, 1.0)
-
+static var instance:PlayerCharacter
 var heals=5:
 	set(value):
 		heals=clamp(value,0,5)
@@ -78,6 +78,7 @@ func highlight_move_key(key:String):
 	since_last=0
 	pass
 func _ready() -> void:
+	instance=self
 	if movement_locked:$base_defense_cam.make_current()
 	if not get_parent() is SafeSpace:
 		if !get_parent() is Stats:

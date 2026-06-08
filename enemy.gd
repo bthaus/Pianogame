@@ -5,7 +5,7 @@ var player:PlayerCharacter
 var aggrod=false
 @onready var center:Node2D=$center
 static var colors=["Red","Blue","Green","White","Yellow"]
-static var unlocked_colors=["White"]
+var unlocked_colors=[]
 static var color_dic={
 	"Red"=Color(1.0, 0.0, 0.0, 1.0),
 	"Blue"=Color(0.0, 0.0, 1.0, 1.0),
@@ -14,6 +14,8 @@ static var color_dic={
 	"Yellow"=Color(1.0, 1.0, 0.0, 1.0)
 }
 var color
+@export var override_color:Colorss=Colorss.None
+enum Colorss{Red=0,Blue=1,Green=2,White=3,Yellow=4,None}
 static var num_alive=0:
 	set(val):
 		num_alive=clamp(val,0,10000)
@@ -22,8 +24,10 @@ func set_color():
 	color="Yellow"
 	pass		
 func _ready() -> void:
-	set_color()
-	$AnimatedSprite2D.modulate=color_dic[color]
+	get_tree().create_timer(1).timeout.connect(set_color)
+	#call_deferred("set_color")
+	#set_color()
+	
 	call_deferred("connect_beat")
 	num_alive+=1
 	super()
