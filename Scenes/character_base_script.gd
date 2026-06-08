@@ -5,7 +5,7 @@ var movement_speed=300
 @export var jumping_curve:Curve
 
 @export var jumping_speed=300
-@onready var map:TileMapLayer=$'../TileMapLayer'
+@onready var map:TileMapLayer=$Map
 @onready var projectile_pos:Node2D=$projectileposition
 @onready var shield_pos:Node2D=$shield_pos
 var jumping=false

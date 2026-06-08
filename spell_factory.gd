@@ -18,6 +18,7 @@ static var instance:SpellFactory:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	pass # Replace with function body.
 static func add_missing_stored_spells():
 	var stored_spell_names=DataStorer.get_data(DataStorer.spell_name_path)

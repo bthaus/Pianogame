@@ -5,6 +5,7 @@ var counter=0
 @export var spell_creator:SpellCreator
 @export var standing_position:Area2D
 @export var spell_creator_nodes:Node
+
 var custom_spell_mode=false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

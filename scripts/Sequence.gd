@@ -36,7 +36,7 @@ func is_timeout(beat):
 	var current_relative_beat=beat-start_beat-current_node.beat
 	var max_relative_beat=current_node.outgoing_edge.to_node.beat-current_node.beat
 	var max_extra_beat=Beat.get_beat_time()
-	var timeout=current_relative_beat>(max_relative_beat+max_extra_beat*2+(max_extra_beat/4*current_node.node_nr))
+	var timeout=current_relative_beat>(max_relative_beat+(max_extra_beat/3*current_node.node_nr))#+max_extra_beat*1+(max_extra_beat/400*current_node.node_nr))
 	if timeout:
 		print("here")
 	return timeout
@@ -116,6 +116,7 @@ func traverse(key_dic,beat):
 			if beat_adherance_for_first_node<=beat_adherance_tolerance:
 				beat_adherance_for_first_node=0
 			error_count+=beat_adherance_for_first_node
+		var last_node=current_node
 		current_node=current_node.outgoing_edge.to_node
 		progressed=true
 		traversed_flag=true
@@ -128,7 +129,10 @@ func traverse(key_dic,beat):
 		
 		var relative_beat=beat-start_beat
 		var beat_diff=abs(current_node.beat-relative_beat)
-		
+		if beat_diff<0.06:
+			error_count=0
+			beat_diff=0
+		last_node.last_error_count=current_node.beat-relative_beat
 		error_count+=beat_diff
 		spell.trigger_node(current_node,error_count)
 		mark_input_events(key_dic,next_keys)

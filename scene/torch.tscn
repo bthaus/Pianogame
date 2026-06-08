@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dak22uu54dbop"]
+
+[ext_resource type="Texture2D" uid="uid://bdj8jbrlh2hrj" path="res://Assets/kenney_new-platformer-pack-1.1/Sprites/Tiles/Default/torch_on_a.png" id="1_6wjlc"]
+[ext_resource type="Texture2D" uid="uid://dynj7gfdrk6cy" path="res://Assets/effects/Glow/glow1.png" id="2_36k3j"]
+[ext_resource type="Texture2D" uid="uid://8hmlnmg4tj0a" path="res://Assets/kenney_new-platformer-pack-1.1/Sprites/Tiles/Default/torch_on_b.png" id="2_icg1l"]
+[ext_resource type="Script" uid="uid://c3i655refdeq" path="res://scene/torch.gd" id="3_icg1l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_36k3j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6wjlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_icg1l")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.53
+}]
+
+[node name="Node2D" type="AnimatedSprite2D" unique_id=1621863399]
+sprite_frames = SubResource("SpriteFrames_36k3j")
+frame = 1
+frame_progress = 1.0
+script = ExtResource("3_icg1l")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=515890087]
+position = Vector2(28, -13)
+scale = Vector2(19.09375, 19.09375)
+color = Color(0.8862745, 0.6784314, 0, 0.73333335)
+texture = ExtResource("2_36k3j")

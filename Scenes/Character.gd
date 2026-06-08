@@ -13,6 +13,7 @@ var spells
 var walking=false
 var on_color=Color(1.0, 0.0, 0.0, 1.0)
 var off_color=Color(1.0, 1.0, 1.0, 1.0)
+
 var heals=5:
 	set(value):
 		heals=clamp(value,0,5)
@@ -47,11 +48,11 @@ func _process(delta: float) -> void:
 	if since_last>1:
 		highlight_move_key("none")
 	if Input.is_action_just_pressed(&'C'):
-		var casc:Spell=piano.get_spell_instance("cascade")
-		casc.play_spell(1)
+		#var casc:Spell=piano.get_spell_instance("cascade")
+		#casc.play_spell(1)
 		#for spell in SpellFactory.get_all_spells():
 			#unlock(spell)
-		#DataStorer.save_player_data(self)	
+		DataStorer.save_player_data(self)	
 	pass
 	
 func unlock(spell_name,learn=true):
@@ -91,24 +92,34 @@ func _ready() -> void:
 func hidebubble2():
 	$timing_bubble.hide()
 	pass	
+signal message(string)	
 func call_off_time(time_diff,timing_dic):
+	var msg=""
 	if min(timing_dic["from_last"],timing_dic["to_next"])>0.4:
 		if timing_dic["from_last"]>timing_dic["to_next"]:
 			$timing_bubble/bubble_text.text="Off beat"
 			$timing_bubble.show()
+			msg="Off beat"
 			get_tree().create_timer(2).timeout.connect(hidebubble2)
-		#else:
+		
+	else:
+		msg="on beat"		#else:
 			#$timing_bubble.show()
 			#$timing_bubble/bubble_text.text="too early"	
 			#get_tree().create_timer(2).timeout.connect(hidebubble2)
 	if time_diff>0.1:
+		msg+="   Too Fast"
 		$bubble/bubble_text.text="Too fast"
 		$bubble.show()
 		get_tree().create_timer(2).timeout.connect(hidebubble)
-	if time_diff<-0.1:
+	elif time_diff<-0.1:
+		msg+="   Too slow"
 		$bubble/bubble_text.text="Too slow"	
 		$bubble.show()
 		get_tree().create_timer(2).timeout.connect(hidebubble)
+	else:
+		msg+="   on tempo"	
+	message.emit(msg)
 	pass	
 func hidebubble():
 	$bubble.hide()
@@ -129,6 +140,7 @@ func add_learned_spells():
 	if get_parent() is World and get_parent().day:
 		$PointLight2D.energy=0
 		$PointLight2D.visible=false
+	
 	if all_spells_unlocked:
 		for spell in SpellFactory.get_all_spells():
 			if not add_spells_override.has(spell):add_spells_override.append(spell)
@@ -212,9 +224,12 @@ func easy_move(direction):
 	easy_move_direction=direction
 	pass;	
 var tree:SceneTree
-func die():
+func store_data():
 	DataStorer.save_player_data(self)
 	
+	pass
+func die():
+	store_data()
 	tree=get_tree()	
 	queue_free()
 	call_deferred("swap_scene")

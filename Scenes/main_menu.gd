@@ -2,7 +2,7 @@ extends Node2D
 class_name Main
 @export var piano:Piano
 static var shooter=false
-static var current_level="res://tests/worldtest.tscn"
+static var current_level='res://scene/main/Level1.tscn'
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	piano.keyController.key_pressed.connect(handle_input)
@@ -16,7 +16,8 @@ func handle_input(piano_event:PianoEvent):
 		get_tree().change_scene_to_file('res://Scenes/stats.tscn')
 	pass
 func start_base_defense():
-	get_tree().change_scene_to_file('res://Scenes/base_defense.tscn')
+	shooter=false
+	get_tree().change_scene_to_file('res://tests/ungamed.tscn')
 	pass
 func start_shooter():
 	shooter=true

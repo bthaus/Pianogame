@@ -15,6 +15,107 @@
 [ext_resource type="PackedScene" uid="uid://b0hwy8oqr6fib" path="res://scene/SpellComponents/heal.tscn" id="13_1mje3"]
 [ext_resource type="PackedScene" uid="uid://vgjt4xrw5c6u" path="res://scene/SpellComponents/doubleshot.tscn" id="14_8up4e"]
 
+[sub_resource type="Resource" id="Resource_ceyse"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["B4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_1nufd"]
+script = ExtResource("3_bgm8m")
+beat = 0.45
+key = Array[String](["E4", "E5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_8k1gx"]
+script = ExtResource("3_bgm8m")
+beat = 1.074
+key = Array[String](["G5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_0tq2y"]
+script = ExtResource("3_bgm8m")
+beat = 1.2255
+key = Array[String](["F#5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_trgh8"]
+script = ExtResource("3_bgm8m")
+beat = 1.6500000000000001
+key = Array[String](["E5", "E4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_2vwj4"]
+script = ExtResource("3_bgm8m")
+beat = 2.403
+key = Array[String](["B5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_gcvwc"]
+script = ExtResource("3_bgm8m")
+beat = 2.853
+key = Array[String](["A5", "E4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_8p00n"]
+script = ExtResource("3_bgm8m")
+beat = 4.0575
+key = Array[String](["E4", "F#5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_6ydai"]
+script = ExtResource("3_bgm8m")
+beat = 4.8075
+key = Array[String](["B4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_7bpy1"]
+script = ExtResource("3_bgm8m")
+beat = 5.2335
+key = Array[String](["E5", "E4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_3bnre"]
+script = ExtResource("3_bgm8m")
+beat = 5.808000000000001
+key = Array[String](["G5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_new28"]
+script = ExtResource("3_bgm8m")
+beat = 6.009
+key = Array[String](["F#5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_ealvx"]
+script = ExtResource("3_bgm8m")
+beat = 6.4095
+key = Array[String](["D#5", "A#4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_0454h"]
+script = ExtResource("3_bgm8m")
+beat = 7.11
+key = Array[String](["F5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_67vkw"]
+script = ExtResource("3_bgm8m")
+beat = 7.585500000000001
+key = Array[String](["B4", "E4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_kihkh"]
+script = ExtResource("3_bgm8m")
+beat = 8.3355
+key = Array[String](["G4"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_ukv3k"]
+script = ExtResource("3_bgm8m")
+beat = 8.811
+key = Array[String](["B4"])
+spell_component = ExtResource("4_2u5f8")
+
 [sub_resource type="Resource" id="Resource_8pxlp"]
 script = ExtResource("3_bgm8m")
 beat = null
@@ -543,10 +644,172 @@ beat = 1.3005
 key = Array[String](["C4"])
 spell_component = ExtResource("4_2u5f8")
 
+[sub_resource type="Resource" id="Resource_w0m1y"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["A#4"])
+
+[sub_resource type="Resource" id="Resource_4rekt"]
+script = ExtResource("3_bgm8m")
+beat = 0.8250000000000001
+key = Array[String](["B4"])
+
+[sub_resource type="Resource" id="Resource_26drq"]
+script = ExtResource("3_bgm8m")
+beat = 2.076
+key = Array[String](["A#4"])
+
+[sub_resource type="Resource" id="Resource_1eowi"]
+script = ExtResource("3_bgm8m")
+beat = 2.4765
+key = Array[String](["B4"])
+
+[sub_resource type="Resource" id="Resource_cmc38"]
+script = ExtResource("3_bgm8m")
+beat = 2.8275
+key = Array[String](["A#4"])
+
+[sub_resource type="Resource" id="Resource_eeq7f"]
+script = ExtResource("3_bgm8m")
+beat = 3.2295000000000003
+key = Array[String](["G#4"])
+
+[sub_resource type="Resource" id="Resource_h1be7"]
+script = ExtResource("3_bgm8m")
+beat = 3.6045000000000003
+key = Array[String](["B4"])
+
+[sub_resource type="Resource" id="Resource_6mg4j"]
+script = ExtResource("3_bgm8m")
+beat = 4.1055
+key = Array[String](["A#4"])
+
+[sub_resource type="Resource" id="Resource_b24hc"]
+script = ExtResource("3_bgm8m")
+beat = 5.109
+key = Array[String](["D4"])
+
+[sub_resource type="Resource" id="Resource_5v725"]
+script = ExtResource("3_bgm8m")
+beat = 0.025500000000000002
+key = Array[String](["A4", "F4", "D4"])
+
+[sub_resource type="Resource" id="Resource_ijhni"]
+script = ExtResource("3_bgm8m")
+beat = 0.47550000000000003
+key = Array[String](["D4"])
+
+[sub_resource type="Resource" id="Resource_ymwux"]
+script = ExtResource("3_bgm8m")
+beat = 0.7515000000000001
+key = Array[String](["E4"])
+
+[sub_resource type="Resource" id="Resource_m10p8"]
+script = ExtResource("3_bgm8m")
+beat = 0.9765
+key = Array[String](["F4"])
+
+[sub_resource type="Resource" id="Resource_pj87b"]
+script = ExtResource("3_bgm8m")
+beat = 1.2015
+key = Array[String](["G4"])
+
+[sub_resource type="Resource" id="Resource_l2l05"]
+script = ExtResource("3_bgm8m")
+beat = 1.476
+key = Array[String](["A4"])
+
+[sub_resource type="Resource" id="Resource_txvpn"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["B4", "D5"])
+
+[sub_resource type="Resource" id="Resource_fsqf8"]
+script = ExtResource("3_bgm8m")
+beat = 0.651
+key = Array[String](["B4", "G4"])
+
+[sub_resource type="Resource" id="Resource_vfr65"]
+script = ExtResource("3_bgm8m")
+beat = 1.3755000000000002
+key = Array[String](["E4", "G4"])
+
+[sub_resource type="Resource" id="Resource_sagm6"]
+script = ExtResource("3_bgm8m")
+key = Array[String](["D5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_ookxf"]
+script = ExtResource("3_bgm8m")
+beat = 0.225
+key = Array[String](["E5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_m2xmv"]
+script = ExtResource("3_bgm8m")
+beat = 0.3765
+key = Array[String](["F#5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_g485r"]
+script = ExtResource("3_bgm8m")
+beat = 1.1760000000000002
+key = Array[String](["A5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_ok685"]
+script = ExtResource("3_bgm8m")
+beat = 1.7775
+key = Array[String](["F#5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_e2sdo"]
+script = ExtResource("3_bgm8m")
+beat = 1.9515
+key = Array[String](["A5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_rt2u6"]
+script = ExtResource("3_bgm8m")
+beat = 2.052
+key = Array[String](["F#5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_y1wm5"]
+script = ExtResource("3_bgm8m")
+beat = 2.853
+key = Array[String](["D5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_f03ni"]
+script = ExtResource("3_bgm8m")
+beat = 3.3810000000000002
+key = Array[String](["A5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_ku0el"]
+script = ExtResource("3_bgm8m")
+beat = 3.555
+key = Array[String](["E5"])
+spell_component = ExtResource("4_2u5f8")
+
+[sub_resource type="Resource" id="Resource_pyr6y"]
+script = ExtResource("3_bgm8m")
+beat = 3.705
+key = Array[String](["D5"])
+spell_component = ExtResource("4_2u5f8")
+
 [node name="Spell_Factory" type="Node2D" unique_id=77245229]
 script = ExtResource("1_v6hoi")
 
-[node name="SleepSpell" type="Node" parent="." unique_id=868883030]
+[node name="full" type="Node" parent="." unique_id=334811313]
+script = ExtResource("2_6csqb")
+spell_name = "full"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_ceyse"), SubResource("Resource_1nufd"), SubResource("Resource_8k1gx"), SubResource("Resource_0tq2y"), SubResource("Resource_trgh8"), SubResource("Resource_2vwj4"), SubResource("Resource_gcvwc"), SubResource("Resource_8p00n"), SubResource("Resource_6ydai"), SubResource("Resource_7bpy1"), SubResource("Resource_3bnre"), SubResource("Resource_new28"), SubResource("Resource_ealvx"), SubResource("Resource_0454h"), SubResource("Resource_67vkw"), SubResource("Resource_kihkh"), SubResource("Resource_ukv3k")])
+keys_as_string = "B4 E4E5 G5 F#5 E5E4 B5 A5E4 E4F#5 B4 E5E4 G5 F#5 D#5A#4 F5 B4E4 G4 B4 "
+component_for_all = ExtResource("4_2u5f8")
+full_input = "0+B4-300+E4-300+E5-716+G5-817+F#5-1100+E5-1100+E4-1602+B5-1902+A5-1919+E4-2705+E4-2721+F#5-3205+B4-3489+E5-3505+E4-3872+G5-4006+F#5-4273+D#5-4273+A#4-4740+F5-5057+B4-5073+E4-5557+G4-5874+B4-"
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="sleepspell" type="Node" parent="." unique_id=868883030]
 script = ExtResource("2_6csqb")
 spell_name = "SleepSpell"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_8pxlp"), SubResource("Resource_xoxst"), SubResource("Resource_jm26c"), SubResource("Resource_i25c7")])
@@ -555,7 +818,7 @@ keys_as_string = "A4 G4 G4 F4 "
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
-[node name="SleepAccord" type="Node" parent="." unique_id=1707251070]
+[node name="sleepaccord" type="Node" parent="." unique_id=1707251070]
 script = ExtResource("2_6csqb")
 spell_name = "SleepAccord"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_bgm8m")])
@@ -564,7 +827,7 @@ keys_as_string = "A4F4D4 "
 _disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
-[node name="Fireball" type="Node" parent="." unique_id=1319807311]
+[node name="fireball" type="Node" parent="." unique_id=1319807311]
 script = ExtResource("2_6csqb")
 spell_name = "Fireball"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_2u5f8"), SubResource("Resource_1mje3")])
@@ -688,6 +951,7 @@ spell_name = "heal"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_ugto8"), SubResource("Resource_qv4lp"), SubResource("Resource_p4ncf"), SubResource("Resource_41gki"), SubResource("Resource_uajx1"), SubResource("Resource_wjsh1"), SubResource("Resource_32p34"), SubResource("Resource_mg1bm"), SubResource("Resource_1lh0a")])
 keys_as_string = "C3 D3 E3 F3 G3 F3 E3 D3 C3 "
 beats = 1.0
+_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="simple" type="Node" parent="." unique_id=119549026]
@@ -697,6 +961,7 @@ keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_y5ng2"), SubResource
 keys_as_string = "B3 D4 "
 beats = 0.5
 component_for_all = ExtResource("4_2u5f8")
+_disabled = true
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="wizard" type="Node" parent="." unique_id=63864248]
@@ -725,6 +990,42 @@ spell_name = "hedwik"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_6xmbu"), SubResource("Resource_ab7jc"), SubResource("Resource_4vtcy"), SubResource("Resource_5maj4"), SubResource("Resource_ndlft"), SubResource("Resource_yw22i")])
 keys_as_string = "E4C4G4 G4 F4 E4 D4 C4 "
 component_for_all = ExtResource("4_2u5f8")
+_disabled = true
 error_factor = 0.5
 full_input = "0+E4-0+C4-16+G4-283+G4-433+F4-567+E4-717+D4-867+C4-"
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="lotr" type="Node" parent="." unique_id=485907579]
+script = ExtResource("2_6csqb")
+spell_name = "lotr"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_w0m1y"), SubResource("Resource_4rekt"), SubResource("Resource_26drq"), SubResource("Resource_1eowi"), SubResource("Resource_cmc38"), SubResource("Resource_eeq7f"), SubResource("Resource_h1be7"), SubResource("Resource_6mg4j"), SubResource("Resource_b24hc")])
+keys_as_string = "A#4 B4 A#4 B4 A#4 G#4 B4 A#4 D4 "
+full_input = "0+A#4-550+B4-1384+A#4-1651+B4-1885+A#4-2153+G#4-2403+B4-2737+A#4-3406+D4-"
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="casc_asc" type="Node" parent="." unique_id=1509998855]
+script = ExtResource("2_6csqb")
+spell_name = "casc_asc"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_5v725"), SubResource("Resource_ijhni"), SubResource("Resource_ymwux"), SubResource("Resource_m10p8"), SubResource("Resource_pj87b"), SubResource("Resource_l2l05")])
+keys_as_string = "A4F4D4 D4 E4 F4 G4 A4 "
+_disabled = true
+full_input = "0+A4-17+F4-17+D4-317+D4-501+E4-651+F4-801+G4-984+A4-"
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="freeze_desc" type="Node" parent="." unique_id=14933390]
+script = ExtResource("2_6csqb")
+spell_name = "freeze_desc"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_txvpn"), SubResource("Resource_fsqf8"), SubResource("Resource_vfr65")])
+keys_as_string = "B4D5 B4G4 E4G4 "
+_disabled = true
+full_input = "0+B4-0+D5-434+B4-434+G4-917+E4-917+G4-"
+metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
+
+[node name="hobbit" type="Node" parent="." unique_id=1267751889]
+script = ExtResource("2_6csqb")
+spell_name = "hobbit"
+keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_sagm6"), SubResource("Resource_ookxf"), SubResource("Resource_m2xmv"), SubResource("Resource_g485r"), SubResource("Resource_ok685"), SubResource("Resource_e2sdo"), SubResource("Resource_rt2u6"), SubResource("Resource_y1wm5"), SubResource("Resource_f03ni"), SubResource("Resource_ku0el"), SubResource("Resource_pyr6y")])
+keys_as_string = "D5 E5 F#5 A5 F#5 A5 F#5 D5 A5 E5 D5 "
+component_for_all = ExtResource("4_2u5f8")
+full_input = "0+D5-150+E5-251+F#5-784+A5-1185+F#5-1301+A5-1368+F#5-1902+D5-2254+A5-2370+E5-2470+D5-"
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"

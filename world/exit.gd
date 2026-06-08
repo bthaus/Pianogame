@@ -1,8 +1,9 @@
 extends Area2D
 class_name Door
 @export var player:PlayerCharacter
-@export var to_scene:PackedScene
+@export var to_scene:PackedScene=load("res://world/Safe_space.tscn")
 @export var unlock_spell:String
+@export var next_scene:PackedScene
 static var to_unlock
 @export var locked=false
 # Called when the node enters the scene tree for the first time.
@@ -16,11 +17,9 @@ func _ready() -> void:
 			elif get_parent() is SafeSpace and unlock_spell=="Custom":
 				delete_spell()	
 				return
-			elif to_scene!=null: 
-				get_tree().change_scene_to_packed(to_scene)
 			else:
 				to_unlock=unlock_spell
-				player.spawnpoint=global_position
+				Main.current_level=next_scene
 				get_tree().change_scene_to_file("res://world/Safe_space.tscn")	
 		)
 	pass # Replace with function body.

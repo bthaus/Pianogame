@@ -3,12 +3,14 @@
 [ext_resource type="Script" uid="uid://c86gfel41g4k2" path="res://Scenes/sequence_tree_visual.gd" id="1_7d8a1"]
 [ext_resource type="PackedScene" uid="uid://0thgjnu3upnv" path="res://Scenes/sequence_node_visual.tscn" id="2_jq7ay"]
 [ext_resource type="Script" uid="uid://db404vbc07gtr" path="res://Scenes/indicator.gd" id="3_w0yvc"]
+[ext_resource type="Texture2D" uid="uid://2cjmrbu5dcjn" path="res://Assets/Tiles/Tiles/tile_0044.png" id="4_12jb2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_w0yvc"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="Node2D" type="Node2D" unique_id=623535090]
+[node name="Node2D" type="Node2D" unique_id=623535090 node_paths=PackedStringArray("selector")]
 script = ExtResource("1_7d8a1")
+selector = NodePath("active")
 
 [node name="base_line" type="Line2D" parent="." unique_id=1750322036]
 unique_name_in_owner = true
@@ -40,3 +42,12 @@ offset_top = -203.0
 offset_right = 97.0
 offset_bottom = -176.0
 value = 50.0
+
+[node name="active" type="Sprite2D" parent="." unique_id=1034717512]
+visible = false
+modulate = Color(18.892157, 18.892157, 0, 1)
+z_index = 1
+position = Vector2(23, 38)
+rotation = 3.1415927
+scale = Vector2(2.10652, 4.062574)
+texture = ExtResource("4_12jb2")

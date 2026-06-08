@@ -183,6 +183,7 @@ func handle_quick_menu(direction):
 func	 play_sound(speed):
 	if visuals.is_empty():return	
 	visuals[quick_menu_index].spell.play_spell(speed)
+var last_input_timestamp=0
 func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 	if movement_keys.has(piano_event.get_key()):
 		handle_movement(piano_event)
@@ -199,6 +200,7 @@ func _on_key_controller_key_pressed(piano_event: PianoEvent) -> void:
 		play_sound(2.5)		
 	if !easy_move_keys.has(piano_event.get_key()) and !movement_keys.has(piano_event.get_key()) and !quick_menu_keys.has(piano_event.get_key()) and !piano_event.get_key()=="E2":	
 		input_history.add(piano_event)
+		last_input_timestamp=piano_event.timestamp
 	piano_event.error_detected.connect(remove_event_from_history.bind(piano_event))
 	piano_event.success_detected.connect(remove_event_from_history.bind(piano_event))
 	_add_key_representation(piano_event)
@@ -244,21 +246,29 @@ var remove=[]
 	
 func traverse_sequences():
 	var traversed_sequences=[]
+	var trase={}
 	var keys=keyController.active_keys
 	for sequence in sequences:
 		if not is_instance_valid(sequence):
 			continue
 		if sequence.traverse(keys,beat.beat_no):
 			traversed_sequences.append(sequence.spell.name)
+			trase[sequence.spell.name]=sequence
 		
 	#if  window_open or allow_input_always:
 	if true:
 		for spell:Spell in equipped_spells:
 			if traversed_sequences.has(spell.spell_name):
+				
 				l.d("continued")
 				continue
 			var maybe_seq=spell.check_start(keys,beat.beat_no)	
 			if maybe_seq!=null:
+				#if traversed_sequences.has(spell.spell_name):
+					#var time=Time.get_ticks_msec()
+					#if time-last_input_timestamp>Beat.get_beat_time()*1000:
+						#trase[maybe_seq.spell.name].cancel()
+					#else:continue	
 				sequences.append(maybe_seq)
 				maybe_seq.cancelled.connect(func():sequences.erase(maybe_seq))
 				maybe_seq.remove.connect(func():sequences.erase(maybe_seq))

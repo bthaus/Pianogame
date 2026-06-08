@@ -7,7 +7,7 @@ func _ready() -> void:
 		if piano_event.get_key()=="E2" and Main.shooter:
 			get_tree().change_scene_to_file('res://tests/worldtest.tscn')
 		if piano_event.get_key()=="E2" and !Main.shooter:
-			get_tree().change_scene_to_file('res://Scenes/base_defense.tscn')	
+			get_tree().change_scene_to_file('res://tests/ungamed.tscn')	
 		if piano_event.get_key()=="D2" :
 			get_tree().change_scene_to_file('res://Scenes/main_menu.tscn')	
 			

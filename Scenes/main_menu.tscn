@@ -83,7 +83,7 @@ offset_left = 341.0
 offset_top = 797.0
 offset_right = 706.0
 offset_bottom = 977.0
-text = "Start Spellcaster"
+text = "Start Game"
 label_settings = SubResource("LabelSettings_opfnp")
 
 [node name="Label2" type="Label" parent="." unique_id=1905944635]
@@ -91,7 +91,7 @@ offset_left = 923.0
 offset_top = 700.0
 offset_right = 1288.0
 offset_bottom = 880.0
-text = "Start Base Defense"
+text = "Start Practice session"
 label_settings = SubResource("LabelSettings_opfnp")
 
 [node name="Label3" type="Label" parent="." unique_id=61987629]

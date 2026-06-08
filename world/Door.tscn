@@ -21,7 +21,7 @@ offset_left = -27.369598
 offset_top = -40.565475
 offset_right = 41.6304
 offset_bottom = -17.565475
-text = "B1 Enter"
+text = "E2 Enter"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=728242642]
 tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 1, 0, 10, 0, 5, 0, 0, 0, 0, 0, 255, 255, 1, 0, 10, 0, 6, 0, 0, 0, 0, 0, 0, 0, 1, 0, 10, 0, 7, 0, 0, 0)

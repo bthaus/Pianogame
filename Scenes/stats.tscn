@@ -133,7 +133,7 @@ offset_left = 1578.0
 offset_top = 1024.0
 offset_right = 1915.0
 offset_bottom = 1136.0
-text = "Press B1 to restart"
+text = "Press E1 to restart"
 horizontal_alignment = 2
 
 [node name="Label3" type="Label" parent="." unique_id=283645843]
@@ -142,5 +142,5 @@ offset_left = 1494.0
 offset_top = 1000.0
 offset_right = 1915.0
 offset_bottom = 1031.0
-text = "Press A1 for main menu"
+text = "Press D1 for main menu"
 horizontal_alignment = 2

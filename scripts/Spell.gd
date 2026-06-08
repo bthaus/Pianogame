@@ -14,6 +14,7 @@ var state:State=State.Ready
 @export var keys_as_string:String=""
 @export var input_line:String
 @export var store_keys:Array[KeyUnit]
+
 static var accuracy_history:Dictionary={}
 
 @export var beats:float=0
@@ -54,9 +55,9 @@ func parse_input():
 	for entry in units:
 		var beat=entry["time"].to_float()
 		var key=entry["key"]
+		
 		if beat-last_stamp<50:
 			last_keys.append(key)
-			last_stamp=beat
 			continue
 		elif not last_keys.is_empty():
 			var unit=KeyUnit.new()
@@ -65,12 +66,16 @@ func parse_input():
 			keys.push_back(unit)
 			last_keys.clear()
 			
+		last_stamp=beat
+		last_keys.append(key)	
 		
+		#keys.push_back(unit)
+	if not last_keys.is_empty():
 		var unit=KeyUnit.new()
-		unit.beat=beat/beat_time
-		unit.key.append(key)
+		unit.beat=last_stamp/beat_time
+		unit.key.append_array(last_keys)
 		keys.push_back(unit)
-	
+		last_keys.clear()
 	pass
 
 func set_beats():
@@ -203,7 +208,9 @@ func trigger_spell():
 	start_cooldown()
 	triggered.emit()
 	pass;
+signal triggered_node(node:SequenceNode)	
 func trigger_node(node:SequenceNode,error_count):
+	triggered_node.emit(node)
 	if error_count<0.7:
 		player.emit_shockwave()
 	node.key_unit.trigger_spell_component(node,self,error_count*error_factor)
@@ -299,5 +306,5 @@ func _tool_process(delta:float)->void:
 	for a:KeyUnit in keys:
 		keys_as_string+=util.strarr_to_string(a.key)+" "
 		
-	name=spell_name		
+	name=spell_name.to_lower()		
 	pass;	

@@ -5,18 +5,22 @@ var tree:Sequence_Tree
 const line_offset=30
 @onready var indicator:Line2D=$indicator
 var spell:Spell
-
+@export var selector:Sprite2D
 func _process(delta: float) -> void:
 	if spell.get_number_of_correct_last_spells()==null:return
 	$ProgressBar.value=spell.get_number_of_correct_last_spells()
 	$ProgressBar.max_value=spell.upgrade_values[spell.spell_name].front()
 func _ready() -> void:
 	$Spellname.label_settings=$Spellname.label_settings.duplicate()
+	
 	pass
 func highlight():
 	$Spellname.label_settings.font_color=Color(0.0, 0.747, 0.638, 1.0)
 
 	pass
+func select(on):
+	selector.visible=on
+	pass	
 func unhighlight():
 	$Spellname.label_settings.font_color=Color(0.0, 0.0, 0.0, 1.0)
 
