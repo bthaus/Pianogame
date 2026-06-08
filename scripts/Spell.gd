@@ -37,7 +37,10 @@ signal cooldown_passed
 signal triggered
 signal spell_started
 signal spell_failure_or_success
-
+var charges=3:
+	set(value):
+		charges=clamp(value,0,3)
+		pass
 func parse_input():
 	var cleanaed=full_input.replace("\n","")
 	var keyunits=cleanaed.split("-")
@@ -111,8 +114,13 @@ func check_start(active_keys,beat_no):
 		started_sequence.finished.connect(started_sequence.check_off_time)
 		spell_failure_or_success.connect(func():
 			if is_instance_valid(started_sequence):
+				if not is_instance_valid(started_sequence):return
+				if started_sequence.current_node!=started_sequence.first_node:
+					charges-=1
 				started_sequence.queue_free()
+				
 			)
+			
 		current_sequence=started_sequence
 		return started_sequence
 	pass;
@@ -129,6 +137,7 @@ func setup():
 	prepare_spell()
 	pass;
 func prepare_spell():
+	Beat.beat_instance.bar.connect(func():charges+=1)
 	l.e(str(keys.size()))
 	for k:KeyUnit in keys:
 		k.set_up(self)
@@ -210,6 +219,7 @@ func trigger_spell():
 	pass;
 signal triggered_node(node:SequenceNode)	
 func trigger_node(node:SequenceNode,error_count):
+	if charges==0:return
 	triggered_node.emit(node)
 	if error_count<0.7:
 		player.emit_shockwave()

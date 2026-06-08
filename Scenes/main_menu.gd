@@ -21,7 +21,7 @@ func start_base_defense():
 	pass
 func start_shooter():
 	shooter=true
-	get_tree().change_scene_to_file(current_level)
+	get_tree().change_scene_to_file("res://scene/main/Level1.tscn")
 	pass	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

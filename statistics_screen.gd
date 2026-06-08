@@ -5,7 +5,7 @@ var data
 func _ready() -> void:
 	$player.piano.keyController.key_pressed.connect(func(piano_event:PianoEvent):
 		if piano_event.get_key()=="E2" and Main.shooter:
-			get_tree().change_scene_to_file('res://tests/worldtest.tscn')
+			get_tree().change_scene_to_file("res://scene/main/Level1.tscn")
 		if piano_event.get_key()=="E2" and !Main.shooter:
 			get_tree().change_scene_to_file('res://tests/ungamed.tscn')	
 		if piano_event.get_key()=="D2" :

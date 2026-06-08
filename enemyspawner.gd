@@ -21,6 +21,7 @@ func give_reward():
 	var reward:Door=load("res://world/Door.tscn").instantiate()
 	reward.unlock_spell=reward_spell
 	reward.player=player
+	reward.state=Door.DoorDirection.ToSafeSpace
 	add_sibling(reward)
 	reward.global_position=global_position
 	finished.emit()
