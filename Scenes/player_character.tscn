@@ -51,7 +51,7 @@ script = ExtResource("5_fcng2")
 [node name="PointLight2D" type="PointLight2D" parent="Glow2" index="0" unique_id=336088864]
 position = Vector2(5, 0)
 scale = Vector2(0.86658657, 0.86658657)
-color = Color(0, 1, 1, 1)
+color = Color(0, 0.5483641, 0.548364, 0.45490196)
 energy = 0.0
 texture = ExtResource("4_fcng2")
 texture_scale = 2.58
@@ -191,6 +191,7 @@ label_settings = SubResource("LabelSettings_fcng2")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="22" unique_id=1039357015]
 position = Vector2(2, -14)
+color = Color(1, 1, 1, 0.54901963)
 energy = 0.5
 texture = ExtResource("4_fcng2")
 texture_scale = 2.28

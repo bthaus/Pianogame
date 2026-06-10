@@ -20,7 +20,7 @@ var max_hp=100
 signal died
 var frozen=false
 
-var hp=100:
+@export var hp=100:
 	set(value):
 		if value==null:hp=null;return
 		hp=clamp(value,0,max_hp)

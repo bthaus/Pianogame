@@ -3,6 +3,7 @@ class_name Enemy
 var beat:Beat
 var player:PlayerCharacter
 var aggrod=false
+
 @export var flying=false
 @onready var center:Node2D=$center
 static var colors=["Red","Blue","Green","White","Yellow"]
@@ -63,10 +64,12 @@ func move(direction,key="D2"):
 		super(dir.normalized())
 		#super(Vector2(dir.normalized().x,0))
 func determine_x_velocity(delta):
-	#var target_x = (map.map_to_local(target_position) ).x
-	#velocity.x = (target_x - global_position.x) * 10.0
-	var target_x = (map.map_to_local(target_position) )
-	velocity = (target_x - global_position) * 10.0
+	if not flying:
+		var target_x = (map.map_to_local(target_position) ).x
+		velocity.x = (target_x - global_position.x) * 10.0
+	if flying:
+		var target_x = (map.map_to_local(target_position) )
+		velocity = (target_x - global_position) * 10.0
 	pass			
 func play_anims(velocity):
 	if velocity.x>0.1:
@@ -91,7 +94,7 @@ func shoot():
 		die()
 		return
 	var distance=(player.global_position-global_position).length()
-	if distance>100:return	
+	#if distance>100:return	
 	var p=$Projectile.duplicate()
 	add_sibling(p)
 	p.global_position=global_position
@@ -106,6 +109,7 @@ func _on_player_detection_body_entered(body: Node2D) -> void:
 	pass # Replace with function body.
 func connect_action():
 	beat.beat.connect(shoot)
+	l.d("shoot")
 	pass
 func die():
 	num_alive-=1

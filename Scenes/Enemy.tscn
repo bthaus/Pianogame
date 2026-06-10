@@ -45,6 +45,7 @@ radius = 5.0
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_wovta")]
 collision_layer = 16
 script = ExtResource("2_xeo28")
+flying = true
 override_color = 0
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
