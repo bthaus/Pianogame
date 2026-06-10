@@ -3,6 +3,7 @@ class_name Enemy
 var beat:Beat
 var player:PlayerCharacter
 var aggrod=false
+@export var flying=false
 @onready var center:Node2D=$center
 static var colors=["Red","Blue","Green","White","Yellow"]
 var unlocked_colors=[]
@@ -22,7 +23,11 @@ static var num_alive=0:
 		pass
 func set_color():
 	color="Yellow"
-	pass		
+	pass	
+
+func add_gravity(delta):
+	return
+		
 func _ready() -> void:
 	get_tree().create_timer(1).timeout.connect(set_color)
 	#call_deferred("set_color")
@@ -40,12 +45,12 @@ func connect_beat():
 	beat.beat.connect(squish)
 	pass;
 func squish():
-	var tw=create_tween()
-	tw.tween_property(self,^"scale",Vector2(1,0.5),60/beat.bpm/2)
-	tw.tween_property(self,^"scale",Vector2(1,1),60/beat.bpm/2)
+	#var tw=create_tween()
+	#tw.tween_property(self,^"scale",Vector2(1,0.5),60/beat.bpm/2)
+	#tw.tween_property(self,^"scale",Vector2(1,1),60/beat.bpm/2)
 	pass	
 func move(direction,key="D2"):
-	
+	if not aggrod:return
 	counter+=1
 	if player==null:
 		if counter%2==0:
@@ -55,7 +60,14 @@ func move(direction,key="D2"):
 			
 	var dir=player.global_position-global_position
 	if max_proximity_to_player()<abs(dir.length()):
-		super(Vector2(dir.normalized().x,0))
+		super(dir.normalized())
+		#super(Vector2(dir.normalized().x,0))
+func determine_x_velocity(delta):
+	#var target_x = (map.map_to_local(target_position) ).x
+	#velocity.x = (target_x - global_position.x) * 10.0
+	var target_x = (map.map_to_local(target_position) )
+	velocity = (target_x - global_position) * 10.0
+	pass			
 func play_anims(velocity):
 	if velocity.x>0.1:
 		$AnimatedSprite2D.play(&'walk')

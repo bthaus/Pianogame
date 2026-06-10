@@ -14,6 +14,8 @@ func _ready() -> void:
 		if Door.to_unlock=="Custom":
 			prepare_custom_spell()
 			return
+		if Door.to_unlock=="":
+			return	
 		spell_creator_nodes.queue_free()	
 		$Label.show()
 		door.locked=true

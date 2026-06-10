@@ -25,7 +25,8 @@ func _process(delta: float) -> void:
 	for e:Enemy in overlapping_enemies:
 		var distance=e.global_position-player.global_position
 		if distance.x>0 and player.face_direction.x<0 or distance.x<0 and player.face_direction.x>0:
-			distance*2
+			#distance*2
+			continue
 		distance=distance.length_squared()
 		player.face_direction
 		if distance<nearest:

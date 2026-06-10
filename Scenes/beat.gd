@@ -6,8 +6,16 @@ var last_trigger_time: float = 0.0
 func _ready() -> void:
 	timeout.connect(_on_timeout)
 	last_trigger_time = Time.get_ticks_msec() / 1000.0
-
-
+var last_val=0.0
+var descending=false	
+func _process(delta: float) -> void:
+	var current_val=get_trigger_value()
+	if descending and last_val<current_val:
+		get_parent().beat_timeout()
+		descending=false
+	if not descending and last_val>current_val:
+		descending=true	
+	last_val=current_val	
 func _on_timeout() -> void:
 	last_trigger_time = Time.get_ticks_msec() / 1000.0
 

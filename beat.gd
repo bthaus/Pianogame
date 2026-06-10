@@ -93,3 +93,9 @@ func _on_close_window_timeout() -> void:
 	close_window.emit()
 	
 	pass # Replace with function body.
+
+
+
+
+func _on_beat_timeout() -> void:
+	pass # Replace with function body.

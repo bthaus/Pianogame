@@ -25,7 +25,14 @@ func unhighlight():
 	$Spellname.label_settings.font_color=Color(0.0, 0.0, 0.0, 1.0)
 
 	pass	
-static var visual_dic={}		
+static var visual_dic={}
+func charges_changed(value):
+	for i in range(value):
+		$charges.get_child(i).get_child(0).show()
+	for i in range(value,$charges.get_child_count()):
+		$charges.get_child(i).get_child(0).hide()	
+	
+	pass		
 func set_up(spell:Spell):
 	spell.cooldown_passed.connect(func():$notes.modulate=Color(1,1,1,1))
 	spell.triggered.connect(func():
@@ -33,7 +40,7 @@ func set_up(spell:Spell):
 			$notes.modulate=Color(1,1,1,0.5))
 	spell.spell_started.connect(start_move_indicator)
 	spell.spell_failure_or_success.connect(stop_indicator)
-	
+	spell.charges_changed.connect(charges_changed)
 	$Spellname.text=spell.spell_name
 	self.tree=spell.tree
 	var off=0
@@ -60,7 +67,7 @@ func set_up(spell:Spell):
 		$notes.add_child(visual)
 		#offset+=Vector2.RIGHT*50.0*current_node.beat
 		visual.translate(Vector2.RIGHT*75.0*current_node.beat)
-	
+		
 		if current_node.outgoing_edge!=null:
 			current_node=current_node.outgoing_edge.to_node
 		else:

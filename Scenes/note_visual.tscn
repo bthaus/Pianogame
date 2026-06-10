@@ -72,11 +72,39 @@ rotation = 3.1415927
 scale = Vector2(2.10652, 4.062574)
 texture = ExtResource("4_12jb2")
 
-[node name="on" type="Sprite2D" parent="." unique_id=1414828817]
+[node name="charges" type="Node2D" parent="." unique_id=2026636965]
+
+[node name="charge" type="Node2D" parent="charges" unique_id=555324907]
+
+[node name="on" type="Sprite2D" parent="charges/charge" unique_id=1414828817]
 position = Vector2(29, 227)
 texture = SubResource("GradientTexture2D_addxy")
 
-[node name="off" type="Sprite2D" parent="." unique_id=2107190977]
+[node name="off" type="Sprite2D" parent="charges/charge" unique_id=2107190977]
+visible = false
+position = Vector2(29, 227)
+texture = SubResource("GradientTexture2D_0tgt3")
+
+[node name="charge2" type="Node2D" parent="charges" unique_id=200658795]
+position = Vector2(55, 1)
+
+[node name="on" type="Sprite2D" parent="charges/charge2" unique_id=476078161]
+position = Vector2(29, 227)
+texture = SubResource("GradientTexture2D_addxy")
+
+[node name="off" type="Sprite2D" parent="charges/charge2" unique_id=1508030852]
+visible = false
+position = Vector2(29, 227)
+texture = SubResource("GradientTexture2D_0tgt3")
+
+[node name="charge3" type="Node2D" parent="charges" unique_id=633324769]
+position = Vector2(60, -3)
+
+[node name="on" type="Sprite2D" parent="charges/charge3" unique_id=83236491]
+position = Vector2(83, 231)
+texture = SubResource("GradientTexture2D_addxy")
+
+[node name="off" type="Sprite2D" parent="charges/charge3" unique_id=637979929]
 visible = false
 position = Vector2(29, 227)
 texture = SubResource("GradientTexture2D_0tgt3")

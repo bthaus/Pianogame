@@ -15,13 +15,21 @@ func _ready() -> void:
 	player.piano.keyController.key_pressed.connect(func(event:PianoEvent):
 		if get_overlapping_bodies().is_empty():return
 		if locked:return
+		if event.get_key()!="E2":return
+		
 		if state==DoorDirection.DeleteSpell:
 			delete_spell()	
 			return
 			
 		if state==DoorDirection.ToSafeSpace:
-			return_position=next_position.global_position
-			to_unlock=unlock_spell
+			if next_position:
+				return_position=next_position.global_position
+			else:
+				return_position=global_position
+			if unlock_spell:	
+				to_unlock=unlock_spell
+			else:
+				to_unlock=""
 			get_tree().change_scene_to_file('res://world/Safe_space.tscn')
 			return
 		
@@ -30,16 +38,7 @@ func _ready() -> void:
 			get_tree().change_scene_to_file("res://scene/main/Level1.tscn")	
 		
 			
-		#if event.get_key()=="E2":
-			#if get_parent() is SafeSpace and unlock_spell=="":
-				#get_tree().change_scene_to_file(Main.current_level)
-			#elif get_parent() is SafeSpace and unlock_spell=="Custom":
-				#delete_spell()	
-				#return
-			#else:
-				#to_unlock=unlock_spell
-				#Main.current_level=next_scene
-				#get_tree().change_scene_to_file("res://world/Safe_space.tscn")	
+			
 		)
 	pass # Replace with function body.
 

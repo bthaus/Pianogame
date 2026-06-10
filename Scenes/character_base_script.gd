@@ -4,7 +4,7 @@ class_name Character
 var movement_speed=300
 @export var jumping_curve:Curve
 
-@export var jumping_speed=300
+const jumping_speed=300
 @onready var map:TileMapLayer=$Map
 @onready var projectile_pos:Node2D=$projectileposition
 @onready var shield_pos:Node2D=$shield_pos
@@ -20,7 +20,7 @@ var max_hp=100
 signal died
 var frozen=false
 
-@export var hp=100:
+var hp=100:
 	set(value):
 		if value==null:hp=null;return
 		hp=clamp(value,0,max_hp)
@@ -53,6 +53,7 @@ func move(direction,key="A1"):
 
 var last_pos=Vector2.ZERO	
 func add_gravity(delta):
+	
 	velocity.y += 800 * delta
 	pass
 func _physics_process(delta: float) -> void:
@@ -81,6 +82,8 @@ func reset_positions():
 func determine_x_velocity(delta):
 	var target_x = (map.map_to_local(target_position) ).x
 	velocity.x = (target_x - global_position.x) * 10.0
+	#var target_x = (map.map_to_local(target_position) )
+	#velocity = (target_x - global_position) * 10.0
 	pass	
 func play_anims(velocity):
 	if $AnimatedSprite2D.animation=="hurt":

@@ -37,10 +37,13 @@ signal cooldown_passed
 signal triggered
 signal spell_started
 signal spell_failure_or_success
+signal charges_changed
 var charges=3:
 	set(value):
 		charges=clamp(value,0,3)
+		charges_changed.emit(charges)
 		pass
+		
 func parse_input():
 	var cleanaed=full_input.replace("\n","")
 	var keyunits=cleanaed.split("-")

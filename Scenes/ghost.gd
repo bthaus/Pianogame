@@ -11,6 +11,14 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if hp<=0:return
 	body.hit(10,color)
 	pass # Replace with function body.
+func determine_x_velocity(delta):
+	if not flying:
+		var target_x = (map.map_to_local(target_position) ).x
+		velocity.x = (target_x - global_position.x) * 10.0
+	if flying:
+		var target_x = (map.map_to_local(target_position) )
+		velocity = (target_x - global_position) * 10.0
+	pass	
 func set_color():
 	if player==null:
 		player=PlayerCharacter.instance

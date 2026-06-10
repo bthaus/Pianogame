@@ -1,7 +1,7 @@
 extends Node2D
 class_name Main
 @export var piano:Piano
-static var shooter=false
+static var shooter=true
 static var current_level='res://scene/main/Level1.tscn'
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

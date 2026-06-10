@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var player:PlayerCharacter
-
+@export var next_spawn:Node2D
 @export var types:Array[PackedScene]=[]
 var enemies=[]
 @export var number_of_enemies=[2,4]:
@@ -27,6 +27,7 @@ func give_reward():
 	finished.emit()
 	player.spawnpoint=global_position
 	finished_spawers[finish_index]=true
+	reward.next_position=next_spawn
 	queue_free()
 	pass
 

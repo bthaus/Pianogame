@@ -3,9 +3,10 @@ class_name PlayerCharacter
 @export var piano:Piano
 @export var hud:HUD
 @onready var enemy_scanner:EnemyScanner=$Enemy_Scanner
-@export var movement_locked=false
+const movement_locked=false
 var easy_move_direction=0	
 static var spawnpoint:Vector2=Vector2.ZERO
+@export var spawnpoint_override=false
 @export var acceleration := 1200.0
 @export var friction := 1000.0	
 @export var all_spells_unlocked=false
@@ -81,7 +82,7 @@ func _ready() -> void:
 	instance=self
 	if movement_locked:$base_defense_cam.make_current()
 	if not get_parent() is SafeSpace:
-		if !get_parent() is Stats:
+		if !get_parent() is Stats and not spawnpoint_override:
 			global_position=spawnpoint
 	piano=hud.piano
 	if piano.easy_move:movement_speed/=2
@@ -187,7 +188,7 @@ func add_gravity(delta):
 	#if not walking:return super(delta/2)
 	#super(delta)
 	if not walking:
-		delta/=2
+		delta/=3
 	super(delta)
 	if not walking:
 		velocity.y=clamp(velocity.y,-150,400)
@@ -214,7 +215,7 @@ func deflect():
 func move(direction,key="A1"):
 	walking=false
 	
-	velocity.y-=50
+	velocity.y-=35
 	if velocity.y>0:velocity.y=0
 	super(direction,key)
 	pass	

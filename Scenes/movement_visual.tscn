@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://daav6xl50x0fa"]
+
+[ext_resource type="PackedScene" uid="uid://de6qc1wyfsmik" path="res://piano.tscn" id="1_1q6a5"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_8ueng"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_36asn"]
+outline_size = 4
+outline_color = Color(0, 0.50980395, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8jye8"]
+outline_size = 4
+outline_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_43w4t"]
+outline_size = 4
+outline_color = Color(0, 1, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" unique_id=836623778]
+clip_children = 1
+offset_left = 14.399994
+offset_top = 67.99997
+offset_right = 221.4
+offset_bottom = 220.30002
+
+[node name="Node2D" type="Sprite2D" parent="." unique_id=1378462821]
+position = Vector2(717, -4)
+scale = Vector2(1.26, 1.26)
+
+[node name="Piano3" parent="Node2D" unique_id=285062928 instance=ExtResource("1_1q6a5")]
+offset_left = -746.03174
+offset_top = 11.111206
+offset_right = 286.96826
+offset_bottom = 117.111206
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Node2D/Piano3" unique_id=1698973453]
+layout_mode = 0
+offset_left = 256.3492
+offset_top = 6.349112
+offset_right = 305.5555
+offset_bottom = 33.317375
+text = "move"
+label_settings = SubResource("LabelSettings_36asn")
+
+[node name="Label2" type="Label" parent="Node2D/Piano3" unique_id=56335163]
+layout_mode = 0
+offset_left = 256.3492
+offset_top = 60.317364
+offset_right = 305.5555
+offset_bottom = 87.28563
+text = "fly"
+label_settings = SubResource("LabelSettings_8jye8")
+
+[node name="Label3" type="Label" parent="Node2D/Piano3" unique_id=833136879]
+layout_mode = 0
+offset_left = 184.92065
+offset_top = 11.111019
+offset_right = 234.12695
+offset_bottom = 38.079285
+text = "select"
+label_settings = SubResource("LabelSettings_43w4t")
+
+[node name="Label4" type="Label" parent="Node2D/Piano3" unique_id=1877973027]
+layout_mode = 0
+offset_left = 212.69843
+offset_top = 94.44434
+offset_right = 254.66423
+offset_bottom = 117.44434
+rotation = -1.5707964
+text = "play"
+label_settings = SubResource("LabelSettings_43w4t")
+
+[node name="Label5" type="Label" parent="Node2D/Piano3" unique_id=986181069]
+layout_mode = 0
+offset_left = 191.26985
+offset_top = 94.44434
+offset_right = 233.23566
+offset_bottom = 117.44434
+rotation = -1.5707964
+text = "slow"
+label_settings = SubResource("LabelSettings_43w4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Piano3" unique_id=1163373048]
+modulate = Color(0, 18.892157, 18.892157, 1)
+position = Vector2(255.7036, 39.50409)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D/Piano3" unique_id=1642942561]
+modulate = Color(0, 18.892157, 18.892157, 1)
+position = Vector2(274.7512, 39.50409)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D/Piano3" unique_id=1268842875]
+modulate = Color(0, 18.892157, 18.892157, 1)
+position = Vector2(296.97342, 38.710434)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D/Piano3" unique_id=441622003]
+modulate = Color(18.892157, 0, 0, 1)
+position = Vector2(248.4127, 93.6507)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Node2D/Piano3" unique_id=1871637897]
+modulate = Color(0, 18.892157, 0, 1)
+position = Vector2(193.6508, 42.063393)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Node2D/Piano3" unique_id=1131311695]
+modulate = Color(0, 18.892157, 0, 1)
+position = Vector2(216.66667, 41.26974)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D/Piano3" unique_id=1546555249]
+modulate = Color(18.892157, 0, 0, 1)
+position = Vector2(265.87302, 93.6507)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D/Piano3" unique_id=1196395121]
+modulate = Color(18.892157, 0, 0, 1)
+position = Vector2(284.12698, 93.650696)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Node2D/Piano3" unique_id=710090625]
+modulate = Color(18.892157, 0, 0, 1)
+position = Vector2(305.55554, 93.650696)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Node2D/Piano3" unique_id=628318368]
+modulate = Color(18.892157, 0, 0, 1)
+position = Vector2(326.9841, 93.650696)
+scale = Vector2(0.0643175, 0.05921713)
+texture = ExtResource("2_8ueng")
