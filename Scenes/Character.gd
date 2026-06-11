@@ -3,6 +3,7 @@ class_name PlayerCharacter
 @export var piano:Piano
 @export var hud:HUD
 @onready var enemy_scanner:EnemyScanner=$Enemy_Scanner
+@onready var projectile_scanner:EnemyScanner=$projectile_scanner
 const movement_locked=false
 var easy_move_direction=0	
 static var spawnpoint:Vector2=Vector2.ZERO
@@ -35,10 +36,9 @@ func emit_shockwave():
 	tw.tween_property(light,"energy",0,0.1)
 	for body in $shockwave_range.get_overlapping_bodies():
 		if body is Enemy:
-			body.frozen=true
-			get_tree().create_timer(0.4).timeout.connect(func():
-				if !is_instance_valid(body):return
-				body.frozen=false)
+			var freezer=Freezer.new(0.4)
+			body.add_child(freezer)
+			
 		
 	pass	
 func _physics_process(delta: float) -> void:

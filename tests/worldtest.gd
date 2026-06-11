@@ -27,3 +27,9 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 	$boss_camera.make_current()
 	Beat.beat_instance.start_boss_music()
 	pass # Replace with function body.
+
+
+func _on_area_2d_3_body_entered(body: Node2D) -> void:
+	day=false
+	$CanvasModulate.show()
+	pass # Replace with function body.

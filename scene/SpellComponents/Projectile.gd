@@ -19,6 +19,7 @@ func hit(d,c):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	rotation=direction.angle()
 	translate(direction*speed*delta)
 	pass
 

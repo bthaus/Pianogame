@@ -20,6 +20,7 @@ func activate(playing):
 	var audio := AudioStreamPlayer.new()
 	add_child(audio)
 	audio.stream = preload("res://piano_keys/A440.wav")
+	l.e(str(pitch_scale))
 	audio.pitch_scale = pitch_scale
 	audio.volume_db=5
 	audio.play()

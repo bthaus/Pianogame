@@ -18,12 +18,18 @@ var target_position
 signal hp_changed()
 var max_hp=100
 signal died
-var frozen=false
+var frozen=false:
+	set(value):
+		frozen=value
+		reset_positions()
+		pass
 
 @export var hp=100:
 	set(value):
 		if value==null:hp=null;return
-		hp=clamp(value,0,max_hp)
+		if value<=0:value=0
+		hp=value
+		
 	
 		hp_changed.emit()
 func _process(delta: float) -> void:
@@ -98,6 +104,8 @@ func play_anims(velocity):
 	pass		
 
 var shields=[]
+var poise_damage=0
+@export var poise_treshhold=25
 func hit(damage,color):
 	
 	if not shields.is_empty():
@@ -111,9 +119,15 @@ func hit(damage,color):
 			shield.hp -= absorbed
 			damage -= absorbed
 	hp-=damage
-	if damage>0:
+	poise_damage+=damage
+	if poise_treshhold==null:poise_treshhold=25
+	if damage>0 and poise_damage>=poise_treshhold:
+		poise_damage=0
 		$AnimatedSprite2D.play(&'hurt')
-	$AnimatedSprite2D.play(&'hurt')
+	if damage>0:
+		$AnimatedSprite2D.self_modulate=Color(18.892, 18.892, 18.892)
+		create_tween().tween_property($AnimatedSprite2D,"self_modulate",Color(1.0, 1.0, 1.0),0.05)
+	#$AnimatedSprite2D.play(&'hurt')
 	if hp<=0:
 		die()
 	pass

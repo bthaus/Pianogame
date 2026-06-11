@@ -89,7 +89,7 @@ func hit(damage,c):
 		damage/=2	
 	if player.movement_locked:damage=damage*2
 	super(damage,c)	
-func shoot(d=Vector2.ZERO,pos=global_position):
+func shoot(pos=center.global_position):
 	
 	if frozen:return
 	if hp<=0:
@@ -102,10 +102,8 @@ func shoot(d=Vector2.ZERO,pos=global_position):
 	add_sibling(p)
 	p.global_position=pos
 	p.show()
-	if d==Vector2.ZERO:
-		p.shoot((player.global_position-global_position).normalized())
-	else:
-		p.shoot(d.normalized())	
+	p.shoot((player.global_position-pos).normalized())
+	
 	pass;
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body is PlayerCharacter and not aggrod:

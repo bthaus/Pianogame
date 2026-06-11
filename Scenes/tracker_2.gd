@@ -1,12 +1,12 @@
 extends Sprite2D
-class_name Tracker
+
 var target:Node2D
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	visible=target!=null
-	if target==null:return
-	global_position=target.center.global_position
+	#visible=target!=null
+	#if target==null:return
+	#global_position=target.global_position
 	pass

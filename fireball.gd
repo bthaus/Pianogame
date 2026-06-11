@@ -18,7 +18,7 @@ func shoot(spell:Spell,error_count,factor):
 	
 	ball.global_position=spell.player.projectile_pos.global_position
 	ball.direction=get_direction(spell)
-	ball.target=spell.player.enemy_scanner.current_target
+	ball.target=get_target()
 	ball.error_count=error_count
 	spell.player.add_sibling(ball)
 	ball.connect_with_scanner(spell.player)	
@@ -27,7 +27,9 @@ func shoot(spell:Spell,error_count,factor):
 func get_direction(spell:Spell):
 	return spell.player.face_direction
 	pass
-
+func get_target():
+	return spell.player.enemy_scanner.current_target
+	pass
 func upgrade_spell_component():
 	damage*=1.3
 	pass

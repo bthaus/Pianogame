@@ -4,6 +4,7 @@ class_name KeyUnit
 @export var key:Array[String]
 @export var triggering=false
 @export var spell_component:PackedScene
+@export var trigger_count=1
 var loaded_spell_component:SpellComponent
 const factor=1		
 func set_up(spell:Spell):
@@ -20,7 +21,11 @@ func get_spell_component()->SpellComponent:
 
 func trigger_spell_component(from_node:SequenceNode, spell:Spell,error_count):
 	if get_spell_component()!=null:
-		loaded_spell_component.trigger(spell,error_count,factor)
+		if trigger_count>1:
+			for i in range(trigger_count):
+				loaded_spell_component.trigger(spell,error_count,factor)
+		else:
+			loaded_spell_component.trigger(spell,error_count,factor)		
 		return true
 	return false	
 	pass;

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bbu67kn6fxps0"]
+
+[ext_resource type="PackedScene" uid="uid://bgar6pexijhhq" path="res://scene/SpellComponents/fireball.tscn" id="1_ltcfi"]
+[ext_resource type="Script" uid="uid://dfnklb10w3j5q" path="res://scene/SpellComponents/area_2d.gd" id="2_5o2ru"]
+[ext_resource type="Script" uid="uid://cf0hxbu68f6hg" path="res://scene/SpellComponents/air_defense.gd" id="2_gnvo5"]
+
+[node name="SpellComponent" unique_id=179673675 instance=ExtResource("1_ltcfi")]
+script = ExtResource("2_gnvo5")
+damage = 10
+
+[node name="Area2D" parent="." index="0" unique_id=1928616845]
+collision_mask = 4097
+script = ExtResource("2_5o2ru")
+damage = 50

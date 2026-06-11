@@ -27,6 +27,17 @@ func _ready() -> void:
 	explode()
 	pass # Replace with function body.
 func explode():
+	for i in range(5):
+		var pitch_scale=randf_range(0,0.2)
+		var audio := AudioStreamPlayer.new()
+		add_sibling(audio)
+		audio.stream = preload("res://piano_keys/A440.wav")
+		audio.pitch_scale = pitch_scale
+		audio.volume_db=15
+		audio.play()
+		#audio.finished.connect(func():audio.queue_free())
+		await get_tree().create_timer(8.0).timeout
+		audio.queue_free()
 	var enemies= area.get_overlapping_bodies()
 	for e in enemies:
 		if e.has_method("hit"):

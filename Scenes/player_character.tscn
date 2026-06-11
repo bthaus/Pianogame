@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://h2obpy31h6pt" path="res://Scenes/glow_2.gd" id="5_fcng2"]
 [ext_resource type="Texture2D" uid="uid://c8oyuseh0xa61" path="res://Assets/UI/note.png" id="6_ons1q"]
 [ext_resource type="Script" uid="uid://d0bnwjehdavrd" path="res://Scenes/shoot_cam.gd" id="6_q5hbr"]
+[ext_resource type="Script" uid="uid://cmfto4paljwvj" path="res://Scenes/projectile_scanner.gd" id="8_w775p"]
+[ext_resource type="Script" uid="uid://cciq04aqgpxgg" path="res://Scenes/tracker_2.gd" id="11_4pbxa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q5hbr"]
 shader = ExtResource("3_flf3p")
@@ -34,11 +36,12 @@ radius = 75.00667
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
 collision_layer = 524290
 script = ExtResource("2_wko77")
-spawnpoint_override = false
-acceleration = 1200.0
-friction = 1000.0
-all_spells_unlocked = false
-add_spells_override = Array[String]([])
+spawnpoint_override = null
+acceleration = null
+friction = null
+all_spells_unlocked = null
+add_spells_override = null
+hp = 100
 
 [node name="Glow2" type="Sprite2D" parent="." index="0" unique_id=1958231696]
 modulate = Color(0, 1, 1, 1)
@@ -85,55 +88,72 @@ collision_layer = 524288
 visible = true
 position = Vector2(0, -17)
 
-[node name="Enemy_Scanner" type="Area2D" parent="." index="11" unique_id=249560597 node_paths=PackedStringArray("player")]
+[node name="Enemy_Scanner" type="Area2D" parent="." index="11" unique_id=249560597 node_paths=PackedStringArray("tracker", "player")]
 visible = false
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("3_pb3n0")
+tracker = NodePath("../Tracker")
 player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_Scanner" index="0" unique_id=2143882239]
 shape = SubResource("CircleShape2D_ons1q")
 
-[node name="Tracker" type="Sprite2D" parent="." index="12" unique_id=921732267]
+[node name="projectile_scanner" type="Area2D" parent="." index="12" unique_id=1397370789 node_paths=PackedStringArray("tracker", "player")]
+collision_layer = 0
+collision_mask = 4096
+script = ExtResource("8_w775p")
+tracker = NodePath("../Tracker2")
+player = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="projectile_scanner" index="0" unique_id=526206263]
+shape = SubResource("CircleShape2D_ons1q")
+
+[node name="Tracker" type="Sprite2D" parent="." index="13" unique_id=921732267]
+visible = false
 texture = ExtResource("3_wko77")
 script = ExtResource("4_pb3n0")
 
-[node name="F" type="ColorRect" parent="." index="13" unique_id=1566885859]
+[node name="Tracker2" type="Sprite2D" parent="." index="14" unique_id=1672306464]
+visible = false
+texture = ExtResource("3_wko77")
+script = ExtResource("11_4pbxa")
+
+[node name="F" type="ColorRect" parent="." index="15" unique_id=1566885859]
 offset_left = -4.0
 offset_top = -11.0
 offset_right = -3.0
 offset_bottom = -5.7951803
 scale = Vector2(0.83, 0.83)
 
-[node name="G" type="ColorRect" parent="." index="14" unique_id=1122427958]
+[node name="G" type="ColorRect" parent="." index="16" unique_id=1122427958]
 offset_left = -2.0
 offset_top = -10.0
 offset_right = -1.0
 offset_bottom = -6.0
 scale = Vector2(0.83, 0.83)
 
-[node name="A" type="ColorRect" parent="." index="15" unique_id=1834849992]
+[node name="A" type="ColorRect" parent="." index="17" unique_id=1834849992]
 offset_top = -10.0
 offset_right = 1.0
 offset_bottom = -6.0
 scale = Vector2(0.83, 0.83)
 
-[node name="B" type="ColorRect" parent="." index="16" unique_id=1667497830]
+[node name="B" type="ColorRect" parent="." index="18" unique_id=1667497830]
 offset_left = 2.0
 offset_top = -10.0
 offset_right = 3.0
 offset_bottom = -6.0
 scale = Vector2(0.83, 0.83)
 
-[node name="C" type="ColorRect" parent="." index="17" unique_id=1540309619]
+[node name="C" type="ColorRect" parent="." index="19" unique_id=1540309619]
 offset_left = 4.0
 offset_top = -11.0
 offset_right = 5.0
 offset_bottom = -5.7951803
 scale = Vector2(0.83, 0.83)
 
-[node name="level_up" type="CPUParticles2D" parent="." index="18" unique_id=805568361]
+[node name="level_up" type="CPUParticles2D" parent="." index="20" unique_id=805568361]
 position = Vector2(0.3736801, -17.151003)
 emitting = false
 texture = ExtResource("6_ons1q")
@@ -153,14 +173,14 @@ scale_amount_max = 0.03
 color = Color(18.892157, 18.892157, 2.7260628, 1)
 color_ramp = SubResource("Gradient_ajo0r")
 
-[node name="groundbox" type="Area2D" parent="." index="19" unique_id=1199454751]
+[node name="groundbox" type="Area2D" parent="." index="21" unique_id=1199454751]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="groundbox" index="0" unique_id=759708754]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_ajo0r")
 
-[node name="bubble" type="Polygon2D" parent="." index="20" unique_id=1206687705]
+[node name="bubble" type="Polygon2D" parent="." index="22" unique_id=1206687705]
 visible = false
 z_index = 5
 polygon = PackedVector2Array(3, -28, 10, -37, -2, -37, -2, -51, 50, -51, 50, -37, 17, -37)
@@ -174,7 +194,7 @@ offset_bottom = -29.0
 text = "Too slow"
 label_settings = SubResource("LabelSettings_fcng2")
 
-[node name="timing_bubble" type="Polygon2D" parent="." index="21" unique_id=995914993]
+[node name="timing_bubble" type="Polygon2D" parent="." index="23" unique_id=995914993]
 visible = false
 z_index = 5
 position = Vector2(-58, 0)
@@ -189,14 +209,14 @@ offset_bottom = -29.0
 text = "Too early"
 label_settings = SubResource("LabelSettings_fcng2")
 
-[node name="PointLight2D" type="PointLight2D" parent="." index="22" unique_id=1039357015]
+[node name="PointLight2D" type="PointLight2D" parent="." index="24" unique_id=1039357015]
 position = Vector2(2, -14)
 color = Color(1, 1, 1, 0.54901963)
 energy = 0.5
 texture = ExtResource("4_fcng2")
 texture_scale = 2.28
 
-[node name="shockwave_range" type="Area2D" parent="." index="23" unique_id=1227530392]
+[node name="shockwave_range" type="Area2D" parent="." index="25" unique_id=1227530392]
 collision_layer = 0
 collision_mask = 16
 
@@ -213,4 +233,8 @@ texture_scale = 2.58
 
 [connection signal="body_entered" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_entered"]
 [connection signal="body_exited" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_exited"]
+[connection signal="area_entered" from="projectile_scanner" to="projectile_scanner" method="_on_area_entered"]
+[connection signal="area_exited" from="projectile_scanner" to="projectile_scanner" method="_on_area_exited"]
+[connection signal="body_entered" from="projectile_scanner" to="projectile_scanner" method="_on_body_entered"]
+[connection signal="body_exited" from="projectile_scanner" to="projectile_scanner" method="_on_body_exited"]
 [connection signal="body_entered" from="groundbox" to="." method="_on_groundbox_body_entered"]

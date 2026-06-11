@@ -65,10 +65,6 @@ region = Rect2(216, 0, 72, 72)
 atlas = ExtResource("7_nuv35")
 region = Rect2(0, 0, 72, 72)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0r56d"]
-atlas = ExtResource("7_nuv35")
-region = Rect2(72, 0, 72, 72)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_cy525"]
 atlas = ExtResource("8_lel8w")
 region = Rect2(0, 0, 72, 72)
@@ -181,13 +177,10 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_h1i2o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0r56d")
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 1.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -201,6 +194,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_35dwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53dft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7qoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53dft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7qoq")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_53dft")
@@ -225,7 +230,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_skdhm")
 }],
-"loop": true,
+"loop": false,
 "name": &"stand",
 "speed": 5.0
 }, {
@@ -242,7 +247,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ijygn")
 }],
-"loop": true,
+"loop": false,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -255,39 +260,35 @@ script = ExtResource("2_yq25j")
 anim = NodePath("AnimatedSprite2D")
 flying = false
 override_color = 5
-hp = 100
+hp = 750
+poise_treshhold = 100
 
 [node name="AnimatedSprite2D" parent="." index="1" unique_id=685169871]
 position = Vector2(-6, -72)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_37v2q")
-animation = &"die"
-autoplay = "attack_3"
+animation = &"attack_2"
 
 [node name="PlayerDetection" parent="." index="6" unique_id=1983412877]
 visible = true
 
 [node name="Projectile" parent="." index="7" unique_id=1276879591]
-visible = false
 speed = 350
 
 [node name="Sprite2D" parent="Projectile" index="1" unique_id=1800670913]
-position = Vector2(0, 0)
 rotation = 0.0
-scale = Vector2(2, 2)
+scale = Vector2(-2, 2)
 texture = ExtResource("11_6xjeg")
 
 [node name="Projectile2" type="RigidBody2D" parent="." index="8" unique_id=111409051]
 visible = false
-collision_layer = 16
+collision_layer = 4112
 collision_mask = 786433
 inertia = 1.0
 can_sleep = false
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("12_lel8w")
-color = null
-speed = null
 damage = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile2" index="0" unique_id=195077696]

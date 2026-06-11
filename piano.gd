@@ -45,7 +45,7 @@ func _input(input_event):
 	if midi_event.pitch < START_KEY or midi_event.pitch > END_KEY:
 		# The given pitch isn't on the on-screen keyboard, so return.
 		return
-	_print_midi_info(midi_event)
+	
 	var key: PianoKey = piano_key_dict[midi_event.pitch]
 	if midi_event.message == MIDI_MESSAGE_NOTE_ON:
 		key.activate(false)
