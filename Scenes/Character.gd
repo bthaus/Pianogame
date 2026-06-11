@@ -53,7 +53,7 @@ func _process(delta: float) -> void:
 		#casc.play_spell(1)
 		#for spell in SpellFactory.get_all_spells():
 			#unlock(spell)
-		DataStorer.save_player_data(self)	
+		DataStorer.save_player_data(self,"gamed")	
 	pass
 	
 func unlock(spell_name,learn=true):
@@ -226,12 +226,12 @@ func easy_move(direction):
 	easy_move_direction=direction
 	pass;	
 var tree:SceneTree
-func store_data():
-	DataStorer.save_player_data(self)
+func store_data(text):
+	DataStorer.save_player_data(self,text)
 	
 	pass
 func die():
-	store_data()
+	store_data("game")
 	tree=get_tree()	
 	queue_free()
 	call_deferred("swap_scene")

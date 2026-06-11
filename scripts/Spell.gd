@@ -118,7 +118,7 @@ func check_start(active_keys,beat_no):
 		spell_failure_or_success.connect(func():
 			if is_instance_valid(started_sequence):
 				if not is_instance_valid(started_sequence):return
-				if started_sequence.current_node!=started_sequence.first_node:
+				if started_sequence.current_node!=started_sequence.first_node and started_sequence.current_node!=started_sequence.first_node.outgoing_edge.to_node:
 					charges-=1
 				started_sequence.queue_free()
 				

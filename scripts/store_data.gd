@@ -1,13 +1,14 @@
 extends Node
 class_name DataStorer
-
-static func save_player_data(player:PlayerCharacter):
+static var last_text="game"
+static func save_player_data(player:PlayerCharacter,text):
 	var data={}
 	if player.learned_spells.is_empty():return
 	data["accuracy_histories"]=player.piano.equipped_spells.front().accuracy_history
 	data["total_missclicks"]=player.piano.total_errors
 	data["rhythm adherance"]=Sequence.beat_adherance
-	save_dict_to_json(data,"")
+	save_dict_to_json(data,text)
+	last_text=text
 	
 	pass
 static var last_path="user://data.txt"

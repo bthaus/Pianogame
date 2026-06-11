@@ -78,7 +78,7 @@ func swap_spell_hint():
 	if active_visual!=null:active_visual.select(false)
 	active_visual=player.piano.get_spell_visual(player.piano.equipped_spells.pick_random().spell_name)
 	active_visual.select(true)
-	player.store_data()
+	player.store_data("ungamed")
 	pass
 func _on_node_2d_message(string: Variant) -> void:
 	counter+=1

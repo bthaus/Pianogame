@@ -23,6 +23,10 @@ metadata/_custom_type_script = "uid://cmiaufh0lf8e"
 [node name="Node2D" parent="." unique_id=816301689 node_paths=PackedStringArray("hud") instance=ExtResource("3_o2wru")]
 position = Vector2(-248, -67)
 hud = NodePath("../HUD")
+spawnpoint_override = false
+acceleration = 1200.0
+friction = 1000.0
+all_spells_unlocked = false
 add_spells_override = Array[String](["lotr", "hobbit", "freeze_desc", "casc_asc"])
 
 [node name="ColorRect" type="ColorRect" parent="Node2D" unique_id=728266282]
@@ -39,7 +43,7 @@ transform = Transform2D(3.13, 0, 0, 3.13, -489.43, 0)
 player = NodePath("../Node2D")
 visual_piano_opt_on = true
 
-[node name="ColorRect2" type="ColorRect" parent="HUD" unique_id=674804324]
+[node name="ColorRect3" type="ColorRect" parent="HUD" unique_id=674804324]
 z_index = 2
 offset_left = -18.712463
 offset_top = 117.89137
