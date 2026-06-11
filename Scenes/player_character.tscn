@@ -36,11 +36,11 @@ radius = 75.00667
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_o0f8b")]
 collision_layer = 524290
 script = ExtResource("2_wko77")
-spawnpoint_override = null
-acceleration = null
-friction = null
-all_spells_unlocked = null
-add_spells_override = null
+spawnpoint_override = false
+acceleration = 1200.0
+friction = 1000.0
+all_spells_unlocked = false
+add_spells_override = Array[String]([])
 hp = 100
 
 [node name="Glow2" type="Sprite2D" parent="." index="0" unique_id=1958231696]
@@ -230,6 +230,9 @@ color = Color(0, 1, 1, 1)
 energy = 0.0
 texture = ExtResource("4_fcng2")
 texture_scale = 2.58
+
+[node name="Node2D" type="Node2D" parent="." index="26" unique_id=892547159]
+position = Vector2(0.07719803, -13.367416)
 
 [connection signal="body_entered" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_entered"]
 [connection signal="body_exited" from="Enemy_Scanner" to="Enemy_Scanner" method="_on_body_exited"]

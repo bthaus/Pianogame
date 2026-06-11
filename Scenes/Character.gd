@@ -11,6 +11,7 @@ static var spawnpoint:Vector2=Vector2.ZERO
 @export var acceleration := 1200.0
 @export var friction := 1000.0	
 @export var all_spells_unlocked=false
+@onready var center=$Node2D
 var spells
 var walking=false
 var on_color=Color(1.0, 0.0, 0.0, 1.0)

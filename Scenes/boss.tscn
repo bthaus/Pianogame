@@ -270,7 +270,7 @@ poise_treshhold = 100
 position = Vector2(-6, -72)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_37v2q")
-animation = &"attack_2"
+animation = &"attack_3"
 
 [node name="shoot_positions_2" type="Node2D" parent="AnimatedSprite2D" index="0" unique_id=858426292]
 position = Vector2(7, 72.5)
@@ -301,6 +301,7 @@ shape = SubResource("CircleShape2D_lel8w")
 [node name="Projectile" parent="." index="7" unique_id=1276879591]
 collision_mask = 524289
 speed = 350
+damage = 15
 
 [node name="Sprite2D" parent="Projectile" index="1" unique_id=1800670913]
 rotation = 0.0

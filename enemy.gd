@@ -102,7 +102,7 @@ func shoot(pos=center.global_position):
 	add_sibling(p)
 	p.global_position=pos
 	p.show()
-	p.shoot((player.global_position-pos).normalized())
+	p.shoot((player.center.global_position-pos).normalized())
 	
 	pass;
 func _on_player_detection_body_entered(body: Node2D) -> void:

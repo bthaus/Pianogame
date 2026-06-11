@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 func collide():
-	Explosion.start(global_position,get_tree(),60,1,true)
+	Explosion.start(global_position,get_tree(),50,1,true)
 	queue_free()
 	pass;
 

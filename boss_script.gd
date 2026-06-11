@@ -73,7 +73,7 @@ func _on_node_2d_hp_changed() -> void:
 	healtbar.self_modulate=Color(t-color,color,0,t)
 	pass # Replace with function body.
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if player==null:anim.play("stand")
+	if player==null:anim.play("stand");return
 	match anim.animation:
 		"die":queue_free()
 		"scream":anim.modulate=Color(1,1,1)
