@@ -36,7 +36,7 @@ func scream():
 		add_child(audio)
 		audio.stream = preload("res://piano_keys/A440.wav")
 		audio.pitch_scale = pitch_scale
-		audio.volume_db=25
+		audio.volume_db=45
 		audio.play()
 		#audio.finished.connect(func():audio.queue_free())
 		await get_tree().create_timer(8.0).timeout
@@ -45,6 +45,7 @@ func scream():
 func spawn_enemy():
 	var e=load('res://Scenes/ghost.tscn').instantiate()
 	add_sibling(e)
+	e.hp=10
 	e.global_position=global_position
 	pass	
 func handle_attack_2():

@@ -1,12 +1,12 @@
 extends Node2D
 class_name Explosion
 static var instance=load('res://Scenes/explosion.tscn')
-var damage
+var damage=100
 var hit_player=false
 static func start(pos:Vector2,tree,dam,error_count,player=false):
 	var i:Explosion=instance.instantiate()
 	i.global_position=pos
-	i.damage=(dam*error_count)
+	i.damage=(dam)
 	i.scale*=(2-error_count)
 	i.hit_player=player
 	tree.get_root().add_child(i)
@@ -36,13 +36,18 @@ func explode():
 		audio.pitch_scale = pitch_scale
 		audio.volume_db=15
 		audio.play()
-		#audio.finished.connect(func():audio.queue_free())
-		await get_tree().create_timer(8.0).timeout
-		audio.queue_free()
+		audio.finished.connect(func():audio.queue_free())
+		
 	var enemies= area.get_overlapping_bodies()
 	for e in enemies:
 		if e.has_method("hit"):
 			e.hit(damage,"Red")
+	enemies= area.get_overlapping_areas()
+	for e in enemies:
+		if e.get_parent().has_method("hit"):
+			e.get_parent().hit(damage,"Red")
+		if e.has_method("hit"):
+			e.hit(damage,"Red")			
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

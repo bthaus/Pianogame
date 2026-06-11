@@ -153,7 +153,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wbwar")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_3",
 "speed": 5.0
 }, {
@@ -279,6 +279,7 @@ visible = true
 shape = SubResource("CircleShape2D_lel8w")
 
 [node name="Projectile" parent="." index="7" unique_id=1276879591]
+collision_mask = 524289
 speed = 350
 
 [node name="Sprite2D" parent="Projectile" index="1" unique_id=1800670913]

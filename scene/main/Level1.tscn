@@ -4773,13 +4773,13 @@ tile_set = ExtResource("4_0d5aa")
 rendering_quadrant_size = 4
 
 [node name="player" parent="." unique_id=2018232053 node_paths=PackedStringArray("hud") instance=ExtResource("6_u0ch8")]
-position = Vector2(216.78242, -1672.9221)
+position = Vector2(293.72726, 227.2727)
 hud = NodePath("../HUD")
-spawnpoint_override = false
+spawnpoint_override = true
 acceleration = 1200.0
 friction = 1000.0
 all_spells_unlocked = false
-add_spells_override = Array[String](["simple", "cascade", "casc_asc"])
+add_spells_override = Array[String](["simple", "cascade", "casc_asc", "elise", "air_defense", "wizard"])
 hp = 150
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=385179982]
@@ -4954,32 +4954,32 @@ shape = SubResource("RectangleShape2D_f5n20")
 
 [connection signal="died" from="enemis/boss" to="." method="_on_boss_died"]
 [connection signal="hp_changed" from="enemymap/Node2D" to="enemymap/Node2D/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206009" to="enemymap/@CharacterBody2D@206009/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206010" to="enemymap/@CharacterBody2D@206010/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206011" to="enemymap/@CharacterBody2D@206011/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206012" to="enemymap/@CharacterBody2D@206012/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206013" to="enemymap/@CharacterBody2D@206013/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206014" to="enemymap/@CharacterBody2D@206014/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206015" to="enemymap/@CharacterBody2D@206015/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206016" to="enemymap/@CharacterBody2D@206016/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206017" to="enemymap/@CharacterBody2D@206017/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206018" to="enemymap/@CharacterBody2D@206018/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206019" to="enemymap/@CharacterBody2D@206019/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206020" to="enemymap/@CharacterBody2D@206020/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206021" to="enemymap/@CharacterBody2D@206021/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206022" to="enemymap/@CharacterBody2D@206022/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206023" to="enemymap/@CharacterBody2D@206023/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206024" to="enemymap/@CharacterBody2D@206024/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206025" to="enemymap/@CharacterBody2D@206025/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206026" to="enemymap/@CharacterBody2D@206026/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206027" to="enemymap/@CharacterBody2D@206027/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206028" to="enemymap/@CharacterBody2D@206028/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206029" to="enemymap/@CharacterBody2D@206029/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206030" to="enemymap/@CharacterBody2D@206030/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206031" to="enemymap/@CharacterBody2D@206031/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206032" to="enemymap/@CharacterBody2D@206032/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206033" to="enemymap/@CharacterBody2D@206033/hp" method="_on_node_2d_hp_changed"]
-[connection signal="hp_changed" from="enemymap/@CharacterBody2D@206034" to="enemymap/@CharacterBody2D@206034/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235318" to="enemymap/@CharacterBody2D@235318/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235319" to="enemymap/@CharacterBody2D@235319/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235320" to="enemymap/@CharacterBody2D@235320/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235321" to="enemymap/@CharacterBody2D@235321/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235322" to="enemymap/@CharacterBody2D@235322/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235323" to="enemymap/@CharacterBody2D@235323/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235324" to="enemymap/@CharacterBody2D@235324/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235325" to="enemymap/@CharacterBody2D@235325/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235326" to="enemymap/@CharacterBody2D@235326/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235327" to="enemymap/@CharacterBody2D@235327/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235328" to="enemymap/@CharacterBody2D@235328/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235329" to="enemymap/@CharacterBody2D@235329/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235330" to="enemymap/@CharacterBody2D@235330/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235331" to="enemymap/@CharacterBody2D@235331/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235332" to="enemymap/@CharacterBody2D@235332/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235333" to="enemymap/@CharacterBody2D@235333/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235334" to="enemymap/@CharacterBody2D@235334/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235335" to="enemymap/@CharacterBody2D@235335/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235336" to="enemymap/@CharacterBody2D@235336/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235337" to="enemymap/@CharacterBody2D@235337/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235338" to="enemymap/@CharacterBody2D@235338/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235339" to="enemymap/@CharacterBody2D@235339/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235340" to="enemymap/@CharacterBody2D@235340/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235341" to="enemymap/@CharacterBody2D@235341/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235342" to="enemymap/@CharacterBody2D@235342/hp" method="_on_node_2d_hp_changed"]
+[connection signal="hp_changed" from="enemymap/@CharacterBody2D@235343" to="enemymap/@CharacterBody2D@235343/hp" method="_on_node_2d_hp_changed"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="Area2D3" to="." method="_on_area_2d_3_body_entered"]

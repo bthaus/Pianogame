@@ -40,7 +40,7 @@ animations = [{
 radius = 351.33954
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_idouy"]
-radius = 12.0
+radius = 2.236068
 
 [node name="Node2D" unique_id=816301689 instance=ExtResource("1_wovta")]
 collision_layer = 16
