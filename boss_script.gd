@@ -10,6 +10,14 @@ func _ready() -> void:
 @export var anim:AnimatedSprite2D
 @export var healtbar:ProgressBar
 var attacks=["attack_2","attack_2","attack_2","attack_3","scream"]
+func _process(delta: float) -> void:
+	super(delta)
+	if not player:return
+	var direct=player.global_position-global_position
+	if direct.normalized().x>0:
+		anim.scale.x=-2
+	else:
+		anim.scale.x=2	
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if player==null:return
 	match anim.animation:
@@ -48,9 +56,10 @@ func spawn_enemy():
 	e.hp=10
 	e.global_position=global_position
 	pass	
+	
 func handle_attack_2():
 	match anim.frame:
-		2:anim.pause();get_tree().create_timer(0.45).timeout.connect(func():anim.play();anim.modulate=Color.WHITE;shoot_projectile($shoot_positions_2/Node2D);shoot_projectile($shoot_positions_2/Node2D2));anim.modulate=Color.RED
+		2:anim.pause();get_tree().create_timer(0.45).timeout.connect(func():anim.play();anim.modulate=Color.WHITE;shoot_projectile($AnimatedSprite2D/shoot_positions_2/Node2D);shoot_projectile($AnimatedSprite2D/shoot_positions_2/Node2D2));anim.modulate=Color.RED
 	pass
 func play_anims(velocity):
 	return	
@@ -88,17 +97,25 @@ func shoot_projectile(origin):
 	add_sibling(pro)
 	pro.position=Vector2.ZERO
 	pro.global_position=origin.global_position
-	
+	var direct=player.global_position-global_position
+	var x
+	if direct.normalized().x>0:
+		x=Vector2.RIGHT
+	else:
+		x=Vector2.LEFT
 	pro.show()
-	var shoot_strength=350+randf_range(-150,150)
-	pro.apply_impulse((Vector2.LEFT+Vector2.UP)*shoot_strength)
+	var x_distance=abs(player.global_position.x-global_position.x)
+	
+	var shoot_strength=remap(x_distance,0,400,100,400)+randf_range(-150,150)
+	
+	pro.apply_impulse((x+Vector2.UP)*shoot_strength)
 	pass
 func squish():
 	pass	
 func handle_attack_3():
 	
 	match anim.frame:
-		2:shoot($shoot_positions_3/Node2D.global_position);shoot($shoot_positions_3/Node2D2.global_position)
+		2:shoot($AnimatedSprite2D/shoot_positions_3/Node2D.global_position);shoot($AnimatedSprite2D/shoot_positions_3/Node2D2.global_position)
 	pass	
 
 
