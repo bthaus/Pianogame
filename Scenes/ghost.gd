@@ -1,7 +1,7 @@
 extends Enemy
 
 
-func shoot():
+func shoot(d=Vector2.ZERO,pos=global_position):
 	return
 func connect_action():
 	beat.beat.connect(move.bind(Vector2.ZERO))

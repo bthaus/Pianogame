@@ -39,16 +39,18 @@ func _ready() -> void:
 	super()
 var counter=0	
 func connect_beat():
+	
 	beat=Beat.get_beat_instance()
+	if beat==null:return
 	if beat==null:
 		l.e("beat not passed")
 	beat.bar.connect(move.bind(Vector2.ZERO))
 	beat.beat.connect(squish)
 	pass;
 func squish():
-	#var tw=create_tween()
-	#tw.tween_property(self,^"scale",Vector2(1,0.5),60/beat.bpm/2)
-	#tw.tween_property(self,^"scale",Vector2(1,1),60/beat.bpm/2)
+	var tw=create_tween()
+	tw.tween_property(self,^"scale",Vector2(1,0.5),60/beat.bpm/2)
+	tw.tween_property(self,^"scale",Vector2(1,1),60/beat.bpm/2)
 	pass	
 func move(direction,key="D2"):
 	if not aggrod:return
@@ -87,19 +89,23 @@ func hit(damage,c):
 		damage/=2	
 	if player.movement_locked:damage=damage*2
 	super(damage,c)	
-func shoot():
+func shoot(d=Vector2.ZERO,pos=global_position):
 	
 	if frozen:return
 	if hp<=0:
 		die()
 		return
-	var distance=(player.global_position-global_position).length()
+	#var distance=(player.global_position-global_position).length()
 	#if distance>100:return	
 	var p=$Projectile.duplicate()
+	
 	add_sibling(p)
-	p.global_position=global_position
+	p.global_position=pos
 	p.show()
-	p.shoot((player.global_position-global_position).normalized())
+	if d==Vector2.ZERO:
+		p.shoot((player.global_position-global_position).normalized())
+	else:
+		p.shoot(d.normalized())	
 	pass;
 func _on_player_detection_body_entered(body: Node2D) -> void:
 	if body is PlayerCharacter and not aggrod:

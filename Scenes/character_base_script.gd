@@ -34,6 +34,7 @@ func _ready() -> void:
 	hp=hp
 func get_map():
 	map=Map.get_map()
+	if map==null:return
 	map_position=map.local_to_map(global_position)
 	target_position=map_position as Vector2
 	pass	

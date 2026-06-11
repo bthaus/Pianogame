@@ -15,7 +15,7 @@ func handle_enemies_defeated():
 	if number_of_enemies.is_empty():
 		give_reward()
 	pass
-static var finished_spawers=[false,false,false,false]
+static var finished_spawers=[false,false,false,false,false,false,false]
 @export var finish_index=0
 func give_reward():
 	var reward:Door=load("res://world/Door.tscn").instantiate()

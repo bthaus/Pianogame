@@ -52,6 +52,10 @@ func _process(delta: float) -> void:
 		#else:
 			#create_tween().tween_property($boss,^'volume_db',-40.0,4).set_ease(Tween.EASE_IN)
 			#create_tween().tween_property($base,^'volume_db',0.0,2).set_ease(Tween.EASE_IN)
+func start_boss_music():
+	create_tween().tween_property($boss,^'volume_db',0.0,2).set_ease(Tween.EASE_IN)
+	create_tween().tween_property($base,^'volume_db',-40.0,4).set_ease(Tween.EASE_IN)
+	pass			
 func beat_timeout():
 	#$beatsound.play(0)c
 	beat.emit()
