@@ -1,6 +1,6 @@
 extends Node
 class_name DataStorer
-static var last_text="game"
+static var last_text="gamed"
 static func save_player_data(player:PlayerCharacter,text):
 	var data={}
 	if player.learned_spells.is_empty():return
@@ -11,7 +11,7 @@ static func save_player_data(player:PlayerCharacter,text):
 	last_text=text
 	
 	pass
-static var last_path="user://data.txt"
+static var last_path="user://gameddata.txt"
 static var spell_name_path="user://spell_names.txt"
 static func delete_spell(spell_name):
 	var spell_names=get_data(spell_name_path)

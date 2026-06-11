@@ -152,7 +152,8 @@ func traverse(key_dic,beat):
 			beat_adherance[spell.spell_name].push_back(
 				{"val"=beat_adherance_for_first_node,
 				"hp"=hp,
-				"enemies"=enemies_alive}
+				"enemies"=enemies_alive,
+				"typos"=spell.player.piano.number_of_errors_unstarted}
 				)
 			spell.player.piano.consecutive_spells_without_error+=1
 			status=SequenceStatus.Success

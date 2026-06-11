@@ -190,7 +190,8 @@ func add_accuracy_to_history(val):
 		{"val"=val,
 				"hp"=player.hp,
 				"enemies"=Enemy.num_alive,
-				"time"=Time.get_ticks_msec()}
+				"time"=Time.get_ticks_msec(),
+				"typos"=player.piano.number_of_errors_unstarted}
 				)
 		
 	

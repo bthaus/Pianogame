@@ -14,6 +14,7 @@ func _ready() -> void:
 	)
 	data=DataStorer.get_last_data()
 	var average_accuracies={}
+	if data==null:return
 	if data["accuracy_histories"]==null:return
 	var spell_names=data["accuracy_histories"].keys()
 	var total_spells=0
@@ -58,28 +59,37 @@ func setup_graph(spell_name):
 	
 	
 	var graph_errors=setup_graph_node($error_graph)
-	var error_item=graph_errors.add_plot_item("errors with enemies")
-	
-	var max_enemies=0
-	var average_dic={}
+	item=graph_errors.add_plot_item("typos")
+	graph_errors.x_max=data["accuracy_histories"][spell_name].size()
+	graph_errors.y_max=5
+	index=0
 	for entry in data["accuracy_histories"][spell_name]:
-		var ems:int=entry["enemies"]
-		if ems>max_enemies:max_enemies=ems
-		if not average_dic.has(ems):average_dic[ems]=[]
-		average_dic[ems].append(entry["val"])
+		var typos=entry["typos"]
+		item.add_point(Vector2(index,typos))
+		index+=1
+		print(Vector2(index,typos))
+	#var error_item=graph_errors.add_plot_item("errors with enemies")
+	#
+	#var max_enemies=0
+	var average_dic={}
+	#for entry in data["accuracy_histories"][spell_name]:
+		#var ems:int=entry["enemies"]
+		#if ems>max_enemies:max_enemies=ems
+		#if not average_dic.has(ems):average_dic[ems]=[]
+		#average_dic[ems].append(entry["val"])
 	var arr=[]
-	for i in range(max_enemies):
-		if not average_dic.has(i):continue
-		if average_dic[i].size()	==0: continue
-		var count=average_dic[i].size()	
-		var sum=0
-		for entry in average_dic[i]:
-			sum+=entry
-		if count!=0 and sum!=0:	
-			error_item.add_point(Vector2(i,sum/count))
-	graph_errors.x_max=max_enemies
-	graph_errors.y_max=5	
-	
+	#for i in range(max_enemies):
+		#if not average_dic.has(i):continue
+		#if average_dic[i].size()	==0: continue
+		#var count=average_dic[i].size()	
+		#var sum=0
+		#for entry in average_dic[i]:
+			#sum+=entry
+		#if count!=0 and sum!=0:	
+			#error_item.add_point(Vector2(i,sum/count))
+	#graph_errors.x_max=max_enemies
+	#graph_errors.y_max=5	
+	#
 	
 	var hp=setup_graph_node($hp_graph)
 	var hp_item=hp.add_plot_item("errors with hp")

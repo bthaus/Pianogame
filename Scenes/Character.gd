@@ -232,7 +232,7 @@ func store_data(text):
 	
 	pass
 func die():
-	store_data("game")
+	store_data("gamed")
 	tree=get_tree()	
 	queue_free()
 	call_deferred("swap_scene")
