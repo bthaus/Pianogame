@@ -33,10 +33,17 @@ func check_off_time():
 func is_timeout(beat):
 	if done: return false
 	
-	var current_relative_beat=beat-start_beat-current_node.beat
-	var max_relative_beat=current_node.outgoing_edge.to_node.beat-current_node.beat
-	var max_extra_beat=Beat.get_beat_time()
-	var timeout=current_relative_beat>(max_relative_beat+(max_extra_beat/3*current_node.node_nr))#+max_extra_beat*1+(max_extra_beat/400*current_node.node_nr))
+	#var current_relative_beat=beat-start_beat-current_node.beat
+	#var max_relative_beat=current_node.outgoing_edge.to_node.beat-current_node.beat
+	#var max_extra_beat=Beat.get_beat_time()
+	#var timeout=current_relative_beat>(max_relative_beat+(max_extra_beat/3*current_node.node_nr))#+max_extra_beat*1+(max_extra_beat/400*current_node.node_nr))
+	var timeout=false
+	var beat_time=Beat.get_beat_time()
+	var max_timeout=current_node.outgoing_edge.to_node.beat-current_node.beat
+	var real_current_node_beat=start_beat+current_node.beat
+	var real_max_timeout=max_timeout+real_current_node_beat
+	var tolerance=beat_time/3
+	timeout=beat>real_max_timeout+tolerance
 	if timeout:
 		print("here")
 	return timeout
@@ -149,7 +156,7 @@ func traverse(key_dic,beat):
 				)
 			spell.player.piano.consecutive_spells_without_error+=1
 			status=SequenceStatus.Success
-	return traversed	 
+	return traversed_flag	 
 	pass
 func is_first_node():
 	return current_node==first_node

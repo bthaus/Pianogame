@@ -63,6 +63,7 @@ var frame=0
 var input_happened=false
 var input_handled=false
 func _process(delta: float) -> void:
+	timeout_sequences()
 	if input_happened and not input_handled:
 		call_deferred("handle_input")
 	show()
@@ -255,16 +256,16 @@ func traverse_sequences():
 			traversed_sequences.append(sequence.spell.name)
 			trase[sequence.spell.name]=sequence
 		
-	#if  window_open or allow_input_always:
-	if true:
-		for spell:Spell in equipped_spells:
-			if traversed_sequences.has(spell.spell_name):
-				continue
-			var maybe_seq=spell.check_start(keys,beat.beat_no)	
-			if maybe_seq!=null:
-				sequences.append(maybe_seq)
-				maybe_seq.cancelled.connect(func():sequences.erase(maybe_seq))
-				maybe_seq.remove.connect(func():sequences.erase(maybe_seq))
+	
+	for spell:Spell in equipped_spells:
+		if traversed_sequences.has(spell.spell_name):
+			spell.tree.entry_edge.can_traverse(keys)
+			continue
+		var maybe_seq=spell.check_start(keys,beat.beat_no)	
+		if maybe_seq!=null:
+			sequences.append(maybe_seq)
+			maybe_seq.cancelled.connect(func():sequences.erase(maybe_seq))
+			maybe_seq.remove.connect(func():sequences.erase(maybe_seq))
 			
 	var rem=[]
 	for sequence in sequences:
@@ -317,7 +318,7 @@ func _on_key_controller_before_key_released(piano_event: PianoEvent) -> void:
 
 func _on_beat_close_window() -> void:
 	window_open=false
-	timeout_sequences()
+	#timeout_sequences()
 	
 	pass # Replace with function body.
 
