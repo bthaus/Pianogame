@@ -33,3 +33,8 @@ func _on_area_2d_3_body_entered(body: Node2D) -> void:
 	day=false
 	$CanvasModulate.show()
 	pass # Replace with function body.
+
+
+func _on_boss_died() -> void:
+	Beat.get_beat_instance().turn_off_music()
+	pass # Replace with function body.

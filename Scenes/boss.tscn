@@ -252,6 +252,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_lel8w"]
+radius = 393.2086
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_idouy"]
 radius = 12.0
 
@@ -271,6 +274,9 @@ animation = &"attack_2"
 
 [node name="PlayerDetection" parent="." index="6" unique_id=1983412877]
 visible = true
+
+[node name="CollisionShape2D" parent="PlayerDetection" index="0" unique_id=548203195]
+shape = SubResource("CircleShape2D_lel8w")
 
 [node name="Projectile" parent="." index="7" unique_id=1276879591]
 speed = 350

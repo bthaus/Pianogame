@@ -31,7 +31,8 @@ func handle_scream():
 func scream():
 	for i in range(3):
 		var pitch_scale=randf()
-		var audio := AudioStreamPlayer.new()
+		var audio := AudioStreamPlayer2D.new()
+		audio.global_position=global_position
 		add_child(audio)
 		audio.stream = preload("res://piano_keys/A440.wav")
 		audio.pitch_scale = pitch_scale

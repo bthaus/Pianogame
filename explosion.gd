@@ -29,8 +29,9 @@ func _ready() -> void:
 func explode():
 	for i in range(5):
 		var pitch_scale=randf_range(0,0.2)
-		var audio := AudioStreamPlayer.new()
+		var audio := AudioStreamPlayer2D.new()
 		add_sibling(audio)
+		audio.global_position=global_position
 		audio.stream = preload("res://piano_keys/A440.wav")
 		audio.pitch_scale = pitch_scale
 		audio.volume_db=15

@@ -37,7 +37,12 @@ func set_beat(x: int, y: int, bpm: float,tolerance:float):
 	pass
 static func get_timing():
 	return get_beat_instance().beat_timer.get_early_or_fast()
-	pass	
+	
+	pass
+func turn_off_music():
+	create_tween().tween_property($base,^'volume_db',-80.0,4).set_ease(Tween.EASE_IN)
+	create_tween().tween_property($boss,^'volume_db',-80.0,2).set_ease(Tween.EASE_IN)
+	pass		
 static func get_beat_adherance():
 	return get_beat_instance().beat_timer.get_trigger_value()
 	pass;
