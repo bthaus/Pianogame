@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b0hwy8oqr6fib" path="res://scene/SpellComponents/heal.tscn" id="13_1mje3"]
 [ext_resource type="PackedScene" uid="uid://vgjt4xrw5c6u" path="res://scene/SpellComponents/doubleshot.tscn" id="14_8up4e"]
 [ext_resource type="Script" uid="uid://cabecythwjy5v" path="res://Scenes/air_defense.gd" id="15_1uaqm"]
+[ext_resource type="Script" uid="uid://8jaiue77ies8" path="res://Scenes/casc_asc.gd" id="15_ajxgt"]
 [ext_resource type="PackedScene" uid="uid://bbu67kn6fxps0" path="res://scene/SpellComponents/air_defense.tscn" id="16_ajxgt"]
 
 [sub_resource type="Resource" id="Resource_ceyse"]
@@ -829,6 +830,7 @@ spell_name = "cascade"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_b5g72"), SubResource("Resource_cwllq"), SubResource("Resource_yvnc8"), SubResource("Resource_pimwy"), SubResource("Resource_drsbb"), SubResource("Resource_ccbt2")])
 keys_as_string = "C4E4G4 G4 F4 E4 D4 C4 "
 _disabled = true
+charges = 1
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="block" type="Node" parent="." unique_id=1703405848]
@@ -974,13 +976,14 @@ full_input = "0+A#4-550+B4-1384+A#4-1651+B4-1885+A#4-2153+G#4-2403+B4-2737+A#4-3
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="casc_asc" type="Node" parent="." unique_id=1509998855]
-script = ExtResource("2_6csqb")
+script = ExtResource("15_ajxgt")
 spell_name = "casc_asc"
 keys = Array[ExtResource("3_bgm8m")]([SubResource("Resource_5v725"), SubResource("Resource_ijhni"), SubResource("Resource_ymwux"), SubResource("Resource_m10p8"), SubResource("Resource_pj87b"), SubResource("Resource_l2l05")])
 keys_as_string = "A4F4D4 D4 E4 F4 G4 A4 "
 component_for_all = ExtResource("4_2u5f8")
 _disabled = true
 full_input = "0+A4-17+F4-17+D4-317+D4-501+E4-651+F4-801+G4-984+A4-"
+charges = 1
 metadata/_custom_type_script = "uid://d4c2qs5upr5o3"
 
 [node name="freeze_desc" type="Node" parent="." unique_id=14933390]

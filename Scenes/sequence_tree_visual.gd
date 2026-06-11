@@ -41,6 +41,7 @@ func set_up(spell:Spell):
 	spell.spell_started.connect(start_move_indicator)
 	spell.spell_failure_or_success.connect(stop_indicator)
 	spell.charges_changed.connect(charges_changed)
+	charges_changed(spell.charges)
 	$Spellname.text=spell.spell_name
 	self.tree=spell.tree
 	var off=0

@@ -38,9 +38,10 @@ signal triggered
 signal spell_started
 signal spell_failure_or_success
 signal charges_changed
-var charges=3:
+var max_charges=3
+@export var charges=3:
 	set(value):
-		charges=clamp(value,0,3)
+		charges=clamp(value,0,max_charges)
 		charges_changed.emit(charges)
 		pass
 		
@@ -140,6 +141,8 @@ func setup():
 	prepare_spell()
 	pass;
 func prepare_spell():
+	max_charges=charges
+	
 	Beat.beat_instance.bar.connect(func():charges+=1)
 	l.e(str(keys.size()))
 	for k:KeyUnit in keys:
