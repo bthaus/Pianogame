@@ -1,5 +1,6 @@
 extends Enemy
 class_name Boss
+var act=false
 @onready var projectile_2=$Projectile2
 func _ready() -> void:
 #	max_hp=750
@@ -11,6 +12,7 @@ func _ready() -> void:
 @export var healtbar:ProgressBar
 var attacks=["attack_2","attack_2","attack_2","attack_3","scream"]
 func _process(delta: float) -> void:
+	if not act:return
 	super(delta)
 	if not player:return
 	var direct=player.global_position-global_position
@@ -19,7 +21,8 @@ func _process(delta: float) -> void:
 	else:
 		anim.scale.x=2	
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if player==null:return
+	if not act or player==null:return
+	
 	match anim.animation:
 		"attack_2":handle_attack_2()
 		"attack_3":handle_attack_3()

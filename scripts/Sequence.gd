@@ -42,10 +42,10 @@ func is_timeout(beat):
 	var max_timeout=current_node.outgoing_edge.to_node.beat-current_node.beat
 	var real_current_node_beat=start_beat+current_node.beat
 	var real_max_timeout=max_timeout+real_current_node_beat
-	var tolerance=beat_time/3
+	var tolerance=beat_time*3
 	timeout=beat>real_max_timeout+tolerance
-	if timeout:
-		print("here")
+	
+		
 	return timeout
 	
 	

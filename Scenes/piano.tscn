@@ -32,6 +32,7 @@ position = Vector2(240, 15)
 
 [node name="error" type="AudioStreamPlayer" parent="." unique_id=1660418171]
 stream = ExtResource("4_eambc")
+volume_db = -7.985
 
 [node name="history" type="VBoxContainer" parent="." unique_id=1235419026]
 offset_left = 1309.6831

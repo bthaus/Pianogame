@@ -54,7 +54,9 @@ func _process(delta: float) -> void:
 		#casc.play_spell(1)
 		#for spell in SpellFactory.get_all_spells():
 			#unlock(spell)
-		DataStorer.save_player_data(self,"gamed")	
+		var spell=piano.get_spell_instance("simple")
+		
+		spell.trigger_node(spell.tree.start_node.outgoing_edge.to_node,0)
 	pass
 	
 func unlock(spell_name,learn=true):
@@ -216,7 +218,7 @@ func deflect():
 func move(direction,key="A1"):
 	walking=false
 	
-	velocity.y-=35
+	velocity.y-=45
 	if velocity.y>0:velocity.y=0
 	super(direction,key)
 	pass	

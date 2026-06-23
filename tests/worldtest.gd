@@ -31,6 +31,7 @@ func _on_area_2d_2_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_3_body_entered(body: Node2D) -> void:
 	day=false
+	$enemis/boss.act=true
 	$CanvasModulate.show()
 	pass # Replace with function body.
 

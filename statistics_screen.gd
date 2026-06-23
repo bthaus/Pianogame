@@ -16,6 +16,15 @@ func _ready() -> void:
 	var average_accuracies={}
 	if data==null:return
 	if data["accuracy_histories"]==null:return
+	
+	for e in data["accuracy_histories"]:
+		var rem=[]
+		for entry in data["accuracy_histories"][e]:
+			if entry["val"]>10:
+				rem.append(entry)
+		for r in rem:
+			data["accuracy_histories"][e].erase(r)
+	
 	var spell_names=data["accuracy_histories"].keys()
 	var total_spells=0
 	for key in spell_names:
@@ -58,17 +67,17 @@ func setup_graph(spell_name):
 		index+=1
 	
 	
-	var graph_errors=setup_graph_node($error_graph)
-	item=graph_errors.add_plot_item("typos")
-	graph_errors.x_max=data["accuracy_histories"][spell_name].size()
-	graph_errors.y_max=5
-	index=0
-	for entry in data["accuracy_histories"][spell_name]:
-		var typos=entry["typos"]
-		item.add_point(Vector2(index,typos))
-		index+=1
-		print(Vector2(index,typos))
-	#var error_item=graph_errors.add_plot_item("errors with enemies")
+	#var graph_errors=setup_graph_node($error_graph)
+	#item=graph_errors.add_plot_item("typos")
+	#graph_errors.x_max=data["accuracy_histories"][spell_name].size()
+	#graph_errors.y_max=5
+	#index=0
+	#for entry in data["accuracy_histories"][spell_name]:
+		#var typos=entry["typos"]
+		#item.add_point(Vector2(index,typos))
+		#index+=1
+		#print(Vector2(index,typos))
+	##var error_item=graph_errors.add_plot_item("errors with enemies")
 	#
 	#var max_enemies=0
 	var average_dic={}
@@ -129,8 +138,9 @@ func setup_graph(spell_name):
 	var points=get_regression_line_points(data_arr)
 	impi.add_point(Vector2(0,points["start_y"]))
 	impi.add_point(Vector2(imp.x_max,points["end_y"]))
-	imp.y_max=max(points["start_y"],points["end_y"])
-	imp.y_min=min(points["start_y"],points["end_y"])
+	imp.y_max=5#max(points["start_y"],points["end_y"])
+	imp.y_min=0#min(points["start_y"],points["end_y"])
+	imp.x_max=data["accuracy_histories"][spell_name].size()
 	#
 	#index=0
 	##(Yi+1-Yi-1)/(Xi+1-Xi-1)
@@ -257,7 +267,7 @@ func get_regression_line(data: Array) -> Dictionary:
 func get_regression_line_points(data: Array) -> Dictionary:
 	var line := get_regression_line(data)
 
-	var slope = -line.slope
+	var slope =line.slope
 	var intercept = line.intercept
 
 	var start_x := 0.0

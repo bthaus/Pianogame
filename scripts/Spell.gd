@@ -194,8 +194,9 @@ func add_accuracy_to_history(val):
 				"typos"=player.piano.number_of_errors_unstarted}
 				)
 		
-	
+	return
 	var last_corrects=get_number_of_correct_last_spells()
+	
 	if last_corrects>upgrade_values[spell_name].front():
 		upgrade_spell()		
 	pass

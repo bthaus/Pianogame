@@ -7,6 +7,7 @@ const line_offset=30
 var spell:Spell
 @export var selector:Sprite2D
 func _process(delta: float) -> void:
+	return
 	if spell.get_number_of_correct_last_spells()==null:return
 	$ProgressBar.value=spell.get_number_of_correct_last_spells()
 	$ProgressBar.max_value=spell.upgrade_values[spell.spell_name].front()
